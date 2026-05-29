@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Proctoring Total</title>
+    <title>Simulador ECOEMS 2026 - Proctoring y Reporte</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     
@@ -46,11 +46,20 @@
 
         .img-fluida { max-width: 100%; max-height: 200px; border-radius: 8px; margin: 10px auto; display: block; object-fit: contain; }
         
-        /* Alertas */
         #alerta-ia { display: none; color: white; background: #e74c3c; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; }
         #alerta-audio { display: none; color: white; background: #e67e22; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; animation: parpadeo 1s infinite; }
         
         .cancelado { background-color: #e74c3c !important; color: white !important; }
+        
+        /* --- ESTILOS DEL REPORTE DE RESULTADOS --- */
+        .reporte-container { margin-top: 30px; text-align: left; background: #f9fbfd; padding: 20px; border-radius: 12px; border: 1px solid #e0e6ed; }
+        .item-reporte { margin-bottom: 15px; }
+        .item-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .barra-bg { background-color: #bdc3c7; border-radius: 10px; height: 10px; width: 100%; overflow: hidden; }
+        .barra-fill { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+        .color-excelente { background-color: #2ecc71; }
+        .color-regular { background-color: #f1c40f; }
+        .color-malo { background-color: #e74c3c; }
 
         @keyframes temblor { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
         @keyframes parpadeo { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
@@ -110,13 +119,16 @@
         let puntaje = 0;
         let examenCancelado = false;
         
+        // Estructura para guardar resultados por materia
+        let resultadosPorMateria = {};
+
         // Parámetros de IA
         let advertenciasRostro = 0;
-        const LIMITE_ROSTRO = 15; // 15 segundos de tolerancia
+        const LIMITE_ROSTRO = 15; 
         
         let advertenciasAudio = 0;
-        const LIMITE_AUDIO = 3; // 3 segundos de tolerancia para ruido fuerte
-        const UMBRAL_RUIDO = 35; // Nivel de volumen que dispara la alerta
+        const LIMITE_AUDIO = 3; 
+        const UMBRAL_RUIDO = 35; 
 
         let tiempoRestante = 10800; 
         let intervaloReloj;
@@ -128,8 +140,6 @@
 
             try {
                 await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
-                
-                // Pedimos acceso a la cámara y al MICRÓFONO
                 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true });
                 video.srcObject = stream;
                 
@@ -144,7 +154,7 @@
             }
         }
 
-        // --- IA DE ROSTROS ---
+        // IA DE ROSTROS
         video.addEventListener('play', () => {
             setInterval(async () => {
                 if (examenCancelado) return;
@@ -163,7 +173,7 @@
             }, 1000); 
         });
 
-        // --- IA DE AUDIO ---
+        // IA DE AUDIO
         function iniciarVigilanciaAudio(stream) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const analyser = audioContext.createAnalyser();
@@ -189,7 +199,7 @@
                         ejecutarCancelacion("Se detectaron voces o ruido fuerte en tu entorno.");
                     }
                 } else {
-                    if (advertenciasAudio > 0) advertenciasAudio--; // El contador baja si hay silencio de nuevo
+                    if (advertenciasAudio > 0) advertenciasAudio--; 
                     if (advertenciasAudio === 0) alertaAudio.style.display = "none";
                 }
             }, 1000);
@@ -207,26 +217,17 @@
             }, 1000);
         }
 
-        function ejecutarCancelacion(motivo) {
-            examenCancelado = true;
-            clearInterval(intervaloReloj);
-            video.style.display = "none";
-            lblTemporizador.style.display = "none";
-            alertaIA.style.display = "none";
-            alertaAudio.style.display = "none";
-            
-            if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
-            if (audioContext) audioContext.close(); // Apagamos el micrófono
-
-            tarjetaPrincipal.classList.add('cancelado');
-            contenedorExamen.innerHTML = `<h1>🚫 EXAMEN CANCELADO</h1><p style="font-weight:bold; font-size:18px;">${motivo}</p><p>Puntaje obtenido hasta la infracción: ${puntaje} aciertos.</p>`;
-        }
-
         function revolverPorMateria(arrayOriginal) {
             const materiasOrdenadas = [];
             const grupos = {};
 
             arrayOriginal.forEach(pregunta => {
+                // Registrar conteo total por materia para el reporte
+                if (!resultadosPorMateria[pregunta.materia]) {
+                    resultadosPorMateria[pregunta.materia] = { correctas: 0, total: 0 };
+                }
+                resultadosPorMateria[pregunta.materia].total++;
+
                 if (!grupos[pregunta.materia]) {
                     grupos[pregunta.materia] = [];
                     materiasOrdenadas.push(pregunta.materia); 
@@ -254,22 +255,88 @@
         async function cargarBaseDeDatos() {
             const respuesta = await fetch('guia_2026.json?v=' + new Date().getTime());
             const datosCrudos = await respuesta.json();
+            
+            // Revolvemos las preguntas e inicializamos el reporte
             preguntas = revolverPorMateria(datosCrudos);
+            
             mostrarPregunta();
             arrancarReloj();
         }
 
+        // --- FUNCIÓN QUE GENERA EL REPORTE VISUAL ---
+        function generarReporteHTML() {
+            let reporteHTML = `<div class="reporte-container">
+                <h3 style="margin-top: 0; color: #2c3e50; text-align: center;">📈 Reporte por Materias</h3>`;
+            
+            for (const [materia, stats] of Object.entries(resultadosPorMateria)) {
+                let porcentaje = (stats.correctas / stats.total) * 100;
+                let colorClase = "color-malo"; // Rojo (< 60%)
+                
+                if (porcentaje >= 80) {
+                    colorClase = "color-excelente"; // Verde (>= 80%)
+                } else if (porcentaje >= 60) {
+                    colorClase = "color-regular"; // Amarillo (60% - 79%)
+                }
+
+                reporteHTML += `
+                    <div class="item-reporte">
+                        <div class="item-header">
+                            <span>${materia}</span>
+                            <span>${stats.correctas} / ${stats.total}</span>
+                        </div>
+                        <div class="barra-bg">
+                            <div class="barra-fill ${colorClase}" style="width: ${porcentaje}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }
+            reporteHTML += `</div>`;
+            return reporteHTML;
+        }
+
+        function ejecutarCancelacion(motivo) {
+            examenCancelado = true;
+            clearInterval(intervaloReloj);
+            video.style.display = "none";
+            lblTemporizador.style.display = "none";
+            alertaIA.style.display = "none";
+            alertaAudio.style.display = "none";
+            
+            if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
+            if (audioContext) audioContext.close();
+
+            tarjetaPrincipal.classList.add('cancelado');
+            contenedorExamen.innerHTML = `
+                <h1 style="font-size: 30px; margin-bottom: 10px;">🚫 EXAMEN CANCELADO</h1>
+                <p style="font-weight:bold; font-size:16px;">${motivo}</p>
+                <p style="font-size:18px; margin-top:20px;">Puntaje logrado: <strong>${puntaje}</strong> aciertos.</p>
+                ${generarReporteHTML()}
+            `;
+        }
+
         function mostrarPregunta() {
             if (indiceActual >= preguntas.length) {
-                ejecutarCancelacion("¡Simulacro terminado con éxito! 🎉");
+                examenCancelado = true;
+                clearInterval(intervaloReloj);
+                lblTemporizador.style.display = "none";
+                if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
+                if (audioContext) audioContext.close();
+                
                 tarjetaPrincipal.classList.remove('cancelado');
-                contenedorExamen.innerHTML = `<h2>¡Felicidades!</h2><p>Puntaje final: ${puntaje}/${preguntas.length}</p>`;
+                contenedorExamen.innerHTML = `
+                    <h2 style="color: #27ae60;">¡Simulacro Terminado! 🎉</h2>
+                    <p style="font-size: 20px;">Puntaje Final: <strong>${puntaje} / ${preguntas.length}</strong></p>
+                    <p style="font-size: 14px; color: gray;">Te sobraron ${Math.floor(tiempoRestante / 60)} minutos.</p>
+                    ${generarReporteHTML()}
+                `;
                 return;
             }
+            
             const d = preguntas[indiceActual], letras = ['A', 'B', 'C', 'D'];
             let h = `<div class="materia">${d.materia}</div><div class="contador">Pregunta ${indiceActual + 1} de ${preguntas.length}</div>`;
             h += `<button class="btn-acordeon" onclick="abrirPanel('p-p')">👁️ Ver Pregunta</button>
                   <div id="p-p" class="panel-acordeon"><b>${d.pregunta}</b>${d.imagen ? `<img src="${d.imagen}" class="img-fluida">` : ''}</div>`;
+            
             d.opciones.forEach((o, i) => {
                 const esImg = o.trim().toLowerCase().match(/\.(jpg|jpeg|png|gif)$/);
                 h += `<button class="btn-acordeon" onclick="abrirPanel('p-o-${i}')">👁️ Opción ${letras[i]}</button>
@@ -290,7 +357,14 @@
         };
 
         function verificarRespuesta(sel, corr) {
-            if (sel === corr) puntaje++;
+            if (examenCancelado) return;
+            
+            // Si la respuesta es correcta, sumamos puntos globales y de materia
+            if (sel === corr) {
+                puntaje++;
+                resultadosPorMateria[preguntas[indiceActual].materia].correctas++;
+            }
+            
             indiceActual++;
             mostrarPregunta();
             window.scrollTo(0, 0);
