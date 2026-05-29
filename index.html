@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026</title>
+    <title>Simulador ECOEMS 2026 - Proctoring y Tiempo</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; text-align: center; }
-        #video-container { margin-bottom: 20px; }
-        video { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #2ecc71; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         
-        .tarjeta-pregunta { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        #video-container { margin-bottom: 20px; position: relative; display: inline-block; }
+        video { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #2ecc71; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: border-color 0.3s; }
+        video.peligro { border-color: #e74c3c; animation: temblor 0.5s infinite; }
+
+        .tarjeta-pregunta { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; transition: all 0.5s; }
+        
+        /* Estilos del Temporizador */
+        #temporizador {
+            display: none;
+            font-size: 18px; font-weight: bold; color: #c0392b; background-color: #fadbd8;
+            padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; display: inline-block;
+            border: 2px solid #e74c3c;
+        }
+
         .materia { color: #3498db; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold; }
         .contador { font-size: 12px; color: #7f8c8d; margin-top: 5px; margin-bottom: 20px; }
         
-        /* Estilos del sistema de botones ocultos */
+        /* Sistema de Acordeón */
         .btn-acordeon {
             background-color: #34495e; color: white; border: none; padding: 15px; font-size: 16px; 
             border-radius: 8px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold;
@@ -30,19 +41,28 @@
             border-left: 4px solid #3498db;
         }
 
-        /* Botón final para seleccionar la respuesta */
         .btn-seleccionar {
             background-color: #27ae60; color: white; border: none; padding: 12px 20px; font-size: 16px; 
             border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 15px; width: 100%;
-            transition: background 0.3s;
+            transition: background 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.15);
         }
-        .btn-seleccionar:hover { background-color: #2196f3; }
+        .btn-seleccionar:hover { background-color: #2ecc71; }
 
-        .img-fluida { max-width: 100%; border-radius: 8px; margin: 10px auto; display: block; }
+        .img-fluida { max-width: 100%; max-height: 200px; border-radius: 8px; margin: 10px auto; display: block; object-fit: contain; }
         
-        #alerta-ia { display: none; color: white; background: #e74c3c; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; animation: parpadeo 1s infinite; }
+        #alerta-ia { display: none; color: white; background: #e74c3c; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; }
         
-        @keyframes parpadeo { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+        /* Pantalla de Cancelación */
+        .cancelado { background-color: #e74c3c !important; color: white !important; }
+        .cancelado .materia, .cancelado .contador { color: white !important; }
+
+        @keyframes temblor { 
+            0% { transform: translateX(0); } 
+            25% { transform: translateX(-5px); } 
+            50% { transform: translateX(5px); } 
+            75% { transform: translateX(-5px); } 
+            100% { transform: translateX(0); } 
+        }
     </style>
 </head>
 <body>
@@ -50,27 +70,46 @@
     <div id="video-container">
         <video id="camara" autoplay muted playsinline></video>
     </div>
-    <div id="alerta-ia">🎮 ¡Pixelote no te ve! Regresa la vista a la pantalla para continuar.</div>
+    <div id="alerta-ia">🎮 ¡Pixelote no te ve! Regresa la vista a la pantalla en <span id="contador-peligro">5</span> segundos.</div>
 
-    <div class="tarjeta-pregunta" id="contenedor-examen">
-        <div class="materia" id="lbl-materia">Preparando Examen...</div>
-        <div class="pregunta" id="lbl-pregunta">Cargando base de datos y motores de IA...</div>
+    <div class="tarjeta-pregunta" id="tarjeta-principal">
+        
+        <div id="temporizador" style="display: none;">⏱️ Tiempo restante: 03:00:00</div>
+        
+        <div id="contenedor-examen">
+            <div class="materia" id="lbl-materia">Preparando Examen...</div>
+            <div class="pregunta" id="lbl-pregunta">Cargando base de datos y motores de IA...</div>
+        </div>
     </div>
 
     <script>
         const video = document.getElementById('camara');
         const alertaIA = document.getElementById('alerta-ia');
         const contenedorExamen = document.getElementById('contenedor-examen');
+        const tarjetaPrincipal = document.getElementById('tarjeta-principal');
+        const contadorPeligro = document.getElementById('contador-peligro');
+        const lblTemporizador = document.getElementById('temporizador');
+        
         let preguntas = [];
         let indiceActual = 0;
         let puntaje = 0;
+        
+        // Variables de Proctoring Anti-Trampas
+        let advertencias = 0;
+        const LIMITE_ADVERTENCIAS = 5; 
+        let examenCancelado = false;
+
+        // Variables del Reloj (3 Horas)
+        let tiempoRestante = 10800; // 3 horas en segundos
+        let intervaloReloj;
+        let relojIniciado = false;
 
         async function iniciarCamara() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
                 video.srcObject = stream;
             } catch (err) {
-                alert("Permisos de cámara denegados.");
+                alert("Es obligatorio permitir la cámara para realizar este simulacro.");
             }
         }
 
@@ -81,28 +120,118 @@
             cargarBaseDeDatos();
         });
 
+        // Motor de IA Vigilante
         video.addEventListener('play', () => {
             setInterval(async () => {
+                if (examenCancelado) return;
+
                 const detecciones = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
-                alertaIA.style.display = (detecciones.length === 0) ? "block" : "none";
-            }, 1000);
+                
+                if (detecciones.length === 0) {
+                    advertencias++;
+                    const tiempoRestantePeligro = LIMITE_ADVERTENCIAS - advertencias;
+                    
+                    video.classList.add('peligro');
+                    alertaIA.style.display = "block";
+                    contadorPeligro.innerText = tiempoRestantePeligro;
+
+                    if (advertencias >= LIMITE_ADVERTENCIAS) {
+                        ejecutarCancelacion("Apartaste la vista de la pantalla o abandonaste el encuadre superando el tiempo límite de tolerancia.");
+                    }
+                } else {
+                    advertencias = 0;
+                    video.classList.remove('peligro');
+                    alertaIA.style.display = "none";
+                }
+            }, 1000); 
         });
+
+        // Lógica del Reloj
+        function arrancarReloj() {
+            if (relojIniciado) return;
+            relojIniciado = true;
+            lblTemporizador.style.display = "inline-block";
+
+            intervaloReloj = setInterval(() => {
+                if (examenCancelado) {
+                    clearInterval(intervaloReloj);
+                    return;
+                }
+                
+                tiempoRestante--;
+                
+                let horas = Math.floor(tiempoRestante / 3600);
+                let minutos = Math.floor((tiempoRestante % 3600) / 60);
+                let segundos = tiempoRestante % 60;
+                
+                // Formatear ceros a la izquierda
+                horas = horas < 10 ? '0' + horas : horas;
+                minutos = minutos < 10 ? '0' + minutos : minutos;
+                segundos = segundos < 10 ? '0' + segundos : segundos;
+                
+                lblTemporizador.innerText = `⏱️ Tiempo restante: ${horas}:${minutos}:${segundos}`;
+                
+                if (tiempoRestante <= 0) {
+                    clearInterval(intervaloReloj);
+                    ejecutarCancelacion("Se han agotado las 3 horas de tiempo máximo permitido.");
+                }
+            }, 1000);
+        }
+
+        // Función que cancela por trampa o por tiempo
+        function ejecutarCancelacion(motivo) {
+            examenCancelado = true;
+            clearInterval(intervaloReloj);
+            
+            alertaIA.style.display = "none";
+            video.style.display = "none"; 
+            lblTemporizador.style.display = "none";
+            
+            const stream = video.srcObject;
+            if (stream) {
+                const tracks = stream.getTracks();
+                tracks.forEach(track => track.stop());
+            }
+
+            tarjetaPrincipal.classList.add('cancelado');
+            contenedorExamen.innerHTML = `
+                <h1 style="font-size: 35px; margin-bottom: 10px;">🚫 EXAMEN FINALIZADO</h1>
+                <p style="font-size: 18px; font-weight: bold;">
+                    ${tiempoRestante <= 0 ? "TIEMPO AGOTADO" : "ACTIVIDAD SOSPECHOSA DETECTADA"}
+                </p>
+                <p style="font-size: 16px; margin-top: 20px;">${motivo}</p>
+                <p style="font-size: 14px; margin-top: 30px; border-top: 1px solid white; padding-top: 15px;">
+                    Puntaje logrado: ${puntaje} aciertos.
+                </p>
+            `;
+        }
 
         async function cargarBaseDeDatos() {
             try {
                 const respuesta = await fetch('guia_2026.json?v=' + new Date().getTime());
                 preguntas = await respuesta.json();
                 mostrarPregunta();
+                arrancarReloj(); // Arrancamos el reloj en cuanto la primera pregunta se dibuja
             } catch (error) {
                 contenedorExamen.innerHTML = "<h2 style='color:red;'>Error al cargar la guía.</h2>";
             }
         }
 
         function mostrarPregunta() {
+            if (examenCancelado) return;
+
             if (indiceActual >= preguntas.length) {
+                examenCancelado = true; 
+                clearInterval(intervaloReloj);
+                lblTemporizador.style.display = "none";
+
+                const stream = video.srcObject;
+                if (stream) { stream.getTracks().forEach(track => track.stop()); }
+                
                 contenedorExamen.innerHTML = `
-                    <h2>¡Simulacro Terminado!</h2>
+                    <h2>¡Simulacro Terminado con Éxito!</h2>
                     <p style="font-size: 20px;">Tu puntaje final: <strong>${puntaje}</strong> aciertos de <strong>${preguntas.length}</strong></p>
+                    <p style="font-size: 14px; color: gray; margin-top: 15px;">Te sobraron ${Math.floor(tiempoRestante / 60)} minutos.</p>
                 `;
                 return;
             }
@@ -110,13 +239,12 @@
             const datos = preguntas[indiceActual];
             const letras = ['A', 'B', 'C', 'D'];
             
-            // Construimos el HTML de la materia y contadores
             let html = `
                 <div class="materia">${datos.materia}</div>
                 <div class="contador">Pregunta ${indiceActual + 1} de ${preguntas.length}</div>
             `;
 
-            // 1. Botón y Panel oculto de la PREGUNTA
+            // Panel de Pregunta
             html += `
                 <button class="btn-acordeon" onclick="abrirPanel('panel-pregunta')">
                     👁️ Ver Pregunta
@@ -127,15 +255,15 @@
                 </div>
             `;
 
-            // 2. Botones y Paneles ocultos de las OPCIONES
+            // Paneles de Opciones
             datos.opciones.forEach((opcion, index) => {
                 let contenidoOpcion = '';
+                const opcionLimpia = opcion.trim().toLowerCase();
                 
-                // Soporte para .jpg, .jpeg y .png
-                if (opcion.includes('.jpg') || opcion.includes('.jpeg') || opcion.includes('.png')) {
-                    contenidoOpcion = `<img src="${opcion}" class="img-fluida" style="max-height: 120px;">`;
+                if (opcionLimpia.endsWith('.jpg') || opcionLimpia.endsWith('.jpeg') || opcionLimpia.endsWith('.png') || opcionLimpia.endsWith('.gif')) {
+                    contenidoOpcion = `<img src="${opcion.trim()}" class="img-fluida" alt="Opción ${letras[index]}">`;
                 } else {
-                    contenidoOpcion = opcion;
+                    contenidoOpcion = `<div>${opcion}</div>`;
                 }
 
                 html += `
@@ -145,7 +273,7 @@
                     <div id="panel-opcion-${index}" class="panel-acordeon">
                         ${contenidoOpcion}
                         <button class="btn-seleccionar" onclick="verificarRespuesta(${index}, ${datos.respuesta_correcta})">
-                            ✅ Seleccionar y Siguiente
+                            ✅ Seleccionar Opción ${letras[index]}
                         </button>
                     </div>
                 `;
@@ -154,18 +282,16 @@
             contenedorExamen.innerHTML = html;
         }
 
-        // Función que gestiona la exclusividad de los paneles (solo 1 abierto a la vez)
         window.abrirPanel = function(idSeleccionado) {
+            if (examenCancelado) return;
+
             const IDs = ['panel-pregunta', 'panel-opcion-0', 'panel-opcion-1', 'panel-opcion-2', 'panel-opcion-3'];
-            
             IDs.forEach(id => {
                 const panel = document.getElementById(id);
                 if (panel) {
                     if (id === idSeleccionado) {
-                        // Si es el panel que clickeamos, alternamos su estado
                         panel.style.display = (panel.style.display === 'none' || panel.style.display === '') ? 'block' : 'none';
                     } else {
-                        // Todos los demás se cierran a la fuerza
                         panel.style.display = 'none';
                     }
                 }
@@ -173,9 +299,9 @@
         };
 
         function verificarRespuesta(seleccionada, correcta) {
+            if (examenCancelado) return;
             if (seleccionada === correcta) puntaje++;
             indiceActual++;
-            // Al ejecutar mostrarPregunta(), todo se reinicia y vuelve a estar oculto
             mostrarPregunta();
         }
     </script>
