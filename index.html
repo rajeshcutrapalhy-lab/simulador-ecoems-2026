@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Oficial</title>
+    <title>Simulador ECOEMS 2026 - Proctoring Total</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; text-align: center; padding-bottom: 80px; }
         
-        /* --- PANTALLA DE BIENVENIDA --- */
         #bienvenida {
             background: white; padding: 40px 20px; border-radius: 20px; max-width: 500px;
             margin: 40px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -24,7 +23,6 @@
         }
         .btn-iniciar:active { transform: scale(0.95); }
 
-        /* --- ZONA DE EXAMEN (OCULTA AL INICIO) --- */
         #zona-examen { display: none; }
 
         #video-container { margin-bottom: 20px; position: relative; display: inline-block; }
@@ -47,10 +45,15 @@
         .btn-seleccionar { background-color: #27ae60; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 15px; width: 100%; }
 
         .img-fluida { max-width: 100%; max-height: 200px; border-radius: 8px; margin: 10px auto; display: block; object-fit: contain; }
+        
+        /* Alertas */
         #alerta-ia { display: none; color: white; background: #e74c3c; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; }
+        #alerta-audio { display: none; color: white; background: #e67e22; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; animation: parpadeo 1s infinite; }
+        
         .cancelado { background-color: #e74c3c !important; color: white !important; }
 
         @keyframes temblor { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+        @keyframes parpadeo { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -58,13 +61,13 @@
     <div id="bienvenida">
         <img src="img/pixelote-estudiando.jpg" class="logo-pixelote" alt="Pixelote">
         <h1>Simulador ECOEMS</h1>
-        <p style="color: #7f8c8d;">¡Hola! Pixelote te acompañará en tu prueba de hoy.</p>
+        <p style="color: #7f8c8d;">¡Hola! Pixelote vigilará tu entorno de prueba.</p>
         
         <div class="reglas-lista">
             ✅ <strong>128 Preguntas</strong> revueltas por materia.<br>
             ⏱️ <strong>3 Horas</strong> de tiempo límite.<br>
-            👁️ <strong>IA Proctoring:</strong> No apartes la vista.<br>
-            📵 <strong>Exclusivo:</strong> Solo una pestaña abierta a la vez.
+            👁️ <strong>IA Visual:</strong> Tolerancia de 15 segundos sin mirar.<br>
+            🔊 <strong>IA Audio:</strong> Micrófono activo (silencio absoluto).
         </div>
         
         <br>
@@ -72,7 +75,7 @@
             EMPEZAR EXAMEN
         </button>
         <p id="msg-carga" style="display:none; color: #3498db; font-weight: bold; margin-top: 15px;">
-            Conectando cerebro de IA... espera.
+            Conectando IA de video y audio... espera.
         </p>
     </div>
 
@@ -80,7 +83,8 @@
         <div id="video-container">
             <video id="camara" autoplay muted playsinline></video>
         </div>
-        <div id="alerta-ia">🎮 ¡Pixelote no te ve! Regresa en <span id="contador-peligro">5</span>s.</div>
+        <div id="alerta-ia">🎮 ¡Pixelote no te ve! Regresa en <span id="contador-peligro">15</span>s.</div>
+        <div id="alerta-audio">🔊 ¡Silencio! Se detectan voces o ruido en la habitación.</div>
 
         <div class="tarjeta-pregunta" id="tarjeta-principal">
             <div id="contenedor-examen">
@@ -95,6 +99,7 @@
         const zonaExamen = document.getElementById('zona-examen');
         const video = document.getElementById('camara');
         const alertaIA = document.getElementById('alerta-ia');
+        const alertaAudio = document.getElementById('alerta-audio');
         const contenedorExamen = document.getElementById('contenedor-examen');
         const tarjetaPrincipal = document.getElementById('tarjeta-principal');
         const contadorPeligro = document.getElementById('contador-peligro');
@@ -103,11 +108,19 @@
         let preguntas = [];
         let indiceActual = 0;
         let puntaje = 0;
-        let advertencias = 0;
-        const LIMITE_ADVERTENCIAS = 5; 
         let examenCancelado = false;
+        
+        // Parámetros de IA
+        let advertenciasRostro = 0;
+        const LIMITE_ROSTRO = 15; // 15 segundos de tolerancia
+        
+        let advertenciasAudio = 0;
+        const LIMITE_AUDIO = 3; // 3 segundos de tolerancia para ruido fuerte
+        const UMBRAL_RUIDO = 35; // Nivel de volumen que dispara la alerta
+
         let tiempoRestante = 10800; 
         let intervaloReloj;
+        let audioContext, microphone;
 
         async function comenzarSimulacro() {
             document.getElementById('btn-comenzar').style.display = "none";
@@ -115,37 +128,72 @@
 
             try {
                 await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+                
+                // Pedimos acceso a la cámara y al MICRÓFONO
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true });
                 video.srcObject = stream;
+                
+                iniciarVigilanciaAudio(stream);
 
                 bienvenida.style.display = "none";
                 zonaExamen.style.display = "block";
 
                 cargarBaseDeDatos();
             } catch (err) {
-                alert("Hubo un problema con la cámara o red: " + err.message);
-                // Si quieres que inicie aún con error, descomenta esto:
-                // bienvenida.style.display = "none"; zonaExamen.style.display = "block"; cargarBaseDeDatos();
+                alert("🚨 ERROR: " + err.message + "\\n\\nVe a Ajustes > Aplicaciones > Permisos y dale acceso a la Cámara y al Micrófono.");
             }
         }
 
+        // --- IA DE ROSTROS ---
         video.addEventListener('play', () => {
             setInterval(async () => {
                 if (examenCancelado) return;
                 const detecciones = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
                 if (detecciones.length === 0) {
-                    advertencias++;
+                    advertenciasRostro++;
                     video.classList.add('peligro');
                     alertaIA.style.display = "block";
-                    contadorPeligro.innerText = LIMITE_ADVERTENCIAS - advertencias;
-                    if (advertencias >= LIMITE_ADVERTENCIAS) ejecutarCancelacion("Apartaste la vista demasiado tiempo.");
+                    contadorPeligro.innerText = LIMITE_ROSTRO - advertenciasRostro;
+                    if (advertenciasRostro >= LIMITE_ROSTRO) ejecutarCancelacion("Apartaste la vista de la pantalla más de 15 segundos.");
                 } else {
-                    advertencias = 0;
+                    advertenciasRostro = 0;
                     video.classList.remove('peligro');
                     alertaIA.style.display = "none";
                 }
             }, 1000); 
         });
+
+        // --- IA DE AUDIO ---
+        function iniciarVigilanciaAudio(stream) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const analyser = audioContext.createAnalyser();
+            microphone = audioContext.createMediaStreamSource(stream);
+            microphone.connect(analyser);
+            analyser.fftSize = 256;
+            
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            setInterval(() => {
+                if (examenCancelado) return;
+                analyser.getByteFrequencyData(dataArray);
+                
+                let sum = 0;
+                for(let i = 0; i < bufferLength; i++) sum += dataArray[i];
+                let volumenPromedio = sum / bufferLength;
+
+                if (volumenPromedio > UMBRAL_RUIDO) {
+                    advertenciasAudio++;
+                    alertaAudio.style.display = "block";
+                    if (advertenciasAudio >= LIMITE_AUDIO) {
+                        ejecutarCancelacion("Se detectaron voces o ruido fuerte en tu entorno.");
+                    }
+                } else {
+                    if (advertenciasAudio > 0) advertenciasAudio--; // El contador baja si hay silencio de nuevo
+                    if (advertenciasAudio === 0) alertaAudio.style.display = "none";
+                }
+            }, 1000);
+        }
 
         function arrancarReloj() {
             lblTemporizador.style.display = "inline-block";
@@ -164,18 +212,20 @@
             clearInterval(intervaloReloj);
             video.style.display = "none";
             lblTemporizador.style.display = "none";
+            alertaIA.style.display = "none";
+            alertaAudio.style.display = "none";
+            
             if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
+            if (audioContext) audioContext.close(); // Apagamos el micrófono
 
             tarjetaPrincipal.classList.add('cancelado');
-            contenedorExamen.innerHTML = `<h1>🚫 FINALIZADO</h1><p>${motivo}</p><p>Puntaje: ${puntaje} aciertos.</p>`;
+            contenedorExamen.innerHTML = `<h1>🚫 EXAMEN CANCELADO</h1><p style="font-weight:bold; font-size:18px;">${motivo}</p><p>Puntaje obtenido hasta la infracción: ${puntaje} aciertos.</p>`;
         }
 
-        // --- NUEVA LÓGICA: REVOLVER POR MATERIA ---
         function revolverPorMateria(arrayOriginal) {
             const materiasOrdenadas = [];
             const grupos = {};
 
-            // 1. Agrupar las preguntas por su materia y guardar el orden original de las materias
             arrayOriginal.forEach(pregunta => {
                 if (!grupos[pregunta.materia]) {
                     grupos[pregunta.materia] = [];
@@ -184,7 +234,6 @@
                 grupos[pregunta.materia].push(pregunta);
             });
 
-            // 2. Función interna para mezclar un bloque de preguntas
             function shuffle(array) {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -193,7 +242,6 @@
                 return array;
             }
 
-            // 3. Volver a unir los bloques ya mezclados
             let examenFinal = [];
             materiasOrdenadas.forEach(materia => {
                 const bloqueRevuelto = shuffle(grupos[materia]);
@@ -206,22 +254,16 @@
         async function cargarBaseDeDatos() {
             const respuesta = await fetch('guia_2026.json?v=' + new Date().getTime());
             const datosCrudos = await respuesta.json();
-            
-            // Revolvemos las preguntas respetando los bloques de cada materia
             preguntas = revolverPorMateria(datosCrudos);
-            
             mostrarPregunta();
             arrancarReloj();
         }
 
         function mostrarPregunta() {
             if (indiceActual >= preguntas.length) {
-                examenCancelado = true;
-                clearInterval(intervaloReloj);
-                lblTemporizador.style.display = "none";
-                if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
-                
-                contenedorExamen.innerHTML = `<h2>¡Terminado!</h2><p>Puntaje final: ${puntaje}/${preguntas.length}</p>`;
+                ejecutarCancelacion("¡Simulacro terminado con éxito! 🎉");
+                tarjetaPrincipal.classList.remove('cancelado');
+                contenedorExamen.innerHTML = `<h2>¡Felicidades!</h2><p>Puntaje final: ${puntaje}/${preguntas.length}</p>`;
                 return;
             }
             const d = preguntas[indiceActual], letras = ['A', 'B', 'C', 'D'];
