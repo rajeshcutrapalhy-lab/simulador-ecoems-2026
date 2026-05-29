@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Proctoring y Tiempo</title>
+    <title>Simulador ECOEMS 2026 - IA Activa</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; text-align: center; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; text-align: center; padding-bottom: 60px; /* Espacio extra para que el reloj no tape contenido */ }
         
         #video-container { margin-bottom: 20px; position: relative; display: inline-block; }
         video { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #2ecc71; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: border-color 0.3s; }
@@ -16,18 +16,28 @@
 
         .tarjeta-pregunta { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; transition: all 0.5s; }
         
-        /* Estilos del Temporizador */
+        /* Nuevo Temporizador: Discreto, flotante y en la parte baja */
         #temporizador {
             display: none;
-            font-size: 18px; font-weight: bold; color: #c0392b; background-color: #fadbd8;
-            padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; display: inline-block;
-            border: 2px solid #e74c3c;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px; 
+            font-weight: 500; 
+            color: #7f8c8d; /* Gris suave */
+            background-color: rgba(255, 255, 255, 0.9); /* Blanco casi transparente */
+            padding: 8px 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #bdc3c7;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
         }
 
         .materia { color: #3498db; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold; }
         .contador { font-size: 12px; color: #7f8c8d; margin-top: 5px; margin-bottom: 20px; }
         
-        /* Sistema de Acordeón */
         .btn-acordeon {
             background-color: #34495e; color: white; border: none; padding: 15px; font-size: 16px; 
             border-radius: 8px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold;
@@ -52,7 +62,6 @@
         
         #alerta-ia { display: none; color: white; background: #e74c3c; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; }
         
-        /* Pantalla de Cancelación */
         .cancelado { background-color: #e74c3c !important; color: white !important; }
         .cancelado .materia, .cancelado .contador { color: white !important; }
 
@@ -74,13 +83,13 @@
 
     <div class="tarjeta-pregunta" id="tarjeta-principal">
         
-        <div id="temporizador" style="display: none;">⏱️ Tiempo restante: 03:00:00</div>
-        
         <div id="contenedor-examen">
-            <div class="materia" id="lbl-materia">Preparando Examen...</div>
-            <div class="pregunta" id="lbl-pregunta">Cargando base de datos y motores de IA...</div>
+            <div class="materia" id="lbl-materia">Conectando Inteligencia Artificial...</div>
+            <div class="pregunta" id="lbl-pregunta">Por favor espera unos segundos.</div>
         </div>
     </div>
+
+    <div id="temporizador">⏱️ 03:00:00</div>
 
     <script>
         const video = document.getElementById('camara');
@@ -94,33 +103,34 @@
         let indiceActual = 0;
         let puntaje = 0;
         
-        // Variables de Proctoring Anti-Trampas
         let advertencias = 0;
         const LIMITE_ADVERTENCIAS = 5; 
         let examenCancelado = false;
 
-        // Variables del Reloj (3 Horas)
-        let tiempoRestante = 10800; // 3 horas en segundos
+        let tiempoRestante = 10800; 
         let intervaloReloj;
         let relojIniciado = false;
 
-        async function iniciarCamara() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-                video.srcObject = stream;
-            } catch (err) {
-                alert("Es obligatorio permitir la cámara para realizar este simulacro.");
-            }
-        }
-
         Promise.all([
-            faceapi.nets.tinyFaceDetector.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights')
+            faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models')
         ]).then(() => {
+            iniciarCamara();
+            cargarBaseDeDatos();
+        }).catch(err => {
+            alert("Error de red con la IA. Se cargará el examen de todos modos.");
             iniciarCamara();
             cargarBaseDeDatos();
         });
 
-        // Motor de IA Vigilante
+        async function iniciarCamara() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
+                video.srcObject = stream;
+            } catch (err) {
+                alert("🚨 ERROR DE CÁMARA: " + err.message + "\\n\\nSi el error es 'Permission denied', ve a Ajustes > Aplicaciones > Permisos y dale acceso a la Cámara a la App.");
+            }
+        }
+
         video.addEventListener('play', () => {
             setInterval(async () => {
                 if (examenCancelado) return;
@@ -146,7 +156,6 @@
             }, 1000); 
         });
 
-        // Lógica del Reloj
         function arrancarReloj() {
             if (relojIniciado) return;
             relojIniciado = true;
@@ -164,12 +173,18 @@
                 let minutos = Math.floor((tiempoRestante % 3600) / 60);
                 let segundos = tiempoRestante % 60;
                 
-                // Formatear ceros a la izquierda
                 horas = horas < 10 ? '0' + horas : horas;
                 minutos = minutos < 10 ? '0' + minutos : minutos;
                 segundos = segundos < 10 ? '0' + segundos : segundos;
                 
-                lblTemporizador.innerText = `⏱️ Tiempo restante: ${horas}:${minutos}:${segundos}`;
+                // Texto mucho más corto y sutil
+                lblTemporizador.innerText = `⏱️ ${horas}:${minutos}:${segundos}`;
+                
+                // Si faltan menos de 5 minutos, se pone rojo sutilmente para avisar
+                if (tiempoRestante <= 300) {
+                    lblTemporizador.style.color = "#e74c3c";
+                    lblTemporizador.style.fontWeight = "bold";
+                }
                 
                 if (tiempoRestante <= 0) {
                     clearInterval(intervaloReloj);
@@ -178,7 +193,6 @@
             }, 1000);
         }
 
-        // Función que cancela por trampa o por tiempo
         function ejecutarCancelacion(motivo) {
             examenCancelado = true;
             clearInterval(intervaloReloj);
@@ -211,7 +225,7 @@
                 const respuesta = await fetch('guia_2026.json?v=' + new Date().getTime());
                 preguntas = await respuesta.json();
                 mostrarPregunta();
-                arrancarReloj(); // Arrancamos el reloj en cuanto la primera pregunta se dibuja
+                arrancarReloj();
             } catch (error) {
                 contenedorExamen.innerHTML = "<h2 style='color:red;'>Error al cargar la guía.</h2>";
             }
@@ -244,7 +258,6 @@
                 <div class="contador">Pregunta ${indiceActual + 1} de ${preguntas.length}</div>
             `;
 
-            // Panel de Pregunta
             html += `
                 <button class="btn-acordeon" onclick="abrirPanel('panel-pregunta')">
                     👁️ Ver Pregunta
@@ -255,7 +268,6 @@
                 </div>
             `;
 
-            // Paneles de Opciones
             datos.opciones.forEach((opcion, index) => {
                 let contenidoOpcion = '';
                 const opcionLimpia = opcion.trim().toLowerCase();
@@ -303,6 +315,8 @@
             if (seleccionada === correcta) puntaje++;
             indiceActual++;
             mostrarPregunta();
+            // Obligamos al scroll a regresar al inicio de la pregunta nueva
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
