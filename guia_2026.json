@@ -1,0 +1,1554 @@
+[
+  {
+    "id": 1,
+    "materia": "Español",
+    "pregunta": "La ficha bibliográfica es un instrumento de investigación que",
+    "opciones": [
+      "organiza la información con una base temporal o alfabética.",
+      "da cuenta de estudios de campo, de laboratorio y estadísticas.",
+      "permite almacenar datos de las publicaciones, por temas, títulos o autores.",
+      "registra exclusivamente noticias de documentos de reciente creación."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 2,
+    "materia": "Español",
+    "pregunta": "Selecciona el tema del siguiente texto. \"Manuel Gutiérrez Nájera se inició, desde muy joven, como escritor. A los diecisiete años apareció su primera publicación, y durante las dos décadas siguientes, colaboró en cerca de treinta y seis diarios y revistas literarias de la época, en ocasiones hasta con cinco entregas al día. Para tan ardua tarea utilizó alrededor de veintiséis seudónimos...\". Clark de Lara, Belem. Por donde se sube al cielo, Introducción.",
+    "opciones": [
+      "Manuel Gutiérrez Nájera tuvo una carrera productiva desde joven.",
+      "Manuel Gutiérrez Nájera usó diferentes seudónimos para firmar su obra.",
+      "Manuel Gutiérrez Nájera escribía mucho para numerosas publicaciones.",
+      "Manuel Gutiérrez Nájera tenía, a los 17 años, más de 25 seudónimos."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 3,
+    "materia": "Español",
+    "pregunta": "¿Mediante qué recurso se desarrollan las ideas en el siguiente párrafo? Para facilitar su estudio, los especialistas dividen la prehistoria en tres grandes etapas: el Paleolítico, el Mesolítico y el Neolítico. El periodo Paleolítico abarca desde la aparición de los primeros homínidos hace unos cuatro millones de años hasta el descubrimiento de la agricultura. El Mesolítico es una etapa de tránsito entre el Paleolítico y el Neolítico en la cual el ser humano debió adaptarse a grandes cambios climáticos, causados por el aumento de temperatura del planeta, lo cual puso fin a las glaciaciones y favoreció la aparición de la agricultura. Finalmente, la práctica de la agricultura y la ganadería es el hecho que determina el inicio del Neolítico.",
+    "opciones": [
+      "Repeticiones.",
+      "Explicaciones.",
+      "Paráfrasis.",
+      "Ejemplos."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 4,
+    "materia": "Español",
+    "pregunta": "Elige las oraciones que usan nexos para introducir ideas. I. El Estridentismo en México inició en 1921; fue un grupo de intelectuales que reunió pintores, músicos, además de escritores destacados. II. El Simbolismo y el Parnasianismo surgieron en Francia; influyeron, por ejemplo, en el Modernismo, además de legarnos una gran tradición poética. III. El Modernismo es considerado como el movimiento que inaugura las literaturas de vanguardia. IV. Los Contemporáneos se conocían como \"El grupo sin grupo\", y eran intelectuales polifacéticos. V. Estudiar los movimientos de vanguardia nos lleva a entender la mentalidad del hombre del siglo XX.",
+    "opciones": [
+      "I y IV",
+      "II y III",
+      "I y II",
+      "II y V"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 5,
+    "materia": "Español",
+    "pregunta": "Las palabras subrayadas en el siguiente fragmento tienen como propósito: Durante mucho tiempo el ser humano ha tenido sed de saber qué son los sueños. Mi teoría, en primer lugar, considera que son una realidad alterna, similar a la del reflejo en el espejo; también pueden ser considerados una forma en la que nuestros cerebros logran vivir otras realidades; finalmente, como muchos artistas han demostrado, son fruto de mentes creativas... dime ¿qué soñaste hoy?",
+    "opciones": [
+      "indicar el modo en que surgen las ideas.",
+      "establecer los lugares de los eventos.",
+      "dar un orden a las ideas.",
+      "señalar el tiempo en el párrafo."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 6,
+    "materia": "Español",
+    "pregunta": "Determina cuál es el signo de puntuación que debe sustituir a la línea en el siguiente párrafo. Hace poco más de una semana entrevisté a Emmanuel Carballo. No sé si fue la última entrevista que dio, realmente quisiera que no lo fuera. Me gustaría poder hacer lo que acordamos al despedirnos _ volver a verlo en unos días, llevarle el libro que me prestó tras prometerle que era devuelve-libros, y continuar con esa conversación que ya quedó por siempre trunca.",
+    "opciones": [
+      "comillas",
+      "punto y seguido",
+      "dos puntos",
+      "coma"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 7,
+    "materia": "Español",
+    "pregunta": "Identifica la oración principal en el siguiente texto. ABUELO, ¿QUÉ SON LAS FLORES? -Las flores son los ojos de las plantas, como tus ojos son las flores en el jardín de tu rostro. Por esas flores, ojos de colores con aromas, las plantas miran, atraen, alegran y curan el alma de los hombres. Miguel Cocom Pech. (Poeta maya)",
+    "opciones": [
+      "Por esas flores, ojos con aromas.",
+      "Las flores son los ojos de las plantas.",
+      "Abuelo, ¿qué son las flores?",
+      "Curan el alma de los hombres."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 8,
+    "materia": "Español",
+    "pregunta": "¿Cuál de las siguientes oraciones está en tiempo presente de indicativo histórico?",
+    "opciones": [
+      "Mi mamá cocina un rico pastel.",
+      "Cristóbal Colón descubre América en 1492.",
+      "Mañana regresa mi abuela de Celaya.",
+      "Me lavo los dientes todas las mañanas."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 9,
+    "materia": "Español",
+    "pregunta": "Lee el siguiente párrafo e indica a qué categoría pertenecen los elementos subrayados. Jorge era un hombre, un grave guerrero, hermoso a su manera, digno de la admiración con que le miraba Miguel. Alto y membrudo, llevaba con marcial desembarazo [...] el arnés entero de batalla [...] El rostro de Jorge respiraba ardor y lealtad: pálido, de garzos ojos, una puntiaguda barba castaña lo hacía más varonil.",
+    "opciones": [
+      "Sustantivos.",
+      "Gerundios.",
+      "Participios.",
+      "Adjetivos."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 10,
+    "materia": "Español",
+    "pregunta": "¿En qué tiempo están conjugados los verbos subrayados en el siguiente texto? Aureliano, el primer ser humano que nació en Macondo [...] Mientras le cortaban el ombligo movía la cabeza de un lado a otro reconociendo las cosas del cuarto, y examinaba el rostro de la gente con una curiosidad sin asombro. Luego, indiferente a quienes se acercaban a conocerlo, mantuvo la atención concentrada en el techo de palma, que parecía a punto de derrumbarse bajo la tremenda presión de la lluvia. G. García Márquez. Cien años de soledad.",
+    "opciones": [
+      "Antepretérito.",
+      "Copretérito.",
+      "Pretérito.",
+      "Antepospretérito."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 11,
+    "materia": "Español",
+    "pregunta": "Lee el texto y contesta después a lo que se pide. Triunfo de mexicanos indocumentados en concurso de robótica llega al cine. De la mano de Jamie Lee Curtis, Marisa Tomei y George López, Spare Parts lleva al cine la historia real de cuatro alumnos mexicanos e indocumentados que en 2004 ganaron un concurso de robótica persiguiendo su \"sueño americano\". Los jóvenes, guiados por sus profesores Fredi Lajvardi y Allan Cameron ganaron la competición patrocinada por la NASA con un presupuesto menor a mil dólares, superando los artilugios de los equipos de Stanford y del MIT, entre otros. La película plasma además las dificultades que afrontaban a diario estos adolescentes, deseosos de convertirse en estadunidenses pero que vivían con el miedo de ser deportados en cualquier momento. Spare parts, dirigida por Sean McNamara, se estrena este viernes en Estados Unidos y a lo largo de los próximos meses en Latinoamérica bajo el título de La vida robot. \"Este filme es importante para la cultura latina porque se hacen pocas películas tan reales y fuertes como ésta\", aseguró López en una reciente mesa redonda con periodistas en Los Ángeles. El actor de origen mexicano, muy popular por sus comedias, encarna en este drama a Fredi Cameron, una mezcla de los dos profesores de la historia real. En la frase subrayada se advierte que la intención de quien habla es",
+    "opciones": [
+      "describir un acontecimiento.",
+      "narrar un evento.",
+      "justificar una acción.",
+      "dar una opinión."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 12,
+    "materia": "Español",
+    "pregunta": "Identifica el anuncio publicitario en el que se exageran las cualidades del producto.",
+    "opciones": [
+      "Crema \"Vida nueva\", agradable e intensa compañía para tu piel.",
+      "¿Cansado de pensar? Adquiere nuestro programa de habilidades, un botón que hará tareas por ti.",
+      "Si piensas seguir viviendo... no olvides tener a tu lado \"Esperanza\", la pastilla que realmente renovará tus ganas de vivir.",
+      "La alimentación mediante productos \"Paraíso terrenal\" favorecerá llevar una vida llena de salud."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 13,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El texto \"El contador de cuentos\" relata una historia en la que",
+    "opciones": [
+      "el contador de cuentos dice a los niños que saca del pozo los cuentos que cuenta y él prefiere contárselos a la preguntona.",
+      "un hombre que se sienta en el brocal del pozo le cuenta a una niña preguntona el secreto del pozo.",
+      "el contador de cuentos embelesa a los niños con sus historias, le confiesa a la preguntona que se los cuenta el pozo.",
+      "el cuentacuentos le habla a una persona que está fuera de la historia y le dice que saca los cuentos del pozo."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 14,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Completa el siguiente cuadro sinóptico. Niña (Preguntona, I____, Blanca y crédula). Contador de cuentos (Piernas de adobe, II____, III____). Auditorio (Originario de Palo Verde, Público infantil, IV____).",
+    "imagen": "img/14.jpeg",
+    "opciones": [
+      "I. Frágil II. Embustero III. Imaginativo IV. Atento",
+      "I. Atenta II. Imaginativo III. Frágil IV. Embustero",
+      "I. Frágil II. Atento III. Embustero IV. Imaginativo",
+      "I. Frágil II. Imaginativo III. Atento IV. Embustero"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 15,
+    "materia": "Habilidad Verbal",
+    "pregunta": "En la oración \"La preguntona es una niñita frágil, como de cera: blanca y crédula\", encontramos una relación",
+    "opciones": [
+      "comparativa.",
+      "ejemplificativa.",
+      "analógica.",
+      "explicativa."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 16,
+    "materia": "Habilidad Verbal",
+    "pregunta": "En el texto, el término \"brocal\" se refiere a",
+    "opciones": [
+      "una hilera de piedras en el lago.",
+      "un muro que rodea al pozo.",
+      "una tinaja con agua del pozo.",
+      "la barda de adobe."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 17,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Según EL SENTIDO GLOBAL DEL TEXTO, los avances en las investigaciones de los agujeros negros han sido",
+    "opciones": [
+      "dudosos.",
+      "notables.",
+      "ficticios.",
+      "certeros."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 18,
+    "materia": "Habilidad Verbal",
+    "pregunta": "¿Cuál de los siguientes enunciados es una hipótesis?",
+    "opciones": [
+      "La gravedad ejerce atracción sobre cualquier cuerpo celeste.",
+      "Nada viaja más rápido que la luz.",
+      "Los agujeros negros sin rotación son perfectamente esféricos.",
+      "Los hoyos negros posiblemente son túneles."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 19,
+    "materia": "Habilidad Verbal",
+    "pregunta": "¿Cuál es el tema del texto?",
+    "opciones": [
+      "El Universo y los muchos misterios que aún guarda para el hombre.",
+      "Los científicos que han estudiado los hoyos negros.",
+      "Los hoyos negros y su posible conexión con otros universos.",
+      "La explicación del fenómeno de los agujeros negros."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 20,
+    "materia": "Habilidad Verbal",
+    "pregunta": "MÚSICO es a INSTRUMENTO como",
+    "opciones": [
+      "poeta a poesía.",
+      "mecánico a herramienta.",
+      "político a ley.",
+      "carpintero a carpintería."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 21,
+    "materia": "Habilidad Verbal",
+    "pregunta": "TENIS es a CORRER como zapatilla es a",
+    "opciones": [
+      "calzar.",
+      "trotar.",
+      "caminar.",
+      "ballet."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 22,
+    "materia": "Habilidad Verbal",
+    "pregunta": "HIJO - DESCENDIENTE",
+    "opciones": [
+      "abuelo ascendiente",
+      "tío madre",
+      "madrina consanguínea",
+      "primo familiar"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 23,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Los superhéroes se distinguen por su carácter BIZARRO.",
+    "opciones": [
+      "Alegre.",
+      "Cobarde.",
+      "Estable.",
+      "Tímido."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 24,
+    "materia": "Habilidad Verbal",
+    "pregunta": "PADECER",
+    "opciones": [
+      "Aceptar.",
+      "Gozar.",
+      "Sufrir.",
+      "Rechazar."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 25,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Actividades CLANDESTINAS.",
+    "opciones": [
+      "Secretas.",
+      "Ilícitas.",
+      "Ocultas.",
+      "Públicas."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 26,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Sus palabras fueron ENTRAÑABLES.",
+    "opciones": [
+      "Afectuosas.",
+      "Honestas.",
+      "Violentas.",
+      "Frías."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 27,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Las ocurrencias del Chapulín Colorado me causan HILARIDAD.",
+    "opciones": [
+      "Entusiasmo.",
+      "Risa.",
+      "Flojera.",
+      "Aburrimiento."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 28,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El médico actuó con CELERIDAD.",
+    "opciones": [
+      "Rapidez.",
+      "Lentitud.",
+      "Dilación.",
+      "Sencillez."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 29,
+    "materia": "Matemáticas",
+    "pregunta": "Encuentra el resultado de la siguiente operación. 2 - 5[8 - 3(7 - 2) + 1] - 3(4 - 1) =",
+    "opciones": [
+      "29",
+      "23",
+      "-11",
+      "-73"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 30,
+    "materia": "Matemáticas",
+    "pregunta": "120 es el 75% de",
+    "opciones": [
+      "200",
+      "180",
+      "160",
+      "140"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 31,
+    "materia": "Matemáticas",
+    "pregunta": "El resultado que se obtiene al simplificar (2/3)^4 es",
+    "opciones": [
+      "16/81",
+      "8/27",
+      "16/18",
+      "8/12"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 32,
+    "materia": "Matemáticas",
+    "pregunta": "¿Cuál de las siguientes expresiones representa el enunciado \"La semisuma de los cuadrados de a y b\"?",
+    "opciones": [
+      "1/2(a+b)^2",
+      "(1/2(a+b))^2",
+      "1/2(a^2+b^2)",
+      "(1/2a + 1/2b)^2"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 33,
+    "materia": "Matemáticas",
+    "pregunta": "En un triángulo equilátero, uno de sus lados mide 3x - 9, ¿cuál de las siguientes expresiones representa el perímetro de dicho triángulo?",
+    "opciones": [
+      "9x^2 - 54x + 81",
+      "9x - 27",
+      "9x - 9",
+      "9x^2 - 81"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 34,
+    "materia": "Matemáticas",
+    "pregunta": "Encuentra la factorización de x^2 - 3x - 18",
+    "opciones": [
+      "(x - 6)(x + 3)",
+      "(x - 9)(x + 2)",
+      "(x + 9)(x - 2)",
+      "(x + 6)(x - 3)"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 35,
+    "materia": "Matemáticas",
+    "pregunta": "Una solución de la ecuación x^2 - 2x = 8 es",
+    "opciones": [
+      "4",
+      "8",
+      "6",
+      "2"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 36,
+    "materia": "Matemáticas",
+    "pregunta": "La siguiente tabla presenta los resultados de una prueba de matemáticas. Suponiendo que se evaluaron a 40 alumnos, ¿cuántos obtuvieron 8 de calificación?",
+    "imagen": "img/36.jpeg",
+    "opciones": [
+      "18",
+      "10",
+      "16",
+      "12"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 37,
+    "materia": "Matemáticas",
+    "pregunta": "El porcentaje que se tiene al tirar una moneda y de que esta caiga cara es",
+    "opciones": [
+      "100%",
+      "25%",
+      "50%",
+      "10%"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 38,
+    "materia": "Matemáticas",
+    "pregunta": "La altura de Miguel es de 1.60 m y a cierta hora su sombra mide 3.5 m. ¿Cuál es la altura de un asta bandera, si a esa misma hora tiene una sombra de 9 m?",
+    "opciones": [
+      "4.11 m",
+      "6.22 m",
+      "3.20 m",
+      "7.10 m"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 39,
+    "materia": "Matemáticas",
+    "pregunta": "En un triángulo rectángulo, el cociente del cateto opuesto y el cateto adyacente determinan el valor de la función trigonométrica conocida como",
+    "opciones": [
+      "tangente",
+      "cotangente",
+      "coseno",
+      "seno"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 40,
+    "materia": "Matemáticas",
+    "pregunta": "El área del paralelogramo que se observa en la figura es",
+    "imagen": "img/40.jpeg",
+    "opciones": [
+      "12 m^2",
+      "18 m^2",
+      "24 m^2",
+      "36 m^2"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 41,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es el término que falta en la siguiente sucesión? 10, -2, -14, -26, ___",
+    "opciones": [
+      "-38",
+      "14",
+      "-50",
+      "-37"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 42,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Indica los números que continúan en la sucesión 8, 7.1, 6.02, 5.003, 4.0004, ___",
+    "opciones": [
+      "3.00005 y 2.000006",
+      "3.0005 y 2.00006",
+      "3.000005 y 2.0000006",
+      "3.000005 y 2.00006"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 43,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Encuentra los términos que faltan en la siguiente sucesión. 5, 12, 16, 8, 27, 4, ___",
+    "opciones": [
+      "49 y 0",
+      "38 y 49",
+      "38 y 0",
+      "49 y 38"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 44,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuáles son los términos que faltan en la siguiente sucesión? 92, 83, ___, 68, 57",
+    "opciones": [
+      "77 y 66",
+      "75 y 62",
+      "74 y 59",
+      "73 y 65"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 45,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Selecciona el triángulo que sigue en la serie.",
+    "imagen": "img/45.jpeg",
+    "opciones": [
+      "img/45a.jpeg",
+      "img/45b.jpeg",
+      "img/45c.jpeg",
+      "img/45d.jpeg"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 46,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Encuentra la imagen que continúa en la serie.",
+    "imagen": "img/46.jpeg",
+    "opciones": [
+      "img/46a.jpeg",
+      "img/46b.jpeg",
+      "img/46c.jpeg",
+      "img/46d.jpeg"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 47,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Si las primeras cuatro figuras de la serie son: ¿Cuántos puntos tendrá la que ocupa la octava posición?",
+    "imagen": "img/47.jpeg",
+    "opciones": [
+      "42",
+      "72",
+      "90",
+      "56"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 48,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Selecciona entre las opciones la figura que completa la serie.",
+    "imagen": "img/48.jpeg",
+    "opciones": [
+      "img/48a.jpeg",
+      "img/48b.jpeg",
+      "img/48c.jpeg",
+      "img/48d.jpeg"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 49,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Selecciona el cubo que se obtiene al armar la siguiente figura.",
+    "imagen": "img/49.jpeg",
+    "opciones": [
+      "img/49a.jpeg",
+      "img/49b.jpeg",
+      "img/49c.jpeg",
+      "img/49d.jpeg"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 50,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Observa cuidadosamente la siguiente figura y selecciona la opción que la representa después de ser armada.",
+    "imagen": "img/50.jpeg",
+    "opciones": [
+      "img/50a.jpeg",
+      "img/50b.jpeg",
+      "img/50c.jpeg",
+      "img/50d.jpeg"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 51,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuántos cubos tiene la siguiente figura?",
+    "imagen": "img/51.jpeg",
+    "opciones": [
+      "17",
+      "16",
+      "15",
+      "18"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 52,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Si se gira hacia abajo el siguiente dado ¿cómo se ve?",
+    "imagen": "img/52.jpeg",
+    "opciones": [
+      "img/52a.jpeg",
+      "img/52b.jpeg",
+      "img/52c.jpeg",
+      "img/52d.jpeg"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 53,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Una bicicleta tiene un precio de $4,600, se compra dando un enganche de $1,800 y pagando el resto en 5 abonos mensuales ¿de cuánto deberá ser cada pago?",
+    "opciones": [
+      "$360",
+      "$560",
+      "$630",
+      "$920"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 54,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es el número que falta?",
+    "imagen": "img/54.jpeg",
+    "opciones": [
+      "12",
+      "14",
+      "15",
+      "16"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 55,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Se contrataron 15 albañiles para que coloquen 120 m^2 de un piso en tres jornadas de trabajo. ¿Cuántos albañiles más deberían contratarse para que el piso se termine en una jornada?",
+    "opciones": [
+      "20",
+      "45",
+      "15",
+      "30"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 56,
+    "materia": "Habilidad Matemática",
+    "pregunta": "El 40% de una población tiene coche, y 2/5 de ésta lo utiliza diario. ¿Qué porcentaje de la población no lo usa diario?",
+    "opciones": [
+      "24%",
+      "8%",
+      "16%",
+      "32%"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 57,
+    "materia": "Biología",
+    "pregunta": "Unidad estructural y funcional de los seres vivos.",
+    "opciones": [
+      "Célula.",
+      "Gen.",
+      "Tejido.",
+      "Órgano."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 58,
+    "materia": "Biología",
+    "pregunta": "Conocer y conservar la biodiversidad de nuestro país tiene como consecuencia la",
+    "opciones": [
+      "regulación de sus recursos.",
+      "explotación inmoderada.",
+      "tala inmoderada.",
+      "extinción de especies."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 59,
+    "materia": "Biología",
+    "pregunta": "Una de las estrategias más importantes para conservar la biodiversidad y promover el desarrollo sustentable es",
+    "opciones": [
+      "incrementar el uso de fertilizantes químicos.",
+      "establecer áreas naturales protegidas.",
+      "la libre comercialización de productos naturales.",
+      "explotar más los recursos acuáticos."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 60,
+    "materia": "Biología",
+    "pregunta": "La manipulación de genes en la obtención de transgénicos es un producto de la interacción de",
+    "opciones": [
+      "ciencia y conocimiento empírico.",
+      "ciencia y tecnología.",
+      "conocimiento empírico y científico.",
+      "conocimiento científico y ciencia."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 61,
+    "materia": "Biología",
+    "pregunta": "La fotosíntesis es un proceso metabólico importante porque",
+    "opciones": [
+      "genera oxígeno y glucosa.",
+      "genera bióxido de carbono y glucosa.",
+      "produce dióxido de carbono y sales minerales.",
+      "produce ATP para otras estructuras celulares."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 62,
+    "materia": "Biología",
+    "pregunta": "Una diferencia fundamental en relación con la obtención de energía es que los organismos _____ requieren oxígeno para conseguirla, mientras que los _____ no lo utilizan.",
+    "opciones": [
+      "aerobios anaerobios",
+      "heterótrofos - autótrofos",
+      "autótrofos - heterótrofos",
+      "anaerobios - aerobios"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 63,
+    "materia": "Biología",
+    "pregunta": "Los organismos heterótrofos",
+    "opciones": [
+      "utilizan la energía del Sol para sintetizar sus alimentos.",
+      "transforman la energía de la luz en energía química.",
+      "sintetizan su alimento mediante el proceso de fotosíntesis.",
+      "dependen de otros organismos para obtener su alimento."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 64,
+    "materia": "Biología",
+    "pregunta": "Alimentos como la carne y la leche aportan a nuestra dieta principalmente",
+    "opciones": [
+      "proteínas y minerales.",
+      "carbohidratos y vitaminas.",
+      "grasas y vitaminas.",
+      "minerales y lípidos."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 65,
+    "materia": "Biología",
+    "pregunta": "Recomendación para evitar enfermedades respiratorias ante condiciones ambientales desfavorables.",
+    "opciones": [
+      "Evitar orear habitaciones.",
+      "Contar con clima artificial.",
+      "Realizar ejercicio diariamente.",
+      "Consumir líquidos y cítricos."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 66,
+    "materia": "Biología",
+    "pregunta": "Tipo de reproducción biológica cuyo propósito es la producción de individuos diferentes al progenitor.",
+    "opciones": [
+      "Asexual.",
+      "Gemación.",
+      "Bipartición.",
+      "Sexual."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 67,
+    "materia": "Biología",
+    "pregunta": "Algunos métodos anticonceptivos como _____ son de mayor riesgo para la salud porque provocan aumento de peso, hipertensión y trastornos vasculares.",
+    "opciones": [
+      "las pastillas",
+      "los espermicidas",
+      "el diafragma",
+      "el dispositivo intrauterino"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 68,
+    "materia": "Biología",
+    "pregunta": "Es considerado uno de los beneficios más comunes del uso de organismos transgénicos.",
+    "opciones": [
+      "Recuperación de la biodiversidad.",
+      "Prevención y diagnóstico de enfermedades.",
+      "Producción alternativa de alimentos y medicinas.",
+      "Recuperación de especies en extinción."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 69,
+    "materia": "Física",
+    "pregunta": "La gráfica representa la velocidad de un vehículo en km/h al paso del tiempo. ¿En cuál de los intervalos de tiempo el vehículo se desplaza con mayor aceleración?",
+    "imagen": "img/69.jpeg",
+    "opciones": [
+      "0-1h",
+      "1-2 h",
+      "2-3h",
+      "4-5 h"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 70,
+    "materia": "Física",
+    "pregunta": "Un automóvil realiza un viaje como el que ilustra la gráfica que a continuación se presenta, ¿cuál de las opciones describe las características de éste?",
+    "imagen": "img/70.jpeg",
+    "opciones": [
+      "El automóvil inició su recorrido en el reposo incrementando la velocidad hasta 60 km/h en una hora, mantuvo está velocidad durante las siguientes tres horas, tiempo en el cual llegó al punto en que inició su recorrido.",
+      "El automóvil partió del reposo hasta alcanzar una velocidad de 60 km/h en una hora, después se detuvo durante las siguientes dos horas, en la siguiente hora reanudó su marcha hasta llegar al lugar de donde partió.",
+      "El automóvil partió del reposo, en la primer hora alcanzó una velocidad de 60 km/h , y mantuvo esta durante las dos horas siguientes, después redujo la velocidad hasta que a las 4 horas de iniciado su recorrido se detuvo.",
+      "El automóvil partió del reposo y se encontró con la pendiente de una montaña, a la que ascendió en una hora, después recorrió la meseta de la montaña a 60 km/h durante dos horas, en la hora siguiente descendió 80 km/h"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 71,
+    "materia": "Física",
+    "pregunta": "Como se muestra en la figura, una persona empuja las cajas A y B, de 3 y 2 kg, respectivamente. Si la fuerza neta aplicada es de 15 N, ¿qué aceleración estará presente en la caja B?",
+    "imagen": "img/71.jpeg",
+    "opciones": [
+      "1.2 m/s^2",
+      "5 m/s^2",
+      "7.5 m/s^2",
+      "3 m/s^2"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 72,
+    "materia": "Física",
+    "pregunta": "Un barco navegando en altamar detiene las máquinas que lo impulsan. Si su aceleración es de -0.12 m/s^2 y su masa de 150,000 kg ¿cuál es la magnitud de la fuerza que frena al barco?",
+    "opciones": [
+      "4500 N",
+      "500 N",
+      "450 N",
+      "15000 N"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 73,
+    "materia": "Física",
+    "pregunta": "Cuando caminas sobre una alfombra (originalmente neutra) y traes puestos tenis y ropa de nylon adquieres carga eléctrica principalmente por",
+    "opciones": [
+      "frotamiento.",
+      "conducción.",
+      "inducción.",
+      "contacto."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 74,
+    "materia": "Física",
+    "pregunta": "Si colocamos dos ollas metálicas, una a temperatura alta junto a otra de temperatura baja, el calor se transfiere de la de temperatura ; tal transferencia termina hasta que",
+    "opciones": [
+      "alta a la baja - ambas llegan a 0°C",
+      "alta a la baja - se igualan las temperaturas",
+      "alta a la baja - las dos quedan con temperatura muy baja",
+      "baja a la alta - las dos quedan con temperatura muy alta"
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 75,
+    "materia": "Física",
+    "pregunta": "Una prensa hidráulica tiene dos émbolos de áreas de 5 cm^2 y 10 cm^2, si el émbolo de área menor se le aplica una fuerza de 20 N, ¿cuál será la fuerza ejercida en el otro émbolo?",
+    "opciones": [
+      "10 N",
+      "25 N",
+      "40 N",
+      "100 N"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 76,
+    "materia": "Física",
+    "pregunta": "Un vendedor de paletas lleva dentro de su hielera un bloque de hielo seco del cual sale vapor. A este último fenómeno se le conoce con el nombre de",
+    "opciones": [
+      "condensación.",
+      "evaporación.",
+      "ebullición.",
+      "sublimación."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 77,
+    "materia": "Física",
+    "pregunta": "El agua es una sustancia conductora de electricidad.",
+    "opciones": [
+      "con azúcar",
+      "oxigenada",
+      "destilada",
+      "de mar"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 78,
+    "materia": "Física",
+    "pregunta": "¿En cuáles de los siguientes casos se puede generar un campo magnético? I. Pasando una corriente eléctrica a través de un conductor. II. Enrollando un alambre sobre un clavo y pasando una corriente eléctrica a través de éste. III. Impidiendo el paso de la corriente eléctrica sobre un conductor. IV.A través de la acción de una carga puntual en reposo.",
+    "opciones": [
+      "II y IV",
+      "III y IV",
+      "I y III",
+      "I y ll"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 79,
+    "materia": "Física",
+    "pregunta": "El movimiento ondulatorio es un proceso por medio del cual se transmite",
+    "opciones": [
+      "energía.",
+      "átomos.",
+      "moléculas.",
+      "partículas."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 80,
+    "materia": "Física",
+    "pregunta": "Si la luz roja tiene menos frecuencia que la luz azul, ¿qué podemos afirmar de sus energías?",
+    "opciones": [
+      "Que la energía de la luz roja es mayor que la de la luz azul.",
+      "Que la energía de la luz roja es menor que la de la luz azul.",
+      "Que de la luz roja la energía es igual que la de la luz azul.",
+      "Que de la luz roja y azul la energía es independiente de su frecuencia."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 81,
+    "materia": "Química",
+    "pregunta": "Los distintos modelos de átomo han sido elaborados para",
+    "opciones": [
+      "cuantificar las sustancias en una reacción.",
+      "explicar el comportamiento de la materia.",
+      "representar los fenómenos naturales.",
+      "comunicar los resultados de sus experimentos."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 82,
+    "materia": "Química",
+    "pregunta": "Propiedades físicas de los líquidos.",
+    "opciones": [
+      "Volumen definido y adoptan la forma del recipiente.",
+      "Volumen propio y forma definida.",
+      "Compresibilidad y difusibilidad.",
+      "Difusibilidad y expansibilidad."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 83,
+    "materia": "Química",
+    "pregunta": "Propiedades que permiten cuantificar los materiales.",
+    "opciones": [
+      "Masa y volumen.",
+      "Peso y solubilidad.",
+      "Longitud y tiempo.",
+      "Densidad y temperatura."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 84,
+    "materia": "Química",
+    "pregunta": "Se tienen 100 gramos de hielo a -10°C en un recipiente cerrado. Se eleva la temperatura hasta alcanzar, primero, los 20°C; después la temperatura llega a 110°C. Indica cuántos gramos de agua en estado líquido se han obtenido a la temperatura de 20°C, y cuántos gramos de vapor se han producido al alcanzarse la temperatura de 110°C.",
+    "opciones": [
+      "120 g de agua y 220 g de vapor.",
+      "120 g de agua y 120 g de vapor.",
+      "100 g de agua y 100 g de vapor.",
+      "100 g de agua y 120 g de vapor."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 85,
+    "materia": "Química",
+    "pregunta": "Partículas subatómicas responsables de que ocurran las reacciones químicas.",
+    "opciones": [
+      "Neutrones.",
+      "Electrones internos.",
+      "Protones.",
+      "Electrones externos."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 86,
+    "materia": "Química",
+    "pregunta": "Un átomo con Z=20 y 40 neutrones, tiene _____ protones.",
+    "opciones": [
+      "60",
+      "10",
+      "20",
+      "40"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 87,
+    "materia": "Química",
+    "pregunta": "La representación H. corresponde a",
+    "opciones": [
+      "ion hidrógeno.",
+      "átomo de hidrógeno.",
+      "la molécula de hidrógeno.",
+      "ion hidronio."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 88,
+    "materia": "Química",
+    "pregunta": "Los elementos se ubican en la Tabla Periódica de acuerdo con el orden creciente de su",
+    "opciones": [
+      "número atómico.",
+      "densidad.",
+      "tamaño.",
+      "número de masa."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 89,
+    "materia": "Química",
+    "pregunta": "Elige la opción en la que aparecen solamente características de los metales.",
+    "opciones": [
+      "Alta temperatura de fusión, conductividad eléctrica y maleabilidad.",
+      "Baja densidad, conductividad eléctrica y ductibilidad.",
+      "Alta densidad, conductividad térmica y baja temperatura de fusión.",
+      "Maleabilidad, conductividad y baja densidad."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 90,
+    "materia": "Química",
+    "pregunta": "La ecuación que indica que el agua interviene como reactivo es",
+    "opciones": [
+      "2H2O2 -> 2H2O + O2",
+      "2H2 + O2 -> 2H2O",
+      "NaOH + HCl -> NaCl + H2O",
+      "CO2 + H2O -> H2CO3"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 91,
+    "materia": "Química",
+    "pregunta": "Con base en el Sistema Internacional de unidades (SI), la cantidad de sustancia se asocia con",
+    "opciones": [
+      "mol.",
+      "kilogramo.",
+      "candela.",
+      "litro."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 92,
+    "materia": "Química",
+    "pregunta": "En la siguiente ecuación Zn + CuSO4 -> Cu + ZnSO4 el _____ se reduce y el _____ se oxida.",
+    "opciones": [
+      "Cu-Zn",
+      "Zn - Cu",
+      "S-O",
+      "O-S"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 93,
+    "materia": "Historia",
+    "pregunta": "La literatura del humanismo europeo tuvo repercusiones en la cultura y el arte, provocando el inicio de un periodo conocido como",
+    "opciones": [
+      "Renacimiento.",
+      "Modernismo.",
+      "Romanticismo.",
+      "Barroco."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 94,
+    "materia": "Historia",
+    "pregunta": "La Independencia de las Trece Colonias puso en práctica las ideas",
+    "opciones": [
+      "de la llustración.",
+      "del Renacimiento.",
+      "del Humanismo.",
+      "del Romanticismo."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 95,
+    "materia": "Historia",
+    "pregunta": "Según el nacionalismo del siglo XIX, ¿qué determina lo nacional en cada Estado?",
+    "opciones": [
+      "El sentimiento de colectividad derivado del idioma, costumbres e historia común.",
+      "La solidaridad social en relación con las diferencias culturales de su población.",
+      "Los intereses tradicionales de una sociedad enfocados a resolver asuntos económicos.",
+      "El pensamiento de una población que defiende su religión por encima de todo."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 96,
+    "materia": "Historia",
+    "pregunta": "En el periodo de entreguerras, la política fascista de Italia se caracterizó por la",
+    "opciones": [
+      "quema de sinagogas.",
+      "desintegración del parlamento.",
+      "persecución de los judíos.",
+      "noche de los cristales rotos."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 97,
+    "materia": "Historia",
+    "pregunta": "La Revolución electrónica trajo consigo el desarrollo de una nueva ciencia llamada",
+    "opciones": [
+      "biogenética.",
+      "física nuclear.",
+      "bioquímica.",
+      "informática."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 98,
+    "materia": "Historia",
+    "pregunta": "Un efecto negativo de la globalización en el medio ambiente se observa en",
+    "opciones": [
+      "la intensificación en el uso de productos orgánicos.",
+      "el aumento de reservas ecológicas protegidas.",
+      "la búsqueda de soluciones para evitar la extinción de especies.",
+      "el agotamiento de los recursos naturales."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 99,
+    "materia": "Historia",
+    "pregunta": "Fue el medio de mayor relevancia para mantener el poder ideológico de la Iglesia novohispana.",
+    "opciones": [
+      "El Tribunal de la Acordada.",
+      "El Santo Oficio de la Inquisición.",
+      "El Tribunal de la Santa Cruzada.",
+      "El Provisorato de Indios."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 100,
+    "materia": "Historia",
+    "pregunta": "El absolutismo ilustrado de los Borbones se caracterizó por",
+    "opciones": [
+      "limitar a la Iglesia y centralizar el poder.",
+      "dar autonomía a la iglesia y a los cabildos indígenas.",
+      "dar libertades a las colonias e impulsar el comercio.",
+      "incluir a los criollos en cargos públicos y promover la libertad de comercio."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 101,
+    "materia": "Historia",
+    "pregunta": "Proceso de modernización de México en donde se dan los primeros pasos hacia la centralización del Estado y el fortalecimiento del poder ejecutivo.",
+    "opciones": [
+      "Las Leyes de Reforma.",
+      "La venta de los bienes de la iglesia.",
+      "La formación del congreso constituyente.",
+      "El imperio de Maximiliano de Habsburgo."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 102,
+    "materia": "Historia",
+    "pregunta": "En la Constitución de 1917, el artículo 27 es uno de los más trascendentales porque",
+    "opciones": [
+      "ha logrado incidir en el liberalismo mundial, al influir en otras naciones como ejemplo de orden y progreso.",
+      "estipula como propiedad de la Nación las tierras y demás recursos naturales que integran nuestro territorio.",
+      "recoge las inquietudes sociales de obreros y campesinos demandadas desde el proceso revolucionario.",
+      "enfatiza la independencia nacional frente a las demás naciones, así como la autonomía de los Estados."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 103,
+    "materia": "Historia",
+    "pregunta": "Octavio Paz y Juan Rulfo, cuya obra es de gran aporte cultural, son autores mexicanos del siglo",
+    "opciones": [
+      "ΧΧΙ.",
+      "ΧΙΧ.",
+      "XX.",
+      "XVIII."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 104,
+    "materia": "Historia",
+    "pregunta": "Uno de los objetivos del Tratado de Libre Comercio con América del Norte es",
+    "opciones": [
+      "acrecentar los impuestos comerciales.",
+      "limitar las exportaciones e inversiones.",
+      "aumentar las oportunidades de inversión.",
+      "fomentar la mano de obra de migrantes."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 105,
+    "materia": "Geografía",
+    "pregunta": "La zona de ciudad Nezahualcóyotl hace unos años era una zona de cultivo. Este ejemplo hace referencia al principio de",
+    "opciones": [
+      "relación.",
+      "localización.",
+      "distribución.",
+      "temporalidad."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 106,
+    "materia": "Geografía",
+    "pregunta": "Determina las coordenadas geográficas para el punto II.",
+    "imagen": "img/106.jpeg",
+    "opciones": [
+      "30° N, 10° W",
+      "30° S, 10° E",
+      "10° N, 30° W",
+      "10° S, 30° E"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 107,
+    "materia": "Geografía",
+    "pregunta": "Los husos horarios son una prueba y una consecuencia de la",
+    "opciones": [
+      "traslación terrestre.",
+      "rotación del Sol.",
+      "rotación terrestre.",
+      "inclinación del eje."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 108,
+    "materia": "Geografía",
+    "pregunta": "Los movimientos en el manto superior terrestre influyen en",
+    "opciones": [
+      "la formación del petróleo.",
+      "la salinidad de los mares.",
+      "la erosión de las montañas.",
+      "el desplazamiento de las placas."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 109,
+    "materia": "Geografía",
+    "pregunta": "Capa de la atmósfera que se encuentra desde los 10-15 km y llega hasta los 45-50 km de altura y se localiza la capa de ozono.",
+    "opciones": [
+      "lonosfera.",
+      "Exosfera",
+      "Estratosfera",
+      "Mesosfera."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 110,
+    "materia": "Geografía",
+    "pregunta": "Factores que ponen en riesgo a la población por los efectos de un sismo. I. Sustrato geológico. II. Altitud. III. Infraestructura. IV. Inundaciones. V. Deslizamientos de tierra.",
+    "opciones": [
+      "II, IV y V",
+      "I, II y III",
+      "I, III y V",
+      "II, III y IV"
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 111,
+    "materia": "Geografía",
+    "pregunta": "Zona con mayor extracción petrolera en México.",
+    "opciones": [
+      "Mar Caribe.",
+      "Costas del Océano Pacífico.",
+      "Costa del Golfo de México.",
+      "Mar de Cortés."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 112,
+    "materia": "Geografía",
+    "pregunta": "Puertos que permiten el intercambio comercial y económico más importante en México.",
+    "opciones": [
+      "Manzanillo y Veracruz.",
+      "Veracruz y Progreso.",
+      "Acapulco y Salina Cruz.",
+      "Lázaro Cárdenas y Tampico."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 113,
+    "materia": "Geografía",
+    "pregunta": "Ciudades costeras en México que reciben la mayor cantidad de turistas extranjeros.",
+    "opciones": [
+      "Puerto Vallarta e Ixtapa.",
+      "Cancún y Los Cabos.",
+      "Puerto Vallarta y Huatulco.",
+      "Cancún y Cozumel."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 114,
+    "materia": "Geografía",
+    "pregunta": "En siglo XXI, la globalización cultural se ha logrado por el uso masivo del",
+    "opciones": [
+      "internet.",
+      "teléfono.",
+      "radio.",
+      "periódico."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 115,
+    "materia": "Geografía",
+    "pregunta": "La zona arqueológica de Palenque se encuentra en el estado de",
+    "opciones": [
+      "Chiapas.",
+      "Veracruz.",
+      "Oaxaca.",
+      "Guerrero."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 116,
+    "materia": "Geografía",
+    "pregunta": "Área con una amplitud de 200 millas náuticas sobre la cual un Estado tiene derechos especiales para su exploración, explotación y utilización de recursos.",
+    "opciones": [
+      "Plataforma continental.",
+      "Mar territorial.",
+      "Aguas internacionales.",
+      "Zona económica exclusiva."
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 117,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Selecciona el caso donde compete sólo al interesado tomar decisiones.",
+    "opciones": [
+      "Clemente, médico gastroenterólogo con gran experiencia, ha encontrado un método para la cura de la gastritis y necesita realizar pruebas que le permitan perfeccionarlo.",
+      "Después de varios años, Carmen ha logrado juntar una buena cantidad de dinero y por fin se le presenta la oportunidad de donar todo su capital al orfanatorio donde se educó.",
+      "Patricio, destacado estudiante de secundaria, ha sido seleccionado para realizar una estancia de estudios por un año en uno de los estados de Norteamérica.",
+      "Eulalio, entrenador de fútbol, ha recibido una invitación para participar con su equipo en un torneo amistoso que tendrá lugar en las ciudades más importantes del país."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 118,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Elige el enunciado donde se expresan valores estéticos.",
+    "opciones": [
+      "Estoy convencido de que la ley es el único medio por el cual llegaremos a construir un mundo más armónico.",
+      "Prefiero los espacios pequeños, pues evito gastos innecesarios en luz, agua, gas y productos de limpieza.",
+      "Me encanta el orden, la armonía y el equilibrio con que está construido este edificio de principios de siglo.",
+      "Considero reprobable la corrupción e ilegalidad, dañan terriblemente el desarrollo de nuestro país."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 119,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "¿En qué caso se ejemplifica la importancia de la relación del ser humano con su entorno para la conformación de su identidad?",
+    "opciones": [
+      "Balbina está callada y distante, pues recientemente ha sentido que nadie la comprende.",
+      "Eloy prefiere cenar tacos en la calle, pues el trabajo en la oficina no le deja tiempo para nada en el día.",
+      "Yolanda es una persona tolerante y reflexiva, pues en su familia siempre ha prevalecido el diálogo y la empatía.",
+      "José se reúne a jugar dominó con sus amigos, pues quiere fomentar su agilidad mental."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 120,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Relaciona los derechos y obligaciones de los adolescentes con el ejemplo que les corresponde. I. Derecho. II. Obligación. a. Respeto de los padres a los hijos. b. Responsabilidad en los estudios. c. Cumplimiento de las normas sociales. d. Contar con servicios de salud gratuitos.",
+    "opciones": [
+      "I: a, d II: b, c",
+      "I: a, c II: b, d",
+      "I: b, c II: a, d",
+      "I: c, d II: b, a"
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 121,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "El dueño de un establecimiento paga a sus empleados adolescentes un sueldo menor al salario mínimo argumentando que no tienen necesidades importantes que satisfacer, como en el caso de los adultos casados. Esta situación describe un tipo de",
+    "opciones": [
+      "favoritismo económico empresarial.",
+      "violencia económica a los adolescentes.",
+      "violencia psicológica a los adolescentes.",
+      "economía propia de la adolescencia."
+    ],
+    "respuesta_correcta": 1
+  },
+  {
+    "id": 122,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Ernesto y sus amigos no quieren juntarse en el recreo con Sebastián y sus compañeros porque dicen que son morenos, judíos y pobres. La actitud anterior es un ejemplo de discriminación",
+    "opciones": [
+      "racial, religiosa y económica.",
+      "sexual, religiosa y económica.",
+      "religiosa, racial y educativa.",
+      "educativa, religiosa y económica."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 123,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "El poder _____, de acuerdo con la Constitución, interpreta y aplica las normas para resolver conflictos.",
+    "opciones": [
+      "Legislativo",
+      "Ejecutivo",
+      "Absoluto",
+      "judicial"
+    ],
+    "respuesta_correcta": 3
+  },
+  {
+    "id": 124,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Entidad de interés público a la que se puede afiliar cualquier ciudadano que comparta las mismas ideas y pueda proponer candidatos a los cargos públicos con el fin de participar en la democracia del país.",
+    "opciones": [
+      "Partido Político.",
+      "Institución de Asistencia Privada.",
+      "Asociación Civil.",
+      "Instituto Nacional Electoral."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 125,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "En una elección democrática el voto debe ser",
+    "opciones": [
+      "libre, total y secreto.",
+      "abierto, directo y secreto.",
+      "libre, secreto y directo.",
+      "libre, secreto e indirecto."
+    ],
+    "respuesta_correcta": 2
+  },
+  {
+    "id": 126,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Un medio de comunicación cumple con una función social cuando",
+    "opciones": [
+      "organiza la ayuda para los damnificados por desastres naturales.",
+      "está involucrado en el servicio al sistema económico y la publicidad.",
+      "forma opiniones basadas en los comentarios de terceros.",
+      "convence al receptor sobre un tema específico mediante la persuasión."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 127,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Cuidar las áreas verdes en tu comunidad, levantar las heces de los perros, separar la basura y realizar actividades al aire libre, son acciones relacionadas con",
+    "opciones": [
+      "lograr una mejor calidad de vida.",
+      "desarrollar conciencia moral.",
+      "pertenecer a grupos de cuidado del ambiente.",
+      "responder a la influencia social."
+    ],
+    "respuesta_correcta": 0
+  },
+  {
+    "id": 128,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Lee con atención el siguiente texto y contesta lo que solicita Juan y Ana acaban de rentar un departamento, al revisarlo notaron que tenía varías descomposturas. Juan piensa en acudir con José, que es el dueño, y solicitarle que pague el costo de las reparaciones. Ana considera que es mejor pedirle a su amiga Rita, que conoce a José, le solicite se hagan las reparaciones, pero Pedro, amigo de ellos, les recomendó levantar una demanda ante las autoridades correspondientes y así buscar obtener un beneficio. Después de dialogarlo detenidamente, Ana y Juan deciden ir con José a pedirle se hagan las reparaciones, a lo que José se niega, alegando que debieron revisarlo antes de aceptarlo; por ello, Ana y Juan solicitaron la intervención de las autoridades para obligar a José a pagar las reparaciones. Cuando Juan y Ana buscan hablar con José para solucionar el conflicto están usando el recurso llamado",
+    "opciones": [
+      "mediación.",
+      "arbitraje.",
+      "negociación.",
+      "legalidad."
+    ],
+    "respuesta_correcta": 2
+  }
+]
