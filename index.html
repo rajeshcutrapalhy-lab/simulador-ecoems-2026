@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Arcade Dinámico</title>
+    <title>Simulador ECOEMS 2026 - Ultimate Arcade V2</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -70,8 +70,8 @@
         .tecla { padding: 10px 15px; background: #1a1a2e; border: 1px solid #4361ee; color: white; border-radius: 5px; font-weight: bold; cursor: pointer; }
         .tecla:disabled { opacity: 0.3; cursor: not-allowed; border-color: #7f8c8d; }
         
-        .memorama-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
-        .carta { background: #0f3460; color: transparent; height: 100px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; text-overflow: ellipsis; }
+        .memorama-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .carta { background: #0f3460; color: transparent; height: 100px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; text-overflow: ellipsis; }
         .carta.volteada { background: #4361ee; color: white; }
         .carta.resuelta { background: #27ae60; color: white; border-color: #27ae60; cursor: default; }
 
@@ -79,16 +79,34 @@
         .aguila-palabra { background: rgba(233, 69, 96, 0.2); border-bottom: 2px dashed #e94560; cursor: pointer; font-weight: bold; padding: 0 5px; border-radius: 3px; transition: 0.2s; color: #fff;}
         .aguila-palabra:active { background: #e94560; }
 
+        /* MODAL PERSONALIZADO ARCADE */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-content { background: #16213e; padding: 30px; border-radius: 20px; max-width: 400px; width: 80%; border: 2px solid #4361ee; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .modal-icon { font-size: 60px; margin-bottom: 10px; }
+        .modal-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+        .modal-msg { font-size: 16px; color: #a2a8d3; margin-bottom: 25px; }
+
         @keyframes temblor { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         @keyframes golpe { 0% { filter: invert(0); } 50% { filter: invert(1); transform: scale(0.9); } 100% { filter: invert(0); } }
+        @keyframes brillo { 0% { text-shadow: 0 0 10px #f1c40f; transform: scale(1); } 50% { text-shadow: 0 0 30px #f1c40f; transform: scale(1.2); } 100% { text-shadow: 0 0 10px #f1c40f; transform: scale(1); } }
         .anim-golpe { animation: golpe 0.3s ease; }
-        @keyframes curacion { 0% { box-shadow: 0 0 0 transparent; } 50% { box-shadow: 0 0 20px #27ae60; background: #27ae60;} 100% { box-shadow: 0 0 0 transparent; } }
-        .anim-cura { animation: curacion 0.5s ease; }
+        .anim-cura { animation: brillo 0.5s ease; }
+        .anim-brillo { animation: brillo 1.5s infinite; }
+        .anim-temblor-modal { animation: temblor 0.5s ease; }
     </style>
 </head>
 <body>
 
     <div id="toast-advertencia">⚠️</div>
+
+    <div id="modal-arcade" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modal-icon" class="modal-icon">🏆</div>
+            <div id="modal-title" class="modal-title">¡Victoria!</div>
+            <div id="modal-msg" class="modal-msg">Has completado el desafío.</div>
+            <button class="btn btn-azul" id="btn-modal-ok">Continuar</button>
+        </div>
+    </div>
 
     <div id="bienvenida" class="pantalla">
         <img src="img/pixelote-estudiando.jpg" class="logo-pixelote" alt="Pixelote">
@@ -117,7 +135,7 @@
             <button class="arcade-btn" onclick="iniciarFrenesi()"><i>⚡</i> <span>Modo Frenesí</span></button>
             <button class="arcade-btn" onclick="iniciarAhorcado()"><i>❤️</i> <span>El Rescate</span></button>
             <button class="arcade-btn" onclick="iniciarAguila()"><i>🦅</i> <span>Vista de Águila</span></button>
-            <button class="arcade-btn" onclick="alert('Bloqueado. Supera la Batalla de Jefes primero.')"><i>⏳</i> <span>Orden Cronológico</span></button>
+            <button class="arcade-btn" onclick="alertaPersonalizada('Bloqueado', 'Supera la Batalla de Jefes para desbloquear este modo.', 'derrota')"><i>⏳</i> <span>Línea de Tiempo</span></button>
         </div>
         <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Volver al Cuartel</button>
     </div>
@@ -133,7 +151,7 @@
             </div>
             <div style="font-size: 24px; font-weight: bold;">VS</div>
             <div class="hp-box">
-                <div style="font-weight:bold; font-size:12px; text-align:right; color:#8e44ad;">COMIPEMS (JEFE)</div>
+                <div style="font-weight:bold; font-size:12px; text-align:right; color:#8e44ad;">COMIPEMS</div>
                 <div class="barra-bg"><div id="hp-jefe" class="barra-hp-jefe" style="width: 100%;"></div></div>
             </div>
         </div>
@@ -147,7 +165,7 @@
 
     <div id="juego-memorama" class="pantalla">
         <h3 style="color: #27ae60;">🃏 Memorama Neuronal</h3>
-        <p style="color: #a2a8d3;">Empareja la pregunta con su respuesta correcta.</p>
+        <p style="color: #a2a8d3; font-size: 14px;">Empareja la pregunta con su respuesta (12 cartas).</p>
         <div class="memorama-grid" id="memorama-tablero"></div>
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="abrirPantalla('zona-arcade')">Salir</button>
     </div>
@@ -166,7 +184,7 @@
     <div id="juego-ahorcado" class="pantalla">
         <h3 style="color: #e94560;">❤️ El Rescate</h3>
         <div style="font-size: 30px; color: #e94560; margin-bottom: 10px;" id="ahorcado-vidas">❤️❤️❤️❤️❤️</div>
-        <p id="ahorcado-pista" style="font-weight: bold; color: #a2a8d3; min-height: 40px;"></p>
+        <p id="ahorcado-pista" style="font-weight: bold; color: #a2a8d3; min-height: 40px; font-size: 14px;"></p>
         <div class="palabra-oculta" id="ahorcado-palabra">_ _ _ _</div>
         <div class="teclado" id="ahorcado-teclado"></div>
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="abrirPantalla('zona-arcade')">Salir</button>
@@ -174,7 +192,7 @@
 
     <div id="juego-aguila" class="pantalla">
         <h3 style="color: #3498db;">🦅 Vista de Águila</h3>
-        <p style="color: #a2a8d3;">Usa tu instinto. Toca la única palabra que hace que el texto sea FALSO.</p>
+        <p style="color: #a2a8d3; font-size: 14px;">Usa tu instinto. Toca la única palabra que hace que el texto sea FALSO.</p>
         <div class="aguila-texto" id="aguila-contenido">Cargando memoria...</div>
         <button class="btn btn-gris" style="margin-top: 30px;" onclick="abrirPantalla('zona-arcade')">Abortar misión</button>
     </div>
@@ -195,6 +213,43 @@
     </div>
 
     <script>
+        // === SISTEMA DE MODALES Y BARAJADO (NUEVO) ===
+        function alertaPersonalizada(titulo, mensaje, tipo, callback = null) {
+            const modal = document.getElementById('modal-arcade');
+            const icon = document.getElementById('modal-icon');
+            const titleEl = document.getElementById('modal-title');
+            
+            document.getElementById('modal-msg').innerText = mensaje;
+            titleEl.innerText = titulo;
+            icon.className = 'modal-icon'; // Reset animaciones
+            
+            if(tipo === 'victoria') {
+                icon.innerText = '🏆';
+                titleEl.style.color = '#f1c40f';
+                icon.classList.add('anim-brillo');
+            } else {
+                icon.innerText = '💀';
+                titleEl.style.color = '#e94560';
+                icon.classList.add('anim-temblor-modal');
+            }
+            
+            modal.style.display = 'flex';
+            document.getElementById('btn-modal-ok').onclick = () => {
+                modal.style.display = 'none';
+                if(callback) callback();
+            };
+        }
+
+        // Algoritmo Fisher-Yates para barajar arreglos de forma 100% aleatoria
+        function mezclarArreglo(arr) {
+            let copia = [...arr];
+            for (let i = copia.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copia[i], copia[j]] = [copia[j], copia[i]];
+            }
+            return copia;
+        }
+
         // === NAVEGACIÓN Y VARIABLES GLOBALES ===
         function abrirPantalla(id) {
             document.querySelectorAll('.pantalla').forEach(p => p.style.display = 'none');
@@ -225,7 +280,7 @@
             actualizarHpJefe();
             document.getElementById('combo-indicador').classList.remove('mostrar-combo');
             await asegurarPreguntas();
-            jefeQ = [...preguntasGlobales].sort(()=>Math.random()-0.5).slice(0, 15); // 15 rondas
+            jefeQ = mezclarArreglo(preguntasGlobales).slice(0, 15); // Toma 15 preguntas frescas
             siguienteAtaqueJefe();
         }
 
@@ -235,15 +290,18 @@
         }
 
         function siguienteAtaqueJefe() {
-            if (hpPixelote <= 0) { alert("¡Pixelote fue derrotado! Entrena más."); return abrirPantalla('zona-arcade'); }
-            if (hpJefe <= 0) { alert("¡VICTORIA ÉPICA! Destruiste a COMIPEMS."); return abrirPantalla('zona-arcade'); }
-            if (jefeQ.length === 0) { alert("Empate. Te quedaste sin preguntas."); return abrirPantalla('zona-arcade'); }
+            if (hpPixelote <= 0) { return alertaPersonalizada("¡Derrota!", "Pixelote fue vencido por COMIPEMS. ¡Entrena más!", "derrota", () => abrirPantalla('zona-arcade')); }
+            if (hpJefe <= 0) { return alertaPersonalizada("¡Victoria Épica!", "Destruiste al Jefe con tu aguijón del conocimiento.", "victoria", () => abrirPantalla('zona-arcade')); }
+            if (jefeQ.length === 0) { return alertaPersonalizada("Empate", "Te quedaste sin energía para atacar.", "derrota", () => abrirPantalla('zona-arcade')); }
 
             let q = jefeQ.pop();
-            document.getElementById('jefe-pregunta').innerText = q.pregunta;
+            // Resumir pregunta del jefe si es enorme
+            let pTexto = q.pregunta.length > 120 ? q.pregunta.substring(0, 120) + "..." : q.pregunta;
+            document.getElementById('jefe-pregunta').innerText = pTexto;
+            
             let html = "";
             q.opciones.forEach((op, i) => {
-                let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? "[Imagen]" : op.substring(0,45)+"...";
+                let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? "[Imagen]" : op.substring(0,45);
                 html += `<button class="btn btn-azul" style="font-size:14px; padding:10px; margin-bottom:5px;" onclick="ataqueJefe(${i}, ${q.respuesta_correcta})">${texto}</button>`;
             });
             document.getElementById('jefe-opciones').innerHTML = html;
@@ -255,17 +313,14 @@
             
             if (sel === corr) {
                 jefeCombo++;
-                // Daño base 15. Sube +5 por cada combo.
                 let dano = 15 + (jefeCombo * 5); 
                 hpJefe -= dano;
-                
                 contenedor.classList.add('anim-golpe');
                 setTimeout(()=> contenedor.classList.remove('anim-golpe'), 300);
 
                 if (jefeCombo > 1) {
                     indicador.innerText = `¡Combo x${jefeCombo}!`;
                     indicador.classList.add('mostrar-combo');
-                    // Curación cada 3 combos (Estus Flask)
                     if (jefeCombo % 3 === 0 && hpPixelote < 100) {
                         hpPixelote = Math.min(100, hpPixelote + 20);
                         document.getElementById('arena-combate').classList.add('anim-cura');
@@ -273,7 +328,6 @@
                     }
                 }
             } else {
-                // Falla
                 jefeCombo = 0;
                 hpPixelote -= 25;
                 indicador.classList.remove('mostrar-combo');
@@ -286,7 +340,7 @@
         function cerrarJefe() { abrirPantalla('zona-arcade'); }
 
         // ==========================================
-        // 🎮 2. MEMORAMA (Dinámico JSON)
+        // 🎮 2. MEMORAMA (12 Cartas Reales)
         // ==========================================
         let cartasRevueltas = [], carta1 = null, carta2 = null, paresResueltos = 0;
         
@@ -294,17 +348,17 @@
             abrirPantalla('juego-memorama');
             await asegurarPreguntas();
             
-            // Toma 3 preguntas aleatorias para hacer 3 pares (Pregunta - Respuesta)
-            let seleccionadas = [...preguntasGlobales].sort(()=>Math.random()-0.5).slice(0, 3);
+            // Toma 6 preguntas aleatorias para hacer 6 pares = 12 cartas
+            let seleccionadas = mezclarArreglo(preguntasGlobales).slice(0, 6);
             let pares = [];
             seleccionadas.forEach((q, i) => {
                 let ans = q.opciones[q.respuesta_correcta];
                 let ansTxt = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? "[Imagen Correcta]" : ans;
-                pares.push({ id: i, text: q.pregunta.substring(0,40)+"..." }); // Carta Pregunta
-                pares.push({ id: i, text: ansTxt.substring(0,40)+"..." });    // Carta Respuesta
+                pares.push({ id: i, text: q.pregunta.substring(0,35)+"..." }); 
+                pares.push({ id: i, text: ansTxt.substring(0,35)+"..." });    
             });
 
-            cartasRevueltas = pares.sort(() => Math.random() - 0.5);
+            cartasRevueltas = mezclarArreglo(pares);
             paresResueltos = 0; carta1 = null; carta2 = null;
             
             let html = "";
@@ -327,7 +381,7 @@
                     ui.classList.add('resuelta');
                     paresResueltos++;
                     carta1 = null; carta2 = null;
-                    if(paresResueltos === 3) setTimeout(()=> { alert("¡Memoria perfecta!"); abrirPantalla('zona-arcade'); }, 500);
+                    if(paresResueltos === 6) setTimeout(()=> { alertaPersonalizada("¡Memoria de Elefante!", "Has emparejado las 12 tarjetas correctamente.", "victoria", () => abrirPantalla('zona-arcade')); }, 500);
                 } else {
                     setTimeout(() => {
                         let c1ui = document.getElementById('carta-'+carta1.idx);
@@ -340,7 +394,7 @@
         }
 
         // ==========================================
-        // 🎮 3. MODO FRENESÍ (Dinámico JSON)
+        // 🎮 3. MODO FRENESÍ (Preguntas Cortas)
         // ==========================================
         let fScore = 0, fTime = 60, fInt, fQ = [];
         
@@ -350,7 +404,7 @@
             document.getElementById('frenesi-score').innerText = 0; 
             document.getElementById('frenesi-reloj').innerText = 60; 
             await asegurarPreguntas(); 
-            fQ = [...preguntasGlobales].sort(()=>Math.random()-0.5); 
+            fQ = mezclarArreglo(preguntasGlobales); 
             sigFrenesi(); 
             fInt = setInterval(() => { 
                 fTime--; 
@@ -362,10 +416,14 @@
         function sigFrenesi() { 
             if(fQ.length === 0) return cerrarFrenesi(true); 
             let q = fQ.pop(); 
-            document.getElementById('frenesi-pregunta').innerText = q.pregunta; 
+            
+            // Resumimos la pregunta para hacerla ultra rápida de leer (< 75 caracteres)
+            let pResumida = q.pregunta.length > 75 ? q.pregunta.substring(0, 75) + "..." : q.pregunta;
+            document.getElementById('frenesi-pregunta').innerText = pResumida; 
+            
             let html = ""; 
             q.opciones.forEach((op, i) => { 
-                let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? "[Imagen]" : op.substring(0,40)+"..."; 
+                let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? "[Img]" : op.substring(0,35); 
                 html += `<button class="btn btn-azul" style="font-size:14px; padding:10px; margin-bottom:5px;" onclick="checkFrenesi(${i}, ${q.respuesta_correcta})">${texto}</button>`; 
             }); 
             document.getElementById('frenesi-opciones').innerHTML = html; 
@@ -375,16 +433,19 @@
             if(sel === corr) { 
                 fScore++; document.getElementById('frenesi-score').innerText = fScore; 
             } else {
-                // Temblor en error
                 document.getElementById('frenesi-caja-preg').classList.add('anim-golpe');
                 setTimeout(()=> document.getElementById('frenesi-caja-preg').classList.remove('anim-golpe'), 300);
             }
             sigFrenesi(); 
         }
-        function cerrarFrenesi(t = false) { clearInterval(fInt); if(t) alert(`¡Se acabó el tiempo! Aciertos: ${fScore}`); abrirPantalla('zona-arcade'); }
+        function cerrarFrenesi(t = false) { 
+            clearInterval(fInt); 
+            if(t) alertaPersonalizada("¡Tiempo Agotado!", `Aciertos Frenéticos: ${fScore}`, "victoria", () => abrirPantalla('zona-arcade')); 
+            else abrirPantalla('zona-arcade');
+        }
 
         // ==========================================
-        // 🎮 4. EL RESCATE (Ahorcado Dinámico JSON)
+        // 🎮 4. EL RESCATE (Ahorcado Dinámico)
         // ==========================================
         let ahPalabra = "", ahOculta = [], ahVidas = 5;
         
@@ -392,25 +453,21 @@
             abrirPantalla('juego-ahorcado'); 
             await asegurarPreguntas();
             
-            // Filtrar preguntas donde la respuesta correcta es UNA SOLA PALABRA (sin espacios) y no es imagen
             let qValidas = preguntasGlobales.filter(q => {
                 let ans = q.opciones[q.respuesta_correcta];
                 return ans && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !ans.includes(' ') && ans.length > 3 && ans.length <= 15;
             });
+            if(qValidas.length === 0) qValidas = [{pregunta: "Elemento con símbolo H", opciones: ["HIDROGENO"], respuesta_correcta: 0}];
 
-            // Fallback si no hay preguntas válidas en el JSON
-            if(qValidas.length === 0) {
-                qValidas = [{pregunta: "Elemento con símbolo H", opciones: ["HIDROGENO"], respuesta_correcta: 0}];
-            }
-
-            let rnd = qValidas[Math.floor(Math.random() * qValidas.length)];
+            // Tomamos una al azar usando nuestra nueva función
+            let rnd = mezclarArreglo(qValidas)[0];
             
-            // Limpiar acentos para el juego
             ahPalabra = rnd.opciones[rnd.respuesta_correcta].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
             ahVidas = 5; 
             ahOculta = Array(ahPalabra.length).fill('_'); 
             
-            document.getElementById('ahorcado-pista').innerText = "Pista: " + rnd.pregunta; 
+            let pistaResumida = rnd.pregunta.length > 80 ? rnd.pregunta.substring(0, 80) + "..." : rnd.pregunta;
+            document.getElementById('ahorcado-pista').innerText = "Pista: " + pistaResumida; 
             actualizarUIahorcado(); 
             
             let tecHTML = ""; 
@@ -426,22 +483,23 @@
                 for(let i=0; i<ahPalabra.length; i++) { if(ahPalabra[i] === l) ahOculta[i] = l; } 
             } else { ahVidas--; } 
             actualizarUIahorcado(); 
-            if(!ahOculta.includes('_')) setTimeout(()=> { alert("¡Ganaste! Respuesta: "+ ahPalabra); abrirPantalla('zona-arcade'); }, 300); 
-            if(ahVidas === 0) setTimeout(()=> { alert("Perdiste. Era: " + ahPalabra); abrirPantalla('zona-arcade'); }, 300); 
+            if(!ahOculta.includes('_')) setTimeout(()=> { alertaPersonalizada("¡Rescate Exitoso!", "La palabra era: " + ahPalabra + ". Pixelote está a salvo.", "victoria", () => abrirPantalla('zona-arcade')); }, 300); 
+            if(ahVidas === 0) setTimeout(()=> { alertaPersonalizada("Misión Fallida", "Se acabaron los corazones. La palabra era: " + ahPalabra, "derrota", () => abrirPantalla('zona-arcade')); }, 300); 
         }
         function actualizarUIahorcado() { document.getElementById('ahorcado-palabra').innerText = ahOculta.join(' '); document.getElementById('ahorcado-vidas').innerText = "❤️".repeat(ahVidas) + "🖤".repeat(5-ahVidas); }
 
         // ==========================================
-        // 🎮 5. VISTA DE ÁGUILA (Clásico Hardcoded)
+        // 🎮 5. VISTA DE ÁGUILA (Aleatorizado)
         // ==========================================
         const misionesAguila = [
             { txt: "El [Hidrógeno] es el elemento químico con símbolo H y el [Mercurio] es el más ligero de todos.", trampa: 1, ops: ["Hidrógeno", "Mercurio"] },
-            { txt: "La Segunda Guerra Mundial terminó en [1945] con la rendición de [Alemania] y la caída del muro de [Berlín].", trampa: 2, ops: ["1945", "Alemania", "Berlín"] }
+            { txt: "La Segunda Guerra Mundial terminó en [1945] con la rendición de [Alemania] y la caída del muro de [Berlín].", trampa: 2, ops: ["1945", "Alemania", "Berlín"] },
+            { txt: "La [fotosíntesis] es el proceso donde las plantas absorben [oxígeno] para generar su alimento liberando [dióxido].", trampa: 1, ops: ["fotosíntesis", "oxígeno", "dióxido"] }
         ];
 
         function iniciarAguila() {
             abrirPantalla('juego-aguila');
-            let mision = misionesAguila[Math.floor(Math.random() * misionesAguila.length)];
+            let mision = mezclarArreglo(misionesAguila)[0]; // Siempre al azar
             let textoHTML = mision.txt;
             mision.ops.forEach((op, index) => {
                 let isTrampa = (index === mision.trampa);
@@ -451,14 +509,34 @@
         }
 
         function checkAguila(esTrampa) {
-            if (esTrampa) { alert("¡Visión perfecta! Encontraste el error."); abrirPantalla('zona-arcade'); } 
-            else { document.body.style.backgroundColor = "#ff0000"; setTimeout(()=> document.body.style.backgroundColor = "#1a1a2e", 200); alert("¡Te han descubierto! Esa información era correcta."); }
+            if (esTrampa) { 
+                alertaPersonalizada("¡Visión de Águila!", "Excelente intuición. Encontraste el error infiltrado.", "victoria", () => abrirPantalla('zona-arcade')); 
+            } else { 
+                document.body.style.backgroundColor = "#e94560"; 
+                setTimeout(()=> document.body.style.backgroundColor = "#1a1a2e", 200); 
+                alertaPersonalizada("¡Emboscada!", "Te han descubierto. Esa información era correcta.", "derrota", () => abrirPantalla('zona-arcade')); 
+            }
         }
 
-        // ==========================================
-        // 📊 LÓGICA DE HISTORIAL Y EXAMEN OFICIAL
-        // (El código de proctoring original se mantiene intacto y funcional)
-        // ==========================================
+        // === TROFEOS Y RESTO DEL CÓDIGO DEL EXAMEN (Mantiene la lógica oficial inalterada) ===
+        const defTrofeos = [];
+        for(let i=1; i<=50; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
+        defTrofeos[0] = {id:1, icon:'🌱', name:'Despertar', desc:'Responde tu 1ra pregunta'};
+        defTrofeos[10] = {id:11, icon:'🔥', name:'Chispa', desc:'3 correctas seguidas'};
+        defTrofeos[29] = {id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS', desc:'128 aciertos'};
+        defTrofeos[40] = {id:41, icon:'🥷', name:'Fantasma', desc:'Sin advertencias'};
+        
+        function renderizarTrofeos() {
+            const ui = document.getElementById('lista-trofeos'); ui.innerHTML = '';
+            defTrofeos.forEach(t => {
+                const unl = playerStats.trofeos.includes(t.id);
+                ui.innerHTML += `<div class="trofeo-card ${unl?'desbloqueado':''}" title="${t.desc}"><div class="trofeo-icon">${t.icon}</div><div class="trofeo-label">${t.name}</div></div>`;
+            });
+            document.getElementById('lbl-trofeos-count').innerText = playerStats.trofeos.length;
+            document.getElementById('barra-trofeos').style.width = (playerStats.trofeos.length * 2) + '%';
+        }
+        renderizarTrofeos();
+
         let historialExamenes = JSON.parse(localStorage.getItem('ecoems_historial')) || [];
         let chartInstancia = null;
         function mostrarHistorial() {
@@ -484,7 +562,7 @@
                 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
                 if (SR) { recVoz = new SR(); recVoz.continuous = true; recVoz.lang = 'es-MX'; recVoz.onresult = (e) => { const t = e.results[e.results.length - 1][0].transcript.trim(); if (t.length > 3) regInfra(`Voz detectada`); }; recVoz.onend = () => { if(!exCanc) try{ recVoz.start(); }catch(e){} }; recVoz.start(); }
                 await asegurarPreguntas(); 
-                exQ = [...preguntasGlobales].sort(()=>Math.random()-0.5); 
+                exQ = mezclarArreglo(preguntasGlobales); 
                 exQ.forEach(p => { if (!resMat[p.materia]) resMat[p.materia] = { ok: 0, total: 0 }; resMat[p.materia].total++; });
                 showQ(); 
                 document.getElementById('temporizador').style.display = "inline-block";
