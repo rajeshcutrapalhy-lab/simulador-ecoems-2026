@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Proctoring con Evidencia</title>
+    <title>Simulador ECOEMS 2026 - Reporte Completo</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     
@@ -57,7 +57,7 @@
         /* REPORTE */
         .reporte-container { margin-top: 30px; text-align: left; background: #f9fbfd; padding: 20px; border-radius: 12px; border: 1px solid #e0e6ed; color: #333;}
         .item-reporte { margin-bottom: 15px; }
-        .item-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+        .item-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
         .barra-bg { background-color: #bdc3c7; border-radius: 10px; height: 10px; width: 100%; overflow: hidden; }
         .barra-fill { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
         .color-excelente { background-color: #2ecc71; } .color-regular { background-color: #f1c40f; } .color-malo { background-color: #e74c3c; }
@@ -78,8 +78,8 @@
             ✅ <strong>128 Preguntas</strong> revueltas por materia.<br>
             ⏱️ <strong>3 Horas</strong> de tiempo límite.<br>
             ⚠️ <strong>3 Advertencias</strong> máximas permitidas.<br>
-            👁️ <strong>IA Visual:</strong> Tolerancia de 15 segundos sin mirar.<br>
-            🔊 <strong>IA Audio:</strong> Se registrarán las voces que se escuchen.
+            👁️ <strong>IA Visual:</strong> Tolerancia de 15s si no miras o te tapas la cara.<br>
+            🔊 <strong>IA Audio:</strong> Se registrarán las voces que se escuchen (silencio total).
         </div>
         
         <br>
@@ -160,7 +160,7 @@
                 canvas.height = video.videoHeight || 300;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                return canvas.toDataURL('image/jpeg', 0.6); // Genera imagen Base64
+                return canvas.toDataURL('image/jpeg', 0.6); 
             } catch (e) {
                 return null;
             }
@@ -171,12 +171,11 @@
             if (examenCancelado) return;
             
             advertenciasTotales++;
-            const foto = tomarFotoEvidencia(); // Toma foto en el instante de la infracción
+            const foto = tomarFotoEvidencia(); 
             
             if (advertenciasTotales >= MAX_ADVERTENCIAS) {
                 ejecutarCancelacion(motivo, foto);
             } else {
-                // Mostrar alerta visual temporal
                 toastAdvertencia.innerText = `⚠️ Advertencia ${advertenciasTotales} de 3: ${motivo}`;
                 toastAdvertencia.style.display = "block";
                 video.classList.add('peligro');
@@ -184,11 +183,11 @@
                 setTimeout(() => {
                     toastAdvertencia.style.display = "none";
                     video.classList.remove('peligro');
-                }, 4000); // Se oculta después de 4 segundos
+                }, 4000); 
             }
         }
 
-        // --- IA DE ROSTROS (MIRADA - 15 SEGUNDOS) ---
+        // --- IA DE ROSTROS (MIRADA / CARA CUBIERTA - 15 SEGUNDOS) ---
         video.addEventListener('play', () => {
             setInterval(async () => {
                 if (examenCancelado) return;
@@ -197,25 +196,24 @@
                 
                 if (detecciones.length === 0) {
                     segundosSinMirar++;
-                    // Si pasan 15 segundos continuos sin ver la cámara = 1 Advertencia
                     if (segundosSinMirar === 15) {
-                        registrarInfraccion("Rostro no detectado por 15 segundos continuos.");
-                        segundosSinMirar = 0; // Reiniciamos para no spamear advertencias seguidas
+                        registrarInfraccion("Rostro no detectado / Cara cubierta por 15s continuos.");
+                        segundosSinMirar = 0; 
                     }
                 } else {
-                    segundosSinMirar = 0; // Si regresa la vista antes de los 15s, el contador se limpia
+                    segundosSinMirar = 0; 
                 }
             }, 1000); 
         });
 
-        // --- IA DE VOZ (IGNORA RUIDOS, DETECTA PALABRAS) ---
+        // --- IA DE VOZ (DETECTA PALABRAS) ---
         function iniciarReconocimientoVoz() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
             if (SpeechRecognition) {
                 reconocimientoVoz = new SpeechRecognition();
                 reconocimientoVoz.continuous = true;
-                reconocimientoVoz.lang = 'es-MX'; // Configurado para español
+                reconocimientoVoz.lang = 'es-MX'; 
 
                 reconocimientoVoz.onresult = (event) => {
                     if (examenCancelado) return;
@@ -223,13 +221,11 @@
                     const ultimoIndice = event.results.length - 1;
                     const textoEscuchado = event.results[ultimoIndice][0].transcript.trim();
 
-                    // Solo registrar si se entendió una frase real (ignora ruidos raros menores a 3 letras)
                     if (textoEscuchado.length > 3) {
-                        registrarInfraccion(`Voz detectada diciendo: "${textoEscuchado}"`);
+                        registrarInfraccion(`Voz o lectura detectada diciendo: "${textoEscuchado}"`);
                     }
                 };
 
-                // Si la IA se pausa por silencio, la volvemos a encender
                 reconocimientoVoz.onend = () => {
                     if (!examenCancelado) {
                         try { reconocimientoVoz.start(); } catch(e){}
@@ -238,7 +234,7 @@
 
                 reconocimientoVoz.start();
             } else {
-                console.warn("Reconocimiento de voz no soportado en este dispositivo.");
+                console.warn("Reconocimiento de voz no soportado.");
             }
         }
 
@@ -305,21 +301,27 @@
             toastAdvertencia.style.display = "none";
             
             if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
-            if (reconocimientoVoz) reconocimientoVoz.stop(); // Detener escucha de micrófono
+            if (reconocimientoVoz) reconocimientoVoz.stop();
 
-            // Construir bloque de evidencia si existe foto
             let htmlEvidencia = "";
             if (fotoEvidencia) {
                 htmlEvidencia = `<p style="font-size:14px; margin-top:20px;">📷 Evidencia capturada:</p>
                                  <img src="${fotoEvidencia}" class="evidencia-img" alt="Evidencia de Infracción">`;
             }
 
+            // CÁLCULO DE INCORRECTAS AL CANCELAR
+            let respuestasIncorrectas = indiceActual - puntaje;
+
             tarjetaPrincipal.classList.add('cancelado');
             contenedorExamen.innerHTML = `
                 <h1 style="font-size: 30px; margin-bottom: 10px;">🚫 EXAMEN CANCELADO</h1>
                 <p style="font-weight:bold; font-size:16px; margin-top:10px;">Última Infracción: ${motivo}</p>
                 ${htmlEvidencia}
-                <p style="font-size:18px; margin-top:20px;">Puntaje logrado: <strong>${puntaje}</strong> aciertos.</p>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 18px;">
+                    <p style="margin: 5px 0;">✔️ Respuestas Correctas (Aciertos): <strong>${puntaje}</strong></p>
+                    <p style="margin: 5px 0;">❌ Respuestas Incorrectas (Errores): <strong>${respuestasIncorrectas}</strong></p>
+                    <p style="margin: 5px 0; font-size: 14px; opacity: 0.9;">Total respondidas: ${indiceActual} de ${preguntas.length}</p>
+                </div>
                 ${generarReporteHTML()}
             `;
         }
@@ -332,10 +334,16 @@
                 if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
                 if (reconocimientoVoz) reconocimientoVoz.stop();
                 
+                // CÁLCULO DE INCORRECTAS AL TERMINAR EL EXAMEN COMPLETO
+                let respuestasIncorrectas = preguntas.length - puntaje;
+
                 tarjetaPrincipal.classList.remove('cancelado');
                 contenedorExamen.innerHTML = `
                     <h2 style="color: #27ae60;">¡Simulacro Terminado! 🎉</h2>
-                    <p style="font-size: 20px;">Puntaje Final: <strong>${puntaje} / ${preguntas.length}</strong></p>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin: 20px 0; font-size: 20px; border: 1px solid #e0e6ed; color: #2c3e50;">
+                        <p style="margin: 8px 0; color: #27ae60;">✔️ Respuestas Correctas (Aciertos): <strong>${puntaje} / ${preguntas.length}</strong></p>
+                        <p style="margin: 8px 0; color: #c0392b;">❌ Respuestas Incorrectas (Errores): <strong>${respuestasIncorrectas} / ${preguntas.length}</strong></p>
+                    </div>
                     <p style="font-size: 14px; color: gray;">Te sobraron ${Math.floor(tiempoRestante / 60)} minutos.</p>
                     ${generarReporteHTML()}
                 `;
