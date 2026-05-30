@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Proctoring y Reporte</title>
+    <title>Simulador ECOEMS 2026 - Proctoring con Evidencia</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     
@@ -43,29 +43,31 @@
         .btn-acordeon { background-color: #34495e; color: white; border: none; padding: 15px; font-size: 16px; border-radius: 8px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; text-align: left; }
         .panel-acordeon { background-color: #ecf0f1; padding: 20px; border-radius: 8px; margin-bottom: 15px; font-size: 17px; color: #2c3e50; display: none; border-left: 4px solid #3498db; }
         .btn-seleccionar { background-color: #27ae60; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 15px; width: 100%; }
-
         .img-fluida { max-width: 100%; max-height: 200px; border-radius: 8px; margin: 10px auto; display: block; object-fit: contain; }
         
-        #alerta-ia { display: none; color: white; background: #e74c3c; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; }
-        #alerta-audio { display: none; color: white; background: #e67e22; padding: 12px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; animation: parpadeo 1s infinite; }
-        
+        /* SISTEMA DE ALERTAS Y EVIDENCIA */
+        #toast-advertencia {
+            display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background-color: #e74c3c; color: white; padding: 15px 25px; border-radius: 10px;
+            font-weight: bold; box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4); z-index: 2000;
+        }
+        .evidencia-img { width: 100%; max-width: 300px; border-radius: 10px; border: 3px solid #c0392b; margin: 15px 0; }
         .cancelado { background-color: #e74c3c !important; color: white !important; }
         
-        /* --- ESTILOS DEL REPORTE DE RESULTADOS --- */
-        .reporte-container { margin-top: 30px; text-align: left; background: #f9fbfd; padding: 20px; border-radius: 12px; border: 1px solid #e0e6ed; }
+        /* REPORTE */
+        .reporte-container { margin-top: 30px; text-align: left; background: #f9fbfd; padding: 20px; border-radius: 12px; border: 1px solid #e0e6ed; color: #333;}
         .item-reporte { margin-bottom: 15px; }
-        .item-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .item-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
         .barra-bg { background-color: #bdc3c7; border-radius: 10px; height: 10px; width: 100%; overflow: hidden; }
         .barra-fill { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
-        .color-excelente { background-color: #2ecc71; }
-        .color-regular { background-color: #f1c40f; }
-        .color-malo { background-color: #e74c3c; }
+        .color-excelente { background-color: #2ecc71; } .color-regular { background-color: #f1c40f; } .color-malo { background-color: #e74c3c; }
 
         @keyframes temblor { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
-        @keyframes parpadeo { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
+
+    <div id="toast-advertencia">⚠️ Advertencia 1 de 3</div>
 
     <div id="bienvenida">
         <img src="img/pixelote-estudiando.jpg" class="logo-pixelote" alt="Pixelote">
@@ -75,8 +77,9 @@
         <div class="reglas-lista">
             ✅ <strong>128 Preguntas</strong> revueltas por materia.<br>
             ⏱️ <strong>3 Horas</strong> de tiempo límite.<br>
+            ⚠️ <strong>3 Advertencias</strong> máximas permitidas.<br>
             👁️ <strong>IA Visual:</strong> Tolerancia de 15 segundos sin mirar.<br>
-            🔊 <strong>IA Audio:</strong> Micrófono activo (silencio absoluto).
+            🔊 <strong>IA Audio:</strong> Se registrarán las voces que se escuchen.
         </div>
         
         <br>
@@ -84,7 +87,7 @@
             EMPEZAR EXAMEN
         </button>
         <p id="msg-carga" style="display:none; color: #3498db; font-weight: bold; margin-top: 15px;">
-            Conectando IA de video y audio... espera.
+            Iniciando Protocolos de Seguridad... espera.
         </p>
     </div>
 
@@ -92,9 +95,7 @@
         <div id="video-container">
             <video id="camara" autoplay muted playsinline></video>
         </div>
-        <div id="alerta-ia">🎮 ¡Pixelote no te ve! Regresa en <span id="contador-peligro">15</span>s.</div>
-        <div id="alerta-audio">🔊 ¡Silencio! Se detectan voces o ruido en la habitación.</div>
-
+        
         <div class="tarjeta-pregunta" id="tarjeta-principal">
             <div id="contenedor-examen">
                 <div class="materia">Preparando...</div>
@@ -107,102 +108,138 @@
         const bienvenida = document.getElementById('bienvenida');
         const zonaExamen = document.getElementById('zona-examen');
         const video = document.getElementById('camara');
-        const alertaIA = document.getElementById('alerta-ia');
-        const alertaAudio = document.getElementById('alerta-audio');
         const contenedorExamen = document.getElementById('contenedor-examen');
         const tarjetaPrincipal = document.getElementById('tarjeta-principal');
-        const contadorPeligro = document.getElementById('contador-peligro');
         const lblTemporizador = document.getElementById('temporizador');
+        const toastAdvertencia = document.getElementById('toast-advertencia');
 
         let preguntas = [];
         let indiceActual = 0;
         let puntaje = 0;
         let examenCancelado = false;
-        
-        // Estructura para guardar resultados por materia
         let resultadosPorMateria = {};
 
-        // Parámetros de IA
-        let advertenciasRostro = 0;
-        const LIMITE_ROSTRO = 15; 
+        // PARÁMETROS DE PROCTORING (3 STRIKES)
+        let advertenciasTotales = 0;
+        let segundosSinMirar = 0;
+        const MAX_ADVERTENCIAS = 3;
         
-        let advertenciasAudio = 0;
-        const LIMITE_AUDIO = 3; 
-        const UMBRAL_RUIDO = 35; 
-
         let tiempoRestante = 10800; 
         let intervaloReloj;
-        let audioContext, microphone;
+        let reconocimientoVoz = null;
 
         async function comenzarSimulacro() {
             document.getElementById('btn-comenzar').style.display = "none";
             document.getElementById('msg-carga').style.display = "block";
 
             try {
+                // 1. Cargar modelo de rostros
                 await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+                
+                // 2. Encender Cámara y Micrófono
                 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true });
                 video.srcObject = stream;
                 
-                iniciarVigilanciaAudio(stream);
+                // 3. Iniciar reconocimiento de palabras
+                iniciarReconocimientoVoz();
 
                 bienvenida.style.display = "none";
                 zonaExamen.style.display = "block";
 
                 cargarBaseDeDatos();
             } catch (err) {
-                alert("🚨 ERROR: " + err.message + "\\n\\nVe a Ajustes > Aplicaciones > Permisos y dale acceso a la Cámara y al Micrófono.");
+                alert("🚨 ERROR: Debes otorgar permisos de Cámara y Micrófono para continuar.");
             }
         }
 
-        // IA DE ROSTROS
+        // --- SISTEMA DE FOTOGRAFÍA FANTASMA ---
+        function tomarFotoEvidencia() {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth || 300;
+                canvas.height = video.videoHeight || 300;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                return canvas.toDataURL('image/jpeg', 0.6); // Genera imagen Base64
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // --- SISTEMA CENTRAL DE ADVERTENCIAS ---
+        function registrarInfraccion(motivo) {
+            if (examenCancelado) return;
+            
+            advertenciasTotales++;
+            const foto = tomarFotoEvidencia(); // Toma foto en el instante de la infracción
+            
+            if (advertenciasTotales >= MAX_ADVERTENCIAS) {
+                ejecutarCancelacion(motivo, foto);
+            } else {
+                // Mostrar alerta visual temporal
+                toastAdvertencia.innerText = `⚠️ Advertencia ${advertenciasTotales} de 3: ${motivo}`;
+                toastAdvertencia.style.display = "block";
+                video.classList.add('peligro');
+                
+                setTimeout(() => {
+                    toastAdvertencia.style.display = "none";
+                    video.classList.remove('peligro');
+                }, 4000); // Se oculta después de 4 segundos
+            }
+        }
+
+        // --- IA DE ROSTROS (MIRADA - 15 SEGUNDOS) ---
         video.addEventListener('play', () => {
             setInterval(async () => {
                 if (examenCancelado) return;
+                
                 const detecciones = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+                
                 if (detecciones.length === 0) {
-                    advertenciasRostro++;
-                    video.classList.add('peligro');
-                    alertaIA.style.display = "block";
-                    contadorPeligro.innerText = LIMITE_ROSTRO - advertenciasRostro;
-                    if (advertenciasRostro >= LIMITE_ROSTRO) ejecutarCancelacion("Apartaste la vista de la pantalla más de 15 segundos.");
+                    segundosSinMirar++;
+                    // Si pasan 15 segundos continuos sin ver la cámara = 1 Advertencia
+                    if (segundosSinMirar === 15) {
+                        registrarInfraccion("Rostro no detectado por 15 segundos continuos.");
+                        segundosSinMirar = 0; // Reiniciamos para no spamear advertencias seguidas
+                    }
                 } else {
-                    advertenciasRostro = 0;
-                    video.classList.remove('peligro');
-                    alertaIA.style.display = "none";
+                    segundosSinMirar = 0; // Si regresa la vista antes de los 15s, el contador se limpia
                 }
             }, 1000); 
         });
 
-        // IA DE AUDIO
-        function iniciarVigilanciaAudio(stream) {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const analyser = audioContext.createAnalyser();
-            microphone = audioContext.createMediaStreamSource(stream);
-            microphone.connect(analyser);
-            analyser.fftSize = 256;
+        // --- IA DE VOZ (IGNORA RUIDOS, DETECTA PALABRAS) ---
+        function iniciarReconocimientoVoz() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
+            if (SpeechRecognition) {
+                reconocimientoVoz = new SpeechRecognition();
+                reconocimientoVoz.continuous = true;
+                reconocimientoVoz.lang = 'es-MX'; // Configurado para español
 
-            setInterval(() => {
-                if (examenCancelado) return;
-                analyser.getByteFrequencyData(dataArray);
-                
-                let sum = 0;
-                for(let i = 0; i < bufferLength; i++) sum += dataArray[i];
-                let volumenPromedio = sum / bufferLength;
+                reconocimientoVoz.onresult = (event) => {
+                    if (examenCancelado) return;
+                    
+                    const ultimoIndice = event.results.length - 1;
+                    const textoEscuchado = event.results[ultimoIndice][0].transcript.trim();
 
-                if (volumenPromedio > UMBRAL_RUIDO) {
-                    advertenciasAudio++;
-                    alertaAudio.style.display = "block";
-                    if (advertenciasAudio >= LIMITE_AUDIO) {
-                        ejecutarCancelacion("Se detectaron voces o ruido fuerte en tu entorno.");
+                    // Solo registrar si se entendió una frase real (ignora ruidos raros menores a 3 letras)
+                    if (textoEscuchado.length > 3) {
+                        registrarInfraccion(`Voz detectada diciendo: "${textoEscuchado}"`);
                     }
-                } else {
-                    if (advertenciasAudio > 0) advertenciasAudio--; 
-                    if (advertenciasAudio === 0) alertaAudio.style.display = "none";
-                }
-            }, 1000);
+                };
+
+                // Si la IA se pausa por silencio, la volvemos a encender
+                reconocimientoVoz.onend = () => {
+                    if (!examenCancelado) {
+                        try { reconocimientoVoz.start(); } catch(e){}
+                    }
+                };
+
+                reconocimientoVoz.start();
+            } else {
+                console.warn("Reconocimiento de voz no soportado en este dispositivo.");
+            }
         }
 
         function arrancarReloj() {
@@ -213,102 +250,75 @@
                 let h = Math.floor(tiempoRestante / 3600), m = Math.floor((tiempoRestante % 3600) / 60), s = tiempoRestante % 60;
                 lblTemporizador.innerText = `⏱️ ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
                 if (tiempoRestante <= 300) lblTemporizador.style.color = "#e74c3c";
-                if (tiempoRestante <= 0) ejecutarCancelacion("¡Tiempo agotado!");
+                if (tiempoRestante <= 0) ejecutarCancelacion("¡Tiempo agotado!", null);
             }, 1000);
         }
 
         function revolverPorMateria(arrayOriginal) {
             const materiasOrdenadas = [];
             const grupos = {};
-
             arrayOriginal.forEach(pregunta => {
-                // Registrar conteo total por materia para el reporte
-                if (!resultadosPorMateria[pregunta.materia]) {
-                    resultadosPorMateria[pregunta.materia] = { correctas: 0, total: 0 };
-                }
+                if (!resultadosPorMateria[pregunta.materia]) resultadosPorMateria[pregunta.materia] = { correctas: 0, total: 0 };
                 resultadosPorMateria[pregunta.materia].total++;
-
-                if (!grupos[pregunta.materia]) {
-                    grupos[pregunta.materia] = [];
-                    materiasOrdenadas.push(pregunta.materia); 
-                }
+                if (!grupos[pregunta.materia]) { grupos[pregunta.materia] = []; materiasOrdenadas.push(pregunta.materia); }
                 grupos[pregunta.materia].push(pregunta);
             });
-
             function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
+                for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; }
                 return array;
             }
-
             let examenFinal = [];
-            materiasOrdenadas.forEach(materia => {
-                const bloqueRevuelto = shuffle(grupos[materia]);
-                examenFinal = examenFinal.concat(bloqueRevuelto);
-            });
-
+            materiasOrdenadas.forEach(materia => { examenFinal = examenFinal.concat(shuffle(grupos[materia])); });
             return examenFinal;
         }
 
         async function cargarBaseDeDatos() {
             const respuesta = await fetch('guia_2026.json?v=' + new Date().getTime());
             const datosCrudos = await respuesta.json();
-            
-            // Revolvemos las preguntas e inicializamos el reporte
             preguntas = revolverPorMateria(datosCrudos);
-            
             mostrarPregunta();
             arrancarReloj();
         }
 
-        // --- FUNCIÓN QUE GENERA EL REPORTE VISUAL ---
         function generarReporteHTML() {
-            let reporteHTML = `<div class="reporte-container">
-                <h3 style="margin-top: 0; color: #2c3e50; text-align: center;">📈 Reporte por Materias</h3>`;
-            
+            let reporteHTML = `<div class="reporte-container"><h3 style="margin-top:0; text-align:center;">📈 Reporte por Materias</h3>`;
             for (const [materia, stats] of Object.entries(resultadosPorMateria)) {
                 let porcentaje = (stats.correctas / stats.total) * 100;
-                let colorClase = "color-malo"; // Rojo (< 60%)
-                
-                if (porcentaje >= 80) {
-                    colorClase = "color-excelente"; // Verde (>= 80%)
-                } else if (porcentaje >= 60) {
-                    colorClase = "color-regular"; // Amarillo (60% - 79%)
-                }
-
+                let colorClase = "color-malo";
+                if (porcentaje >= 80) colorClase = "color-excelente";
+                else if (porcentaje >= 60) colorClase = "color-regular";
                 reporteHTML += `
                     <div class="item-reporte">
-                        <div class="item-header">
-                            <span>${materia}</span>
-                            <span>${stats.correctas} / ${stats.total}</span>
-                        </div>
-                        <div class="barra-bg">
-                            <div class="barra-fill ${colorClase}" style="width: ${porcentaje}%;"></div>
-                        </div>
-                    </div>
-                `;
+                        <div class="item-header"><span>${materia}</span><span>${stats.correctas}/${stats.total}</span></div>
+                        <div class="barra-bg"><div class="barra-fill ${colorClase}" style="width: ${porcentaje}%;"></div></div>
+                    </div>`;
             }
             reporteHTML += `</div>`;
             return reporteHTML;
         }
 
-        function ejecutarCancelacion(motivo) {
+        function ejecutarCancelacion(motivo, fotoEvidencia) {
             examenCancelado = true;
             clearInterval(intervaloReloj);
             video.style.display = "none";
             lblTemporizador.style.display = "none";
-            alertaIA.style.display = "none";
-            alertaAudio.style.display = "none";
+            toastAdvertencia.style.display = "none";
             
             if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
-            if (audioContext) audioContext.close();
+            if (reconocimientoVoz) reconocimientoVoz.stop(); // Detener escucha de micrófono
+
+            // Construir bloque de evidencia si existe foto
+            let htmlEvidencia = "";
+            if (fotoEvidencia) {
+                htmlEvidencia = `<p style="font-size:14px; margin-top:20px;">📷 Evidencia capturada:</p>
+                                 <img src="${fotoEvidencia}" class="evidencia-img" alt="Evidencia de Infracción">`;
+            }
 
             tarjetaPrincipal.classList.add('cancelado');
             contenedorExamen.innerHTML = `
                 <h1 style="font-size: 30px; margin-bottom: 10px;">🚫 EXAMEN CANCELADO</h1>
-                <p style="font-weight:bold; font-size:16px;">${motivo}</p>
+                <p style="font-weight:bold; font-size:16px; margin-top:10px;">Última Infracción: ${motivo}</p>
+                ${htmlEvidencia}
                 <p style="font-size:18px; margin-top:20px;">Puntaje logrado: <strong>${puntaje}</strong> aciertos.</p>
                 ${generarReporteHTML()}
             `;
@@ -320,7 +330,7 @@
                 clearInterval(intervaloReloj);
                 lblTemporizador.style.display = "none";
                 if (video.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
-                if (audioContext) audioContext.close();
+                if (reconocimientoVoz) reconocimientoVoz.stop();
                 
                 tarjetaPrincipal.classList.remove('cancelado');
                 contenedorExamen.innerHTML = `
@@ -331,12 +341,10 @@
                 `;
                 return;
             }
-            
             const d = preguntas[indiceActual], letras = ['A', 'B', 'C', 'D'];
             let h = `<div class="materia">${d.materia}</div><div class="contador">Pregunta ${indiceActual + 1} de ${preguntas.length}</div>`;
             h += `<button class="btn-acordeon" onclick="abrirPanel('p-p')">👁️ Ver Pregunta</button>
                   <div id="p-p" class="panel-acordeon"><b>${d.pregunta}</b>${d.imagen ? `<img src="${d.imagen}" class="img-fluida">` : ''}</div>`;
-            
             d.opciones.forEach((o, i) => {
                 const esImg = o.trim().toLowerCase().match(/\.(jpg|jpeg|png|gif)$/);
                 h += `<button class="btn-acordeon" onclick="abrirPanel('p-o-${i}')">👁️ Opción ${letras[i]}</button>
@@ -350,21 +358,12 @@
 
         window.abrirPanel = function(id) {
             const ids = ['p-p', 'p-o-0', 'p-o-1', 'p-o-2', 'p-o-3'];
-            ids.forEach(x => {
-                const p = document.getElementById(x);
-                if(p) p.style.display = (x === id && p.style.display !== 'block') ? 'block' : 'none';
-            });
+            ids.forEach(x => { const p = document.getElementById(x); if(p) p.style.display = (x === id && p.style.display !== 'block') ? 'block' : 'none'; });
         };
 
         function verificarRespuesta(sel, corr) {
             if (examenCancelado) return;
-            
-            // Si la respuesta es correcta, sumamos puntos globales y de materia
-            if (sel === corr) {
-                puntaje++;
-                resultadosPorMateria[preguntas[indiceActual].materia].correctas++;
-            }
-            
+            if (sel === corr) { puntaje++; resultadosPorMateria[preguntas[indiceActual].materia].correctas++; }
             indiceActual++;
             mostrarPregunta();
             window.scrollTo(0, 0);
