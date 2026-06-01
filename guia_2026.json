@@ -1678,5 +1678,3883 @@
     ],
     "respuesta_correcta": 2,
     "explicacion": "Como los involucrados intentaron dialogar y llegar a un trato 'cara a cara' directamente con el dueño, sin abogados y sin que los separara un juez, a esa fase diplomática inicial se le llama Negociación."
+  },
+  {
+    "id": 129,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Encuentra el número que falta en la sucesión. 49, 62, 77, ___, 113, 134,",
+    "opciones": [
+      "99",
+      "104",
+      "94",
+      "100"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Del 49 al 62 sumas 13. Del 62 al 77 sumas 15. ¡El patrón va sumando números impares consecutivos! 77 + 17 = 94."
+  },
+  {
+    "id": 130,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Identifica el número que continúa en la sucesión -100, -10, -1, ___",
+    "opciones": [
+      "-0.01",
+      "-0.1",
+      "0.01",
+      "0.1"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Cada número se divide entre 10 para llegar al siguiente. -1 entre 10 da -0.1. ¡Puro movimiento de punto decimal hacia la derecha para números negativos!"
+  },
+  {
+    "id": 131,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Los números de la sucesión 3, 7, 11, 15, 19, ... se incrementan de cuatro en cuatro. Los números de la sucesión 1, 8, 15, 22, 29, ... se incrementan de siete en siete. El número 15 es común en ambas sucesiones. Si las dos sucesiones se continúan, ¿cuál es el próximo número común de las sucesiones?",
+    "opciones": [
+      "23",
+      "24",
+      "36",
+      "43"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Si avanzas en ambas, los números de la primera (sumando 4) son: 19, 23, 27, 31, 35, 39, 43. Los de la segunda (sumando 7) son: 29, 36, 43. ¡Ahí está el punto de encuentro lógico!"
+  },
+  {
+    "id": 132,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué números continúan en la sucesión? 1, 2, 3, 4, 5, 8, ___",
+    "opciones": [
+      "7, 16",
+      "9, 15",
+      "11, 14",
+      "8, 11"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "¡Sucesión doble! Las posiciones impares son 1, 3, 5, 7 (van sumando de 2 en 2). Las pares son 2, 4, 8, 16 (se van multiplicando por 2)."
+  },
+  {
+    "id": 133,
+    "materia": "Habilidad Matemática",
+    "pregunta": "De acuerdo con la serie, ¿cuál es la figura que sigue?",
+    "imagen": "img/g2_5.jpeg",
+    "opciones": [
+      "img/g2_5a.jpeg",
+      "img/g2_5b.jpeg",
+      "img/g2_5c.jpeg",
+      "img/g2_5d.jpeg"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Tienes que observar el giro lógico de la figura. Imagina que rotas un bloque en el inventario y fíjate hacia dónde apunta su lado principal."
+  },
+  {
+    "id": 134,
+    "materia": "Habilidad Matemática",
+    "pregunta": "En la siguiente sucesión de imágenes, ¿cuántos cuadrados formarán la figura número 11?",
+    "imagen": "img/g2_6.jpeg",
+    "opciones": [
+      "45",
+      "66",
+      "78",
+      "55"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Usando la fórmula de progresión matemática, cada nivel acumula la suma de números consecutivos. Para el nivel 11 se habrán sumado exactamente 78 figuras (1+2+3+4+5+6+7+8+9+10+11)."
+  },
+  {
+    "id": 135,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Identifica la octava figura de la siguiente serie.",
+    "imagen": "img/g2_7.jpeg",
+    "opciones": [
+      "img/g2_7a.jpeg",
+      "img/g2_7b.jpeg",
+      "img/g2_7c.jpeg",
+      "img/g2_7d.jpeg"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Analiza el movimiento de la serie paso a paso; la figura principal va rotando lentamente y añadiendo un elemento hasta alcanzar su octava fase."
+  },
+  {
+    "id": 136,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es la imagen que completa la siguiente serie?",
+    "imagen": "img/g2_8.jpeg",
+    "opciones": [
+      "img/g2_8a.jpeg",
+      "img/g2_8b.jpeg",
+      "img/g2_8c.jpeg",
+      "img/g2_8d.jpeg"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Es un rompecabezas visual. La figura base va moviendo su zona de sombreado en un patrón de espejo que se repite ordenadamente."
+  },
+  {
+    "id": 137,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Señala cuál sería la representación de la siguiente estructura, si se le observara desde arriba.",
+    "imagen": "img/g2_9.jpeg",
+    "opciones": [
+      "img/g2_9a.jpeg",
+      "img/g2_9b.jpeg",
+      "img/g2_9c.jpeg",
+      "img/g2_9d.jpeg"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Visualiza la imagen como si controlaras un dron. Al ver la estructura 3D desde el cielo, el volumen desaparece y solo notarás el techo plano de las columnas."
+  },
+  {
+    "id": 138,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es la figura que sigue en la secuencia?",
+    "imagen": "img/g2_10.jpeg",
+    "opciones": [
+      "img/g2_10a.jpeg",
+      "img/g2_10b.jpeg",
+      "img/g2_10c.jpeg",
+      "img/g2_10d.jpeg"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Fíjate en la rotación y el desplazamiento; las líneas interiores van brincando con un orden estrictamente constante."
+  },
+  {
+    "id": 139,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuántos cuadros contiene la figura?",
+    "imagen": "img/g2_11.jpeg",
+    "opciones": [
+      "8",
+      "11",
+      "12",
+      "10"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "¡Cuidado con los cuadros fantasma! Tienes que sumar los bloques que ves directamente, y por lógica de gravedad estructural, sumar también los bloques invisibles que los sostienen desde abajo."
+  },
+  {
+    "id": 140,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Identifica la figura con la que se completa un cubo de 3x3x3 cubitos.",
+    "imagen": "img/g2_12.jpeg",
+    "opciones": [
+      "img/g2_12a.jpeg",
+      "img/g2_12b.jpeg",
+      "img/g2_12c.jpeg",
+      "img/g2_12d.jpeg"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Analiza el plano en negativo. Tienes que visualizar mentalmente las esquinas y los huecos exactos que le faltan a la estructura principal para volverse un cubo perfecto sólido de 27 cubitos."
+  },
+  {
+    "id": 141,
+    "materia": "Habilidad Matemática",
+    "pregunta": "En una granja donde sólo hay caballos y gallinas, el dueño cuenta 116 patas y 37 cabezas, calcula cuántos animales hay de cada tipo.",
+    "opciones": [
+      "19 caballos y 18 gallinas.",
+      "21 caballos y 16 gallinas.",
+      "16 caballos y 21 gallinas.",
+      "20 caballos y 17 gallinas."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Usando un sistema de ecuaciones: x+y=37 (cabezas) y 4x+2y=116 (patas). Al despejar las variables descubres que hay 21 caballos (84 patas) y 16 gallinas (32 patas)."
+  },
+  {
+    "id": 142,
+    "materia": "Habilidad Matemática",
+    "pregunta": "La suma de dos números es 22 y su producto es 57. Indica cuáles son esos números.",
+    "opciones": [
+      "11, 11",
+      "9, 13",
+      "3, 19",
+      "5, 17"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Si tomas el 3 y el 19, y los sumas te dan exactamente 22. Si los multiplicas, te dan 57. ¡A veces el atajo más rápido es probar los números de la respuesta!"
+  },
+  {
+    "id": 143,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es el número que falta?",
+    "imagen": "img/g2_15.jpeg",
+    "opciones": [
+      "44",
+      "46",
+      "48",
+      "50"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "¡El secreto está en los bordes! Suma el número de la izquierda y el de la derecha para obtener el centro: 10 + 15 = 25. Entonces, 30 + 20 da como resultado 50."
+  },
+  {
+    "id": 144,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Considerando que el número de bacterias en cierto cultivo se duplica cada tres minutos, si hay 28 bacterias a las 9:00 am, ¿a qué hora habrá 224?",
+    "opciones": [
+      "9:30 am",
+      "9:15 am",
+      "9:03 pm",
+      "9:09 am"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Minuto 0 (9:00): 28. Minuto 3: 56. Minuto 6: 112. Minuto 9: 224. Han pasado exactamente 9 minutos, por lo tanto la hora final es 9:09 am."
+  },
+  {
+    "id": 145,
+    "materia": "Biología",
+    "pregunta": "Todos los seres vivos poseen una estructura denominada",
+    "opciones": [
+      "tejido.",
+      "núcleo.",
+      "célula.",
+      "desmosoma."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La célula es el píxel base. Absolutamente todas las formas de vida que conocemos están construidas estructural y funcionalmente a partir de células biológicas."
+  },
+  {
+    "id": 146,
+    "materia": "Biología",
+    "pregunta": "En México diariamente se pierde un número importante de especies debido a la acción del hombre. De estas actividades, ¿cuál pone en riesgo la biodiversidad?",
+    "opciones": [
+      "Introducción de especies exóticas.",
+      "Incendios provocados.",
+      "Ecoturismo.",
+      "Caza deportiva."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los incendios provocados son ataques directos al ecosistema que arrasan hábitats completos, causando un daño crítico e irreversible a miles de especies."
+  },
+  {
+    "id": 147,
+    "materia": "Biología",
+    "pregunta": "La estrategia que se propone para que las generaciones actuales se comprometan con el mantenimiento de los recursos naturales y garanticen su satisfacción en el futuro se denomina",
+    "opciones": [
+      "Desarrollo sustentable.",
+      "Mejoramiento del cultivo intensivo.",
+      "Desarrollo biotecnológico.",
+      "Revolución verde."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Ese es el concepto puro de 'Desarrollo Sustentable': la filosofía de utilizar y consumir los recursos hoy, pero con tal cuidado que no dejemos el planeta vacío para los humanos del mañana."
+  },
+  {
+    "id": 148,
+    "materia": "Biología",
+    "pregunta": "La producción industrial de _____ representa un avance en ciencia y tecnología para la salud humana.",
+    "opciones": [
+      "sacarosa",
+      "colágeno",
+      "insulina",
+      "almidón"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La creación biotecnológica de insulina transgénica fue un hito monumental para la humanidad, permitiendo tratar de manera segura la diabetes a nivel mundial."
+  },
+  {
+    "id": 149,
+    "materia": "Biología",
+    "pregunta": "A través de la _____ algunos organismos autótrofos transforman la energía luminosa en energía química liberando oxígeno.",
+    "opciones": [
+      "regulación",
+      "fotosíntesis",
+      "respiración",
+      "oxidación"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Las plantas operan como paneles solares. Absorben la luz del sol y la procesan mediante la fotosíntesis para crear alimento, emitiendo oxígeno a la atmósfera."
+  },
+  {
+    "id": 150,
+    "materia": "Biología",
+    "pregunta": "Es la suma de reacciones químicas en la célula, donde se utilizan moléculas alimenticias para transferir su energía al ATP.",
+    "opciones": [
+      "Fotosíntesis.",
+      "Respiración.",
+      "Homeostasis.",
+      "Anabolismo."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La respiración celular toma la glucosa (comida) y usa el oxígeno para cargar de energía tus moléculas de ATP, que son como las baterías recargables de tu cuerpo."
+  },
+  {
+    "id": 151,
+    "materia": "Biología",
+    "pregunta": "Dentro del ciclo del carbono, la _____ permite la fijación de este elemento de la atmósfera a la biósfera; mientras que, en sentido contrario, la liberación de este elemento de la biósfera a la atmósfera se lleva a cabo por la _____",
+    "opciones": [
+      "fotosintesis - respiración",
+      "fermentación - fotosíntesis",
+      "respiración - fotosíntesis",
+      "fotosíntesis - quimiosíntesis"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Es un ciclo perfecto. Las plantas agarran el CO2 del aire (fotosíntesis) y los animales y humanos lo liberamos nuevamente como desecho cuando respiramos."
+  },
+  {
+    "id": 152,
+    "materia": "Biología",
+    "pregunta": "La anemia es una enfermedad causada por la falta de hierro; por ello, una acción que debe realizarse para proveer al cuerpo de este mineral es",
+    "opciones": [
+      "consumir alimentos con vitamina C.",
+      "consumir abundantes lípidos.",
+      "tener una dieta equilibrada.",
+      "tomar diariamente dos litros de agua."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Consumir una dieta equilibrada (llena de vegetales verdes oscuros y carnes magras) es la mejor forma natural de aportar hierro y evitar caídas críticas en tus glóbulos rojos."
+  },
+  {
+    "id": 153,
+    "materia": "Biología",
+    "pregunta": "Para prevenir enfermedades respiratorias causadas por la contaminación ambiental, es recomendable",
+    "opciones": [
+      "evitar sitios con aglomeraciones.",
+      "protegerse cerrando puertas y ventanas.",
+      "utilizar sistema de calefacción.",
+      "eludir el consumo de líquidos en abundancia."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Para no sufrir problemas respiratorios o contagios virales cruzados, siempre es una excelente táctica evitar las zonas masivamente aglomeradas de gente."
+  },
+  {
+    "id": 154,
+    "materia": "Biología",
+    "pregunta": "Tipo de reproducción que disminuye los riesgos de extinción.",
+    "opciones": [
+      "Externa.",
+      "Interna.",
+      "Sexual.",
+      "Asexual."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La reproducción sexual combina genes y genera 'variabilidad'. Al no ser clones idénticos, la especie tiene mayor probabilidad de sobrevivir a enfermedades o cambios ambientales severos."
+  },
+  {
+    "id": 155,
+    "materia": "Biología",
+    "pregunta": "Al igual que el SIDA, ¿cuál de estas enfermedades de transmisión sexual (ETS) es causada por un virus?",
+    "opciones": [
+      "Sífilis.",
+      "Candidiasis.",
+      "Gonorrea.",
+      "Papiloma humano."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Mientras que la Sífilis y la Gonorrea son atacadas con antibióticos (son bacterias), el Virus del Papiloma Humano (VPH) es un patógeno viral mucho más complejo de erradicar."
+  },
+  {
+    "id": 156,
+    "materia": "Biología",
+    "pregunta": "Son unidades que se ubican en los cromosomas, específicamente en el sitio denominado locus.",
+    "opciones": [
+      "Genes.",
+      "Centrómeros.",
+      "Nucleótidos.",
+      "Intrones."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los genes son los bloques de memoria que dictan tus características físicas. El lugar o coordenada física exacta donde viven dentro de un cromosoma se llama Locus."
+  },
+  {
+    "id": 157,
+    "materia": "Español",
+    "pregunta": "Las fichas bibliográficas sirven para",
+    "opciones": [
+      "localizar y conservar información.",
+      "enumerar y jerarquizar oraciones.",
+      "citar y ordenar párrafos.",
+      "recopilar y organizar ideas."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Una ficha bibliográfica es tu herramienta de 'save game' en investigación: te ayuda a guardar los datos y fuentes precisas para que no pierdas información valiosa."
+  },
+  {
+    "id": 158,
+    "materia": "Español",
+    "pregunta": "Identifica el tema principal del siguiente cuadro sinóptico.",
+    "imagen": "img/g2_30.jpeg",
+    "opciones": [
+      "Categoría semántica",
+      "Enunciado bimembre",
+      "Categoría gramatical",
+      "Enunciado unimembre"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La palabra 'bi' significa dos. Todo enunciado completo que pueda separarse en sus dos partes fundamentales (Sujeto y Predicado) se clasifica como Enunciado Bimembre."
+  },
+  {
+    "id": 159,
+    "materia": "Español",
+    "pregunta": "Analiza los siguientes párrafos y señala cuál plantea el asunto del texto expositivo.\nI. La biología, que inició...\nII. La biología es la ciencia que estudia a los seres vivos. Surge de manera formal...\nIII. La diversidad de enfoques...\nIV. En la actualidad...",
+    "opciones": [
+      "IV",
+      "I",
+      "II",
+      "III"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El segundo párrafo (II) es el que lanza el planteamiento central: 'es la ciencia que estudia a los seres vivos', dejando las reglas claras desde la introducción."
+  },
+  {
+    "id": 160,
+    "materia": "Español",
+    "pregunta": "Elige las oraciones que usan nexos que introducen ideas:\nI. Rubén Darío, creador del modernismo, cultivó diversos géneros literarios, por ejemplo, poesía y cuento.\nII. Fue Juan Valera, autor realista, el encargado de difundir el modernismo en España.\nIII. Los autores de la Generación del 98, además de grandes críticos, fueron poetas consagrados.\nIV. La Generación del 98 reconoce su nacimiento...\nV. Entre los autores modernistas...",
+    "opciones": [
+      "I y III",
+      "II y IV",
+      "Il y V",
+      "III y V"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Las oraciones I y III utilizan los conectores 'por ejemplo' y 'además de'. Estos nexos funcionan como un puente directo para meter nuevas variables de información al texto."
+  },
+  {
+    "id": 161,
+    "materia": "Español",
+    "pregunta": "Selecciona el enunciado cuyo nexo sirve para encadenar argumentos.",
+    "opciones": [
+      "Trabaja para pagar sus estudios.",
+      "Es demasiado inteligente, pero flojo.",
+      "Es indudable que tiene miedo.",
+      "Es tan terco que todo le sale mal."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El conector 'pero' es el rey de las conjunciones adversativas. Toma un argumento a favor y lo encadena a un argumento en contra, creando contraste."
+  },
+  {
+    "id": 162,
+    "materia": "Español",
+    "pregunta": "Selecciona el enunciado que expresa una jerarquización.",
+    "opciones": [
+      "Es indispensable que termines el ensayo de literatura mexicana.",
+      "El italiano como el francés son lenguas romances.",
+      "La razón más importante por la que estudio es para ganar una beca.",
+      "No logro agradarte por más que me esfuerce."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La palabra clave es 'más importante'. Al priorizar un objetivo por encima del resto, se está imponiendo una pirámide de poder (jerarquía de valor)."
+  },
+  {
+    "id": 163,
+    "materia": "Español",
+    "pregunta": "Función que desempeñan la coma y el punto y seguido en el siguiente párrafo.\nPresten atención a las indicaciones, debemos resolver todo con eficacia. Ustedes lograrán resolver el problema planteado, todos con disposición y responsabilidad aportarán soluciones. Su participación resulta fundamental ante esta situación. No lo olviden.",
+    "opciones": [
+      "Destacar complementos.",
+      "Separar oraciones.",
+      "Delimitar vocativos.",
+      "Citar enumeraciones."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La coma y el punto y seguido en este texto actúan como barreras de control de ritmo; se usan estrictamente para aislar y separar oraciones con significados completos."
+  },
+  {
+    "id": 164,
+    "materia": "Español",
+    "pregunta": "Lee los siguientes enunciados e identifica el uso de la coma que se presenta en ellos.\nAprender, tener experiencia y actuar, hacen al hombre superior.\nEl verdadero vivir es más que nacer, crecer, reproducirse y morir.\nEl aire puro, el ejercicio, el aseo, la buena alimentación, nos permiten gozar de una gran salud.",
+    "opciones": [
+      "En enumeraciones, para separar sustantivos, adjetivos, verbos y frases.",
+      "Para presentar una oración explicativa, va entre comas y podría suprimirse.",
+      "Antes de conjunciones adversativas y en expresiones contrarias.",
+      "En las enumeraciones de diferentes clases de sentidos."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Es el uso de inventario por excelencia. Las comas aquí están funcionando puramente para agrupar y enlistar sustantivos (aire, ejercicio) y encadenar acciones sucesivas."
+  },
+  {
+    "id": 165,
+    "materia": "Español",
+    "pregunta": "¿A qué tipo de texto corresponde el siguiente ejemplo?\nEl asombro forma parte de la naturaleza humana, es el impulso que conduce a descubrir el entorno. A diferencia de la sorpresa, que conduce a la estupefacción, a la inmovilidad causada por el impacto momentáneo; el asombro, en cambio, conduce a la reflexión...",
+    "opciones": [
+      "Poético.",
+      "Literario.",
+      "Filosófico.",
+      "Histórico."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Al analizar a profundidad cómo funciona la mente, las emociones humanas y la reflexión, el autor está desarrollando un ensayo de corte netamente filosófico."
+  },
+  {
+    "id": 166,
+    "materia": "Español",
+    "pregunta": "Lee con atención el siguiente texto e identifica la aposición, el adjetivo y el participio que se encuentran dentro de las frases subrayadas.\n\"...Pero tú, que estás hecho de maíz amarillo, como esa luz que nos cobija... Tú, mi querido hijo, tú mi querido nieto, tú hombre, ¡tú eres el sueño privilegiado de la tierra!\"",
+    "opciones": [
+      "Aposición, adjetivo, participio.",
+      "Adjetivo, aposición, participio.",
+      "Adjetivo, participio, aposición.",
+      "Aposición, participio, adjetivo."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Aparecen en el siguiente orden: 'amarillo' (adjetivo que da color), 'hecho' (participio) y la frase 'tú, hombre' (que funge como una aposición que detalla al sujeto)."
+  },
+  {
+    "id": 167,
+    "materia": "Español",
+    "pregunta": "Elige los verbos que dan significado coherente al texto.\n\"La cantante estadounidense Madonna y el músico británico Elton John dejaron atrás su enemistad, después de encontrarse en un restaurante de París, Francia. El portal The Hollywood Reporter _____ cómo fue el encuentro en el que ambos cantantes _____ una reconciliación\".",
+    "opciones": [
+      "describe - logran",
+      "describiría - lograrían",
+      "describirá - lograrían",
+      "describió - lograron"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El periodista está hablando de algo que ya ocurrió ('dejaron atrás'). Para mantener la coherencia narrativa, toda la frase debe sostenerse obligatoriamente en tiempo pretérito (pasado)."
+  },
+  {
+    "id": 168,
+    "materia": "Español",
+    "pregunta": "Selecciona el ejemplo de texto publicitario donde se exageran las cualidades de un producto.",
+    "opciones": [
+      "\"Yo sin Bic, no puedo vivir\".",
+      "\"Mejor, mejora, Mejoral\".",
+      "\"Por su rico sabor casero, Tía Rosa\".",
+      "\"Con el cariño de siempre, Bimbo\"."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La hipérbole es una herramienta retórica para inflar el texto de manera colosal. Afirmar que tu vida peligra sin un simple bolígrafo plástico es la máxima exageración publicitaria."
+  },
+  {
+    "id": 169,
+    "materia": "Química",
+    "pregunta": "Son dos propiedades físicas de los gases.",
+    "opciones": [
+      "Difusibilidad y volumen propio.",
+      "Volumen definido y maleabilidad.",
+      "Volumen y forma indefinida.",
+      "Forma indefinida y maleabilidad."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Los gases son como espíritus libres en el mapa. No tienen una forma establecida ni un volumen definido; siempre se expanden y difunden hasta ocupar todo el espacio del recipiente en el que los encierres.[cite: 1]"
+  },
+  {
+    "id": 170,
+    "materia": "Química",
+    "pregunta": "¿Qué propiedades extensivas te permiten cuantificar los materiales?",
+    "opciones": [
+      "Masa y volumen.",
+      "Temperatura y densidad.",
+      "Densidad y solubilidad.",
+      "Masa y solubilidad."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Las propiedades extensivas dependen directamente de la 'cantidad' de materia que tengas. Si quieres cuantificar el inventario de un material, necesitas medir obligatoriamente cuánto pesa (Masa) y cuánto espacio 3D ocupa (Volumen).[cite: 1]"
+  },
+  {
+    "id": 171,
+    "materia": "Química",
+    "pregunta": "Identifica la propiedad que se conserva en la siguiente ecuación química.\nN2(g) + 3H2(g) -> 2NH3(g) + 92.4kJ",
+    "opciones": [
+      "Temperatura.",
+      "Masa.",
+      "Volumen.",
+      "Presión."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "¡Es la regla de oro de Lavoisier! En cualquier reacción química, la materia no se crea ni se destruye, solo se transforma. Por lo tanto, la Masa total de los reactivos siempre será idéntica a la Masa total de los productos.[cite: 1]"
+  },
+  {
+    "id": 172,
+    "materia": "Química",
+    "pregunta": "Cuando en un recipiente se ponen en contacto dos sustancias A y B se observa que ambas pierden sus propiedades originales, además de que ya no pueden separarse por medios físicos. Esto indica que A y B han formado",
+    "opciones": [
+      "un compuesto.",
+      "una mezcla heterogénea.",
+      "un elemento.",
+      "una mezcla homogénea."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Si los materiales se fusionan, pierden sus stats originales y ya no los puedes separar colándolos o evaporándolos (medios físicos), significa que crafteaste químicamente un Compuesto totalmente nuevo.[cite: 1]"
+  },
+  {
+    "id": 173,
+    "materia": "Química",
+    "pregunta": "Los electrones externos de los átomos determinan",
+    "opciones": [
+      "el tamaño del átomo.",
+      "su estado de agregación.",
+      "el número de orbitales.",
+      "su capacidad de combinación."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Imagina al átomo como un escudo de múltiples capas. Solo los electrones de la capa exterior (electrones de valencia) son los que interactúan, chocan y determinan la capacidad de combinarse con otros átomos para formar moléculas.[cite: 1]"
+  },
+  {
+    "id": 174,
+    "materia": "Química",
+    "pregunta": "El sodio Na, con número atómico 11 y número de masa 23 tiene ___ protones y ___ neutrones.",
+    "opciones": [
+      "11-12",
+      "11-23",
+      "12-11",
+      "23-11"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El Número Atómico (Z) te dice exactamente la cantidad de protones, así que hay 11. La masa (23) es la suma pesada de protones + neutrones. Por lógica matemática: 23 - 11 = 12 neutrones ocultos.[cite: 1]"
+  },
+  {
+    "id": 175,
+    "materia": "Química",
+    "pregunta": "¿Cuál es la estructura de Lewis correcta para el sodio?",
+    "opciones": [
+      "Na",
+      "Na.",
+      "Na:",
+      "*Na"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El modelo de Lewis dibuja el símbolo químico como si fuera un diseño en Pixel Art, rodeándolo solo con sus electrones externos. Como el Sodio pertenece al Grupo 1, únicamente lleva un píxel o puntito (Na.).[cite: 1]"
+  },
+  {
+    "id": 176,
+    "materia": "Química",
+    "pregunta": "El azufre tiene 6 electrones de valencia. Por lo tanto es un",
+    "opciones": [
+      "no metal.",
+      "semimetal.",
+      "metal.",
+      "metaloide."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los elementos que tienen su última capa casi llena (con 5, 6 o 7 electrones de valencia) están ubicados en la zona derecha del mapa de la Tabla Periódica. ¡Esa es la zona exclusiva de los No Metales![cite: 1]"
+  },
+  {
+    "id": 177,
+    "materia": "Química",
+    "pregunta": "Al formarse la sal cloruro de sodio (NaCl), el sodio transfiere un electrón al cloro. ¿Qué tipo de enlace presentan?",
+    "opciones": [
+      "Covalente polar.",
+      "Iónico.",
+      "Covalente no polar.",
+      "Metálico."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La palabra clave del texto es 'transfiere'. Cuando un elemento cede por completo su electrón y el otro se lo queda, se generan cargas eléctricas opuestas (+ y -) que se atraen fuertemente, formando un enlace Iónico.[cite: 1]"
+  },
+  {
+    "id": 178,
+    "materia": "Química",
+    "pregunta": "Elige la opción correspondiente a un cambio químico con base en la diferencia que hay entre las propiedades de productos y reactivos.",
+    "opciones": [
+      "Un resorte se estira cuando se jala.",
+      "Un papel se quema al exponerlo al fuego.",
+      "La sal se disuelve en agua.",
+      "El yodo se sublima al ser calentado."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Quemar papel es una reacción violenta de combustión. Su estructura atómica interna cambia por completo convirtiéndose irreversiblemente en ceniza y dióxido de carbono; es un punto de no retorno.[cite: 1]"
+  },
+  {
+    "id": 179,
+    "materia": "Química",
+    "pregunta": "¿Qué compuesto sólido se produce durante la siguiente reacción?\nCa(s) + 2H2O(l) -> Ca(OH)2(s) + H2(g)",
+    "opciones": [
+      "Ca",
+      "H2O",
+      "Ca(OH)2",
+      "H2"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Para resolver esto solo tienes que leer el código entre paréntesis de los productos (los que están a la derecha de la flecha). La '(s)' significa sólido, y el compuesto que la tiene pegada es el Ca(OH)2.[cite: 1]"
+  },
+  {
+    "id": 180,
+    "materia": "Química",
+    "pregunta": "Sustancia de sabor agrio, que cambia el papel tornasol a rojo.",
+    "opciones": [
+      "Sosa cáustica.",
+      "Limpiador para pisos.",
+      "Detergente.",
+      "Vinagre."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Tener un sabor punzante y agrio, además de teñir el papel tornasol a color rojo fuego, son los stats característicos de una sustancia Ácida. Los limpiadores son bases, así que el único ácido es el Vinagre.[cite: 1]"
+  },
+  {
+    "id": 181,
+    "materia": "Historia",
+    "pregunta": "Principales causas de la expansión de Europa durante el siglo XVI.",
+    "opciones": [
+      "Los avances científicos y tecnológicos, el abaratamiento de los productos de Asia y el fortalecimiento del feudalismo.",
+      "La caída de Constantinopla, la necesidad de nuevas rutas con Asia y la consolidación de las monarquías nacionales.",
+      "El aumento de la actividad comercial, el dominio político de la Iglesia católica y la promoción de nuevas ideas eclesiásticas.",
+      "El auge del Humanismo y la burguesía, la aparición de nuevas ideas sobre la forma de la tierra y el deseo europeo de conquista."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Cuando los turcos tomaron el control de Constantinopla, bloquearon el paso comercial terrestre. Esto obligó a los europeos a buscar 'nuevas rutas' forzosamente por mar, detonando la era de los descubrimientos.[cite: 1]"
+  },
+  {
+    "id": 182,
+    "materia": "Historia",
+    "pregunta": "Proceso qué dio como resultado el crecimiento de las ciudades en Alemania, Estados Unidos e Inglaterra durante el siglo XIX.",
+    "opciones": [
+      "Revolución Industrial.",
+      "Imperialismo.",
+      "Liberalismo económico.",
+      "Mercantilismo."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Con la Revolución Industrial nacen las máquinas de vapor y las gigantescas estructuras de herrería y producción en serie. Esto generó un boom de empleos, provocando que la gente migrara del campo a las fábricas urbanas.[cite: 1]"
+  },
+  {
+    "id": 183,
+    "materia": "Historia",
+    "pregunta": "La guerra de Trincheras es una etapa del desarrollo de la",
+    "opciones": [
+      "Primera Guerra Mundial.",
+      "guerra ruso-japonesa.",
+      "guerra franco-prusiana.",
+      "Segunda Guerra Mundial."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Lodo, enfermedades, ametralladoras y estancamiento. La Guerra de Trincheras fue la fase defensiva más brutal y estática de combate terrestre durante la Primera Guerra Mundial.[cite: 1]"
+  },
+  {
+    "id": 184,
+    "materia": "Historia",
+    "pregunta": "Relaciona cada país con la ideología de la época de entreguerras que en él surgió.\nPaís\nI. Alemania.\nII. Rusia.\nIII. Italia.\nIdeología\na. Socialismo.\nb. Fascismo.\nc. Nacional-Socialismo.",
+    "opciones": [
+      "I: a-II: b-III: c",
+      "I: b-II: c- III: a",
+      "I: c-II: b - III: a",
+      "I: c-II: a- III: b"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "En Alemania Hitler impulsó el Nacional-Socialismo (Nazismo) [I:c]. En Rusia, Lenin y Stalin consolidaron el bloque del Socialismo [II:a]. Y en Italia, Mussolini instauró la fuerza del Fascismo [III:b].[cite: 1]"
+  },
+  {
+    "id": 185,
+    "materia": "Historia",
+    "pregunta": "Suceso que da inicio a la etapa final de la Segunda Guerra Mundial, que culminó con la ocupación de Berlín y la derrota de Alemania.",
+    "opciones": [
+      "Ataque japonés a Pearl Harbor.",
+      "Ofensiva de la Unión Soviética.",
+      "Ataque nuclear a Japón.",
+      "Desembarco de Normandía."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El 'Día D' o Desembarco de Normandía fue una ofensiva táctica masiva. Los Aliados recuperaron las playas de Francia, permitiéndoles avanzar hacia el este y arrinconar definitivamente al ejército alemán.[cite: 1]"
+  },
+  {
+    "id": 186,
+    "materia": "Historia",
+    "pregunta": "Avance tecnológico que revoluciono la educación en el siglo XXI.",
+    "opciones": [
+      "televisión educativa.",
+      "pizarrón blanco.",
+      "libros impresos.",
+      "Internet."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El Internet destruyó por completo las barreras físicas. Hoy puedes acceder a simuladores interactivos, resolver cuestionarios en tiempo real y conectarte a la base de datos de conocimiento más grande del planeta.[cite: 1]"
+  },
+  {
+    "id": 187,
+    "materia": "Historia",
+    "pregunta": "Máximo tribunal de la Corona española en el virreinato de la Nueva España.",
+    "opciones": [
+      "Cabildos.",
+      "Intendencias.",
+      "Consejo de Indias.",
+      "Real Audiencia."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La Real Audiencia operaba como la Suprema Corte y el sistema de justicia top del Virreinato. Tenía tanto poder que, si el Virrey era destituido o moría, ellos asumían el control total del gobierno temporalmente.[cite: 1]"
+  },
+  {
+    "id": 188,
+    "materia": "Historia",
+    "pregunta": "La restauración de la Constitución de Cádiz en España contribuyó a la consumación de la Independencia de México porque",
+    "opciones": [
+      "la Corona española licenció las tropas de la Nueva España.",
+      "el ejército y la Iglesia temían que las nuevas cortes abolieran sus fueros.",
+      "en este contexto surgió el plan independentista de Agustín de Iturbide.",
+      "los insurgentes que habían sido encarcelados fueron liberados."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Aterrados por perder sus privilegios económicos con las nuevas leyes españolas, las altas élites conspiraron y en ese contexto apoyaron el plan definitivo de Iturbide para separar a México de España.[cite: 1]"
+  },
+  {
+    "id": 189,
+    "materia": "Historia",
+    "pregunta": "El Partido Liberal Mexicano fue un decido opositor al régimen",
+    "opciones": [
+      "maderista.",
+      "porfirista.",
+      "huertista.",
+      "juarista."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Fundado y liderado por los hermanos Flores Magón, este partido usó el poder de la prensa clandestina para enfrentarse valientemente a la dictadura y represión de Porfirio Díaz.[cite: 1]"
+  },
+  {
+    "id": 190,
+    "materia": "Historia",
+    "pregunta": "Los cristeros criticaron a Plutarco Elías Calles por la aplicación del artículo 3° constitucional, ya que",
+    "opciones": [
+      "redujo el papel social de la Iglesia al aspecto espiritual.",
+      "reconoció la amplia diversidad cultural y de creencias de los pueblos indígenas.",
+      "canceló los derechos jurídicos y de propiedad al clero.",
+      "negó a la Iglesia la posibilidad de proveer de educación pública a la sociedad."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El Artículo 3 exigía una educación estrictamente laica y controlada por el Estado. La iglesia enfureció profundamente al perder su poder sobre las escuelas, lo que detonó la violenta Guerra Cristera.[cite: 1]"
+  },
+  {
+    "id": 191,
+    "materia": "Historia",
+    "pregunta": "Son autores mexicanos del siglo XX, cuyas obras han sido de gran aporte cultural.",
+    "opciones": [
+      "Joaquin Fernández de Lizardi y Guillermo Prieto.",
+      "Francisco Zarco y Justo Sierra.",
+      "Octavio Paz y Carlos Fuentes.",
+      "Francisco Xavier Clavijero y Fernando Alva Ixtlixóchitl."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Octavio Paz (ganador del Premio Nobel) y Carlos Fuentes (pilar del boom latinoamericano) son dos de las mentes maestras más influyentes de la literatura moderna de los 1900s.[cite: 1]"
+  },
+  {
+    "id": 192,
+    "materia": "Historia",
+    "pregunta": "La desincorporación de entidades públicas es una de las características propias del",
+    "opciones": [
+      "populismo.",
+      "estado de bienestar.",
+      "neoliberalismo.",
+      "corporativismo."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El Neoliberalismo busca hacer al gobierno más pequeño, vendiendo bancos, televisoras o teléfonos que antes eran del Estado hacia el sector privado, apostando por el libre mercado y la privatización.[cite: 1]"
+  },
+  {
+    "id": 193,
+    "materia": "Matemáticas",
+    "pregunta": "Resuelve la siguiente operación\n2x [1850-(-1250)] / 5 =",
+    "opciones": [
+      "-1240",
+      "1240",
+      "990",
+      "-990"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Aplica la ley de signos en el corchete: menos por menos da más (1850 + 1250) = 3100. Multiplicas 3100 por el 2 de afuera = 6200. Por último, divides 6200 entre 5, obteniendo 1240 positivo.[cite: 1]"
+  },
+  {
+    "id": 194,
+    "materia": "Matemáticas",
+    "pregunta": "Juan decidió vender dulces y para comenzar invirtió $900 pesos, ¿cuál habrá sido su venta si su ganancia fue del 10%?",
+    "opciones": [
+      "$100",
+      "$990",
+      "$90",
+      "$1,000"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Calcula la ganancia pura: el 10% de $900 son $90 pesos. Si a la inversión base le sumas lo que ganó limpio (900 + 90), significa que al final del día la venta total en la caja registradora fue de $990.[cite: 1]"
+  },
+  {
+    "id": 195,
+    "materia": "Matemáticas",
+    "pregunta": "Una alberca se llena en 10 horas y se vacía en 6 horas. Si se llena durante 8 horas y después la vaciamos durante 1 hora. Indica qué porcentaje de la alberca está lleno.",
+    "opciones": [
+      "96.6%",
+      "85%",
+      "63.3%",
+      "90%"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Llenar 8 de 10 horas significa alcanzar el 80% (o 8/10). Vaciarla 1 de 6 horas te quita un 16.66% (o 1/6). Al restar 80% - 16.66%, el nivel del agua se queda matemáticamente al 63.3%.[cite: 1]"
+  },
+  {
+    "id": 196,
+    "materia": "Matemáticas",
+    "pregunta": "Determina el área de una caja sin tapa con base cuadrada (lado x) y una altura de 6 cm.",
+    "imagen": "img/g2_68.jpeg",
+    "opciones": [
+      "6x^2",
+      "x^2+24x",
+      "x^2+12x",
+      "2x^2+24x"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Como un arquitecto analizando los planos: El piso es un cuadrado de área x². Como la caja no tiene tapa, solo calculas las 4 paredes laterales, donde cada una mide 6x de área. Al sumar todo el material obtienes x² + 24x.[cite: 1]"
+  },
+  {
+    "id": 197,
+    "materia": "Matemáticas",
+    "pregunta": "En un Club, el costo de la membresía anual es de $900.00 y el acceso al gimnasio, $30.00 por hora. Si Pedro dispone de $1,500.00 para inscribirse y gastar en el club durante un año, ¿cuántas horas podría ejercitar en el gimnasio?",
+    "opciones": [
+      "20",
+      "13",
+      "80",
+      "50"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Resta primero el costo de entrada: $1500 - $900 = $600 pesos libres de presupuesto. Si cada hora de entrenamiento cuesta $30, divides 600 entre 30 y le alcanzará para exactamente 20 horas de ejercicio.[cite: 1]"
+  },
+  {
+    "id": 198,
+    "materia": "Matemáticas",
+    "pregunta": "Si un cuadrado mide 2x+5 en cada uno de sus lados, ¿cuál de las siguientes expresiones representa el área de dicho cuadrado?",
+    "opciones": [
+      "2x^2-20x+25",
+      "4x^2-25",
+      "4x^2+20x+25",
+      "4x^2+25"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Debes resolver el Binomio al Cuadrado (2x + 5)². La fórmula es: El cuadrado del primer término (4x²), MÁS el doble del primero por el segundo (20x), MÁS el cuadrado del segundo (25).[cite: 1]"
+  },
+  {
+    "id": 199,
+    "materia": "Matemáticas",
+    "pregunta": "Tres integrantes de una familia contribuyen anualmente con $102,000 al gasto familiar. Si sus edades son 20, 22 y 26 años y su aportación individual es directamente proporcional a su edad, determina la cantidad que aporta cada uno.",
+    "opciones": [
+      "El de 20 años aporta $30,000, el que tiene 22 años aporta $39,000 y el de 26 años aporta $33,000.",
+      "El de 20 años aporta $33,000, el que tiene 22 años aporta $30,000 y el de 26 años aporta $39,000.",
+      "El de 20 años aporta $30,000, el que tiene 22 años aporta $33,000 y el de 26 años aporta $39,000.",
+      "El de 20 años aporta $39,000, el que tiene 22 años aporta $33,000 y el de 26 años aporta $30,000."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Suma las edades para sacar un bloque total: 20+22+26 = 68. Divide el dinero ($102,000) entre esos 68 puntos = 1,500. Ahora multiplica ese factor de 1,500 por cada edad para obtener: 30k, 33k y 39k, manteniendo el orden proporcional.[cite: 1]"
+  },
+  {
+    "id": 200,
+    "materia": "Matemáticas",
+    "pregunta": "Si el costo de un kilo de carne en 2010 fue de $120 y en 2015 el incremento al precio fue de 250%, ¿cuál es el precio de un kilo de carne en 2015?",
+    "opciones": [
+      "$150",
+      "$420",
+      "$300",
+      "$450"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "¡Atención a la trampa de comprensión lectora de la guía! El ejercicio pide directamente el cálculo del porcentaje bruto. El 250% matemáticamente se calcula multiplicando (120 x 2.50), lo cual arroja un resultado seco de $300.[cite: 1]"
+  },
+  {
+    "id": 201,
+    "materia": "Matemáticas",
+    "pregunta": "¿Cuál es el espacio muestral del proceso aleatorio de lanzar dos monedas al aire, si C=cara y R=cruz?",
+    "opciones": [
+      "{(C,C), (R,R)}",
+      "{(C,C), (C,R), (R,C), (R,R)}",
+      "{(C,R), (R,C)}",
+      "{(C,C), (C,R), (R,R)}"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El 'Espacio Muestral' no es más que la lista completa del 'loot' o todas las combinaciones posibles. Si tiras 2 monedas hay 4 futuros estadísticos: Cara/Cara, Cara/Cruz, Cruz/Cara o Cruz/Cruz.[cite: 1]"
+  },
+  {
+    "id": 202,
+    "materia": "Matemáticas",
+    "pregunta": "Se tienen tres segmentos de medidas: a=9, b=7 y c=12 Las condiciones que deben cumplir esas medidas para formar un triángulo son",
+    "opciones": [
+      "a+b>c, a+c<b, b+c>a",
+      "a+b>c. a+c>b, b+c>a",
+      "a+b<c a+c>b, b+c>a",
+      "a+b<c, a+c<b b+c>a"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Es el Teorema de la Desigualdad Triangular: Para que tres lados físicos se puedan cerrar y ensamblar en un triángulo perfecto, la suma de cualquier pareja SIEMPRE debe ser estrictamente MAYOR (>) que el tercer lado restante.[cite: 1]"
+  },
+  {
+    "id": 203,
+    "materia": "Matemáticas",
+    "pregunta": "El diámetro de la rueda de una bicicleta es de 63 cm. Indica la distancia que recorre la rueda en una vuelta completa. Usa 3.14 para π.",
+    "opciones": [
+      "6,231.33 cm",
+      "197.82 cm",
+      "98.91 cm",
+      "12,462.66 cm"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La distancia que abarca una sola vuelta equivale al perímetro total de la llanta. La fórmula es simple: Multiplicar Pi (3.14) por el Diámetro (63). El cálculo arroja 197.82 cm de asfalto recorrido.[cite: 1]"
+  },
+  {
+    "id": 204,
+    "materia": "Matemáticas",
+    "pregunta": "Indica el área de la parte sombreada de la siguiente figura.",
+    "imagen": "img/g2_76.jpeg",
+    "opciones": [
+      "8cm²",
+      "6 cm²",
+      "10 cm²",
+      "27 cm²"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Deducción lógica: Si el ancho total de la base inferior mide 10 y el rectángulo blanco abarca 8 cm, la base del triángulo gris restante es 2. Su altura es de 6. Área = (Base x Altura) / 2 = (2 x 6) / 2 = 6 cm².[cite: 1]"
+  },
+  {
+    "id": 205,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Las dos primeras dificultades que se presentan al leer un libro son",
+    "opciones": [
+      "la iluminación inadecuada y los distractores del entorno.",
+      "la postura incómoda y la extensión del texto.",
+      "el contenido poco ameno y la falta de concentración.",
+      "la estructura de las líneas y el tamaño de la letra."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Si te remontas al inicio del texto, la principal queja es puramente física y visual: la pesadez de tener que estar 'encorvado' (postura) frente a un bloque que tiene 'doscientas páginas' de longitud.[cite: 1]"
+  },
+  {
+    "id": 206,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El autor ejemplifica sus ideas con",
+    "opciones": [
+      "relatos de amigos.",
+      "vivencias de familiares.",
+      "experiencias personales.",
+      "fragmentos literarios."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El ensayo está narrado íntimamente en primera persona. Usa sus propios recuerdos de juventud, como el tedio de leer la Ilíada en la escuela o encontrarse un libro al azar en una banca.[cite: 1]"
+  },
+  {
+    "id": 207,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El autor se identifica con José Agustín porque",
+    "opciones": [
+      "lo conoce hace muchos años.",
+      "fueron a la misma escuela.",
+      "les gustan los mismos autores.",
+      "usan el mismo lenguaje."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La conexión lector-escritor se detonó instantáneamente cuando el autor leyó las páginas y sintió que ese autor 'hablaba como yo y vivía en mi mundo', conectando a través de un código y estilo en común.[cite: 1]"
+  },
+  {
+    "id": 208,
+    "materia": "Habilidad Verbal",
+    "pregunta": "La puerta equivocada a la que se refiere el autor es",
+    "opciones": [
+      "la edad del lector.",
+      "el lugar elegido para leer.",
+      "la extensión del texto.",
+      "la obra obligada."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Forzar a un adolescente inexperto a leer épicas de la literatura clásica solo para pasar una materia escolar (obra obligada) genera rechazo, y es descrito como la peor puerta de entrada al hábito lector.[cite: 1]"
+  },
+  {
+    "id": 209,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El enunciado\nLa tierra que no había sido labrada, producía mieses y el campo sin ser cultivado se cubría de grávidas espigas...\nSe refiere a que la tierra",
+    "opciones": [
+      "producía abundantes frutos sin ser labrada.",
+      "producía abundantes alimentos al ser labrada.",
+      "producía abundantes manjares al ser labrada.",
+      "producía malos frutos sin ser labrada."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Literalmente el texto narra cómo la tierra antigua 'dropeaba' recursos, frutos y cosechas de forma automática, sin que el humano tuviera que usar esfuerzo ni herramientas para labrarla. ¡Pura abundancia![cite: 1]"
+  },
+  {
+    "id": 210,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Se puede concluir que la lectura habla de la _____ del hombre y la _____ de la naturaleza.",
+    "opciones": [
+      "perfección - bondad",
+      "discordia - abundancia",
+      "imperfección - explotación",
+      "justicia - explotación"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El texto contrasta cómo el humano se fue llenando de crímenes y traiciones (imperfección o maldad) al mismo tiempo que aprendió a herir y rasgar la tierra para robar sus tesoros (explotación).[cite: 1]"
+  },
+  {
+    "id": 211,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Los hombres en la Edad de Hierro vivían en",
+    "opciones": [
+      "un ambiente de paz y trabajando con esfuerzo la tierra.",
+      "refugios y disfrutando con esfuerzo la tierra.",
+      "desacuerdos y trabajando con poco esfuerzo la tierra.",
+      "desacuerdos y explotando en demasía la tierra."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "En la Edad de Hierro nacen la traición, la guerra, y la gente exprime las entrañas del mapa buscando metales preciosos. ¡Puro PVP, desacuerdos constantes y sobreexplotación extrema de recursos naturales![cite: 1]"
+  },
+  {
+    "id": 212,
+    "materia": "Habilidad Verbal",
+    "pregunta": "POSTRE - COMIDA",
+    "opciones": [
+      "nudo - cuento",
+      "epílogo - libro",
+      "prólogo - novela",
+      "índice - revista"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Es una analogía de 'Cierre - Totalidad'. El postre es el cierre que concluye una comida entera, de la misma forma que un epílogo es el cierre final que concluye un libro.[cite: 1]"
+  },
+  {
+    "id": 213,
+    "materia": "Habilidad Verbal",
+    "pregunta": "CANAS - VEJEZ",
+    "opciones": [
+      "niño - belleza",
+      "humo - fuego",
+      "nubes - hielo",
+      "adulto - sabiduría"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Relación de 'Efecto Visual a Causa'. Las canas son una señal física evidente de que hay vejez. Es idéntico a ver humo: el humo es la señal visual irrefutable de que hay fuego de fondo.[cite: 1]"
+  },
+  {
+    "id": 214,
+    "materia": "Habilidad Verbal",
+    "pregunta": "PROFESOR - ESCUELA",
+    "opciones": [
+      "biólogo - naturaleza",
+      "ingeniero - laboratorio",
+      "enfermera - hospital",
+      "licenciado - industria"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Sujeto y su 'Lugar de Trabajo' oficial. Un profesor ejerce su profesión dentro de una escuela, tal como una enfermera realiza su trabajo y curaciones dentro de un hospital.[cite: 1]"
+  },
+  {
+    "id": 215,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Selecciona la opción que sustituya con un ANTÓNIMO la palabra en mayúsculas.\nOCIO",
+    "opciones": [
+      "Reposo",
+      "Diversión",
+      "Actividad",
+      "Distracción"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El ocio significa tiempo libre o reposo. Como te piden el antónimo (el significado opuesto), la respuesta correcta es estar en plena Actividad sin descansar.[cite: 1]"
+  },
+  {
+    "id": 216,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El tejón es un mamífero carnicero CORRIENTE en Europa.",
+    "opciones": [
+      "Exótico",
+      "Común",
+      "Rechazado",
+      "Despreciable"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En este contexto, 'corriente' significa que es un animal común o que se ve todos los días (loot gris). Lo opuesto a un animal común es toparse con uno increíblemente raro o Exótico.[cite: 1]"
+  },
+  {
+    "id": 217,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Programas de FOMENTO y protección ambiental.",
+    "opciones": [
+      "Moderación.",
+      "Estimulo.",
+      "Detención.",
+      "Empuje."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Fomento significa apoyar, estimular, o darle 'buff' a una iniciativa. Si buscas el antónimo (lo contrario a ayudar a que algo avance), tienes que aplicarle un bloqueo, es decir, una Detención.[cite: 1]"
+  },
+  {
+    "id": 218,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Ante la prensa, el actor se JACTÓ de ganar el premio Óscar.",
+    "opciones": [
+      "felicitó",
+      "aplaudió",
+      "reservó",
+      "vanaglorió"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Jactarse es alardear o presumir por haber logrado algo importante. El sinónimo perfecto, más elegante y con el mismo nivel de vanidad en español es 'vanagloriarse'.[cite: 1]"
+  },
+  {
+    "id": 219,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Los juicios que emitió eran DISPARATADOS.",
+    "opciones": [
+      "Engañosos",
+      "Absurdos",
+      "Atrevidos",
+      "Estúpidos"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Un disparate es una idea loca o un 'glitch' de lógica que no tiene sentido. Decir cosas disparatadas es el sinónimo exacto de decir cosas Absurdas.[cite: 1]"
+  },
+  {
+    "id": 220,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Elige la opción que contenga un par de sinónimos.",
+    "opciones": [
+      "Súplica - ruego",
+      "Maldad - bondad",
+      "Paupérrimo - triste",
+      "Compañía - soledad"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los sinónimos son palabras distintas con el mismo significado. Una súplica desesperada es exactamente lo mismo que hacer un ruego; ambas buscan pedir un favor.[cite: 1]"
+  },
+  {
+    "id": 221,
+    "materia": "Geografía",
+    "pregunta": "Es una reducción a escala de la Tierra, en donde la red de meridianos y paralelos no se deforma.",
+    "opciones": [
+      "Plano.",
+      "Croquis.",
+      "Globo terráqueo.",
+      "Mapa."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Cualquier mapa plano en 2D estirará o deformará los continentes de los polos. El Globo Terráqueo es la única esfera 3D que mantiene las distancias y meridianos reales sin distorsiones.[cite: 1]"
+  },
+  {
+    "id": 222,
+    "materia": "Geografía",
+    "pregunta": "El GPS es útil para _____ objetos en la superficie terrestre.",
+    "opciones": [
+      "fotografiar",
+      "medir",
+      "analizar",
+      "localizar"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "GPS significa Global Positioning System. Funciona como el minimapa de tu celular, recibiendo señales de satélites en el espacio exclusivamente para Localizar tus coordenadas exactas.[cite: 1]"
+  },
+  {
+    "id": 223,
+    "materia": "Geografía",
+    "pregunta": "Las masas de agua y aire se desplazan en el hemisferio norte en sentido de las manecillas del reloj, mientras que en el hemisferio sur en contra; esto se debe al movimiento de",
+    "opciones": [
+      "nutación.",
+      "rotación.",
+      "traslación.",
+      "precesión."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Este es el Efecto Coriolis. Como la Tierra es una esfera girando súper rápido sobre su propio eje (movimiento de Rotación), arrastra y arremolina los vientos y huracanes.[cite: 1]"
+  },
+  {
+    "id": 224,
+    "materia": "Geografía",
+    "pregunta": "La presencia de volcanes nos demuestra que en el interior del planeta hay",
+    "opciones": [
+      "erosión.",
+      "intemperismo.",
+      "actividad endógena.",
+      "sedimentación de materiales."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Los volcanes son las válvulas de escape. Demuestran que debajo de nuestra superficie el planeta está caliente y lleno de presión tectónica viva (actividad endógena).[cite: 1]"
+  },
+  {
+    "id": 225,
+    "materia": "Geografía",
+    "pregunta": "Factores que influyen en la distribución de los climas.",
+    "opciones": [
+      "Latitud y altitud.",
+      "Temperatura y presión.",
+      "Presión y latitud.",
+      "Temperatura y viento."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El clima se define principalmente por dos zonas de confort: a qué distancia te encuentres de la línea cálida del Ecuador (Latitud) y qué tan alto subas en las montañas (Altitud).[cite: 1]"
+  },
+  {
+    "id": 226,
+    "materia": "Geografía",
+    "pregunta": "Condiciones generadas por los asentamientos humanos irregulares en las áreas urbanas.",
+    "opciones": [
+      "Exceso de fuentes de trabajo, drenaje ineficiente y riesgo de derrumbes.",
+      "Calles sin pavimentar, drenaje ineficiente y riesgo de derrumbes.",
+      "Calles sin pavimentar, escuela cercanas y riesgo de derrumbes.",
+      "Exceso de fuentes de trabajo, drenaje ineficiente y escuela cercanas."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Cuando las zonas crecen en cerros sin planificación (asentamientos irregulares), carecen de calles, no tienen drenaje seguro y sufren el peligro constante de derrumbes con las lluvias.[cite: 1]"
+  },
+  {
+    "id": 227,
+    "materia": "Geografía",
+    "pregunta": "Región de México importante por la explotación de petróleo.",
+    "opciones": [
+      "Península de Yucatán.",
+      "Llanura costera del Golfo.",
+      "Sierra Madre del Sur.",
+      "Depresión del Balsas."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La principal mina de 'oro negro' en México está orientada al Este. La zona costera del Golfo de México (Campeche, Tabasco y Veracruz) es la líder en hidrocarburos.[cite: 1]"
+  },
+  {
+    "id": 228,
+    "materia": "Geografía",
+    "pregunta": "Puertos turísticos de México ubicados en las costas del Océano Pacífico.",
+    "opciones": [
+      "Acapulco y Veracruz.",
+      "Mazatlán y Huatulco.",
+      "Veracruz y Cancún.",
+      "Mazatlán y Cancún."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Mazatlán (Sinaloa) y Huatulco (Oaxaca) son puertos hermosos orientados directamente hacia el Océano Pacífico. Cancún y Veracruz, en cambio, miran hacia el Mar Caribe y el Golfo de México.[cite: 1]"
+  },
+  {
+    "id": 229,
+    "materia": "Geografía",
+    "pregunta": "Región que concentra la economía más grande del mundo y sus miembros presentan menos desigualdades.",
+    "opciones": [
+      "TLCAN.",
+      "Unión Europea.",
+      "Mercosur.",
+      "TTP."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La Unión Europea es un bloque de potencias del primer mundo que comparten fronteras libres y moneda (el Euro), manteniendo la mejor calidad de vida y menores desigualdades globales.[cite: 1]"
+  },
+  {
+    "id": 230,
+    "materia": "Geografía",
+    "pregunta": "Continente donde se encuentran la Alhambra y el Partenón, monumentos considerados Patrimonio de la Humanidad.",
+    "opciones": [
+      "África.",
+      "América.",
+      "Asia.",
+      "Europa."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El épico Partenón se encuentra en Atenas (Grecia) y la espectacular Alhambra está en Granada (España). Ambos son tesoros turísticos del continente Europeo.[cite: 1]"
+  },
+  {
+    "id": 231,
+    "materia": "Geografía",
+    "pregunta": "La multiculturalidad se define como _____ entre los miembros de una comunidad, mientras que en la interculturalidad se manifiesta la conducta de _____",
+    "opciones": [
+      "respeto - intransigencia",
+      "tolerancia - abuso",
+      "indiferencia - tolerancia",
+      "respeto - tolerancia"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La multiculturalidad pide 'respeto' cuando varias culturas conviven en un mismo mapa. La interculturalidad va un paso más allá exigiendo 'tolerancia' y diálogo para mezclarse.[cite: 1]"
+  },
+  {
+    "id": 232,
+    "materia": "Geografía",
+    "pregunta": "País europeo donde se prevé a futuro la separación de la región de Cataluña.",
+    "opciones": [
+      "Italia",
+      "Portugal",
+      "Francia.",
+      "España."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Cataluña (la región a la que pertenece la famosa ciudad de Barcelona) tiene un fuerte movimiento independentista que intenta separarse formal y políticamente del país de España.[cite: 1]"
+  },
+  {
+    "id": 233,
+    "materia": "Física",
+    "pregunta": "Un auto deportivo lleva una velocidad constante de 180 Km/h, considerando que parte de reposo, ¿qué gráfica relaciona la distancia que recorre con respecto al tiempo?",
+    "opciones": [
+      "img/g2_105a.jpeg",
+      "img/g2_105b.jpeg",
+      "img/g2_105c.jpeg",
+      "img/g2_105d.jpeg"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "MRU (Movimiento Rectilíneo Uniforme). Si el auto no frena ni acelera más, la distancia recorrida irá subiendo de forma perfectamente proporcional. Visualmente, será una línea recta en diagonal ascendente.[cite: 1]"
+  },
+  {
+    "id": 234,
+    "materia": "Física",
+    "pregunta": "Un objeto sin una fuerza interna que lo impulse, posee una aceleración constante de 9.8 m/s² al momento de partir desde el reposo. Al cabo de cierto tiempo alcanza su velocidad máxima antes colisionar. ¿Qué tipo de movimiento se ha descrito?",
+    "opciones": [
+      "En caída libre.",
+      "Rectilineo uniforme.",
+      "Circular uniforme.",
+      "Armónico simple."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La pista clave aquí es '9.8 m/s²'. Esa cifra representa el tirón exacto de la Gravedad en nuestro planeta. Si aceleras hacia abajo solo impulsado por la gravedad, estás en Caída Libre.[cite: 1]"
+  },
+  {
+    "id": 235,
+    "materia": "Física",
+    "pregunta": "Un niño sentado en un carro deslizador en reposo cae hacia atrás cuando alguien jala el móvil hacia delante; esto sucede a consecuencia de la",
+    "opciones": [
+      "segunda Ley de Newton.",
+      "primera ley de Newton.",
+      "Ley de gravitación universal.",
+      "tercera ley de Newton."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "¡La Ley de la Inercia! (Primera Ley de Newton). Todo cuerpo en reposo quiere permanecer en reposo. Cuando el carrito se mueve de golpe, el cuerpo del niño se resiste y se va hacia atrás.[cite: 1]"
+  },
+  {
+    "id": 236,
+    "materia": "Física",
+    "pregunta": "El objeto A pesa el doble que el objeto B. ¿Cuál es la relación entre las masas de los dos objetos?",
+    "opciones": [
+      "Las masas de A y B tienen el mismo valor.",
+      "La masa de A es el doble que la masa de B.",
+      "La masa de A es un cuarto de la masa de B.",
+      "La masa de B es el cuadrado de la masa de A."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El Peso (W) se calcula como Masa x Gravedad. Si ambos objetos están en el mismo planeta, comparten la misma gravedad. Así que si el objeto A pesa el doble, forzosamente tiene el doble de Masa.[cite: 1]"
+  },
+  {
+    "id": 237,
+    "materia": "Física",
+    "pregunta": "El polo norte magnético de la Tierra atrae al polo",
+    "opciones": [
+      "sur magnético de la aguja de la brújula.",
+      "negativo eléctrico de la aguja de la brújula.",
+      "neutro de la aguja de la brújula.",
+      "positivo eléctrico de la aguja de la brújula."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La regla universal de los imanes es que los polos opuestos siempre se atraen. Por tanto, el Polo Norte gigante de la Tierra jalará al pequeño polo Sur magnético de la brújula.[cite: 1]"
+  },
+  {
+    "id": 238,
+    "materia": "Física",
+    "pregunta": "Con base en los postulados de la teoría cinética, un gas ideal debe",
+    "opciones": [
+      "estar a temperatura ambiente y con presión de una atmósfera.",
+      "permanecer en condiciones normales de presión y temperatura.",
+      "tener muy baja densidad sin interacción entre sus partículas.",
+      "permanecer con temperatura constante durante un proceso."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Un 'gas ideal' es un invento teórico de la física. Imagina un gas perfecto donde los píxeles (partículas) están súper separados (baja densidad) y rebotan elásticamente sin jamás atraerse entre ellos.[cite: 1]"
+  },
+  {
+    "id": 239,
+    "materia": "Física",
+    "pregunta": "La presión de gas es causada por",
+    "opciones": [
+      "el calentamiento de las moléculas de gas.",
+      "las moléculas de gas que golpean las paredes de un recipiente.",
+      "las moléculas de gas que golpean otras moléculas de gas.",
+      "las moléculas de gas que reaccionan con otras moléculas de gas."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Imagina mil canicas encerradas en un tanque, rebotando enojadas en todas direcciones. Ese martilleo e impacto constante contra las paredes del envase es lo que la física llama 'Presión'.[cite: 1]"
+  },
+  {
+    "id": 240,
+    "materia": "Física",
+    "pregunta": "Un gato hidráulico es accionado con una fuerza de 100 N sobre el pistón de entrada. Si levanta un peso de 10 000 N y el área de salida es de 25 cm², ¿de cuánto debe ser el área de entrada?",
+    "opciones": [
+      "2.50 cm²",
+      "0.25 cm²",
+      "4.0 cm²",
+      "0.40 cm²"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "¡Magia del Principio de Pascal! Es puramente proporcional. La fuerza que sale (10,000) es 100 veces más grande que la fuerza que entró (100). Por tanto, el área de entrada debe ser 100 veces más chica (25 / 100 = 0.25).[cite: 1]"
+  },
+  {
+    "id": 241,
+    "materia": "Física",
+    "pregunta": "De acuerdo con su capacidad para conducir corriente eléctrica, los metales son",
+    "opciones": [
+      "buenos conductores.",
+      "superconductores.",
+      "semi-conductores.",
+      "malos conductores."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El cobre, el oro o el aluminio están llenos de electrones libres listos para viajar. Por eso los metales siempre serán los reyes y buenos conductores en cualquier circuito eléctrico que armes.[cite: 1]"
+  },
+  {
+    "id": 242,
+    "materia": "Física",
+    "pregunta": "La distancia entre dos crestas sucesivas es la",
+    "opciones": [
+      "longitud de onda.",
+      "frecuencia",
+      "energía",
+      "amplitud"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La 'cresta' es la punta más alta de una onda (como una montaña rusa). Si mides la distancia exacta desde el pico de una cresta hasta el pico de la siguiente, a eso se le llama Longitud de Onda.[cite: 1]"
+  },
+  {
+    "id": 243,
+    "materia": "Física",
+    "pregunta": "Un tipo de radiación electromagnética que se utiliza en las cirugías para saturar heridas, son los rayos",
+    "opciones": [
+      "alfa.",
+      "beta.",
+      "luminosos.",
+      "láser."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El rayo láser concentra tanto la energía electromagnética en un solo punto, que los doctores lo utilizan hoy como un poderoso bisturí térmico que cauteriza las heridas al instante.[cite: 1]"
+  },
+  {
+    "id": 244,
+    "materia": "Física",
+    "pregunta": "La descomposición por refracción de la luz solar en el espectro visible debido a la atmósfera terrestre genera el fenómeno natural llamado",
+    "opciones": [
+      "espejismo.",
+      "corona solar.",
+      "arcoiris.",
+      "halo solar."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Cuando la luz blanca del sol atraviesa las gotas de lluvia, las gotas funcionan como prismas que 'rompen' y descomponen esa luz en los 7 colores de su espectro visible, formando el arcoíris.[cite: 1]"
+  },
+  {
+    "id": 245,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Un médico receta un medicamento sin conocer sus efectos y provoca que el paciente empeore. En el caso anterior, una limitante en la decisión responsable del médico es",
+    "opciones": [
+      "el hábito.",
+      "la suposición.",
+      "la ignorancia.",
+      "el sentido común."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Dar una receta química o buff negativo sin saber (o sin molestarse en investigar) qué consecuencias traerá, es actuar ciegamente basado en la ignorancia. ¡Una falta médica letal![cite: 1]"
+  },
+  {
+    "id": 246,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "¿Qué tipo de valor está contenido en el siguiente enunciado?\nEl trabajo dignifica a las personas.",
+    "opciones": [
+      "Laboral.",
+      "Moral.",
+      "Económico.",
+      "Político."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Esta frase no habla de cuánto cobras ni del horario. Habla de que el esfuerzo te nutre el espíritu, te da respeto propio y te hace un mejor individuo, lo cual es un valor puramente Moral.[cite: 1]"
+  },
+  {
+    "id": 247,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "La identidad _____ está compuesta de varios aspectos como nuestros valores y los valores del grupo al que pertenecemos.",
+    "opciones": [
+      "física",
+      "personal",
+      "ideológica",
+      "de género"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La Identidad Personal es tu perfil de jugador único. Se forja mezclando tu propio núcleo de pensamiento con la historia, cultura y valores del clan o familia que te rodea.[cite: 1]"
+  },
+  {
+    "id": 248,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Modificar el tipo música que escucha, la forma de vestir y la ideología son ejemplos de cambios _____ en la adolescencia.",
+    "opciones": [
+      "sociales",
+      "económicos",
+      "afectivos",
+      "éticos"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Tu música favorita y tu apariencia son las banderas que usas para comunicarte con otros clanes. Alterar esos rasgos durante la adolescencia responde a cambios de integración Sociales.[cite: 1]"
+  },
+  {
+    "id": 249,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Una persona acaricia a otra sin su consentimiento y la obliga a ver películas pornográficas. Esto es un ejemplo de",
+    "opciones": [
+      "abuso sexual.",
+      "violación.",
+      "maltrato.",
+      "acoso sexual."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En el marco penal y cívico, cualquier contacto físico o tocamientos de índole sexual realizados forzosamente y sin el consentimiento de la víctima están catalogados como Abuso Sexual.[cite: 1]"
+  },
+  {
+    "id": 250,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "María cumplió 18 años de edad y acudió al Registro Nacional de Ciudadanos para obtener su credencial para votar. Este es un ejemplo de responsabilidad ciudadana en la",
+    "opciones": [
+      "cultura.",
+      "democracia.",
+      "economía.",
+      "participación."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Al sacar su credencial electoral, María acaba de desbloquear su poder político. Usarlo para participar y elegir líderes es el motor principal que hace rodar la Democracia del país.[cite: 1]"
+  },
+  {
+    "id": 251,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Elemento del Estado integrado por personas que buscan el bien común y respetan los derechos humanos.",
+    "opciones": [
+      "Territorio.",
+      "Población.",
+      "Gobierno.",
+      "Autoridad."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Un Estado o Nación se forma con tres bloques: el mapa o Territorio, las leyes del Gobierno, y la Población, que es el equipo de personas humanas que juegan y viven ahí día a día.[cite: 1]"
+  },
+  {
+    "id": 252,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Cuando los vecinos se reúnen en una asamblea o reunión comunitaria en la que expresan sus ideas a un dirigente, nos referimos a un hecho de participación",
+    "opciones": [
+      "social",
+      "ciudadana.",
+      "solidaria.",
+      "convencional."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Juntarse en comunidad con tus propios vecinos para dialogar sobre los problemas de la calle y exigirle respuestas a la delegación, es un ejemplo excelente de Participación Social.[cite: 1]"
+  },
+  {
+    "id": 253,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Una característica del voto democrático es que",
+    "opciones": [
+      "ninguna persona debe estar sujeta a algún tipo de presión o amenaza para votar.",
+      "todos los votantes pueden identificarse con credencial de elector.",
+      "algunos individuos pueden participar en eventos de apoyo a un candidato.",
+      "cualquier persona tiene la facultad de resolver problemas durante la instalación de la casilla."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La regla número uno del voto es que sea Libre y Secreto. Si existe presión, extorsión o amenazas por detrás de la urna, el voto queda corrupto y la democracia se pierde.[cite: 1]"
+  },
+  {
+    "id": 254,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Los medios de comunicación cumplen con una función social cuando promueven",
+    "opciones": [
+      "el consumo de alcohol porque es socialmente aceptado.",
+      "el consumo de productos milagrosos para adelgazar.",
+      "la venta de cigarros a los adolescentes.",
+      "el uso del condón para prevenir embarazos de adolescentes."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La radio o internet cumplen su verdadera 'Función Social' cuando dejan la publicidad tóxica de lado y usan su alcance masivo para educar y proteger la vida de los adolescentes.[cite: 1]"
+  },
+  {
+    "id": 255,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Cuidar las áreas verdes en tu comunidad, levantar las heces de los perros, separar la basura y realizar actividades al aire libre, son acciones relacionadas con",
+    "opciones": [
+      "lograr una mejor calidad de vida.",
+      "desarrollar conciencia moral.",
+      "pertenecer a grupos de cuidado del ambiente.",
+      "responder a la influencia social."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Evitar la contaminación y recoger basura en los parques evita plagas, olores e infecciones. Vivir en un ambiente limpio es el camino directo para lograr una mejor Calidad de Vida colectiva.[cite: 1]"
+  },
+  {
+    "id": 256,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Rocío quiere ir de fiesta con sus amigos, pero sus padres no le han dado permiso porque ha salido muy mal en la escuela y su habitación está sucia. De acuerdo con el tema de resolución y manejo de conflictos, ¿cuáles son los pasos que debe seguir Rocío si quiere conseguir el permiso?\nI. Escuchar con calma todo lo que tienen que decir sus padres.\nII. Mantenerse en su postura e insistir para conseguir el permiso.\nIII. Acordar una solución a sus padres donde las dos partes ganen.\nIV. Evitar el tema e irse de fiesta de cualquier forma.\nV. Limpiar la habitación y estudiar más para obtener el permiso en un futuro.",
+    "opciones": [
+      "I y V",
+      "III y V",
+      "II y IV",
+      "I y III"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Para ganar un debate como profesional y evitar la guerra en casa, el manual marca dos reglas: (I) Escuchar activamente a tu oponente, y (III) Dialogar para llegar a un acuerdo donde ambos salgan beneficiados.[cite: 1]"
+  },
+  {
+    "id": 257,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Indica los números que continúan en la sucesión 8, 7.1, 6.02, 5.003, 4.0004, ___",
+    "opciones": [
+      "3.00005 y 2.000006",
+      "3.0005 y 2.00006",
+      "3.000005 y 2.0000006",
+      "3.000005 y 2.00006"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Visualmente, el número entero decrece en 1, el último decimal aumenta en 1 y se inserta un cero extra en medio. ¡Sigue la secuencia visual paso a paso![cite: 2]"
+  },
+  {
+    "id": 258,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Si las primeras cuatro figuras de la serie son: ¿Cuántos puntos tendrá la que ocupa la octava posición?",
+    "imagen": "img/g3_2.jpeg",
+    "opciones": [
+      "42",
+      "72",
+      "90",
+      "56"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Al avanzar de nivel, la base y altura de los puntos aumentan siguiendo una progresión. Calculando para el nivel 8, el total es 72 puntos.[cite: 2]"
+  },
+  {
+    "id": 259,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Identifica el número que complete la sucesión. 5, 1, 4, 7, 2, 6, 10, 3, ___",
+    "opciones": [
+      "4",
+      "6",
+      "7",
+      "8"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Esta sucesión mezcla tres secuencias distintas que se intercalan. Si sigues el salto correcto que corresponde a esa posición (4, 6, 8), el siguiente número es 8.[cite: 2]"
+  },
+  {
+    "id": 260,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Encuentra los términos que faltan en la siguiente sucesión. 5, 12, 16, 8, 27, 4, ___",
+    "opciones": [
+      "49, 0",
+      "38, 49",
+      "38, 0",
+      "49, 38"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Sucesión doble cruzada: la primera suma 11 en cada paso (5, 16, 27, 38) y la segunda resta 4 en cada paso (12, 8, 4, 0).[cite: 2]"
+  },
+  {
+    "id": 261,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es el término que falta en la siguiente sucesión? 10, -2, -14, -26, ___",
+    "opciones": [
+      "-38",
+      "14",
+      "-50",
+      "-37"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Cada término disminuye restándole exactamente 12 al anterior. Al restar 12 a -26, obtienes -38.[cite: 2]"
+  },
+  {
+    "id": 262,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué figura continúa la serie?",
+    "imagen": "img/g3_6.jpeg",
+    "opciones": [
+      "img/g3_6a.jpeg",
+      "img/g3_6b.jpeg",
+      "img/g3_6c.jpeg",
+      "img/g3_6d.jpeg"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Analiza la rotación de los elementos; el patrón visual salta en sentido de las manecillas del reloj para su siguiente fase.[cite: 2]"
+  },
+  {
+    "id": 263,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Identifica el tercer reloj de la siguiente serie.",
+    "imagen": "img/g3_7.jpeg",
+    "opciones": [
+      "img/g3_7a.jpeg",
+      "img/g3_7b.jpeg",
+      "img/g3_7c.jpeg",
+      "img/g3_7d.jpeg"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Observa las manecillas del reloj: hay un avance de tiempo constante entre la primera y la segunda imagen que debe aplicarse para descubrir la tercera.[cite: 2]"
+  },
+  {
+    "id": 264,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué figura sigue en la serie?",
+    "imagen": "img/g3_8.jpeg",
+    "opciones": [
+      "img/g3_8a.jpeg",
+      "img/g3_8b.jpeg",
+      "img/g3_8c.jpeg",
+      "img/g3_8d.jpeg"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La figura realiza una rotación y un cambio en sus elementos internos que se repite secuencialmente.[cite: 2]"
+  },
+  {
+    "id": 265,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Observa la siguiente figura en perspectiva. ¿Cómo se ve si se gira 180°?",
+    "imagen": "img/g3_9.jpeg",
+    "opciones": [
+      "img/g3_9a.jpeg",
+      "img/g3_9b.jpeg",
+      "img/g3_9c.jpeg",
+      "img/g3_9d.jpeg"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Girar un objeto 180 grados significa ponerlo completamente de cabeza o verlo desde su lado opuesto exacto.[cite: 2]"
+  },
+  {
+    "id": 266,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Observa cuidadosamente el siguiente patrón y selecciona la figura que puede formarse a partir de él.",
+    "imagen": "img/g3_10.jpeg",
+    "opciones": [
+      "img/g3_10a.jpeg",
+      "img/g3_10b.jpeg",
+      "img/g3_10c.jpeg",
+      "img/g3_10d.jpeg"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "En el armado mental, busca las caras que obligatoriamente deben quedar opuestas y descarta las opciones donde aparezcan juntas.[cite: 2]"
+  },
+  {
+    "id": 267,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Si se permite cualquier tipo de giro, ¿con cuál figura se completa un cuadrado?",
+    "imagen": "img/g3_11.jpeg",
+    "opciones": [
+      "img/g3_11a.jpeg",
+      "img/g3_11b.jpeg",
+      "img/g3_11c.jpeg",
+      "img/g3_11d.jpeg"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Imagina la figura como un bloque de un puzzle. Identifica el espacio en negativo que encaja perfectamente para rellenar el cuadrado.[cite: 2]"
+  },
+  {
+    "id": 268,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Si el eje de simetría de la siguiente imagen es la línea punteada, ¿qué imagen se proyecta al otro lado de ese eje?",
+    "imagen": "img/g3_12.jpeg",
+    "opciones": [
+      "img/g3_12a.jpeg",
+      "img/g3_12b.jpeg",
+      "img/g3_12c.jpeg",
+      "img/g3_12d.jpeg"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La simetría axial funciona como un espejo perfecto. Lo que está cerca de la línea se queda cerca, invirtiendo la dirección de la imagen original.[cite: 2]"
+  },
+  {
+    "id": 269,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuántos cubos tiene la siguiente figura?",
+    "imagen": "img/g3_13.jpeg",
+    "opciones": [
+      "19",
+      "17",
+      "18",
+      "24"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Debes sumar los bloques visibles en los ejes X, Y y Z, sin olvidar contar el cubo central que sostiene a todas las ramas juntas desde el centro.[cite: 2]"
+  },
+  {
+    "id": 270,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es el número que falta?",
+    "imagen": "img/g3_14.jpeg",
+    "opciones": [
+      "12",
+      "14",
+      "15",
+      "16"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Existe una relación matemática multiplicando y dividiendo los números en secuencia o buscando el reflejo en la rueda. La lógica dictamina que el valor faltante es 15.[cite: 2]"
+  },
+  {
+    "id": 271,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Un jardinero tiene que podar un campo de futbol. Si lo hace a razón de 2/3 por día, ¿en cuántos días terminará?",
+    "opciones": [
+      "2",
+      "2.5",
+      "3",
+      "1.5"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Para completar un entero (1), divides 1 entre la fracción 2/3. El resultado es 3/2, lo que equivale exactamente a 1.5 días de trabajo.[cite: 2]"
+  },
+  {
+    "id": 272,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Cinco personas ganaron un premio de $6,300.00 y se les repartió de la siguiente manera: al primer ganador se le otorgó el triple de dinero que a los otros cuatro, quienes recibieron cantidades iguales. ¿Cuánto le tocó al primer ganador?",
+    "opciones": [
+      "$900.00",
+      "$1,260.00",
+      "$2,700.00",
+      "$3,780.00"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Plantea la ecuación: x + x + x + x + 3x = 6300. Sumando da 7x = 6300, por lo que x = 900. Como el primero ganó el triple (3x), se llevó 2,700 pesos.[cite: 2]"
+  },
+  {
+    "id": 273,
+    "materia": "Biología",
+    "pregunta": "Carlos Darwin establece que la selección natural se produce cuando",
+    "opciones": [
+      "los individuos están mejor adaptados al medio.",
+      "las características se mantienen a lo largo de la vida de los organismos.",
+      "el medio influye para el cambio de estructuras de los seres vivos.",
+      "los organismos se encuentran en un medio agradable para ellos."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La evolución premia al más apto. Los individuos que nacen con 'stats' mejor adaptados a su entorno natural son los que sobreviven y heredan sus ventajas a la próxima generación.[cite: 2]"
+  },
+  {
+    "id": 274,
+    "materia": "Biología",
+    "pregunta": "Conocer y conservar la biodiversidad de nuestro país tiene como consecuencia la",
+    "opciones": [
+      "regulación de sus recursos.",
+      "explotación inmoderada.",
+      "tala inmoderada.",
+      "extinción de especies."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Administrar inteligentemente la flora y fauna permite crear una regulación sana de los recursos de forma equilibrada, sin agotarlos por completo del ecosistema.[cite: 2]"
+  },
+  {
+    "id": 275,
+    "materia": "Biología",
+    "pregunta": "La principal razón para preservar el ambiente es",
+    "opciones": [
+      "generar ciclos biogeoquímicos controlados.",
+      "prevenir desastres naturales.",
+      "conservar el flujo de materia y energía en los ecosistemas.",
+      "generar redes tróficas controladas y bancos de germoplasmas."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "En la naturaleza, todo está perfectamente conectado. Preservar el ambiente asegura que el ciclo vital de energía y materia no se rompa entre los diversos seres vivos.[cite: 2]"
+  },
+  {
+    "id": 276,
+    "materia": "Biología",
+    "pregunta": "El estudio de los microorganismos y el uso de vacunas que nos permiten mejorar nuestra calidad de vida son ejemplos de",
+    "opciones": [
+      "conocimiento empírico y tecnológico.",
+      "ciencias duras y análisis.",
+      "conocimiento científico y tecnológico.",
+      "ciencia pura y observación."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Requiere investigación biológica profunda (Conocimiento Científico) y las herramientas avanzadas para poder fabricarlo en los laboratorios de forma segura (Tecnológico).[cite: 2]"
+  },
+  {
+    "id": 277,
+    "materia": "Biología",
+    "pregunta": "Los helechos convierten la energía lumínica del sol en energía química de las moléculas de azúcar, a través de la",
+    "opciones": [
+      "fermentación.",
+      "respiración.",
+      "fotosíntesis.",
+      "excreción."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Como todas las plantas, los helechos actúan como pequeños paneles solares mediante el proceso celular de la fotosíntesis, usando la luz para fabricar su propia energía y alimento.[cite: 2]"
+  },
+  {
+    "id": 278,
+    "materia": "Biología",
+    "pregunta": "La importancia biológica de la respiración celular radica en que en ella se",
+    "opciones": [
+      "sintetizan moléculas de ATP.",
+      "degradan nucleótidos.",
+      "polimerizan polipéptidos.",
+      "liberan enzimas."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La respiración a nivel celular recarga o sintetiza las moléculas de ATP, que son literalmente las baterías recargables microscópicas que usan tus células para poder funcionar a diario.[cite: 2]"
+  },
+  {
+    "id": 279,
+    "materia": "Biología",
+    "pregunta": "Las bacterias que habitan en aguas termales por su tipo de nutrición se consideran",
+    "opciones": [
+      "hematófagas.",
+      "autótrofas.",
+      "heterótrofas.",
+      "saprófagas."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Al no tener acceso a la luz solar profunda o nutrientes externos, estas bacterias sintetizan su propio alimento utilizando únicamente los compuestos químicos del agua caliente, volviéndose autótrofas.[cite: 2]"
+  },
+  {
+    "id": 280,
+    "materia": "Biología",
+    "pregunta": "Resultado de la excesiva acumulación de dióxido de carbono en la troposfera.",
+    "opciones": [
+      "Rompimiento de la capa de ozono.",
+      "Inversión térmica.",
+      "Efecto invernadero.",
+      "Lluvia ácida."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El CO2 atrapa el calor del sol dentro del planeta impidiendo que escape al espacio, tal como si la Tierra estuviera cubierta por una manta de cristal, generando así el Efecto Invernadero.[cite: 2]"
+  },
+  {
+    "id": 281,
+    "materia": "Biología",
+    "pregunta": "Medidas que ayudan a evitar contraer enfermedades respiratorias producidas por bacterias y virus suspendidos en el aire.\nI. Protegerse de los cambios de temperatura.\nII. Cubrirse la boca al toser y estornudar.\nIII. Lavarse las manos después de ir al baño.\nIV. Evitar ingerir alimentos sin antes desinfectarlos.\nV. Evitar lugares contaminados con polvo.",
+    "opciones": [
+      "II, III y IV",
+      "II, IV y V",
+      "I, II y IV",
+      "I, II y V"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Para defender activamente tu sistema respiratorio del aire contaminado o los virus, las tácticas clave son abrigarse (I), bloquear estornudos (II) y evadir nubes de polvo y ambientes con gérmenes (V).[cite: 2]"
+  },
+  {
+    "id": 282,
+    "materia": "Biología",
+    "pregunta": "Nombre del proceso biológico que permite a los organismos pluricelulares incrementar su biomasa a través del tiempo.",
+    "opciones": [
+      "Cariocinesis.",
+      "Mitosis.",
+      "Meiosis.",
+      "Citocinesis."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La mitosis es la multiplicación base del sistema; permite que las células de tu cuerpo hagan copias idénticas y exactas de sí mismas, haciendo que el individuo crezca y aumente su masa general.[cite: 2]"
+  },
+  {
+    "id": 283,
+    "materia": "Biología",
+    "pregunta": "Algunos métodos anticonceptivos como ___ son de mayor riesgo para la salud porque provocan aumento de peso, hipertensión y trastornos vasculares.",
+    "opciones": [
+      "las pastillas",
+      "los espermicidas",
+      "el diafragma",
+      "el dispositivo intrauterino"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Las pastillas anticonceptivas alteran directamente las hormonas de manera química, lo que puede desencadenar efectos adversos considerables en algunas personas, tales como el aumento de presión y peso.[cite: 2]"
+  },
+  {
+    "id": 284,
+    "materia": "Biología",
+    "pregunta": "Es la estructura subcelular responsable de la transmisión de la información genética.",
+    "opciones": [
+      "Cromosoma.",
+      "Ribosoma.",
+      "Nucléolo.",
+      "Núcleo."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El cromosoma empaqueta y transporta cuidadosamente todo el ADN. Es el medio de almacenamiento principal que transfiere toda la información genética heredada de una generación a la siguiente.[cite: 2]"
+  },
+  {
+    "id": 285,
+    "materia": "Español",
+    "pregunta": "¿Cuál es la finalidad de las fichas bibliográficas?",
+    "opciones": [
+      "Identificar una fuente consultada.",
+      "Resumir el contenido de un artículo.",
+      "Enumerar las ideas secundarias de un texto.",
+      "Organizar las ideas principales de un documento."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Su objetivo principal y fundacional en cualquier investigación es archivar los datos clave (autor, título de obra, año de publicación) para localizar y reconocer rápidamente de dónde sacaste la información.[cite: 2]"
+  },
+  {
+    "id": 286,
+    "materia": "Biología",
+    "pregunta": "Observa la siguiente tabla y selecciona la afirmación verdadera.",
+    "imagen": "img/g3_30.jpeg",
+    "opciones": [
+      "El ozono tiene dos átomos por unidad.",
+      "El ozono es de color azul pálido e inodoro.",
+      "El oxígeno es muy oxidante.",
+      "El oxígeno es incoloro e inodoro."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Pura lectura y filtrado de datos: si miras atentamente la fila correspondiente al Oxígeno en la tabla, coincide perfectamente con que es de color 'incoloro' y no tiene olor ('inodoro').[cite: 2]"
+  },
+  {
+    "id": 287,
+    "materia": "Español",
+    "pregunta": "¿Mediante qué recurso se desarrollan las ideas en el siguiente párrafo?\nPara facilitar su estudio, los especialistas dividen la prehistoria en tres grandes etapas: el Paleolítico, el Mesolítico y el Neolítico. El periodo Paleolítico abarca desde la aparición de los primeros homínidos hace unos cuatro millones de años hasta el descubrimiento de la agricultura...",
+    "opciones": [
+      "Repeticiones.",
+      "Explicaciones.",
+      "Paráfrasis.",
+      "Ejemplos."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El texto se encarga metódicamente de desglosar y definir en qué consiste exactamente cada etapa cronológica; este es un modelo narrativo clásico cimentado en Explicaciones expositivas.[cite: 2]"
+  },
+  {
+    "id": 288,
+    "materia": "Español",
+    "pregunta": "Selecciona el enunciado donde hay concordancia entre sujeto y predicado.",
+    "opciones": [
+      "Los funcionarios Probkin y Svistkov, besó cada uno a su mujer.",
+      "Las esposas de Probkin y de Svistkov se colocó al otro lado del cordón de guardias.",
+      "Las esposas de Probkin y de Svistkov atravesaron el cordón formado por los guardias.",
+      "La esposa de Probkin se ruborizaron por la amabilidad del guardia."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Para estar gramaticalmente correcto, al hablar de 'Las esposas' (sujeto en plural), la acción del verbo debe concordar forzosamente en plural ('atravesaron').[cite: 2]"
+  },
+  {
+    "id": 289,
+    "materia": "Español",
+    "pregunta": "Los nexos luego, después, primero, antes, hacen referencia a",
+    "opciones": [
+      "tiempo.",
+      "lugar.",
+      "importancia.",
+      "perspectiva."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Estas palabras funcionan como un cronómetro dentro del texto; te permiten organizar estructuralmente la línea temporal (Tiempo) en la que ocurren los eventos para darle sentido al relato.[cite: 2]"
+  },
+  {
+    "id": 290,
+    "materia": "Español",
+    "pregunta": "Lee el siguiente texto.\nLos problemas de sobrepeso y obesidad son problemas de todos los mexicanos, pero fundamentalmente de los hombres y mujeres pobres que viven en las ciudades (en el campo, entre los pobres, son más bajos los índices de sobrepeso, aunque también resultan alarmantes)...\nLas palabras subrayadas son nexos que",
+    "opciones": [
+      "encadenan argumentos.",
+      "jerarquizan información.",
+      "presentan una causa.",
+      "introducen una consecuencia."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los conectores 'pero' y 'aunque' son herramientas adversativas. Toman una idea original y la conectan o encadenan con un argumento en contraste que complementa el análisis.[cite: 2]"
+  },
+  {
+    "id": 291,
+    "materia": "Español",
+    "pregunta": "Las palabras subrayadas en el siguiente fragmento tienen como propósito\nDurante mucho tiempo el ser humano ha tenido sed de saber qué son los sueños. Mi teoría, en primer lugar, considera que son una realidad alterna, similar a la del reflejo en el espejo; también pueden ser considerados una forma en la que nuestros cerebros logran vivir otras realidades; finalmente, como muchos artistas han demostrado, son fruto de mentes creativas... dime ¿qué soñaste hoy?",
+    "opciones": [
+      "indicar el modo en que surgen las ideas.",
+      "establecer los lugares de los eventos.",
+      "dar un orden a las ideas.",
+      "señalar el tiempo en el párrafo."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El uso de conectores lógicos como 'en primer lugar', 'también' y 'finalmente', permite enumerar el flujo de ideas en un orden claro y progresivo para que no se pierda la lectura.[cite: 2]"
+  },
+  {
+    "id": 292,
+    "materia": "Español",
+    "pregunta": "Elige la opción en la que se usan adecuadamente las comas y el punto y seguido.",
+    "opciones": [
+      "Él tenía, en su poca experiencia, un mundo por conocer, le gustaba quitar a los ricos. Para dar a los pobres que no podían ni comer, un pan.",
+      "La muchacha era huérfana pero, tenía dos hermanastras terribles sus nombres eran Anastasia y Griselda. Ellas eran mandonas, caprichosas y muy flojas.",
+      "Su nombre era Bella y había sido, condenada, a vivir con una maldición que le impedía acercarse a cualquier rueca. A riesgo de quedarse en un largo sueño.",
+      "Ella, la más querida, tenía catorce años. Su nombre era Blanca Nieves y amaba a las criaturas del bosque: conejos, ciervos, venados y aves."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El punto y seguido marca una separación natural de ideas lógicas completas, y las comas están perfectamente colocadas para aislar frases y hacer un listado correcto (conejos, ciervos, venados).[cite: 2]"
+  },
+  {
+    "id": 293,
+    "materia": "Español",
+    "pregunta": "Elige el párrafo que se ha escrito con lenguaje periodístico.",
+    "opciones": [
+      "Próximos al 10 de mayo, las autoridades han emitido un comunicado para advertir a dueños de florerías, establecidos y ambulantes, que se impondrán sanciones para aquellos comerciantes que decidan aumentar el precio de las flores...",
+      "Mientras contemplo tu delicado rostro, resulta inevitable recordar una rosa: de ella posees su belleza, su aroma, sus colores y su suavidad...",
+      "La composición de una flor es la siguiente: gineceo o pistilo, androceo o estambres; el primer elemento es la parte femenina; el segundo la masculina...",
+      "Durante el mes de mayo, su florería favorita, Perfume de Gardenias, en honor a las mamás mexicanas, ofrecerá un 30% de descuento en arreglos..."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El formato del texto periodístico busca informar un suceso o advertencia a la comunidad sin adornos poéticos literarios ni intenciones puramente comerciales. Va directo al hecho.[cite: 2]"
+  },
+  {
+    "id": 294,
+    "materia": "Español",
+    "pregunta": "Lee el siguiente texto.\n\"El nuevo libro de Dan Brown, Infierno, estará en librerías del país el próximo 15 de mayo, según adelantó la editorial y agregó que se imprimirán un millón de ejemplares en español...\"\nElige cuál es el propósito del texto anterior.",
+    "opciones": [
+      "Comunicar fecha y horario de la presentación del libro.",
+      "Hacer un historial literario de Dan Brown.",
+      "Informar acerca de una novedad editorial.",
+      "Analizar la evolución literaria de Dan Brown."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Se trata de una nota cultural o de entretenimiento diseñada específicamente por la prensa para comunicar e informar al público general sobre el inminente lanzamiento de una novedad de lectura.[cite: 2]"
+  },
+  {
+    "id": 295,
+    "materia": "Español",
+    "pregunta": "En la frase subrayada \"Este filme es importante para la cultura latina porque se hacen pocas películas tan reales y fuertes como ésta\", se advierte que la intención de quien habla es",
+    "opciones": [
+      "describir un acontecimiento.",
+      "narrar un evento.",
+      "justificar una acción.",
+      "dar una opinión."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Al afirmar categóricamente que el filme 'es importante' y darle los adjetivos de 'real y fuerte', el autor no está dando datos objetivos o neutrales; está aportando su propio juicio y opinión personal.[cite: 2]"
+  },
+  {
+    "id": 296,
+    "materia": "Español",
+    "pregunta": "La estrategia del publicista se centra en _____ las cualidades del producto.",
+    "imagen":"img/g3_40.jpeg",
+    "opciones": [
+      "exponer",
+      "testimoniar objetivamente",
+      "presentar puntualmente",
+      "exagerar"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Prometer sin reservas que un labial permanecerá absolutamente 'INTACTO' por 24 horas y declarar que 'NUNCA NINGÚN OTRO' ha resistido tanto, es utilizar la máxima exageración publicitaria.[cite: 2]"
+  },
+  {
+    "id": 297,
+    "materia": "Química",
+    "pregunta": "Si representamos a la molécula de agua (H2O) mediante esferas de plastilina unidas por palillos, esta representación es",
+    "opciones": [
+      "un modelo científico.",
+      "una interpretación objetiva.",
+      "la formulación de una teoría.",
+      "una relación hipotética."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En las ciencias exactas, un 'modelo' es cualquier representación física, gráfica o en 3D que nos ayuda a entender y visualizar un fenómeno o estructura microscópica que nuestros ojos no pueden ver a simple vista.[cite: 2]"
+  },
+  {
+    "id": 298,
+    "materia": "Química",
+    "pregunta": "Propiedades que permiten cuantificar los materiales.",
+    "opciones": [
+      "Masa y volumen.",
+      "Peso y solubilidad.",
+      "Longitud y tiempo.",
+      "Densidad y temperatura."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Las propiedades extensivas son las que dependen puramente de la 'cantidad' de materia. Para saber CUÁNTO tienes de un material, mides cuánto pesa (Masa) y cuánto espacio 3D abarca (Volumen).[cite: 2]"
+  },
+  {
+    "id": 299,
+    "materia": "Química",
+    "pregunta": "En la síntesis del agua\n2H2(g) + O2(g) -> 2H2O(l)\nsi se hacen reaccionar 4 g de hidrógeno y 32 g de oxígeno, ¿cuántos g de agua se obtendrán?",
+    "opciones": [
+      "36",
+      "32",
+      "20",
+      "18"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "¡Aplica la Ley de la Conservación de la Masa! La materia no se crea ni se destruye. Si en la balanza sumas los ingredientes o reactivos (4g + 32g), el producto resultante tiene que pesar exactamente los mismos 36 gramos.[cite: 2]"
+  },
+  {
+    "id": 300,
+    "materia": "Química",
+    "pregunta": "Se le llama _____ al material formado, con una distribución uniforme que conserva sus propiedades originales.",
+    "opciones": [
+      "compuesto",
+      "elemento",
+      "mezcla homogénea",
+      "mezcla heterogénea"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Si los materiales conservan sus stats originales (es decir, no hay reacción química nueva) y tienen una 'distribución uniforme' donde no ves las partes que lo componen a simple vista (como el agua con azúcar), tienes una Mezcla Homogénea.[cite: 2]"
+  },
+  {
+    "id": 301,
+    "materia": "Química",
+    "pregunta": "Partículas subatómicas responsables de que ocurran las reacciones químicas.",
+    "opciones": [
+      "Neutrones.",
+      "Electrones internos.",
+      "Protones.",
+      "Electrones externos."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Las batallas químicas ocurren siempre en los escudos y bordes del átomo. Los electrones externos (o electrones de valencia) son los únicos que chocan, se comparten o se roban para formar enlaces.[cite: 2]"
+  },
+  {
+    "id": 302,
+    "materia": "Química",
+    "pregunta": "Si un átomo tiene 20 electrones y 40 neutrones, significa que tiene _____ protones.",
+    "opciones": [
+      "60",
+      "10",
+      "20",
+      "40"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El estado base de un átomo es siempre neutro. Esto significa que sus cargas eléctricas están en equilibrio: el número de electrones (-) debe ser exactamente igual al número de protones (+). Así que tiene 20.[cite: 2]"
+  },
+  {
+    "id": 303,
+    "materia": "Química",
+    "pregunta": "En la fórmula del H2O existen 2 _____ de hidrógeno y 1 _____ de oxígeno.",
+    "opciones": [
+      "moléculas - átomo",
+      "átomos - átomo",
+      "moléculas - molécula",
+      "átomos - molécula"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La fórmula química de un compuesto te detalla sus bloques de construcción individuales (átomos). El subíndice 2 pertenece a la H (2 átomos de Hidrógeno), y como la O no tiene número, se entiende que es 1 átomo de Oxígeno.[cite: 2]"
+  },
+  {
+    "id": 304,
+    "materia": "Química",
+    "pregunta": "Los elementos que tienden a perder electrones, son dúctiles y maleables se consideran",
+    "opciones": [
+      "metálicos.",
+      "semimetales.",
+      "halógenos.",
+      "no metales."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La ductilidad (capacidad de estirarse y hacerse cables o hilos) y la maleabilidad (capacidad de aplastarse y hacerse láminas) son las propiedades estelares exclusivas de los metales.[cite: 2]"
+  },
+  {
+    "id": 305,
+    "materia": "Química",
+    "pregunta": "Un compuesto iónico se caracteriza por las siguientes propiedades.",
+    "opciones": [
+      "Alta temperatura de fusión y maleable.",
+      "Sólido a temperatura ambiente y dúctil.",
+      "Baja temperatura de fusión y en estado sólido aislante eléctrico.",
+      "Alta temperatura de fusión y en estado líquido conductor de la corriente eléctrica."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Piensa en la sal de mesa (compuesto iónico puro). Es una roca muy dura de derretir (alta fusión) pero si logras volverla líquida o disolverla en agua, sus cargas iónicas flotantes la vuelven un conductor eléctrico perfecto.[cite: 2]"
+  },
+  {
+    "id": 306,
+    "materia": "Química",
+    "pregunta": "En la ecuación química\nNaOH(ac) + HNO3(ac) -> NaNO3(ac) + H2O(l)\nlos reactivos son",
+    "opciones": [
+      "NaNO3 y H2O",
+      "HNO3 y NaNO3",
+      "NaOH y NaNO3",
+      "NaOH y HNO3"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Regla universal de química: todo lo que escribes a la IZQUIERDA de la flecha son los ingredientes que van a interactuar, llamados formalmente 'Reactivos'. Todo lo de la derecha son los Productos.[cite: 2]"
+  },
+  {
+    "id": 307,
+    "materia": "Química",
+    "pregunta": "Con base en el Sistema Internacional de unidades (SI), la cantidad de sustancia se asocia con el",
+    "opciones": [
+      "mol.",
+      "kilogramo.",
+      "gramo.",
+      "litro."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En el mundo químico microscópico, es imposible contar partículas una por una. Para medir una 'cantidad de sustancia' estandarizada a nivel subatómico se utiliza la unidad del 'mol' (el famoso y gigante número de Avogadro).[cite: 2]"
+  },
+  {
+    "id": 308,
+    "materia": "Química",
+    "pregunta": "En la siguiente ecuación química\nFe + H2SO4 -> FeSO4 + H2\nse oxida el _____ y se reduce el _____",
+    "opciones": [
+      "oxígeno - hidrógeno",
+      "hidrógeno - azufre",
+      "hierro - hidrógeno",
+      "oxígeno - hierro"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El Hierro (Fe) pasa de estar solo en el mapa (carga 0) a mezclarse formando un compuesto (carga +2), perdiendo electrones y por lo tanto, se oxida. El Hidrógeno pasa de +1 a quedarse solo (0), por lo que se reduce.[cite: 2]"
+  },
+  {
+    "id": 309,
+    "materia": "Historia",
+    "pregunta": "Indica la letra que señala el lugar al que arribó Cristóbal Colón en su primer viaje a América.",
+    "imagen": "img/g3_53.jpeg",
+    "opciones": [
+      "I",
+      "II",
+      "III",
+      "IV"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Colón no desembarcó inicialmente en territorio continental (como México o Florida). Arribó a las islas del archipiélago de las Bahamas, en el Mar Caribe (zona señalada como II), llegando a la isla que bautizó como San Salvador.[cite: 2]"
+  },
+  {
+    "id": 310,
+    "materia": "Historia",
+    "pregunta": "La guerra de los siete años en el siglo XVIII entre Francia e Inglaterra se considera como causa externa de la Independencia",
+    "opciones": [
+      "de la Nueva España.",
+      "del Virreinato de Río de la Plata.",
+      "de las Indias.",
+      "de las Trece Colonias."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Para financiar esa larga guerra contra Francia, la Corona de Inglaterra sangró con excesivos impuestos económicos a las Trece Colonias americanas. Eso detonó su furia y posterior guerra de Independencia (Estados Unidos).[cite: 2]"
+  },
+  {
+    "id": 311,
+    "materia": "Historia",
+    "pregunta": "La Primera Guerra Mundial se desarrolló en tres fases. Relaciona el suceso con la fase a la que pertenece.\nFase\nI. Guerra de Movimientos (1914).\nII. Guerra de Posiciones (1915-1916).\nIII. Final de la Guerra (1917-1918).\nSuceso\na. Ejecución del Plan Schlieffen.\nb. Batallas realizadas en Verdún y el Somme.\nc. Desarrollo de la guerra de Trincheras.\nd. Entrada de Estados Unidos de Norteamérica a la confrontación.\ne. Batalla del Marne y paralización del avance alemán en Francia.",
+    "opciones": [
+      "I: b - II: d - III: e",
+      "I: a - II: e - III: c",
+      "I: c - II: a - III: b",
+      "I: a - II: c - III: d"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El inicio violento (Movimientos) arranca con la invasión relámpago del Plan Schlieffen alemán [I: a]. El estancamiento sangriento (Posiciones) es literalmente la famosa Guerra de Trincheras [II: c]. El final de la guerra se detona cuando USA entra con tropas frescas [III: d].[cite: 2]"
+  },
+  {
+    "id": 312,
+    "materia": "Historia",
+    "pregunta": "Inventos de la segunda mitad del siglo XX que contribuyeron al desarrollo de la humanidad y esperanza de vida.",
+    "opciones": [
+      "Automóvil eléctrico, plásticos, vacuna contra la rabia y lavadora.",
+      "Computadoras, aspirina, acceso a Internet y satélites artificiales.",
+      "Penicilina, trasplantes de órganos, refrigerador y píldora anticonceptiva.",
+      "Inyecciones de insulina, televisión a color, rayos láser y ondas de radio."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Los trasplantes de órganos complejos, la estandarización mundial de los antibióticos y el desarrollo de la píldora anticonceptiva (años 50 y 60) son revoluciones médicas y sociales clásicas y precisas de la segunda mitad del siglo XX.[cite: 2]"
+  },
+  {
+    "id": 313,
+    "materia": "Historia",
+    "pregunta": "La flota estadounidense en Pearl Harbor fue atacada por los",
+    "opciones": [
+      "japoneses.",
+      "chinos.",
+      "coreanos.",
+      "rusos."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El brutal ataque aéreo sorpresa a la base naval de Pearl Harbor en Hawai, ocurrido en diciembre de 1941, fue orquestado táctica y secretamente por el Imperio de Japón.[cite: 2]"
+  },
+  {
+    "id": 314,
+    "materia": "Historia",
+    "pregunta": "Manera en que ha impactado la globalización en el mundo.",
+    "opciones": [
+      "Cumplimiento del Protocolo de Kioto.",
+      "Aumento de los gases contaminantes.",
+      "Reducción de la tala de árboles.",
+      "Producción masiva de autos eléctricos."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La globalización comercializó e industrializó agresivamente gran parte del planeta para producir a bajo costo en fábricas gigantes (como en Asia). Su impacto colateral directo fue el aumento dramático de las emisiones y gases contaminantes a la atmósfera.[cite: 2]"
+  },
+  {
+    "id": 315,
+    "materia": "Historia",
+    "pregunta": "Ordena de mayor a menor importancia los cargos políticos que integraban la estructura del gobierno virreinal durante el siglo XVIII.\nI. Rey.\nII. Cabildo.\nIII. Virrey.\nIV. Autoridad indígena.",
+    "opciones": [
+      "I, III, II y IV",
+      "I, II, III y IV",
+      "II, III, IV y I",
+      "III, I, IV y II"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El jefe máximo siempre residía en España: El Rey (I). Su mano derecha en el Nuevo Mundo era el Virrey (III). Las ciudades las gobernaba el Cabildo o municipio (II) y al fondo de la pirámide de poder nativa estaba la Autoridad indígena (IV).[cite: 2]"
+  },
+  {
+    "id": 316,
+    "materia": "Historia",
+    "pregunta": "Una de las características del Absolutismo Ilustrado de los borbones consistía en que el poder",
+    "opciones": [
+      "lo disponía el pueblo.",
+      "recaía en el rey.",
+      "era propio de la nobleza.",
+      "lo detentaba el clero."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La frase de la época era 'Todo para el pueblo, pero sin el pueblo'. Los monarcas borbones modernizaron sus imperios con educación e ideas de la Ilustración, pero sin soltar ni un ápice del poder total, que seguía recayendo 100% en el Rey.[cite: 2]"
+  },
+  {
+    "id": 317,
+    "materia": "Historia",
+    "pregunta": "Proceso de modernización de México en donde se dan los primeros pasos hacia la centralización del Estado y el fortalecimiento del poder ejecutivo.",
+    "opciones": [
+      "Las Leyes de Reforma.",
+      "La venta de los bienes de la iglesia.",
+      "La formación del congreso constituyente.",
+      "El imperio de Maximiliano de Habsburgo."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Impulsadas por Benito Juárez, las Leyes de Reforma arrebataron funciones exclusivas que tenía la iglesia (como registrar nacimientos, matrimonios y controlar cementerios), transfiriéndolas legalmente y fortaleciendo a las instituciones del Estado Laico Mexicano.[cite: 2]"
+  },
+  {
+    "id": 318,
+    "materia": "Historia",
+    "pregunta": "Las afirmaciones siguientes\nI. Aplicó el plan sexenal como presidente de México.\nII. Nacionalizó ferrocarriles y petróleos.\nIII. Unificó al movimiento campesino en la CNC.\ncorresponden a medidas adoptadas por",
+    "opciones": [
+      "Abelardo L. Rodríguez.",
+      "Plutarco Elías Calles.",
+      "Lázaro Cárdenas.",
+      "Miguel Alemán."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El General Lázaro Cárdenas es un hito de la historia del siglo XX en México: a él se le debe la heroica Expropiación Petrolera (1938), el apoyo a la clase campesina y ser el primer presidente en concluir exitosamente el periodo de seis años (Plan Sexenal).[cite: 2]"
+  },
+  {
+    "id": 319,
+    "materia": "Historia",
+    "pregunta": "Octavio Paz y Juan Rulfo, cuya obra es de gran aporte cultural, son autores mexicanos del siglo",
+    "opciones": [
+      "XXI.",
+      "XIX.",
+      "XX.",
+      "XVIII."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Octavio Paz publicó su obra magna 'El laberinto de la soledad' en 1950, y Juan Rulfo inmortalizó a la literatura mexicana con 'Pedro Páramo' en 1955. Ambos vivieron y crearon sus textos en pleno Siglo XX.[cite: 2]"
+  },
+  {
+    "id": 320,
+    "materia": "Historia",
+    "pregunta": "Uno de los objetivos del Tratado de Libre Comercio con América del Norte es",
+    "opciones": [
+      "acrecentar los impuestos comerciales.",
+      "limitar las exportaciones e inversiones.",
+      "aumentar las oportunidades de inversión.",
+      "fomentar la mano de obra de migrantes."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El TLCAN (hoy T-MEC) buscaba exactamente lo contrario a los impuestos: su misión era quitar fronteras arancelarias para facilitar la apertura de fábricas y Aumentar agresivamente las oportunidades de Inversión corporativa entre Canadá, USA y México.[cite: 2]"
+  },
+  {
+    "id": 321,
+    "materia": "Matemáticas",
+    "pregunta": "120 es el 75% de",
+    "opciones": [
+      "200",
+      "180",
+      "160",
+      "140"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Si aplicas una simple Regla de Tres: si 120 equivale a tu 75%, entonces multiplicas (120 x 100) y lo divides entre 75. El resultado perfecto es 160.[cite: 2]"
+  },
+  {
+    "id": 322,
+    "materia": "Matemáticas",
+    "pregunta": "La raíz cuadrada de 3.61 es",
+    "opciones": [
+      "1.805",
+      "1.9",
+      "7.22",
+      "13.0321"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "¡Truco de Pixelote! Ignora el punto decimal por un segundo e imagina el número 361 entero. La raíz cuadrada de 361 es 19 (porque 19 x 19 = 361). Al devolverle su punto decimal al centro, te da exactamente 1.9.[cite: 2]"
+  },
+  {
+    "id": 323,
+    "materia": "Matemáticas",
+    "pregunta": "Karla compró kilo y medio de carne el domingo. Ese día utilizó la tercera parte, y el lunes la cuarta porción de lo que sobró. ¿Qué cantidad de carne tendrá el martes?",
+    "opciones": [
+      "1/2",
+      "5/4",
+      "1/4",
+      "3/4"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Kilo y medio equivale a 1.5 kg (o 6/4 en fracciones). El domingo usó una tercera parte (0.5), así que le sobró exactamente 1 kg. El lunes usa una cuarta parte de ese kilo restante. Para el martes, por pura deducción lógica, le quedan 3/4 de kilo guardados.[cite: 2]"
+  },
+  {
+    "id": 324,
+    "materia": "Matemáticas",
+    "pregunta": "El cuádruplo de un número disminuido en dos unidades es equivalente al triple del mismo número aumentado en una unidad. Si x representa ese número, ¿cuál de las siguientes ecuaciones permite conocer su valor?",
+    "opciones": [
+      "4x-2=3x+1",
+      "4(x-2)=3(x+1)",
+      "4(x-2)=3x+1",
+      "4x-2=3(x+1)"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Hay que traducir de español al idioma del álgebra. 'El cuádruplo de un número' se escribe como 4x. 'Disminuido en dos' es -2. 'Es equivalente' significa =. 'Al triple del número' es 3x, 'aumentado en uno' es +1. Juntando todo queda: 4x - 2 = 3x + 1.[cite: 2]"
+  },
+  {
+    "id": 325,
+    "materia": "Matemáticas",
+    "pregunta": "En un triángulo equilátero, uno de sus lados mide 3x - 9, ¿cuál de las siguientes expresiones representa el perímetro de dicho triángulo?",
+    "opciones": [
+      "9x^2-54x+81",
+      "9x-27",
+      "9x-9",
+      "9x^2-81"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La regla de oro de un triángulo equilátero es que sus 3 lados miden exactamente lo mismo. Para sacar el perímetro total de la figura, solo tienes que multiplicar el valor del lado (3x - 9) por 3. El resultado algebraico es 9x - 27.[cite: 2]"
+  },
+  {
+    "id": 326,
+    "materia": "Matemáticas",
+    "pregunta": "Dulce tiene el doble de la edad de Silvia. Si en 6 años Dulce sumará 12 años más que Silvia, ¿cuál es la edad actual de Silvia?",
+    "opciones": [
+      "18 años.",
+      "12 años.",
+      "24 años.",
+      "30 años."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Plantea la ecuación inicial: D = 2S. En el futuro (D + 6) será igual a la edad de Silvia en el futuro más su ventaja: (S + 6) + 12. Sustituyendo a Dulce te queda: 2S + 6 = S + 18. Al despejar la S en la balanza, obtienes 12. ¡Silvia tiene 12 años y Dulce 24![cite: 2]"
+  },
+  {
+    "id": 327,
+    "materia": "Matemáticas",
+    "pregunta": "La solución del sistema de ecuaciones\n2x - 3y = 3\n-x + 2y = -6\nes",
+    "opciones": [
+      "x = 12, y = -9",
+      "x = -12, y = 9",
+      "x = 12, y = 9",
+      "x = -12, y = -9"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Si multiplicas toda la segunda ecuación por 2 para eliminar la 'X', te queda: -2x + 4y = -12. Si sumas esto a la primera ecuación (2x - 3y = 3), las X se anulan y te resulta directamente que Y = -9. El único inciso que dice que la Y vale -9 negativo es la respuesta D.[cite: 2]"
+  },
+  {
+    "id": 328,
+    "materia": "Matemáticas",
+    "pregunta": "La siguiente tabla presenta los resultados de una prueba de matemáticas. Suponiendo que se evaluaron a 40 alumnos, ¿cuántos obtuvieron 8 de calificación?",
+"imagen":"img/g3_72.jpeg",    
+    "opciones": [
+      "18",
+      "10",
+      "16",
+      "12"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La frecuencia relativa es simplemente un porcentaje disfrazado en decimales. Un 0.25 equivale a decir el 25% de los alumnos. El 25% (es decir, la cuarta parte) de un salón de 40 estudiantes, son exactamente 10 alumnos.[cite: 2]"
+  },
+  {
+    "id": 329,
+    "materia": "Matemáticas",
+    "pregunta": "Las estaturas de los integrantes de un equipo de fútbol fueron: 1.82 m, 1.78 m, 1.74 m, 1.76m, 1.76 m, 1.81 m, 1.77 m, 1.68 m, 1.74 m, 1.69 m y 1.65 m. ¿Cuál fue la mediana de las estaturas ordenadas?",
+    "opciones": [
+      "1.74 m",
+      "1.76 m",
+      "1.78 m",
+      "1.81 m"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Ojo, te piden la 'Mediana', no el promedio. La Mediana es el número que queda atorado en el centro físico de la lista cuando los acomodas todos de menor a mayor. Con 11 números ordenados, el sexto número en el centro es 1.76 m.[cite: 2]"
+  },
+  {
+    "id": 330,
+    "materia": "Matemáticas",
+    "pregunta": "Dada la figura donde las rectas que pasan por AB y CD son paralelas, el ángulo ABC y el ángulo BCD son iguales por ser",
+    "imagen": "img/g3_74.jpeg",
+    "opciones": [
+      "alternos internos.",
+      "alternos externos.",
+      "suplementarios.",
+      "complementarios."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Cuando una línea diagonal choca y atraviesa dos rectas horizontales paralelas, los ángulos que se forman atrapados por 'adentro' de las paralelas pero cruzados en esquinas opuestas de la diagonal reciben el título geométrico de Alternos Internos y son clones idénticos en grados.[cite: 2]"
+  },
+  {
+    "id": 331,
+    "materia": "Matemáticas",
+    "pregunta": "En un triángulo rectángulo, el cociente del cateto opuesto y el cateto adyacente determinan el valor de la función trigonométrica conocida como",
+    "opciones": [
+      "tangente del ángulo.",
+      "cotangente del ángulo.",
+      "coseno del ángulo.",
+      "seno del ángulo."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Acuérdate del truco infalible para trigonometría: SOH-CAH-TOA. El Seno es Opuesto/Hipotenusa. El Coseno es Adyacente/Hipotenusa. Y la Tangente (TOA) es la que se obtiene dividiendo el Cateto Opuesto sobre el Cateto Adyacente.[cite: 2]"
+  },
+  {
+    "id": 332,
+    "materia": "Matemáticas",
+    "pregunta": "El área del paralelogramo que se observa en la figura es",
+    "imagen": "img/g3_76.jpeg",
+    "opciones": [
+      "12 m²",
+      "18 m²",
+      "24 m²",
+      "36 m²"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "A pesar de tener los lados inclinados, la fórmula para el área de un paralelogramo es igual de simple que la de un rectángulo: Base x Altura. Multiplicas los 9m de base por los 4m de altura vertical perfecta y obtienes 36 m² de área.[cite: 2]"
+  },
+  {
+    "id": 333,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El texto relata una historia en la que",
+    "opciones": [
+      "el contador de cuentos dice a los niños que saca del pozo los cuentos que cuenta y él prefiere contárselos a la preguntona.",
+      "un hombre que se sienta en el brocal del pozo le cuenta a una niña preguntona el secreto del pozo.",
+      "el contador de cuentos embelesa a los niños con sus historias, le confiesa a la preguntona que se los cuenta el pozo.",
+      "el cuentacuentos le habla a una persona que está fuera de la historia y le dice que saca los cuentos del pozo."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El núcleo y la magia de esta lectura radica en cómo el cuentero, que todos los atardeceres asombra ('embelesa') a la multitud de niños del pueblo, elige confesarle en secreto a la frágil niña preguntona que es en realidad el pozo mágico quien le narra los cuentos por la noche.[cite: 2]"
+  },
+  {
+    "id": 334,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Selecciona el inciso que contiene el resumen correcto del texto.",
+    "opciones": [
+      "Una niñita frágil es quien provoca que el contador revele su secreto, con relación al lugar de donde éste obtiene sus cuentos.",
+      "El contador de cuentos es un personaje que al atardecer cuenta historias fantásticas a los niños de Palo Verde, relatos que por las noches, en días de luna, le dice el pozo.",
+      "Los cuentos más bonitos que relata el contador los saca del pozo, los días de luna llena. Para escucharlos se sienta en el brocal.",
+      "Ante la pregunta de una niña, el contador reconoce que sus cuentos los obtiene del pozo, en donde están revueltos con el agua y las ranas, pero hay que saber sacarlos."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Un resumen maestro debe reunir al Protagonista (el contador), el Contexto (sus historias y el pueblo Palo Verde) y la Revelación principal (la intervención del pozo y la luna). La opción B engloba perfectamente la atmósfera de la trama sin olvidar la idea central.[cite: 2]"
+  },
+  {
+    "id": 335,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Completa el siguiente cuadro sinóptico.",
+    "imagen":"img/g3_79.jpeg",
+    "opciones": [
+      "I. Frágil, II. Embustero, III. Imaginativo, IV. Atento",
+      "I. Atenta, II. Imaginativo, III. Frágil, IV. Embustero",
+      "I. Frágil, II. Atento, III. Embustero, IV. Imaginativo",
+      "I. Frágil, II. Imaginativo, III. Atento, IV. Embustero"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Rastrea los adjetivos literales en el texto: A la niña se le describe como una figura 'frágil' como de cera [I]. Al viejo contador el narrador lo bautiza como un 'embustero' fantástico [II]. Finalmente, el auditorio de infantes está conformado por gente muy atenta que contiene la respiración, a la espera de las fábulas imaginativas.[cite: 2]"
+  },
+  {
+    "id": 336,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Ordena las siguientes ideas de acuerdo con su aparición en el texto.\nI. La explotación inadecuada de la tortuga.\nII. El lento crecimiento de la tortuga marina.\nIII. El valor comercial de la tortuga se ha disparado.\nIV. La gran depredación de algunas especies.\nV. El saqueo de nidos y de tortugas adultas.",
+    "opciones": [
+      "I, III, II, IV y V",
+      "II, I, IV, III y V",
+      "II, I, IV, V y III",
+      "II, IV, I, III y V"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El hilo de la lectura inicia justificando que la especie es frágil debido a su lento desarrollo y madurez (II). Luego entra de lleno al problema de su explotación inadecuada (I). A mediados del texto, explica que las restricciones provocaron que su precio y valor comercial se disparen (III). Al final, concluye evidenciando cómo ese alto valor ha fomentado el trágico saqueo y robo de nidos en las playas (V).[cite: 2]"
+  },
+  {
+    "id": 337,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Selecciona la opción en donde hay una relación causa - consecuencia.",
+    "opciones": [
+      "Debido a las restricciones administrativas el valor comercial de la tortuga se ha disparado.",
+      "Durante las actividades de las pesquerías las tortugas pueden ser atrapadas incidentalmente.",
+      "La explotación de la tortuga debe estar vinculada a programas de investigación para evitar una gran mortandad.",
+      "Estas especies todavía tienen gran valor y aceptación comercial y son objeto de una gran depredación."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "¡Pura lógica de causa y efecto! El conector 'Debido a' te está avisando que las restricciones (la Causa) provocaron que el valor comercial se disparara (la Consecuencia).[cite: 2]"
+  },
+  {
+    "id": 338,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Señala cuál de las oraciones siguientes es un hecho.",
+    "opciones": [
+      "Se agotaron varias poblaciones de algunas especies de tortugas marinas.",
+      "Deben estar vinculadas a programas de investigación.",
+      "Es necesario desarrollar una intensa campaña educativa.",
+      "Las actividades clandestinas deben ser prohibidas."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Un 'hecho' es un suceso histórico que ya pasó y se puede comprobar con datos. Que se agotaron poblaciones entre 1969 y 1972 es historia pura, mientras que las otras son opiniones o deseos de lo que 'debe ser'.[cite: 2]"
+  },
+  {
+    "id": 339,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Lee el siguiente enunciado.\nUn pequeño esfuerzo del pescador le reditúa una ganancia económica muy alta.\nDe acuerdo con el contexto, la palabra subrayada significa",
+    "opciones": [
+      "producir.",
+      "repercutir.",
+      "representar.",
+      "reflejar."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En el contexto económico y financiero, decir que una inversión te 'reditúa', significa literalmente que te va a rendir, generar o Producir ganancias.[cite: 2]"
+  },
+  {
+    "id": 340,
+    "materia": "Habilidad Verbal",
+    "pregunta": "MÚSICO es a INSTRUMENTO como",
+    "opciones": [
+      "poeta a poesía.",
+      "mecánico a herramienta.",
+      "político a ley.",
+      "carpintero a carpintería."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La analogía base es 'Profesional y la Herramienta Física que usa'. Un músico necesita un instrumento de la misma forma indispensable que un mecánico necesita su herramienta.[cite: 2]"
+  },
+  {
+    "id": 341,
+    "materia": "Habilidad Verbal",
+    "pregunta": "PALABRA - CONVENCER",
+    "opciones": [
+      "lectura - dormir",
+      "teatro - oir",
+      "imán - atraer",
+      "audiencia - aceptar"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Relación de Objeto y su Función. La función de la palabra en la retórica es convencer a la mente; del mismo modo, la función física y única del imán es atraer el metal.[cite: 2]"
+  },
+  {
+    "id": 342,
+    "materia": "Habilidad Verbal",
+    "pregunta": "ABEJA - ENJAMBRE",
+    "opciones": [
+      "felino - cardumen",
+      "persona - individuo",
+      "parvada - pájaro",
+      "perro - jauría"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Analogía de 'Individuo al Colectivo'. Un grupo de abejas juntas forma un enjambre, tal cual como un equipo de perros unidos forma una jauría.[cite: 2]"
+  },
+  {
+    "id": 343,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Selecciona la opción que sustituya con un ANTÓNIMO la palabra en mayúsculas.\nActividades CLANDESTINAS.",
+    "opciones": [
+      "Secretas.",
+      "Ilícitas.",
+      "Ocultas.",
+      "Públicas."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Algo 'clandestino' es lo que se hace a escondidas, en las sombras. El antónimo (lo contrario a esconderte) es hacer las cosas de forma totalmente visible y Pública.[cite: 2]"
+  },
+  {
+    "id": 344,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El tejón es un mamífero carnicero CORRIENTE en Europa.",
+    "opciones": [
+      "Exótico.",
+      "Común.",
+      "Rechazado.",
+      "Despreciable."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En el argot animal, 'corriente' significa que es abundante o común de ver (loot gris). Lo opuesto a lo que ves todos los días es toparte con un espécimen Raro o Exótico.[cite: 2]"
+  },
+  {
+    "id": 345,
+    "materia": "Habilidad Verbal",
+    "pregunta": "En algunos países se concentra la mayor parte de la DIVERSIDAD biológica del planeta.",
+    "opciones": [
+      "Multiplicidad.",
+      "Pluralidad.",
+      "Variedad.",
+      "Homogeneidad."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La diversidad es la mezcla de muchas cosas diferentes juntas (variedad). Su antónimo directo es la Homogeneidad, que significa que todo es exactamente idéntico y sin variaciones.[cite: 2]"
+  },
+  {
+    "id": 346,
+    "materia": "Habilidad Verbal",
+    "pregunta": "Guy, con sus ojos dulces, como de conejo MOSTRÓ el morral vacío.",
+    "opciones": [
+      "Reveló.",
+      "Enseñó.",
+      "Ocultó.",
+      "Exhibió."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Buscas un sinónimo. Mostrar significa poner algo a la vista para que otros lo vean, lo cual empata directamente con la acción sencilla y coloquial de 'Enseñar'.[cite: 2]"
+  },
+  {
+    "id": 347,
+    "materia": "Habilidad Verbal",
+    "pregunta": "El médico actuó con CELERIDAD.",
+    "opciones": [
+      "Rapidez.",
+      "Lentitud.",
+      "Dilación.",
+      "Sencillez."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La celeridad es una palabra culta para describir que algo se hace sin perder un solo segundo. Su sinónimo perfecto para emergencias médicas es la Rapidez.[cite: 2]"
+  },
+  {
+    "id": 348,
+    "materia": "Habilidad Verbal",
+    "pregunta": "La convención nombró un presidente INTERINO.",
+    "opciones": [
+      "Inamovible.",
+      "Transitorio.",
+      "Permanente.",
+      "Intransigente."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Un 'interino' es como un sustituto en un equipo: solo entra a cubrir el puesto temporalmente mientras llega el oficial. Su sinónimo es alguien 'Transitorio'.[cite: 2]"
+  },
+  {
+    "id": 349,
+    "materia": "Geografía",
+    "pregunta": "Componentes del espacio geográfico que incluyen las actividades que se relacionan con la producción, transporte, comercialización y consumo de bienes y servicios.",
+    "opciones": [
+      "Políticos.",
+      "Sociales.",
+      "Económicos.",
+      "Físicos."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Al hablar de comercio, producción, compras y transporte logístico, la geografía está describiendo netamente todos los Componentes Económicos del mapa.[cite: 2]"
+  },
+  {
+    "id": 350,
+    "materia": "Geografía",
+    "pregunta": "Con el Sistema de _____ se pueden elaborar mapas que identifiquen zonas de riesgo asociadas con el relieve.",
+    "opciones": [
+      "información geográfica",
+      "posicionamiento global",
+      "imágenes de satélites",
+      "localización"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El famoso SIG (Sistema de Información Geográfica) es un software avanzado que sobrepone capas de datos sobre los mapas para detectar derrumbes, inundaciones y planificar ciudades seguras.[cite: 2]"
+  },
+  {
+    "id": 351,
+    "materia": "Geografía",
+    "pregunta": "Los husos horarios son una prueba y una consecuencia de la",
+    "opciones": [
+      "traslación terrestre.",
+      "rotación del sol.",
+      "rotación terrestre.",
+      "inclinación del eje."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Como el planeta Tierra es una esfera dando vueltas sobre su propio eje (Rotación), el sol pega en distintas zonas en distintos momentos del día, creando los husos horarios del reloj.[cite: 2]"
+  },
+  {
+    "id": 352,
+    "materia": "Geografía",
+    "pregunta": "La preservación de los arrecifes de corales favorece el equilibrio del clima planetario porque",
+    "opciones": [
+      "controlan la densidad del agua oceánica.",
+      "reducen los residuos sólidos del mar y ríos.",
+      "mantienen controlado el crecimiento de plancton.",
+      "contribuyen en la disminución de dióxido de carbono."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Los corales son los 'bosques' del mar. Además de ser el hogar de miles de peces, absorben agresivamente el dióxido de carbono del agua, ayudando a frenar el Efecto Invernadero.[cite: 2]"
+  },
+  {
+    "id": 353,
+    "materia": "Geografía",
+    "pregunta": "Son acciones para el cuidado del medio ambiente.\nI. Deforestación.\nII. Uso de la bicicleta.\nIII. Reciclar.\nIV. Reforestar.\nV. Uso de aerosoles.",
+    "opciones": [
+      "I, II y III",
+      "II, III y IV",
+      "III, IV y V",
+      "II, III y V"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Las tres tácticas 'verdes' infalibles son: pedalear para no quemar gasolina (II), reusar materiales dándoles nueva vida (III), y plantar árboles nuevos (IV).[cite: 2]"
+  },
+  {
+    "id": 354,
+    "materia": "Geografía",
+    "pregunta": "Los países con un gran tránsito migratorio son",
+    "opciones": [
+      "Egipto, Alemania y Estados Unidos.",
+      "Canadá, Francia y Japón.",
+      "Brasil, España e India.",
+      "Turquía, Marruecos y México."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Por su posición geográfica pegada a países del Primer Mundo, Turquía, Marruecos y México funcionan como corredores o 'puentes' mundiales por donde cruzan millones de migrantes anualmente.[cite: 2]"
+  },
+  {
+    "id": 355,
+    "materia": "Geografía",
+    "pregunta": "Entidades mexicanas ubicadas en la Región Pesquera IV.",
+    "opciones": [
+      "Coahuila y Chihuahua.",
+      "Oaxaca y Guerrero.",
+      "Sonora y Nayarit.",
+      "Yucatán y Campeche."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "La Región Pesquera IV abarca toda la costa rica del Golfo de México y la Península, por lo que estados como Yucatán y Campeche lideran esta zona marina.[cite: 2]"
+  },
+  {
+    "id": 356,
+    "materia": "Geografía",
+    "pregunta": "Zona con mayor extracción petrolera en México.",
+    "opciones": [
+      "Mar Caribe.",
+      "Costas del Océano Pacífico.",
+      "Costa del golfo de México.",
+      "Mar de Cortés."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La Sonda de Campeche y Veracruz en la Costa del Golfo de México son el corazón indiscutible de las plataformas de hidrocarburos de PEMEX.[cite: 2]"
+  },
+  {
+    "id": 357,
+    "materia": "Geografía",
+    "pregunta": "Son características de los países centrales.\nI. Controlan el desarrollo tecnológico.\nII. Exportan materias primas.\nIII. Carecen de servicios.\nIV. Controlan los mercados y capitales.\nV. Desarrollan industria manufacturera.",
+    "opciones": [
+      "I, III y V",
+      "III, IV y V",
+      "II, III y IV",
+      "I, IV, y V"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Los países 'Centrales' (del Primer Mundo) no venden tomates ni piedras, ellos controlan la alta tecnología (I), dominan los bancos mundiales (IV) y arman industrias gigantes avanzadas (V).[cite: 2]"
+  },
+  {
+    "id": 358,
+    "materia": "Geografía",
+    "pregunta": "Se establecen con el propósito de evitar conflictos y determinar hasta dónde un estado ejerce su soberanía.",
+    "opciones": [
+      "Regiones.",
+      "Territorios.",
+      "Fronteras.",
+      "Entidades."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Las fronteras (ríos, muros o cordilleras) son las líneas imaginarias o físicas que dictan 'hasta aquí llegan mis leyes', evitando guerras de territorio entre dos naciones.[cite: 2]"
+  },
+  {
+    "id": 359,
+    "materia": "Geografía",
+    "pregunta": "La zona arqueológica de Palenque se encuentra en el estado de",
+    "opciones": [
+      "Chiapas.",
+      "Veracruz.",
+      "Oaxaca.",
+      "Guerrero."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Rodeada de espesa selva verde, la majestuosa ciudad maya de Palenque (famosa por la tumba del Rey Pakal) es uno de los máximos tesoros de Chiapas.[cite: 2]"
+  },
+  {
+    "id": 360,
+    "materia": "Geografía",
+    "pregunta": "Está considerada como área del territorio nacional de 12 millas náuticas (22.2 km mar adentro).",
+    "opciones": [
+      "Mar Territorial.",
+      "Zona insular.",
+      "Mar Patrimonial.",
+      "Zona Económica Exclusiva."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Las primeras 12 millas de océano pegadas a la playa se llaman Mar Territorial. En esa franja de agua, las leyes del país aplican exactamente igual que si estuvieras pisando su tierra firme.[cite: 2]"
+  },
+  {
+    "id": 361,
+    "materia": "Física",
+    "pregunta": "Si se dice que un automóvil se desplaza a 60 km/h sobre la avenida Insurgentes, de norte a sur, se está hablando de la _____ del automóvil.",
+    "opciones": [
+      "velocidad",
+      "aceleración",
+      "rapidez",
+      "fuerza"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En la física, si solo te dan el número (60 km/h) es 'rapidez'. Pero como aquí te están dando el número Y la dirección exacta ('de norte a sur'), se convierte instantáneamente en un vector de Velocidad.[cite: 2]"
+  },
+  {
+    "id": 362,
+    "materia": "Física",
+    "pregunta": "Relaciona cada enunciado con el tipo de movimiento que le corresponde.\nEnunciado\nI. Soltar un objeto desde lo alto de un edificio.\nII. Movimiento de la Luna respecto a la Tierra.\nTipo de movimiento\na. Movimiento Circular Uniforme.\nb. Movimiento Rectilíneo Uniformemente Acelerado.\nc. Movimiento Rectilineo Uniformemente Variado.",
+    "opciones": [
+      "I: c - II: b",
+      "I: a - II: c",
+      "I: b - II: a",
+      "I: a - II: b"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Soltar algo desde un edificio es 'caída libre', lo que significa que su velocidad cambia constantemente gracias a la gravedad (Rectilíneo Variado o Acelerado [I:b]). Y la Luna simplemente da vueltas constantes a nuestro alrededor (Circular Uniforme [II:a]).[cite: 2]"
+  },
+  {
+    "id": 363,
+    "materia": "Física",
+    "pregunta": "Como se muestra en la figura, una persona empuja las cajas A y B, de 3 y 2 kg, respectivamente. Si la fuerza neta aplicada es de 15, ¿qué aceleración estará presente en la caja B?",
+    "imagen": "img/g3_107.jpeg",
+    "opciones": [
+      "1.2 m/s²",
+      "5 m/s²",
+      "7.5 m/s²",
+      "3 m/s²"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "¡Segunda Ley de Newton (F = m * a)! Ambas cajas viajan juntas, así que la masa total es 5kg (3+2). Divides la Fuerza total (15 N) entre la Masa Total (5 kg) y toda la estructura acelerará a 3 m/s².[cite: 2]"
+  },
+  {
+    "id": 364,
+    "materia": "Física",
+    "pregunta": "A un carrito de supermercado cuya masa es m, le aplicamos una fuerza F, produciéndole una aceleración a. Si duplicamos la masa de la mercancía que contiene el carrito y mantenemos la misma fuerza ¿Cuál será el valor de la aceleración?",
+    "opciones": [
+      "El doble de su valor inicial.",
+      "Un cuarto de su valor inicial.",
+      "Mantiene su valor inicial.",
+      "La mitad de su valor inicial."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Es pura lógica inversamente proporcional: si le metes el doble de peso (masa) a tu carrito, pero tú lo empujas con la misma fuerza de siempre, lógicamente el carro avanzará a la mitad de su aceleración normal.[cite: 2]"
+  },
+  {
+    "id": 365,
+    "materia": "Física",
+    "pregunta": "La magnitud de la aceleración gravitacional que se produce en la superficie de la Luna es una sexta parte de la que se produce en la superficie de la Tierra. Si se lleva un objeto hacia la luna, ¿qué la pasa a su peso con respecto al que tenía en la Tierra?",
+    "opciones": [
+      "Aumenta 6 veces.",
+      "Disminuye 6 veces.",
+      "Disminuye 3 veces.",
+      "Presenta un valor cero."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El Peso no es lo mismo que la Masa. El peso se calcula con la gravedad. Si la Luna jala 6 veces más débil que la Tierra, tu Peso lunar automáticamente disminuirá 6 veces al subirte a la báscula allá.[cite: 2]"
+  },
+  {
+    "id": 366,
+    "materia": "Física",
+    "pregunta": "Si colocamos dos ollas metálicas, una a temperatura alta junto a otra de temperatura baja, el calor se transfiere de la de temperatura _____; tal transferencia termina hasta que _____",
+    "opciones": [
+      "alta a la baja - ambas llegan a 0°C",
+      "alta a la baja - se igualan las temperaturas",
+      "alta a la baja - las dos quedan con temperatura muy baja",
+      "baja a la alta - las dos quedan con temperatura muy alta"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "¡Ley del Equilibrio Térmico! El calor siempre fluye del cuerpo más caliente hacia el más frío. Esa migración de energía no para hasta que los dos objetos alcanzan la paz empatando sus temperaturas.[cite: 2]"
+  },
+  {
+    "id": 367,
+    "materia": "Física",
+    "pregunta": "El choque de las partículas de un gas con las paredes del recipiente que lo contiene da lugar a la",
+    "opciones": [
+      "presión del gas.",
+      "temperatura del gas.",
+      "energía potencial del gas.",
+      "densidad del gas."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Visualiza millones de canicas rebotando como locas dentro de una lata. Ese constante golpeteo mecánico de las partículas contra las paredes del frasco es lo que la física define como Presión.[cite: 2]"
+  },
+  {
+    "id": 368,
+    "materia": "Física",
+    "pregunta": "En todo proceso en el que se da un cambio en el estado de agregación en la materia ocurre una _____ de energía.",
+    "opciones": [
+      "pérdida",
+      "ganancia",
+      "transferencia",
+      "creación"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Para que un cubo de hielo se derrita o el agua se evapore, necesita forzosamente que le transfieran calor (energía). Ese intercambio constante entre ganar o ceder energía es el secreto de los cambios físicos.[cite: 2]"
+  },
+  {
+    "id": 369,
+    "materia": "Física",
+    "pregunta": "La masa de un átomo está determinada por sus",
+    "opciones": [
+      "electrones y neutrones.",
+      "electrones.",
+      "neutrones y protones.",
+      "neutrones."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Los electrones orbitan por fuera y son tan ligeros que su peso es casi cero. El 99.9% de todo el peso de un átomo está concentrado sólidamente en su núcleo pesado, formado por los Neutrones y los Protones.[cite: 2]"
+  },
+  {
+    "id": 370,
+    "materia": "Física",
+    "pregunta": "El agua _____ es una sustancia conductora de electricidad.",
+    "opciones": [
+      "con azúcar",
+      "oxigenada",
+      "destilada",
+      "de mar"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El agua destilada es pura y H2O limpia, por lo que NO conduce electricidad. Sin embargo, el agua de mar está atascada de minerales y sales iónicas, transformándose en una carretera eléctrica mortalmente efectiva.[cite: 2]"
+  },
+  {
+    "id": 371,
+    "materia": "Física",
+    "pregunta": "El funcionamiento de un horno de microondas se basa principalmente en el fenómeno de",
+    "opciones": [
+      "ondas de ultrafrecuencia.",
+      "disociación electrolítica.",
+      "desintegración atómica.",
+      "radiación electromagnética."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "A pesar del nombre, el horno calienta tu comida disparando una forma de Radiación Electromagnética (las microondas) que hace vibrar furiosamente a las moléculas de agua de los alimentos hasta calentarlos.[cite: 2]"
+  },
+  {
+    "id": 372,
+    "materia": "Física",
+    "pregunta": "Cuando la luz blanca atraviesa un prisma, se presenta el fenómeno de dispersión refractiva, el cual consiste en",
+    "opciones": [
+      "que, al atravesar el prisma, la luz no se altera.",
+      "la descomposición de los colores que la conforman.",
+      "que la luz se refracta uniformemente al pasar por el prisma.",
+      "la descomposición de los colores primarios en pigmento."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Igual que en la famosa portada del disco de Pink Floyd, el prisma actúa como un filtro que toma la luz blanca pura y la 'desarma', dividiéndola visualmente en los colores del arcoíris.[cite: 2]"
+  },
+  {
+    "id": 373,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Selecciona el caso donde compete sólo al interesado tomar decisiones.",
+    "opciones": [
+      "Clemente, médico gastroenterólogo con gran experiencia, ha encontrado un método para la cura de la gastritis y necesita realizar pruebas que le permitan perfeccionarlo.",
+      "Después de varios años, Carmen ha logrado juntar una buena cantidad de dinero y por fin se le presenta la oportunidad de donar todo su capital al orfanatorio donde se educó.",
+      "Patricio, destacado estudiante de secundaria, ha sido seleccionado para realizar una estancia de estudios por un año en uno de los estados de Norteamérica.",
+      "Eulalio, entrenador de fútbol, ha recibido una invitación para participar con su equipo en un torneo amistoso que tendrá lugar en las ciudades más importantes del país."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Donar tu propio dinero (el caso de Carmen) es una elección 100% individual. El médico ocupa permisos, el entrenador depende del equipo entero, y el estudiante menor de edad depende del permiso de sus padres.[cite: 2]"
+  },
+  {
+    "id": 374,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Un ejemplo de valor moral deseable en los estudiantes es que",
+    "opciones": [
+      "sean honestos en los exámenes.",
+      "hagan sus tareas con limpieza.",
+      "sean creativos al hacer sus trabajos.",
+      "coman frutas y verduras."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La creatividad y la limpieza son destrezas o hábitos técnicos, pero ser honesto y evitar la trampa en un examen (aunque nadie te vea) es un pilar puro de la formación Moral y Ética.[cite: 2]"
+  },
+  {
+    "id": 375,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "La identidad personal se forma gracias a",
+    "opciones": [
+      "la familia, las costumbres y las instituciones.",
+      "la familia, la memoria y los amigos.",
+      "las emociones, los grupos sociales y el gobierno.",
+      "la religión, los amigos y el colegio."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "No naces con un perfil armado. Tu identidad se craftea tomando de base a tu familia inicial, las costumbres de tu pueblo, y las instituciones formales por las que pasas (escuelas y reglas civiles).[cite: 2]"
+  },
+  {
+    "id": 376,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "El dueño de un establecimiento paga a sus empleados adolescentes un sueldo menor al salario mínimo argumentando que no tienen necesidades importantes que satisfacer, como en el caso de los adultos casados. Esta situación describe un tipo de",
+    "opciones": [
+      "favoritismo económico empresarial.",
+      "violencia económica a los adolescentes.",
+      "violencia psicológica a los adolescentes.",
+      "economía propia de la adolescencia."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "A trabajo igual, salario igual. No importa la edad del trabajador; usar la excusa de ser joven para no pagar lo justo es un abuso directo de poder y una muestra clara de Violencia Económica.[cite: 2]"
+  },
+  {
+    "id": 377,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Esta forma de agresión se establece entre dos o más personas y se manifiesta mediante insultos, ofensas verbales y faltas de respeto.",
+    "opciones": [
+      "Abuso sexual.",
+      "Negligencia.",
+      "Violencia económica.",
+      "Maltrato."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El Maltrato, en especial el psicológico o verbal, no deja moretones, pero las humillaciones constantes y las faltas de respeto destruyen agresivamente la dignidad humana y el entorno social.[cite: 2]"
+  },
+  {
+    "id": 378,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Es el valor que consiste en la facultad que tienen los seres humanos para actuar según su propio parecer, en un sentido o en otro, por lo que son responsables de los actos que realizan",
+    "opciones": [
+      "libertad.",
+      "tolerancia.",
+      "reciprocidad.",
+      "integridad."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La Libertad no es hacer lo que quieras sin pagar precio; la verdadera libertad ética es la facultad humana de elegir tu propio camino asumiendo voluntariamente todas las consecuencias de tus actos.[cite: 2]"
+  },
+  {
+    "id": 379,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "El poder _____, de acuerdo con la Constitución, interpreta y aplica las normas para resolver conflictos.",
+    "opciones": [
+      "legislativo",
+      "ejecutivo",
+      "absoluto",
+      "judicial"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "El Legislativo inventa las reglas, el Ejecutivo lidera (el Presidente), pero el Poder JUDICIAL (conformado por la Suprema Corte y los Jueces) son los grandes árbitros que interpretan y castigan.[cite: 2]"
+  },
+  {
+    "id": 380,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Asociaciones de ciudadanos que se forman para obtener puestos de elección popular.",
+    "opciones": [
+      "Las mesas electorales.",
+      "Los institutos electorales.",
+      "Los tribunales electorales.",
+      "Los partidos políticos."
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Los Partidos Políticos operan como 'gremios' o equipos cívicos registrados formalmente con el único propósito de lanzar a sus campeones a buscar la victoria en las elecciones de gobierno.[cite: 2]"
+  },
+  {
+    "id": 381,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Son obligaciones del gobierno para con los ciudadanos el proporcionar los servicios de",
+    "opciones": [
+      "trabajo, alimentación y salud.",
+      "salud, educación y seguridad.",
+      "alimentación, salud y educación.",
+      "educación, alimentación y trabajo."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El Estado no está obligado a darte comida a la boca ni conseguirte un trabajo por fuerza, pero constitucionalmente DEBE garantizarte el pilar de tres servicios sociales base: Salud, Educación y Seguridad.[cite: 2]"
+  },
+  {
+    "id": 382,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Un medio de comunicación cumple con una función social cuando",
+    "opciones": [
+      "organiza la ayuda para los damnificados por desastres naturales.",
+      "está involucrado en el servicio al sistema económico y la publicidad.",
+      "formar opiniones basadas en los comentarios de terceros.",
+      "convence al receptor sobre un tema específico mediante la persuasión."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los medios no solo sirven para venderte cosas. Cuando un huracán o sismo golpea, las televisoras y radios cumplen su verdadera 'Función Social' usando su red para conectar rescatistas, donadores y damnificados.[cite: 2]"
+  },
+  {
+    "id": 383,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Es importante cuidar el ambiente natural con el fin de",
+    "opciones": [
+      "lograr el pleno desarrollo de las sociedades.",
+      "cambiar los patrones de consumo actuales.",
+      "seguir con acciones que explotan los recursos del medio.",
+      "satisfacer las necesidades del ser humano."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Sin agua limpia y sin árboles, es imposible que las ciudades subsistan. Cuidar la naturaleza no es un hobby bonito, es el único camino viable para asegurar el pleno desarrollo de las sociedades futuras.[cite: 2]"
+  },
+  {
+    "id": 384,
+    "materia": "Formación Cívica y Ética",
+    "pregunta": "Lee con atención el siguiente texto y contesta lo que solicita\nJuan y Ana acaban de rentar un departamento, al revisarlo notaron que tenía varías descomposturas. Juan piensa en acudir con José, que es el dueño, y solicitarle que pague el costo de las reparaciones. Ana considera que es mejor pedirle a su amiga Rita, que conoce a José, le solicite se hagan las reparaciones, pero Pedro, amigo de ellos, les recomendó levantar una demanda ante las autoridades correspondientes y así buscar obtener un beneficio. Después de dialogarlo detenidamente, Ana y Juan deciden ir con José a pedirle se hagan las reparaciones, a lo que José se niega, alegando que debieron revisarlo antes de aceptarlo; por ello, Ana y Juan solicitaron la intervención de las autoridades para obligar a José a pagar las reparaciones.\nCuando Juan y Ana buscan hablar con José para solucionar el conflicto están usando el recurso llamado",
+    "opciones": [
+      "mediación.",
+      "arbitraje.",
+      "negociación.",
+      "legalidad."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La primera táctica de Juan y Ana fue ir directamente con el dueño e intentar arreglar las cosas hablando de frente para llegar a un acuerdo verbal, a este recurso diplomático pacífico se le llama Negociación.[cite: 2]"
+  },
+  {
+    "id": 385,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué número continúa en la sucesión? 2, 6, 12, 20, 30, ___",
+    "opciones": [
+      "38",
+      "40",
+      "42",
+      "44"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Observa el aumento de XP en cada nivel: del 2 al 6 sumas +4; del 6 al 12 sumas +6; luego +8, luego +10. El siguiente salto lógico es sumar +12. Así que 30 + 12 = 42."
+  },
+  {
+    "id": 386,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Identifica el número que falta en la sucesión intercalada: 1, 10, 3, 9, 5, 8, 7, ___",
+    "opciones": [
+      "6",
+      "7",
+      "8",
+      "10"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "¡Es una sucesión doble! Los números impares suben de dos en dos (1, 3, 5, 7...). Los números pares actúan como una cuenta regresiva (10, 9, 8...). El siguiente número par en la lista debe ser el 6."
+  },
+  {
+    "id": 387,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Descifra la siguiente serie alfabética: A, C, F, J, ___",
+    "opciones": [
+      "L",
+      "M",
+      "N",
+      "Ñ"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Cuenta las letras que te saltas: de la A a la C saltas 1 (B). De la C a la F saltas 2 (D, E). De la F a la J saltas 3. El próximo brinco debe saltar 4 letras (K, L, M, N), aterrizando exactamente en la Ñ."
+  },
+  {
+    "id": 388,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué término sigue en esta progresión? 0.5, 1.5, 4.5, 13.5, ___",
+    "opciones": [
+      "27.5",
+      "30.5",
+      "40.5",
+      "42.5"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El multiplicador de daño es x3. Multiplica cada número por 3 para obtener el siguiente (1.5 x 3 = 4.5). Si multiplicas 13.5 x 3, el resultado es 40.5."
+  },
+  {
+    "id": 389,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Cuál es el siguiente número en la sucesión de fracciones? 1/2, 3/4, 5/8, 7/16, ___",
+    "opciones": [
+      "9/32",
+      "8/32",
+      "9/24",
+      "11/32"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Analiza las barras por separado: los números de arriba (numeradores) suben de dos en dos (1, 3, 5, 7, 9). Los números de abajo (denominadores) se multiplican por dos (2, 4, 8, 16, 32). El combo final es 9/32."
+  },
+  {
+    "id": 390,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Un caracol cae a un pozo de 10 metros. Cada día sube 3 metros, pero por la noche resbala 2 metros. ¿En cuántos días logrará salir del pozo?",
+    "opciones": [
+      "10 días",
+      "9 días",
+      "8 días",
+      "7 días"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Avanza 1 metro neto diario. Al amanecer del día 8, el caracol comienza en el metro 7; al subir sus 3 metros de ese día, toca el borde (10 metros) y sale del pozo antes de que llegue la noche para resbalar. ¡Fuga exitosa en 8 días!"
+  },
+  {
+    "id": 391,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Encuentra la lógica oculta: Si 3 * 4 = 14, y 5 * 6 = 32, entonces 7 * 8 = ___",
+    "opciones": [
+      "56",
+      "58",
+      "60",
+      "62"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El 'hack' de este operador es multiplicar ambos números y sumar 2 de bono. 3x4=12 (+2=14). 5x6=30 (+2=32). Por lo tanto, 7x8=56 (+2=58)."
+  },
+  {
+    "id": 392,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué número falta en esta sucesión? 1, 3, 4, 7, 11, 18, ___",
+    "opciones": [
+      "29",
+      "27",
+      "25",
+      "31"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "¡Es una variante de la secuencia de Fibonacci! Cada número se genera sumando los dos anteriores. 7 + 11 = 18. Así que 11 + 18 = 29."
+  },
+  {
+    "id": 393,
+    "materia": "Habilidad Matemática",
+    "pregunta": "En un estacionamiento solo hay motos y autos. Si cuentas 20 volantes en total y 64 llantas, ¿cuántos autos hay?",
+    "opciones": [
+      "14",
+      "12",
+      "10",
+      "8"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "20 volantes significa que hay 20 vehículos en total. Si los 20 fueran motos (2 llantas), habría 40 llantas. Como sobran 24 llantas (64-40), esas corresponden a las 2 llantas extra que tiene un auto. 24/2 = 12 autos."
+  },
+  {
+    "id": 394,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué número sigue en la serie? 100, 90, 81, 73, 66, ___",
+    "opciones": [
+      "61",
+      "60",
+      "59",
+      "58"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La vida (HP) va bajando gradualmente: primero restas 10, luego restas 9, luego 8, luego 7. El próximo golpe debe restar 6. 66 - 6 = 60."
+  },
+  {
+    "id": 395,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Un bloque de madera pesa 1 kg más medio bloque de madera. ¿Cuánto pesa el bloque entero?",
+    "opciones": [
+      "1.5 kg",
+      "2 kg",
+      "2.5 kg",
+      "3 kg"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Usa lógica de balanza. Bloque = 1kg + (Media mitad). Si quitas media mitad de ambos lados, te queda que la Media Mitad = 1kg. Por ende, dos mitades (el bloque entero) pesan 2 kg."
+  },
+  {
+    "id": 396,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Un cubo de Rubik gigante está formado por 27 cubitos (3x3x3). Si se sumerge en pintura roja por fuera, ¿cuántos cubitos quedarán completamente sin pintar?",
+    "opciones": [
+      "0",
+      "1",
+      "8",
+      "9"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Todos los cubitos que tocan el exterior (caras, bordes y esquinas) se mancharán de rojo. El único protegido es el cubito que funciona como el corazón o núcleo exacto en el centro del cubo 3x3x3."
+  },
+  {
+    "id": 397,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Si el ayer del mañana del martes es el día de pago, ¿qué día cobras?",
+    "opciones": [
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Cancela términos opuestos como si fuera álgebra. 'Ayer' (-1) y 'Mañana' (+1) se anulan entre sí, quedando en cero. Por lo tanto, el día sigue siendo el mismo Martes."
+  },
+  {
+    "id": 398,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué número sigue en esta serie de potencias? 2, 4, 16, 256, ___",
+    "opciones": [
+      "512",
+      "1024",
+      "65536",
+      "12800"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "No se multiplica por dos, se eleva al cuadrado a sí mismo. 2² = 4. 4² = 16. 16² = 256. El siguiente monstruo es 256² = 65,536."
+  },
+  {
+    "id": 399,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Descubre el número que falta: 2, 5, 10, 17, 26, ___",
+    "opciones": [
+      "35",
+      "37",
+      "39",
+      "41"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Mira la diferencia entre ellos: +3, +5, +7, +9... La progresión exige que el siguiente salto sea +11. Así que 26 + 11 = 37."
+  },
+  {
+    "id": 400,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Un reloj de pared se atrasa exactamente 2 minutos cada hora. Si se ajusta a la hora correcta a las 12:00, ¿qué hora marcará cuando en realidad sean las 15:00?",
+    "opciones": [
+      "14:54",
+      "14:56",
+      "15:06",
+      "15:00"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Han pasado 3 horas reales. Como se atrasa 2 minutos por cada hora, en total ha perdido 6 minutos de tiempo. Así que a las 15:00 le restamos 6 minutos, marcando las 14:54."
+  },
+  {
+    "id": 401,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Ana es más alta que Beto pero más bajita que Carlos. Carlos es más bajo que Diana. ¿Quién es el más alto de todos?",
+    "opciones": [
+      "Ana",
+      "Beto",
+      "Carlos",
+      "Diana"
+    ],
+    "respuesta_correcta": 3,
+    "explicacion": "Acomoda el podio: Beto está abajo de Ana, Ana está debajo de Carlos, y finalmente Carlos está debajo de Diana. Diana es la ganadora indiscutible en altura."
+  },
+  {
+    "id": 402,
+    "materia": "Habilidad Matemática",
+    "pregunta": "¿Qué número sigue en la sucesión con negativos? 3, -6, 12, -24, 48, ___",
+    "opciones": [
+      "96",
+      "-96",
+      "72",
+      "-72"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El multiplicador aquí es -2. 3 x (-2) = -6. -6 x (-2) = +12. Siguiendo esa misma ley de signos, 48 x (-2) nos da un ataque crítico de -96."
+  },
+  {
+    "id": 403,
+    "materia": "Habilidad Matemática",
+    "pregunta": "En un cajón a oscuras hay 5 calcetines negros y 5 blancos. ¿Cuál es el número mínimo de calcetines que debes sacar para asegurar que tienes un par del mismo color?",
+    "opciones": [
+      "2",
+      "3",
+      "5",
+      "6"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Si tienes muchísima mala suerte, sacas primero uno negro y luego uno blanco. Pero como solo hay 2 colores en existencia, ¡el tercer calcetín que saques obligatoriamente hará pareja con alguno de los primeros dos!"
+  },
+  {
+    "id": 404,
+    "materia": "Habilidad Matemática",
+    "pregunta": "Resuelve el acertijo lógico: Si algunos Gatos son Perros, y todos los Perros son Aves, ¿cuál es la conclusión forzosa?",
+    "opciones": [
+      "Todos los Gatos son Aves.",
+      "Algunos Gatos son Aves.",
+      "Todas las Aves son Perros.",
+      "Ningún Gato es un Ave."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Es un silogismo puro. Si una parte del grupo Gatos cruzó al grupo Perros, y todo el grupo Perros está dentro del grupo Aves, forzosamente esos gatos que cruzaron también son Aves. Por lo tanto, 'algunos' gatos son aves."
+  },
+  {
+    "id": 405,
+    "materia": "Matemáticas",
+    "pregunta": "Respeta la jerarquía de operaciones: 5 + 3 x 2 - 4 / 2 =",
+    "opciones": [
+      "6",
+      "7",
+      "9",
+      "10"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "La regla universal PEDMAS dice que primero atacas las multiplicaciones y divisiones. (3x2)=6 y (4/2)=2. Reescribes la ecuación: 5 + 6 - 2. Ahora sí, suma y resta directo y te da 9."
+  },
+  {
+    "id": 406,
+    "materia": "Matemáticas",
+    "pregunta": "Resuelve la siguiente operación de fracciones: 3/4 + 1/3 - 1/2 =",
+    "opciones": [
+      "7/12",
+      "5/12",
+      "1/2",
+      "3/4"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Busca el mínimo común múltiplo (MCM), que es 12. Convierte todas al mismo idioma: 9/12 + 4/12 - 6/12. Al sumar los numeradores de arriba (9+4-6) te quedan 7/12 limpios."
+  },
+  {
+    "id": 407,
+    "materia": "Matemáticas",
+    "pregunta": "Un pantalón en la Tienda Pixelote cuesta $400, pero hoy tiene un 20% de descuento. ¿Cuánto pagarás finalmente en la caja?",
+    "opciones": [
+      "$300",
+      "$320",
+      "$360",
+      "$380"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El 10% de 400 es 40. Por ende, el 20% son 80 pesos. Al precio original de 400 le restas los 80 pesos del descuento, y el total a pagar es $320."
+  },
+  {
+    "id": 408,
+    "materia": "Matemáticas",
+    "pregunta": "Regla de Tres Directa: Si 4 libretas idénticas cuestan $200, ¿cuánto te costarán 7 libretas?",
+    "opciones": [
+      "$300",
+      "$320",
+      "$350",
+      "$400"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Averigua el precio unitario primero: 200 / 4 = 50 pesos cuesta cada libreta. Si quieres 7 de ellas, multiplicas 50 x 7 = 350 pesos de inversión total."
+  },
+  {
+    "id": 409,
+    "materia": "Matemáticas",
+    "pregunta": "Regla de Tres Inversa: Si 3 constructores tardan 4 días en levantar un tapanco, ¿cuántos días tardarán 6 constructores trabajando al mismo ritmo?",
+    "opciones": [
+      "8 días",
+      "6 días",
+      "2 días",
+      "1 día"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "¡Lógica inversa! Entre más gente trabaje, MENOS días se tardan. Si tienes el doble de personal (de 3 a 6), el tiempo necesario se corta exactamente a la mitad (de 4 a 2 días)."
+  },
+  {
+    "id": 410,
+    "materia": "Matemáticas",
+    "pregunta": "Traduce al lenguaje algebraico: 'La tercera parte del cuadrado de un número, menos cinco'.",
+    "opciones": [
+      "(x/3)^2 - 5",
+      "x^2 / 3 - 5",
+      "3x^2 - 5",
+      "x^2 - 5/3"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Primero armas 'el cuadrado de un número' (x²). Luego le aplicas 'la tercera parte', que significa dividirlo entre tres (x² / 3). Y por último le adhieres la resta directa (- 5)."
+  },
+  {
+    "id": 411,
+    "materia": "Matemáticas",
+    "pregunta": "Despeja la X en la siguiente ecuación de primer grado: 3x - 5 = x + 7",
+    "opciones": [
+      "x = 2",
+      "x = 4",
+      "x = 6",
+      "x = 12"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Agrupa las X de un lado y los números del otro. Pasa la 'x' restando: 3x - x = 2x. Pasa el '-5' sumando: 7 + 5 = 12. Te queda 2x = 12. Finalmente, x = 12/2, lo que resulta en 6."
+  },
+  {
+    "id": 412,
+    "materia": "Matemáticas",
+    "pregunta": "Resuelve el sistema de ecuaciones clásico: x + y = 10, y x - y = 4",
+    "opciones": [
+      "x = 5, y = 5",
+      "x = 8, y = 2",
+      "x = 7, y = 3",
+      "x = 6, y = 4"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Aplica el método de suma o eliminación. Si sumas ambas ecuaciones hacia abajo, la '+y' y la '-y' se destruyen mutuamente. Te queda 2x = 14, lo que da x=7. Al sustituir, 7+y=10, por lo que y=3."
+  },
+  {
+    "id": 413,
+    "materia": "Matemáticas",
+    "pregunta": "Factoriza la siguiente ecuación cuadrática para encontrar sus raíces: x² - 5x + 6 = 0",
+    "opciones": [
+      "x = -3, x = -2",
+      "x = 3, x = 2",
+      "x = 6, x = -1",
+      "x = -6, x = 1"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Buscas dos números que sumados den -5 y multiplicados den +6. Esos son -3 y -2. La factorización queda (x - 3)(x - 2) = 0. Al igualar a cero y despejar, los signos se invierten: x=3 y x=2."
+  },
+  {
+    "id": 414,
+    "materia": "Matemáticas",
+    "pregunta": "Desarrolla el siguiente Binomio al Cuadrado: (x + 4)²",
+    "opciones": [
+      "x^2 + 16",
+      "x^2 + 4x + 16",
+      "x^2 + 8x + 16",
+      "2x + 8"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Aplica la cantinela de oro: 'El cuadrado del primer término (x²), MÁS el doble del primero por el segundo (2 * 4 * x = 8x), MÁS el cuadrado del segundo (4² = 16)'."
+  },
+  {
+    "id": 415,
+    "materia": "Matemáticas",
+    "pregunta": "Aplica las leyes de los exponentes: (x³ * x⁴) / x² =",
+    "opciones": [
+      "x^5",
+      "x^6",
+      "x^10",
+      "x^12"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Cuando las letras se multiplican arriba, los exponentes se SUMAN (3 + 4 = 7). Cuando se dividen, los exponentes se RESTAN (7 - 2 = 5). El resultado maestro es x^5."
+  },
+  {
+    "id": 416,
+    "materia": "Matemáticas",
+    "pregunta": "¿Cuál es el área de un círculo cuyo diámetro es exactamente de 10 unidades?",
+    "opciones": [
+      "10π",
+      "20π",
+      "25π",
+      "100π"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Cuidado con la trampa del diámetro. La fórmula del área usa el Radio (que es la mitad del diámetro). Si el radio es 5, elevas 5 al cuadrado (25) y lo multiplicas por Pi. El área es 25π."
+  },
+  {
+    "id": 417,
+    "materia": "Matemáticas",
+    "pregunta": "Aplica el Teorema de Pitágoras: Si los dos catetos de un triángulo rectángulo miden 6 y 8, ¿cuánto mide la hipotenusa (la diagonal)?",
+    "opciones": [
+      "10",
+      "12",
+      "14",
+      "100"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La suma de los cuadrados de los catetos da la hipotenusa cuadrada. 6²(36) + 8²(64) = 100. Al sacarle la raíz cuadrada a 100 para obtener la distancia final, nos da un hermoso y exacto 10."
+  },
+  {
+    "id": 418,
+    "materia": "Matemáticas",
+    "pregunta": "Si un triángulo tiene un ángulo interior de 40° y otro de 60°, ¿cuánto mide obligatoriamente su tercer ángulo?",
+    "opciones": [
+      "80°",
+      "90°",
+      "100°",
+      "180°"
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Es la ley irrompible de la geometría plana: La suma de los tres ángulos internos de CUALQUIER triángulo en el universo siempre da 180°. Como ya tienes 100° (40+60), al tercero no le queda de otra que medir 80°."
+  },
+  {
+    "id": 419,
+    "materia": "Matemáticas",
+    "pregunta": "Trigonometría veloz: Si el Seno de 30° es 0.5, y la hipotenusa de un triángulo rectángulo mide 20 metros, ¿cuánto mide el cateto opuesto?",
+    "opciones": [
+      "5 metros",
+      "10 metros",
+      "15 metros",
+      "40 metros"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La fórmula del Seno dicta que (Seno = Opuesto / Hipotenusa). Si despejamos, (Opuesto = Seno * Hipotenusa). Multiplicamos 0.5 por 20 y nos revela que el lado opuesto mide 10 metros."
+  },
+  {
+    "id": 420,
+    "materia": "Matemáticas",
+    "pregunta": "En Geometría Analítica, ¿cuál es la pendiente (m) de la recta que cruza por los puntos coordenados (1, 2) y (3, 6)?",
+    "opciones": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La pendiente (inclinación) se calcula restando las 'Y' y dividiendo entre la resta de las 'X'. Arriba queda 6 - 2 = 4. Abajo queda 3 - 1 = 2. Finalmente 4 dividido entre 2 nos da una pendiente de 2."
+  },
+  {
+    "id": 421,
+    "materia": "Matemáticas",
+    "pregunta": "Probabilidad: Al lanzar un dado normal de seis caras, ¿cuál es la probabilidad exacta de que caiga un número primo?",
+    "opciones": [
+      "1/6",
+      "2/6",
+      "1/2",
+      "2/3"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Los números primos en un dado son el 2, el 3 y el 5. Tienes 3 casos a favor de 6 casos posibles (3/6). Si simplificas esa fracción sacando mitades o tercios, equivale a 1/2 (un 50% de éxito)."
+  },
+  {
+    "id": 422,
+    "materia": "Matemáticas",
+    "pregunta": "Estadística: Si tus calificaciones finales son 7, 8, 9, 10 y 6, ¿cuál es tu Media Aritmética (promedio)?",
+    "opciones": [
+      "7",
+      "7.5",
+      "8",
+      "8.5"
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "Para sacar la Media, sumas todo el daño y lo divides entre los eventos. 7+8+9+10+6 = 40. Tomas ese 40 y lo divides entre las 5 materias, obteniendo un promedio cerrado de 8."
+  },
+  {
+    "id": 423,
+    "materia": "Matemáticas",
+    "pregunta": "Encuentra la Moda en la siguiente lista de edades de un equipo: 5, 7, 7, 8, 9, 7, 5.",
+    "opciones": [
+      "5",
+      "7",
+      "8",
+      "9"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "En estadística, la 'Moda' no tiene nada que ver con sumar, es simplemente buscar el número más 'popular' o el que más veces se repite en el inventario. En esta lista, el 7 aparece tres veces, coronándose ganador."
+  },
+  {
+    "id": 424,
+    "materia": "Matemáticas",
+    "pregunta": "Teorema de Thales (Proporciones): A la misma hora del día, un árbol gigante proyecta una sombra de 10 metros, mientras que una estaca de 2 metros de altura proyecta una sombra de 4 metros. ¿Cuánto mide el árbol?",
+    "opciones": [
+      "4 metros",
+      "5 metros",
+      "8 metros",
+      "20 metros"
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Es una regla de tres proporcional. Si la estaca mide 2m y da 4m de sombra (la sombra es el doble de su altura), entonces el árbol que da 10m de sombra debe medir lógicamente la mitad de eso. ¡El árbol mide 5 metros!"
   }
 ]
