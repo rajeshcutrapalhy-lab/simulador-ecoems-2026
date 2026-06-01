@@ -521,9 +521,8 @@
     ],
     "respuesta_correcta": 3,
     "explicacion": "Aunque parezca un rectángulo inclinado, la fórmula del área es directa: Base por Altura recta. No te dejes engañar por las medidas diagonales de los lados."
-  }
-],
-{
+  },
+  {
     "id": 41,
     "materia": "Habilidad Matemática",
     "pregunta": "¿Cuál es el término que falta en la siguiente sucesión? 10, -2, -14, -26, ___",
@@ -1055,7 +1054,7 @@
     "respuesta_correcta": 1,
     "explicacion": "En el espectro de luz, a mayor frecuencia, mayor energía. Como la luz roja tiene una frecuencia muy baja y lenta, su carga de energía también es menor comparada con la luz azul."
   },
-{
+  {
     "id": 81,
     "materia": "Química",
     "pregunta": "Los distintos modelos de átomo han sido elaborados para",
