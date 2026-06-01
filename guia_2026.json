@@ -9,7 +9,8 @@
       "permite almacenar datos de las publicaciones, por temas, títulos o autores.",
       "registra exclusivamente noticias de documentos de reciente creación."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Una ficha bibliográfica es como el inventario de tu partida: te permite almacenar y clasificar todos los datos clave de los libros y fuentes que has recolectado para no perder tu progreso."
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
       "Manuel Gutiérrez Nájera escribía mucho para numerosas publicaciones.",
       "Manuel Gutiérrez Nájera tenía, a los 17 años, más de 25 seudónimos."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El texto central se enfoca en la enorme cantidad de trabajo y publicaciones que el autor logró desde que era muy joven, como si hubiera subido de nivel rapidísimo en su carrera literaria."
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
       "Paráfrasis.",
       "Ejemplos."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "¡Pura exposición! El autor no da ejemplos ni repite lo mismo; simplemente explica detalladamente en qué consiste y cuáles son las reglas de cada una de las tres etapas de la prehistoria."
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@
       "I y II",
       "II y V"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Los nexos 'además de' y 'por ejemplo' en las oraciones I y II funcionan como puentes estructurales que conectan nuevas ideas a la oración principal."
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
       "dar un orden a las ideas.",
       "señalar el tiempo en el párrafo."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Las palabras 'en primer lugar', 'también' y 'finalmente' son conectores de orden temporal. Te ayudan a organizar el combo de ideas paso a paso, desde el inicio hasta el remate."
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@
       "dos puntos",
       "coma"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "¡Dos puntos! (:) Se usan justo antes de empezar a enumerar las misiones o acciones que acordaron hacer: volver a verlo, llevarle el libro y continuar la plática."
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@
       "Abuelo, ¿qué son las flores?",
       "Curan el alma de los hombres."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Es la idea central que sostiene todo el párrafo. Sin la afirmación 'Las flores son los ojos de las plantas', el resto de las descripciones poéticas pierden por completo su sentido."
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@
       "Mañana regresa mi abuela de Celaya.",
       "Me lavo los dientes todas las mañanas."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Es como jugar un flashback narrativo de Assassin's Creed: usamos un verbo conjugado en presente ('descubre') para relatar un evento épico que ocurrió en el pasado (1492) y hacerlo sentir más inmersivo."
   },
   {
     "id": 9,
@@ -105,7 +113,8 @@
       "Participios.",
       "Adjetivos."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Palabras como 'pálido', 'garzos', 'puntiaguda' y 'castaña' son adjetivos calificativos puros. Son las palabras que describen el diseño visual o 'skin' del guerrero."
   },
   {
     "id": 10,
@@ -117,7 +126,8 @@
       "Pretérito.",
       "Antepospretérito."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Los verbos terminados en '-aba' o '-ía' (como cortaban, movía, examinaba) están en copretérito. Describen una acción del pasado que duró cierto tiempo, como si se quedara cargando en el fondo."
   },
   {
     "id": 11,
@@ -129,7 +139,8 @@
       "justificar una acción.",
       "dar una opinión."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Cuando el actor dice 'Este filme es importante... porque se hacen pocas películas tan reales', no está narrando un cuento, está expresando su postura y dando su opinión personal sobre la obra."
   },
   {
     "id": 12,
@@ -141,7 +152,8 @@
       "Si piensas seguir viviendo... no olvides tener a tu lado \"Esperanza\", la pastilla que realmente renovará tus ganas de vivir.",
       "La alimentación mediante productos \"Paraíso terrenal\" favorecerá llevar una vida llena de salud."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Prometer que una simple pastilla va a 'renovar tus ganas de vivir' es una hipérbole absoluta. ¡Es un buff demasiado exagerado que ningún ítem logra en la vida real!"
   },
   {
     "id": 13,
@@ -153,7 +165,8 @@
       "el contador de cuentos embelesa a los niños con sus historias, le confiesa a la preguntona que se los cuenta el pozo.",
       "el cuentacuentos le habla a una persona que está fuera de la historia y le dice que saca los cuentos del pozo."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "La historia principal trata sobre un cuentacuentos que hipnotiza a los niños con sus relatos, y finalmente le revela el gran 'easter egg' a la niña: ¡el pozo es su verdadera fuente de historias!"
   },
   {
     "id": 14,
@@ -166,7 +179,8 @@
       "I. Frágil II. Atento III. Embustero IV. Imaginativo",
       "I. Frágil II. Imaginativo III. Atento IV. Embustero"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "La comprensión lectora del texto nos dice que la niña es frágil y de cera; el contador miente pero es muy imaginativo (embustero e imaginativo), y el público infantil se mantiene siempre atento."
   },
   {
     "id": 15,
@@ -178,7 +192,8 @@
       "analógica.",
       "explicativa."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "La palabra clave aquí es el nexo 'como'. Está haciendo una comparación directa entre la debilidad física de la niña y la consistencia suave de la cera."
   },
   {
     "id": 16,
@@ -190,7 +205,8 @@
       "una tinaja con agua del pozo.",
       "la barda de adobe."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "El brocal es el muro pequeño de piedra o ladrillo que rodea la boca de un pozo, diseñado exactamente como una barrera o límite del mapa para evitar caídas al vacío."
   },
   {
     "id": 17,
@@ -202,7 +218,8 @@
       "ficticios.",
       "certeros."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "De la lectura se infiere que la comunidad científica ha subido mucho de nivel en el tema, logrando descubrimientos y avances destacables e importantes en muy poco tiempo."
   },
   {
     "id": 18,
@@ -214,7 +231,8 @@
       "Los agujeros negros sin rotación son perfectamente esféricos.",
       "Los hoyos negros posiblemente son túneles."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "La palabra 'posiblemente' es el delator. Una hipótesis es una teoría o suposición, una mecánica del universo que aún no ha sido confirmada al 100% por los científicos."
   },
   {
     "id": 19,
@@ -226,7 +244,8 @@
       "Los hoyos negros y su posible conexión con otros universos.",
       "La explicación del fenómeno de los agujeros negros."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "El núcleo central y objetivo principal del texto es definir, desmenuzar y tratar de explicar qué son, cómo se forman y cómo funcionan estos fenómenos supermasivos en el espacio."
   },
   {
     "id": 20,
@@ -238,7 +257,8 @@
       "político a ley.",
       "carpintero a carpintería."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Es una analogía de Sujeto a Objeto de trabajo. El músico necesita de su instrumento (una guitarra eléctrica a lo Queen o Sabino) para trabajar, al igual que el mecánico necesita su herramienta."
   },
   {
     "id": 21,
@@ -250,7 +270,8 @@
       "caminar.",
       "ballet."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Relación de Objeto y Disciplina. Usas zapatos de tenis (sneakers) específicamente para correr, de la misma forma en que usas zapatillas de punta para practicar ballet con precisión."
   },
   {
     "id": 22,
@@ -262,7 +283,8 @@
       "madrina consanguínea",
       "primo familiar"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Relación direccional en el árbol genealógico. Un hijo representa tu línea hacia abajo (descendiente), mientras que un abuelo representa tu línea hacia arriba (ascendiente)."
   },
   {
     "id": 23,
@@ -274,7 +296,8 @@
       "Estable.",
       "Tímido."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "¡Cuidado con esta trampa clásica! Aunque en inglés 'bizarre' significa extraño, en español 'bizarro' significa valiente o audaz. Por lo tanto, su antónimo directo es 'cobarde'."
   },
   {
     "id": 24,
@@ -286,7 +309,8 @@
       "Sufrir.",
       "Rechazar."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Padecer significa sufrir o soportar un daño o enfermedad física. El opuesto total (antónimo) a ese dolor es 'gozar' de algo plenamente, ¡como recuperar toda la barra de HP!"
   },
   {
     "id": 25,
@@ -298,7 +322,8 @@
       "Ocultas.",
       "Públicas."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Algo clandestino se hace en las sombras, en secreto o de forma oculta para que nadie se entere. Su antónimo perfecto es hacer algo de forma 'pública' a la vista de todo el mundo."
   },
   {
     "id": 26,
@@ -310,7 +335,8 @@
       "Violentas.",
       "Frías."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Un sinónimo de entrañable es algo que llega a lo más profundo, íntimo y sumamente afectuoso, ¡del mismo modo que se valora una amistad irrompible de 15 años!"
   },
   {
     "id": 27,
@@ -322,7 +348,8 @@
       "Flojera.",
       "Aburrimiento."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "La hilaridad es un sinónimo culto para la expresión ruidosa de la alegría. En pocas palabras: las locuras del personaje provocan risa o carcajadas incontrolables."
   },
   {
     "id": 28,
@@ -334,7 +361,8 @@
       "Dilación.",
       "Sencillez."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Celeridad proviene de 'célere', que significa pronto o veloz. El sinónimo de esto es que el médico actuó con suma rapidez, ¡prácticamente en modo speedrun para ayudar!"
   },
   {
     "id": 29,
@@ -346,7 +374,8 @@
       "-11",
       "-73"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "¡Sigue la jerarquía para no perder vidas! Primero paréntesis: (7-2)=5 y (4-1)=3. Luego multiplicas el 3 por el 5 (da 15). El corchete queda [8 - 15 + 1] = -6. Finalmente: 2 - 5(-6) - 3(3) = 2 + 30 - 9 = 23."
   },
   {
     "id": 30,
@@ -358,7 +387,8 @@
       "160",
       "140"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Usa una regla de tres directa: Si el 75% equivale a 120, entonces para hallar el 100% (x) multiplicas 120 por 100, y lo divides entre 75. Resultado: 160."
   },
   {
     "id": 31,
@@ -370,7 +400,8 @@
       "16/18",
       "8/12"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Eleva tanto el numerador como el denominador a la cuarta potencia. Numerador: 2x2x2x2 = 16. Denominador: 3x3x3x3 = 81. Resultado exacto: 16/81."
   },
   {
     "id": 32,
@@ -382,7 +413,8 @@
       "1/2(a^2+b^2)",
       "(1/2a + 1/2b)^2"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Los cuadrados de 'a' y 'b' se escriben como a^2 + b^2. La palabra 'semisuma' significa que debes dividir esa suma entera entre 2, es decir, multiplicar todo el paréntesis por 1/2."
   },
   {
     "id": 33,
@@ -394,7 +426,8 @@
       "9x - 9",
       "9x^2 - 81"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Como si armaras una estructura sólida de PTR, un triángulo equilátero tiene sus 3 lados exactamente iguales. Multiplica el lado (3x - 9) por 3 y te dará el perímetro total: 9x - 27."
   },
   {
     "id": 34,
@@ -406,7 +439,8 @@
       "(x + 9)(x - 2)",
       "(x + 6)(x - 3)"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El truco para factorizar trinomios de esta forma es buscar dos números que multiplicados den el último término (-18) y sumados den el de en medio (-3). ¡Esos números son -6 y +3!"
   },
   {
     "id": 35,
@@ -418,7 +452,8 @@
       "6",
       "2"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Iguala a cero para tener x^2 - 2x - 8 = 0. Al factorizar (buscando dos números que den -8 al multiplicar y -2 al sumar) obtienes (x - 4)(x + 2) = 0. Despejando, x = 4 o x = -2."
   },
   {
     "id": 36,
@@ -431,7 +466,8 @@
       "16",
       "12"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Esto es un ejercicio visual de tabla de frecuencias. Únicamente necesitas ubicar el renglón donde está la calificación '8' y ver el número de alumnos (frecuencia absoluta) en esa misma fila."
   },
   {
     "id": 37,
@@ -443,7 +479,8 @@
       "50%",
       "10%"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "La moneda solo tiene dos caras (Casos favorables: 1, Casos posibles: 2). La división 1/2 te da 0.5, que al multiplicarlo por cien nos da un clásico 50% de probabilidad (RNG equilibrado)."
   },
   {
     "id": 38,
@@ -455,7 +492,8 @@
       "3.20 m",
       "7.10 m"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "¡Teorema de Tales en acción! Relaciona las sombras y alturas con una regla de tres: (1.60m de altura / 3.5m de sombra) = (X de altura / 9m de sombra). Despejando X da 4.11 metros."
   },
   {
     "id": 39,
@@ -467,7 +505,8 @@
       "coseno",
       "seno"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Recuerda el truco de la palabra SOH-CAH-TOA. La sílaba TOA te dice la regla de oro: la Tangente siempre es igual al cateto Opuesto dividido entre el Adyacente."
   },
   {
     "id": 40,
@@ -480,9 +519,11 @@
       "24 m^2",
       "36 m^2"
     ],
-    "respuesta_correcta": 3
-  },
-  {
+    "respuesta_correcta": 3,
+    "explicacion": "Aunque parezca un rectángulo inclinado, la fórmula del área es directa: Base por Altura recta. No te dejes engañar por las medidas diagonales de los lados."
+  }
+],
+{
     "id": 41,
     "materia": "Habilidad Matemática",
     "pregunta": "¿Cuál es el término que falta en la siguiente sucesión? 10, -2, -14, -26, ___",
@@ -492,7 +533,8 @@
       "-50",
       "-37"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "En esta sucesión vas perdiendo 12 puntos en cada paso, como si estuvieras recibiendo daño por veneno. Si a -26 le restas 12, llegas a -38."
   },
   {
     "id": 42,
@@ -504,7 +546,8 @@
       "3.000005 y 2.0000006",
       "3.000005 y 2.00006"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Es un patrón puramente visual: el número entero baja en 1 cada vez (8, 7, 6, 5...), el último decimal sube en 1, y se agrega un cero extra en medio. ¡Sigue la secuencia visual!"
   },
   {
     "id": 43,
@@ -516,7 +559,8 @@
       "38 y 0",
       "49 y 38"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "¡Trampa de nivel doble! Son dos sucesiones mezcladas. La primera (posiciones impares) suma 11: 5, 16, 27, 38. La segunda (posiciones pares) resta 4: 12, 8, 4, 0."
   },
   {
     "id": 44,
@@ -528,7 +572,8 @@
       "74 y 59",
       "73 y 65"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Observa el patrón de daño: 92 - 9 = 83; 83 - 8 = 75. Luego 75 - 7 = 68; y 68 - 6 = 62. Cada vez restas un número menor."
   },
   {
     "id": 45,
@@ -541,7 +586,8 @@
       "img/45c.jpeg",
       "img/45d.jpeg"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Este tipo de series requiere que gires la figura mentalmente, como rotar un objeto 90 grados en tu inventario. Analiza a dónde apunta la esquina marcada."
   },
   {
     "id": 46,
@@ -554,7 +600,8 @@
       "img/46c.jpeg",
       "img/46d.jpeg"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Sigue el movimiento del elemento oscuro. Por lo general, estos patrones saltan de esquina a esquina siguiendo las manecillas del reloj."
   },
   {
     "id": 47,
@@ -567,7 +614,8 @@
       "90",
       "56"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Cada nueva figura aumenta su base y su altura en puntos. Usa la fórmula n(n+1) para saber el número de puntos totales en el nivel n=8."
   },
   {
     "id": 48,
@@ -580,7 +628,8 @@
       "img/48c.jpeg",
       "img/48d.jpeg"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Es un puzzle de secuencias visuales. Cada figura superpone o elimina las líneas de la anterior. Encuentra la regla de superposición."
   },
   {
     "id": 49,
@@ -593,7 +642,8 @@
       "img/49c.jpeg",
       "img/49d.jpeg"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Truco mental: enfócate en una sola cara (como la que tiene el círculo) y visualiza qué caras quedarían arriba y al lado derecho al doblar el papel."
   },
   {
     "id": 50,
@@ -606,7 +656,8 @@
       "img/50c.jpeg",
       "img/50d.jpeg"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Descarta rápido: busca caras que en el plano estén opuestas (es decir, separadas por un cuadro) porque es físicamente imposible que queden juntas al armar la caja."
   },
   {
     "id": 51,
@@ -619,7 +670,8 @@
       "15",
       "18"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "¡No olvides contar los bloques invisibles que sirven de base! Si hay un bloque arriba, forzosamente tiene que haber otros sosteniéndolo por debajo."
   },
   {
     "id": 52,
@@ -632,7 +684,8 @@
       "img/52c.jpeg",
       "img/52d.jpeg"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Recuerda que en un dado de seis caras tradicional, las caras opuestas SIEMPRE suman 7. Si arriba hay un 4, abajo forzosamente está el 3."
   },
   {
     "id": 53,
@@ -644,7 +697,8 @@
       "$630",
       "$920"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "¡Un problema clásico de economía! A los 4,600 le restas los 1,800 que ya diste de enganche. Te quedan 2,800 de deuda. Divídelo entre 5 meses y te da $560."
   },
   {
     "id": 54,
@@ -657,7 +711,8 @@
       "15",
       "16"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Estas son analogías numéricas. Tienes que descubrir qué operación matemática (suma, multiplicación o resta) se hace con los números de afuera para que dé el número de adentro."
   },
   {
     "id": 55,
@@ -669,7 +724,8 @@
       "15",
       "30"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Regla de tres inversa: si quieres hacer la misión en 1/3 del tiempo (1 día en vez de 3), necesitas el triple de personas. 15 x 3 = 45. La pregunta dice 'cuántos MÁS', así que necesitas sumar 30 a los 15 que ya tienes."
   },
   {
     "id": 56,
@@ -681,7 +737,8 @@
       "16%",
       "32%"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El 2/5 del 40% es el 16% (los que SÍ lo usan). Como el 40% es el total de dueños de coches, si le restas ese 16%, te da el 24% de dueños que no lo usan a diario."
   },
   {
     "id": 57,
@@ -693,7 +750,8 @@
       "Tejido.",
       "Órgano."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Todo ser vivo, desde un microbio hasta Pixelote el ajolote, está construido a partir de células. Es el bloque de construcción básico, como un pixel en una pantalla."
   },
   {
     "id": 58,
@@ -705,7 +763,8 @@
       "tala inmoderada.",
       "extinción de especies."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Al conocer bien el 'loot' y los recursos de nuestro entorno natural, podemos regularlos y administrarlos sabiamente en lugar de extinguirlos sin pensar."
   },
   {
     "id": 59,
@@ -717,7 +776,8 @@
       "la libre comercialización de productos naturales.",
       "explotar más los recursos acuáticos."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Las Áreas Naturales Protegidas son como zonas seguras o 'Safe Zones' donde el humano no puede destruir el mapa, garantizando la supervivencia de especies y ecosistemas."
   },
   {
     "id": 60,
@@ -729,7 +789,8 @@
       "conocimiento empírico y científico.",
       "conocimiento científico y ciencia."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Para modificar el código genético (ADN) necesitas tanto el conocimiento biológico puro (Ciencia) como las máquinas y herramientas avanzadas de laboratorio (Tecnología)."
   },
   {
     "id": 61,
@@ -741,19 +802,21 @@
       "produce dióxido de carbono y sales minerales.",
       "produce ATP para otras estructuras celulares."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Las plantas son fábricas perfectas. Absorben agua, luz y dióxido de carbono, para luego crear glucosa (su alimento) y liberar oxígeno (nuestro aire) como regalo."
   },
   {
     "id": 62,
     "materia": "Biología",
     "pregunta": "Una diferencia fundamental en relación con la obtención de energía es que los organismos _____ requieren oxígeno para conseguirla, mientras que los _____ no lo utilizan.",
     "opciones": [
-      "aerobios anaerobios",
+      "aerobios - anaerobios",
       "heterótrofos - autótrofos",
       "autótrofos - heterótrofos",
       "anaerobios - aerobios"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Acuérdate de la raíz de la palabra: 'aero' viene de aire. Por lo tanto, Aerobio = ocupa oxígeno. El prefijo 'an' significa 'sin'. Anaerobio = sin oxígeno."
   },
   {
     "id": 63,
@@ -765,7 +828,8 @@
       "sintetizan su alimento mediante el proceso de fotosíntesis.",
       "dependen de otros organismos para obtener su alimento."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Nosotros los humanos somos heterótrofos. Como no tenemos el superpoder de hacer fotosíntesis con el sol (autótrofos), tenemos que consumir a otros organismos (plantas o animales) para ganar energía."
   },
   {
     "id": 64,
@@ -777,7 +841,8 @@
       "grasas y vitaminas.",
       "minerales y lípidos."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Los alimentos de origen animal son las mejores pociones para construir músculo y tejido en el cuerpo. Son una fuente masiva y directa de proteínas puras y minerales (como el calcio)."
   },
   {
     "id": 65,
@@ -789,7 +854,8 @@
       "Realizar ejercicio diariamente.",
       "Consumir líquidos y cítricos."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Los cítricos (naranja, limón) te dan vitamina C, que actúa como un escudo o 'buff' de defensa para tu sistema inmunológico contra gripes y contaminación."
   },
   {
     "id": 66,
@@ -801,7 +867,8 @@
       "Bipartición.",
       "Sexual."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "La reproducción asexual hace clones (copias exactas). En cambio, la reproducción sexual mezcla el código genético de dos sujetos, creando un personaje con características y variables totalmente únicas."
   },
   {
     "id": 67,
@@ -813,7 +880,8 @@
       "el diafragma",
       "el dispositivo intrauterino"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Las pastillas anticonceptivas modifican los niveles hormonales químicos del cuerpo, lo cual puede generar efectos secundarios o 'debuffs' temporales como la subida de peso o cambios en la presión."
   },
   {
     "id": 68,
@@ -825,7 +893,8 @@
       "Producción alternativa de alimentos y medicinas.",
       "Recuperación de especies en extinción."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Modificar el ADN de una planta nos permite crear súper-cosechas que resisten sequías, o alterar bacterias para producir insulina médica de forma masiva."
   },
   {
     "id": 69,
@@ -838,7 +907,8 @@
       "2-3h",
       "4-5 h"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El truco es buscar la línea de la gráfica que esté MÁS INCLINADA hacia arriba. Entre más parada esté la pendiente, mayor es la aceleración en ese rango de tiempo."
   },
   {
     "id": 70,
@@ -851,7 +921,8 @@
       "El automóvil partió del reposo, en la primer hora alcanzó una velocidad de 60 km/h , y mantuvo esta durante las dos horas siguientes, después redujo la velocidad hasta que a las 4 horas de iniciado su recorrido se detuvo.",
       "El automóvil partió del reposo y se encontró con la pendiente de una montaña, a la que ascendió en una hora, después recorrió la meseta de la montaña a 60 km/h durante dos horas, en la hora siguiente descendió 80 km/h"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Las líneas horizontales o 'mesetas' en las gráficas de velocidad/tiempo significan que el auto mantuvo su velocidad de forma constante, como si usara el control de crucero."
   },
   {
     "id": 71,
@@ -864,7 +935,8 @@
       "7.5 m/s^2",
       "3 m/s^2"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Aplica la Segunda Ley de Newton (a = F / m). Como se empujan juntas, suma las masas (3 + 2 = 5 kg). Divide la fuerza (15 N) entre los 5 kg, y te da una aceleración conjunta de 3 m/s²."
   },
   {
     "id": 72,
@@ -876,7 +948,8 @@
       "450 N",
       "15000 N"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "¡Segunda Ley de Newton al rescate! Fuerza es igual a Masa multiplicada por Aceleración (F = m * a). Al multiplicar ambas variables obtienes la fuerza aplicada."
   },
   {
     "id": 73,
@@ -888,7 +961,8 @@
       "inducción.",
       "contacto."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Al arrastrar los pies de nylon sobre la alfombra, los materiales se raspan uno contra el otro, arrancándose electrones entre sí. Este fenómeno es la famosa carga por frotamiento o fricción."
   },
   {
     "id": 74,
@@ -900,7 +974,8 @@
       "alta a la baja - las dos quedan con temperatura muy baja",
       "baja a la alta - las dos quedan con temperatura muy alta"
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Regla universal de la Termodinámica: El calor siempre viaja del objeto más caliente al más frío, y se detiene únicamente cuando ambos alcanzan el 'Equilibrio Térmico' (misma temperatura)."
   },
   {
     "id": 75,
@@ -912,7 +987,8 @@
       "40 N",
       "100 N"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Principio de Pascal. Es directamente proporcional: si el área del segundo émbolo es el doble de grande (10 es el doble de 5), la fuerza de salida también será el doble (el doble de 20 N es 40 N)."
   },
   {
     "id": 76,
@@ -924,7 +1000,8 @@
       "ebullición.",
       "sublimación."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "El hielo seco (CO2 sólido) no se derrite, se salta por completo el estado líquido y pasa directo de sólido a gas. ¡Ese asombroso efecto ninja se llama sublimación!"
   },
   {
     "id": 77,
@@ -936,7 +1013,8 @@
       "destilada",
       "de mar"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "El agua destilada pura NO conduce electricidad. Lo que la hace conductora son las sales y minerales disueltos en ella (iones). Por lo tanto, el agua de mar, al estar súper salada, es un conductor excelente."
   },
   {
     "id": 78,
@@ -948,7 +1026,8 @@
       "I y III",
       "I y ll"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Cualquier carga eléctrica EN MOVIMIENTO generará un campo magnético a su alrededor. Si pasas electricidad por un cable recto (I) o por una bobina tipo electroimán (II), crearás magnetismo."
   },
   {
     "id": 79,
@@ -960,7 +1039,8 @@
       "moléculas.",
       "partículas."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Una ola en el mar o el sonido en el aire no transportan materia física de un lado a otro. Lo único que viaja a través de las ondas es Pura Energía."
   },
   {
     "id": 80,
@@ -972,9 +1052,10 @@
       "Que de la luz roja la energía es igual que la de la luz azul.",
       "Que de la luz roja y azul la energía es independiente de su frecuencia."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "En el espectro de luz, a mayor frecuencia, mayor energía. Como la luz roja tiene una frecuencia muy baja y lenta, su carga de energía también es menor comparada con la luz azul."
   },
-  {
+{
     "id": 81,
     "materia": "Química",
     "pregunta": "Los distintos modelos de átomo han sido elaborados para",
@@ -984,7 +1065,8 @@
       "representar los fenómenos naturales.",
       "comunicar los resultados de sus experimentos."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Los átomos son invisibles a simple vista. Los modelos (como el de Bohr o Rutherford) son esquemas teóricos que nos ayudan a entender y explicar de forma visual cómo se comporta la materia en la vida real."
   },
   {
     "id": 82,
@@ -996,7 +1078,8 @@
       "Compresibilidad y difusibilidad.",
       "Difusibilidad y expansibilidad."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "¡Física básica! Los líquidos tienen una cantidad de litros que no cambia (volumen definido), pero son unos maestros del disfraz y se adaptan a la forma geométrica de cualquier vaso o botella que los contenga."
   },
   {
     "id": 83,
@@ -1008,7 +1091,8 @@
       "Longitud y tiempo.",
       "Densidad y temperatura."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "¿Quieres saber CUÁNTO hay de un material (cuantificarlo)? Necesitas medir su masa (cuánta materia lo compone en gramos) y su volumen (cuánto espacio 3D ocupa)."
   },
   {
     "id": 84,
@@ -1020,7 +1104,8 @@
       "100 g de agua y 100 g de vapor.",
       "100 g de agua y 120 g de vapor."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "¡Ley de la Conservación de la Masa! La materia no se crea ni se destruye. Si metes 100 gramos de hielo, tendrás 100 gramos de agua y al final 100 gramos de vapor. ¡El peso no cambia!"
   },
   {
     "id": 85,
@@ -1032,7 +1117,8 @@
       "Protones.",
       "Electrones externos."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Imagina que el átomo es una cebolla. Las reacciones químicas solo ocurren en la capa de afuera. Esos electrones de la orilla (electrones externos o de valencia) son los únicos que se mezclan y pelean."
   },
   {
     "id": 86,
@@ -1044,7 +1130,8 @@
       "20",
       "40"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "¡No te dejes engañar por los neutrones extra! El Número Atómico (Z) es literalmente la cantidad de protones de un elemento. Si Z es 20, entonces tiene exactamente 20 protones. Fin."
   },
   {
     "id": 87,
@@ -1056,7 +1143,8 @@
       "la molécula de hidrógeno.",
       "ion hidronio."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "La 'H' con un solo puntito al lado es la clásica 'Estructura de Lewis' para un átomo neutro de Hidrógeno, mostrando su único y solitario electrón de valencia."
   },
   {
     "id": 88,
@@ -1068,7 +1156,8 @@
       "tamaño.",
       "número de masa."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "La Tabla Periódica moderna no está ordenada por su peso o tamaño, sino estrictamente por su Número Atómico (la cantidad de protones). Van del 1 (H) hacia arriba."
   },
   {
     "id": 89,
@@ -1080,7 +1169,8 @@
       "Alta densidad, conductividad térmica y baja temperatura de fusión.",
       "Maleabilidad, conductividad y baja densidad."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Los metales son materiales top tier de crafteo: aguantan muchísimo calor antes de derretirse, conducen la electricidad perfecto y son maleables (puedes aplastarlos para hacer láminas)."
   },
   {
     "id": 90,
@@ -1092,7 +1182,8 @@
       "NaOH + HCl -> NaCl + H2O",
       "CO2 + H2O -> H2CO3"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Un 'reactivo' es el ingrediente que va ANTES de la flecha de reacción. Solo en la opción 'D' el agua (H2O) aparece al lado izquierdo sumándose al CO2."
   },
   {
     "id": 91,
@@ -1104,7 +1195,8 @@
       "candela.",
       "litro."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "En el Sistema Internacional, cuando hablamos de 'cantidad de sustancia' pura a nivel microscópico, usamos la medida de los 'moles' (¡el famoso número gigante de Avogadro!)."
   },
   {
     "id": 92,
@@ -1116,7 +1208,8 @@
       "S-O",
       "O-S"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Regla REDOX: Quien gana electrones baja su número de oxidación (se reduce), y quien pierde electrones sube su número (se oxida). Aquí el Zinc (Zn) se oxida y el Cobre (Cu) se reduce."
   },
   {
     "id": 93,
@@ -1128,7 +1221,8 @@
       "Romanticismo.",
       "Barroco."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El Humanismo dejó de centrar el mundo solo en la religión y puso al ser humano y a la ciencia en el centro. Este despertar cultural generó la época dorada del Renacimiento."
   },
   {
     "id": 94,
@@ -1140,7 +1234,8 @@
       "del Humanismo.",
       "del Romanticismo."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Las Trece Colonias (hoy EE.UU.) se independizaron inspiradas por los libros de la Ilustración francesa, buscando la razón, la libertad y un gobierno donde el pueblo mandara."
   },
   {
     "id": 95,
@@ -1152,7 +1247,8 @@
       "Los intereses tradicionales de una sociedad enfocados a resolver asuntos económicos.",
       "El pensamiento de una población que defiende su religión por encima de todo."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El nacionalismo de esa época definía a una nación no solo por el pedazo de tierra, sino por su 'ADN cultural': compartir orgullosamente un mismo idioma, tradiciones y un pasado común."
   },
   {
     "id": 96,
@@ -1164,7 +1260,8 @@
       "persecución de los judíos.",
       "noche de los cristales rotos."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Benito Mussolini, el líder fascista, anuló la democracia destruyendo a la oposición y desintegrando el parlamento para convertirse en el único dictador del país."
   },
   {
     "id": 97,
@@ -1176,7 +1273,8 @@
       "bioquímica.",
       "informática."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "El nacimiento de los microchips, los circuitos electrónicos y las primeras computadoras en el siglo XX dio lugar a la ciencia que lo procesa todo hoy en día: la Informática."
   },
   {
     "id": 98,
@@ -1188,7 +1286,8 @@
       "la búsqueda de soluciones para evitar la extinción de especies.",
       "el agotamiento de los recursos naturales."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "La globalización exige producir y transportar productos de forma brutal en todo el planeta, lo que acelera el desgaste y agotamiento total de los recursos naturales de la Tierra."
   },
   {
     "id": 99,
@@ -1200,7 +1299,8 @@
       "El Tribunal de la Santa Cruzada.",
       "El Provisorato de Indios."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "El Tribunal del Santo Oficio (La Inquisición) era el martillo de hierro de la iglesia durante la Colonia, usado para castigar la herejía y censurar ideas que no les convenían."
   },
   {
     "id": 100,
@@ -1212,7 +1312,8 @@
       "dar libertades a las colonias e impulsar el comercio.",
       "incluir a los criollos en cargos públicos y promover la libertad de comercio."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Los reyes Borbones querían recuperar el control total ('Despotismo Ilustrado'). Para lograrlo, le quitaron mucho poder y tierras a la Iglesia Católica y centralizaron toda la política."
   },
   {
     "id": 101,
@@ -1224,7 +1325,8 @@
       "La formación del congreso constituyente.",
       "El imperio de Maximiliano de Habsburgo."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Con las Leyes de Reforma impulsadas por Juárez, el Estado Mexicano le quitó a la iglesia el poder sobre los panteones, nacimientos y matrimonios, centralizándolo de forma laica."
   },
   {
     "id": 102,
@@ -1236,7 +1338,8 @@
       "recoge las inquietudes sociales de obreros y campesinos demandadas desde el proceso revolucionario.",
       "enfatiza la independencia nacional frente a las demás naciones, así como la autonomía de los Estados."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "¡El famoso artículo del subsuelo! El Art. 27 declara que todo lo que hay en el territorio (como el petróleo, los minerales y las aguas) le pertenece originariamente a la Nación de México."
   },
   {
     "id": 103,
@@ -1248,7 +1351,8 @@
       "XX.",
       "XVIII."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Octavio Paz (Premio Nobel 1990) y Juan Rulfo (Pedro Páramo en 1955) vivieron y publicaron en los 1900s, lo que los convierte en titanes del Siglo XX."
   },
   {
     "id": 104,
@@ -1260,7 +1364,8 @@
       "aumentar las oportunidades de inversión.",
       "fomentar la mano de obra de migrantes."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "El TLCAN buscaba eliminar barreras para que las empresas pudieran mover sus fábricas y dinero entre México, Estados Unidos y Canadá, aumentando la inversión masivamente."
   },
   {
     "id": 105,
@@ -1272,7 +1377,8 @@
       "distribución.",
       "temporalidad."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "En Geografía, el principio de 'Temporalidad' (o Evolución) estudia cómo el humano o la naturaleza transforman y modifican un paisaje conforme pasa el tiempo."
   },
   {
     "id": 106,
@@ -1285,7 +1391,8 @@
       "10° N, 30° W",
       "10° S, 30° E"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "Primero se lee la Latitud (Norte/Sur respecto al Ecuador) y luego la Longitud (Este/Oeste respecto a Greenwich). El punto está 10 grados abajo (Sur) y 30 a la derecha (Este)."
   },
   {
     "id": 107,
@@ -1297,7 +1404,8 @@
       "rotación terrestre.",
       "inclinación del eje."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Como el planeta Tierra gira sobre sí mismo (Rotación) cada 24 horas, el Sol ilumina distintas partes del mapa en distintos momentos, creando los horarios."
   },
   {
     "id": 108,
@@ -1309,7 +1417,8 @@
       "la erosión de las montañas.",
       "el desplazamiento de las placas."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "El manto superior tiene flujos de roca derretida llamados 'corrientes de convección'. Ese movimiento intenso es el motor subterráneo que mueve las enormes placas tectónicas."
   },
   {
     "id": 109,
@@ -1321,7 +1430,8 @@
       "Estratosfera",
       "Mesosfera."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "La Estratosfera guarda el escudo protector más importante del planeta: la capa de ozono, encargada de absorber los peligrosos rayos ultravioleta del Sol."
   },
   {
     "id": 110,
@@ -1333,7 +1443,8 @@
       "I, III y V",
       "II, III y IV"
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "El daño de un temblor depende de si el piso es lodoso (Sustrato), si las casas están mal construidas (Infraestructura) y si puede causar derrumbes de montañas (Deslizamientos)."
   },
   {
     "id": 111,
@@ -1345,7 +1456,8 @@
       "Costa del Golfo de México.",
       "Mar de Cortés."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "La mina de 'oro negro' de México está orientada al Este. La Costa del Golfo de México (especialmente la Sonda de Campeche y Veracruz) lidera la extracción de hidrocarburos."
   },
   {
     "id": 112,
@@ -1357,7 +1469,8 @@
       "Acapulco y Salina Cruz.",
       "Lázaro Cárdenas y Tampico."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Para el comercio pesado y contenedores masivos, Veracruz domina del lado del Océano Atlántico/Golfo, y Manzanillo es el titán comercial del Océano Pacífico."
   },
   {
     "id": 113,
@@ -1369,7 +1482,8 @@
       "Puerto Vallarta y Huatulco.",
       "Cancún y Cozumel."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Para el turismo internacional (dólares y vuelos directos), Cancún (Quintana Roo) en el Caribe y Los Cabos (Baja California) son indiscutiblemente las zonas Tier 1."
   },
   {
     "id": 114,
@@ -1381,7 +1495,8 @@
       "radio.",
       "periódico."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "El Internet destruyó las fronteras. Gracias a la red, podemos jugar, ver animes japoneses y conectarnos con ideas del otro lado del planeta al instante."
   },
   {
     "id": 115,
@@ -1393,7 +1508,8 @@
       "Oaxaca.",
       "Guerrero."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Palenque es una de las joyas mayas más espectaculares y verdes del país, famosa por la tumba del Rey Pakal, ubicada profundamente en la selva de Chiapas."
   },
   {
     "id": 116,
@@ -1405,7 +1521,8 @@
       "Aguas internacionales.",
       "Zona económica exclusiva."
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "La 'Zona Económica Exclusiva' es la franja VIP del mar donde un país puede pescar o sacar petróleo a sus anchas, sin que otros barcos extranjeros tengan permitido meterse a robar sus recursos."
   },
   {
     "id": 117,
@@ -1417,7 +1534,8 @@
       "Patricio, destacado estudiante de secundaria, ha sido seleccionado para realizar una estancia de estudios por un año en uno de los estados de Norteamérica.",
       "Eulalio, entrenador de fútbol, ha recibido una invitación para participar con su equipo en un torneo amistoso que tendrá lugar en las ciudades más importantes del país."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Donar tus ahorros personales ganados con esfuerzo es una decisión moral 100% tuya. El doctor necesita regulaciones, el menor permisos y el entrenador depende del equipo completo."
   },
   {
     "id": 118,
@@ -1429,7 +1547,8 @@
       "Me encanta el orden, la armonía y el equilibrio con que está construido este edificio de principios de siglo.",
       "Considero reprobable la corrupción e ilegalidad, dañan terriblemente el desarrollo de nuestro país."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "La 'Estética' es el área filosófica que admira la belleza pura. Hablar de equilibrio, diseño y armonía en la arquitectura es la máxima expresión de un valor estético."
   },
   {
     "id": 119,
@@ -1441,7 +1560,8 @@
       "Yolanda es una persona tolerante y reflexiva, pues en su familia siempre ha prevalecido el diálogo y la empatía.",
       "José se reúne a jugar dominó con sus amigos, pues quiere fomentar su agilidad mental."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Nuestra 'party' inicial o círculo familiar es lo que moldea nuestro comportamiento de base. Que Yolanda herede y copie la tolerancia de su familia demuestra cómo el entorno define quiénes somos."
   },
   {
     "id": 120,
@@ -1453,7 +1573,8 @@
       "I: b, c II: a, d",
       "I: c, d II: b, a"
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Como en cualquier juego online, hay recompensas y reglas. Tus recompensas (Derechos) son el respeto familiar y la salud (a, d), pero tus reglas (Obligaciones) son estudiar y respetar las normas sociales (b, c)."
   },
   {
     "id": 121,
@@ -1465,7 +1586,8 @@
       "violencia psicológica a los adolescentes.",
       "economía propia de la adolescencia."
     ],
-    "respuesta_correcta": 1
+    "respuesta_correcta": 1,
+    "explicacion": "Cualquier persona, no importa si es joven o adulta, merece cobrar lo justo por su esfuerzo laboral. Abusar del pago usando la edad como excusa es un abuso y violencia puramente económica."
   },
   {
     "id": 122,
@@ -1477,7 +1599,8 @@
       "religiosa, racial y educativa.",
       "educativa, religiosa y económica."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "¡Un triple combo de toxicidad! 'Morenos' ataca la raza (Racial), 'Judíos' ataca su creencia (Religiosa) y 'Pobres' es una agresión a su estatus financiero (Económica)."
   },
   {
     "id": 123,
@@ -1489,7 +1612,8 @@
       "Absoluto",
       "judicial"
     ],
-    "respuesta_correcta": 3
+    "respuesta_correcta": 3,
+    "explicacion": "El Legislativo hace las reglas del juego, el Ejecutivo es el presidente, pero el Poder JUDICIAL (los tribunales y jueces) son los árbitros que revisan el reglamento e interpretan las normas al pie de la letra."
   },
   {
     "id": 124,
@@ -1501,7 +1625,8 @@
       "Asociación Civil.",
       "Instituto Nacional Electoral."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Un Partido Político es un 'gremio' oficial. Su única función es registrar jugadores (candidatos) para competir en los torneos electorales bajo una misma filosofía de grupo."
   },
   {
     "id": 125,
@@ -1513,7 +1638,8 @@
       "libre, secreto y directo.",
       "libre, secreto e indirecto."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "La trifuerza de la democracia: Libre (tú decides sin presión), Secreto (nadie espía tu boleta) y Directo (tu voto va directo a la urna del personaje elegido, sin intermediarios)."
   },
   {
     "id": 126,
@@ -1525,7 +1651,8 @@
       "forma opiniones basadas en los comentarios de terceros.",
       "convence al receptor sobre un tema específico mediante la persuasión."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "La radio, TV e internet demuestran un valor social gigantesco cuando dejan de lado el dinero o los chismes, y usan su red para proteger, ayudar e informar a la comunidad durante las crisis."
   },
   {
     "id": 127,
@@ -1537,7 +1664,8 @@
       "pertenecer a grupos de cuidado del ambiente.",
       "responder a la influencia social."
     ],
-    "respuesta_correcta": 0
+    "respuesta_correcta": 0,
+    "explicacion": "Recoger la basura o cuidar un parque no es un capricho. Mantener nuestro entorno limpio es clave para evitar infecciones, respirar mejor y tener una zona agradable para vivir y jugar."
   },
   {
     "id": 128,
@@ -1549,6 +1677,7 @@
       "negociación.",
       "legalidad."
     ],
-    "respuesta_correcta": 2
+    "respuesta_correcta": 2,
+    "explicacion": "Como los involucrados intentaron dialogar y llegar a un trato 'cara a cara' directamente con el dueño, sin abogados y sin que los separara un juez, a esa fase diplomática inicial se le llama Negociación."
   }
 ]
