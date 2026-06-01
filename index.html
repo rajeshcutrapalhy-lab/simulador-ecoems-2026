@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Master Edition V5 (Con Datos Curiosos)</title>
+    <title>Simulador ECOEMS 2026 - Master Edition V5</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -34,7 +34,7 @@
         .barra-hp { background-color: #e74c3c; height: 100%; transition: width 0.3s; }
         .barra-hp-jefe { background-color: #8e44ad; height: 100%; transition: width 0.3s; }
         
-        .contenedor-trofeos { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; max-height: 150px; overflow-y: auto; background: #0f3460; padding: 15px; border-radius: 15px; margin-bottom: 20px; }
+        .contenedor-trofeos { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; max-height: 250px; overflow-y: auto; background: #0f3460; padding: 15px; border-radius: 15px; margin-bottom: 20px; }
         .trofeo-card { background: #1a1a2e; padding: 10px 5px; border-radius: 10px; filter: grayscale(1) opacity(0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #333; }
         .trofeo-card.desbloqueado { filter: grayscale(0) opacity(1); background: #2a2a4a; border: 1px solid #f1c40f; box-shadow: 0 0 10px rgba(241, 196, 15, 0.2); }
         .trofeo-icon { font-size: 30px; margin-bottom: 5px; }
@@ -99,7 +99,7 @@
         .modal-content { background: #16213e; padding: 30px; border-radius: 20px; max-width: 400px; width: 80%; border: 2px solid #4361ee; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .modal-icon { font-size: 60px; margin-bottom: 10px; }
         .modal-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
-        .modal-msg { font-size: 15px; color: #a2a8d3; margin-bottom: 25px; white-space: pre-line;} /* Pre-line para que lea los saltos de linea de la explicación */
+        .modal-msg { font-size: 15px; color: #a2a8d3; margin-bottom: 25px; white-space: pre-line;} 
 
         @keyframes temblor { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         @keyframes golpe { 0% { filter: invert(0); } 50% { filter: invert(1); transform: scale(0.9); } 100% { filter: invert(0); } }
@@ -291,6 +291,19 @@
             radarStats: {} 
         };
 
+        // PARCHE DE COMPATIBILIDAD (Para partidas guardadas antiguas)
+        if (playerStats.skinEquipada === undefined) playerStats.skinEquipada = 0;
+        if (!playerStats.skinsDesbloqueadas) playerStats.skinsDesbloqueadas = [0];
+        if (playerStats.monedas === undefined) playerStats.monedas = 0;
+        if (playerStats.racha === undefined) playerStats.racha = 0;
+        if (playerStats.ultimaFecha === undefined) playerStats.ultimaFecha = "";
+        if (!playerStats.radarStats) playerStats.radarStats = {};
+        if (playerStats.arcadeJefe === undefined) playerStats.arcadeJefe = 0;
+        if (playerStats.arcadeFrenesi === undefined) playerStats.arcadeFrenesi = 0;
+        if (playerStats.arcadeMemorama === undefined) playerStats.arcadeMemorama = 0;
+        if (playerStats.arcadeRescate === undefined) playerStats.arcadeRescate = 0;
+        if (playerStats.arcadeAguila === undefined) playerStats.arcadeAguila = 0;
+
         // Lógica de Racha Diaria 
         let hoy = new Date().toLocaleDateString();
         if (playerStats.ultimaFecha !== hoy) {
@@ -379,7 +392,6 @@
                 let imgFront = q.imagen ? `<br><img src="${q.imagen}" style="max-width:100%; max-height:100px; margin-top:10px; border-radius:5px;">` : "";
                 let ansHtml = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}" style="max-width:100%; max-height:100px; border-radius:5px;">` : ans;
                 
-                // INYECCIÓN DE LA EXPLICACIÓN SI EXISTE EN EL JSON
                 let expHtml = q.explicacion ? `<div style="font-size:13px; font-weight:normal; margin-top:15px; border-top:1px solid rgba(255,255,255,0.3); padding-top:10px;">💡 <strong>Dato:</strong> ${q.explicacion}</div>` : "";
 
                 document.getElementById('fc-front').innerHTML = `<div style="color:#f1c40f; font-size:12px; margin-bottom:10px; text-transform:uppercase; font-weight:bold;">${q.materia}</div><strong style="font-size:16px; line-height:1.4;">${q.pregunta}</strong>${imgFront}`;
@@ -444,7 +456,6 @@
             ahVid=5; ahOc=Array(ahPal.length).fill('_'); 
             document.getElementById('ahorcado-pista').innerText="Pista: "+(rnd.pregunta.length>80?rnd.pregunta.substring(0,80)+"...":rnd.pregunta); 
             
-            // INYECCIÓN EXPLICACIÓN EN EL RESCATE (se guarda en variable global oculta)
             window.ahorcadoExplicacion = rnd.explicacion ? `\n\n💡 Dato: ${rnd.explicacion}` : "";
 
             document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; 
@@ -550,7 +561,6 @@
                     let cS = oS.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oS}" class="img-fluida" style="max-height:80px;">`:oS; 
                     let cC = oC.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oC}" class="img-fluida" style="max-height:80px;">`:oC; 
                     
-                    // INYECCIÓN DE LA EXPLICACIÓN EN LA TARJETA ROJA DE ERROR
                     let expHtml = d.explicacion ? `<div style="background: rgba(52, 152, 219, 0.2); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 13px; color: #a2a8d3; text-align: left; border-left: 3px solid #4361ee;"><strong>💡 Explicación:</strong> ${d.explicacion}</div>` : "";
 
                     html += `<div class="tarjeta-error" style="background:#0f3460; border:1px solid #e94560; padding:15px; border-radius:10px; margin-bottom:15px;"><div style="color:#a2a8d3; font-size:12px; font-weight:bold; margin-bottom:5px;">${d.materia}</div><p style="font-weight:bold;">${d.pregunta}</p>${d.imagen?`<img src="${d.imagen}" class="img-fluida" style="max-height:100px; margin-bottom:15px;">`:''} <div style="background:rgba(233,69,96,0.2); padding:10px; border-radius:5px; margin-bottom:5px;"><strong style="color:#e94560;">❌ Elegiste:</strong><br>${cS}</div><div style="background:rgba(39,174,96,0.2); padding:10px; border-radius:5px;"><strong style="color:#27ae60;">✅ Correcta:</strong><br>${cC}</div>${expHtml}</div>`; 
@@ -567,7 +577,6 @@
         // ==========================================
         actualizarUI();
         renderLeaderboard();
-        // Carga inicial de trofeos (70 ocultos por defecto)
         const defTrofeos = [];
         for(let i=1; i<=70; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
         defTrofeos[0] = {id:1, icon:'🌱', name:'Despertar', desc:'1ra pregunta'}; defTrofeos[10] = {id:11, icon:'🔥', name:'Chispa', desc:'3 correctas seguidas'}; defTrofeos[29] = {id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS', desc:'128 aciertos'}; defTrofeos[39] = {id:40, icon:'🥷', name:'Fantasma', desc:'Sin advertencias'};
