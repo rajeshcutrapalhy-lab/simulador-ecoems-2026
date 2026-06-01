@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Simulador ECOEMS 2026 - Master Edition V11 (Modo Estable)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simulador ECOEMS 2026 - Master Edition V10</title>
     <script>
         // --- SECCIÓN ACTUALIZADA DE MONITOREO ---
         let advTot = 0; 
@@ -44,10 +45,687 @@
                 }, 3000);
             }
         }
+    
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background-color: #1a1a2e; color: #fff; margin: 0; padding: 20px; text-align: center; padding-bottom: 80px; }
+        .pantalla { background: #16213e; padding: 30px 20px; border-radius: 20px; max-width: 600px; margin: 20px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; border: 1px solid #0f3460; position: relative;}
+        #bienvenida { display: block; }
         
-        // El resto del código permanece igual...
-    </script>
+        .top-stats { display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; background: #0f3460; padding: 10px 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #4361ee; }
+        .stat-racha { color: #ff7675; } .stat-monedas { color: #f1c40f; }
+
+        .contenedor-avatar { position: relative; display: inline-block; margin-bottom: 15px; cursor: pointer; }
+        .logo-pixelote { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid #e94560; background: white; transition: all 0.3s;}
+        .burbuja-texto { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: #fff; color: #1a1a2e; padding: 8px 15px; border-radius: 15px; font-weight: bold; font-size: 12px; white-space: nowrap; z-index: 10; box-shadow: 0 4px 8px rgba(0,0,0,0.3); pointer-events: none;}
+        .burbuja-texto::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-width: 8px 8px 0; border-style: solid; border-color: #fff transparent transparent transparent; }
+        .anim-salto { animation: salto 0.4s ease; }
+        
+        .btn { border: none; padding: 15px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; margin-bottom: 10px; transition: transform 0.2s; color: white; text-transform: uppercase; letter-spacing: 1px;}
+        .btn:active { transform: scale(0.95); }
+        .btn-verde { background-color: #e94560; box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4); }
+        .btn-azul { background-color: #0f3460; box-shadow: 0 5px 15px rgba(15, 52, 96, 0.4); border: 1px solid #4361ee; }
+        .btn-morado { background-color: #4361ee; box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4); }
+        .btn-dorado { background-color: #f39c12; color: #1a1a2e; box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4); }
+        .btn-gris { background-color: #2c3e50; border: 1px solid #7f8c8d; }
+        
+        .progreso-trofeos { margin: 15px 0; font-weight: bold; color: #a2a8d3; }
+        .barra-bg { background-color: #222; border-radius: 10px; height: 12px; width: 100%; overflow: hidden; margin-top: 5px; border: 1px solid #444; }
+        .barra-fill { background-color: #f1c40f; height: 100%; transition: width 0.5s; }
+        .barra-hp { background-color: #e74c3c; height: 100%; transition: width 0.3s; }
+        .barra-hp-jefe { background-color: #8e44ad; height: 100%; transition: width 0.3s; }
+        
+        .contenedor-trofeos { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; max-height: 150px; overflow-y: auto; background: #0f3460; padding: 15px; border-radius: 15px; margin-bottom: 20px; }
+        .trofeo-card { background: #1a1a2e; padding: 10px 5px; border-radius: 10px; filter: grayscale(1) opacity(0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #333; text-align:center;}
+        .trofeo-card.desbloqueado { filter: grayscale(0) opacity(1); background: #2a2a4a; border: 1px solid #f1c40f; box-shadow: 0 0 10px rgba(241, 196, 15, 0.2); }
+        .trofeo-icon { font-size: 30px; margin-bottom: 5px; }
+        .trofeo-label { font-size: 9px; font-weight: bold; color: #a2a8d3; line-height: 1.1; }
+
+        #video-container { margin-bottom: 20px; position: relative; display: inline-block; }
+        video { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #e94560; object-fit: cover; }
+        video.peligro { border-color: #ff0000; animation: temblor 0.5s infinite; }
+        #temporizador { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 14px; font-weight: bold; color: #fff; background: rgba(233, 69, 96, 0.9); padding: 8px 20px; border-radius: 20px; z-index: 1000; }
+        
+        .tarjeta-pregunta { background: #1a1a2e; padding: 25px; border-radius: 15px; border: 1px solid #0f3460; }
+        .btn-acordeon { background-color: #0f3460; color: white; border: none; padding: 15px; font-size: 16px; border-radius: 8px; width: 100%; margin-bottom: 10px; text-align: left; font-weight: bold; }
+        .panel-acordeon { background-color: #16213e; padding: 20px; border-radius: 8px; margin-bottom: 15px; display: none; border-left: 4px solid #e94560; }
+        .btn-seleccionar { background-color: #e94560; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 8px; width: 100%; font-weight: bold; margin-top: 10px; }
+        .img-fluida { max-width: 100%; max-height: 200px; border-radius: 8px; margin: 10px auto; display: block; object-fit: contain; }
+        
+        .arcade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .arcade-btn { background: #0f3460; border: 2px solid #4361ee; color: white; padding: 15px 10px; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;}
+        .arcade-btn:active { transform: scale(0.95); }
+        .arcade-btn i { font-size: 24px; font-style: normal; }
+
+        .hp-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #0f3460; padding: 15px; border-radius: 10px; position: relative; }
+        .hp-box { width: 45%; text-align: left; }
+        #combo-indicador { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #f1c40f; color: #1a1a2e; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; opacity: 0; transition: 0.3s; z-index: 10;}
+        .mostrar-combo { opacity: 1 !important; transform: translateX(-50%) scale(1.2) !important; }
+        
+        .memorama-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .carta { background: #0f3460; color: transparent; height: 110px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; line-height:1.2;}
+        .carta.volteada { background: #4361ee; color: white; }
+        .carta.resuelta { background: #27ae60; color: white; border-color: #27ae60; cursor: default; }
+        .carta img { max-height: 50px; max-width: 100%; border-radius: 3px; margin-top: 3px;}
+        
+        .teclado { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+        .tecla { padding: 10px 15px; background: #1a1a2e; border: 1px solid #4361ee; color: white; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.1s;}
+        .tecla:active { transform: scale(0.9); }
+        .tecla:disabled { opacity: 0.3; cursor: not-allowed; border-color: #7f8c8d; }
+        .palabra-oculta { font-size: 28px; letter-spacing: 8px; margin: 20px 0; font-family: monospace; font-weight: bold; color: #f1c40f;}
+        .ahorcado-pista { font-weight: bold; color: #a2a8d3; font-size: 14px; max-height: 100px; overflow-y: auto; padding: 10px; background: #0f3460; border-radius: 10px; border: 1px solid #4361ee; margin-bottom:15px; text-align: justify; line-height: 1.4;}
+
+        .fc-scene { width: 100%; height: 320px; perspective: 1000px; margin: 20px 0; cursor: pointer; }
+        .fc-card { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+        .fc-card.flipped { transform: rotateY(180deg); }
+        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; border: 2px solid #4361ee; overflow-y: auto; }
+        .fc-front { background: #0f3460; color: #fff; }
+        .fc-back { background: #e94560; color: #fff; transform: rotateY(180deg); align-items: flex-start; text-align: left; justify-content: flex-start;}
+
+        .met-area { position: relative; height: 320px; background: #0b132b; border: 2px solid #4361ee; border-radius: 10px; overflow: hidden; margin-top: 15px; }
+        .met-btn { position: absolute; width: 46%; padding: 5px; font-size: 11px; font-weight: bold; background: #e94560; color: #fff; border: 2px solid #fff; border-radius: 8px; cursor: pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height: 40px;}
+        .met-btn img { max-height: 40px; max-width: 100%; border-radius: 4px; }
+
+        .lab-bg { background: radial-gradient(circle at center, #1a1a2e 0%, #000000 85%); border: 1px solid #4361ee; border-radius: 15px; padding: 20px; min-height: 350px; display: flex; flex-direction: column; justify-content: center;}
+        
+        .salto-area { position: relative; height: 320px; background: linear-gradient(to top, #1a1a2e, #0f3460); border: 2px solid #4361ee; border-radius: 10px; overflow: hidden; margin-top:10px;}
+        .plat-btn { position: absolute; width: 45%; padding: 5px; font-size: 11px; font-weight: bold; background: #27ae60; color: #fff; border: 3px solid #2ecc71; border-radius: 10px; cursor: pointer; border-bottom-width: 6px; display:flex; align-items:center; justify-content:center; flex-direction:column; overflow:hidden;}
+        .plat-btn:active { border-bottom-width: 3px; transform: translateY(3px); }
+        .plat-btn img { max-height: 45px; max-width: 100%; border-radius: 4px; }
+        
+        /* NUEVO: ESTILOS JUEGOS MATEMÁTICOS */
+        .arq-bg { background-image: linear-gradient(#4361ee 1px, transparent 1px), linear-gradient(90deg, #4361ee 1px, transparent 1px); background-size: 20px 20px; background-color: #0f3460; border-radius: 10px; padding: 15px; margin-bottom:15px;}
+        .viga-btn { background: linear-gradient(to bottom, #bdc3c7, #7f8c8d); color:#1a1a2e; border: 2px solid #2c3e50; border-radius: 4px; padding: 10px; font-weight: bold; margin-bottom: 5px; cursor:pointer; width:100%; text-align:center;}
+        .viga-btn img { max-height: 40px; border-radius: 3px; }
+        .viga-btn:active { transform: scale(0.98); }
+
+        .matriz-bg { background-color: #000; color: #0f0; font-family: monospace; border: 2px solid #0f0; border-radius: 10px; padding: 15px; margin-bottom:15px;}
+        .dato-btn { background: transparent; border: 1px solid #0f0; color: #0f0; font-family: monospace; font-size: 14px; padding: 10px; border-radius: 5px; cursor:pointer; margin-bottom: 5px; width:100%;}
+        .dato-btn img { max-height: 40px; filter: grayscale(1) sepia(1) hue-rotate(80deg) brightness(1.5); }
+        .dato-btn:active { background: rgba(0,255,0,0.2); }
+        
+        .balanza-bg { background: #3e2723; color: #f1c40f; border: 2px solid #8d6e63; border-radius: 10px; padding: 15px; margin-bottom:15px; position:relative;}
+        .peso-btn { background: radial-gradient(circle, #f1c40f, #f39c12); color:#1a1a2e; border: 2px solid #d35400; border-radius:50%; width: 60px; height: 60px; display:flex; align-items:center; justify-content:center; font-weight:bold; cursor:pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.5);}
+        .peso-btn:active { transform: translateY(4px); box-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .peso-btn img { max-height: 35px; border-radius:50%; }
+
+        .anim-salto-up { animation: saltoUp 0.6s ease forwards; }
+        .anim-caida { animation: caida 0.6s ease forwards; }
+        @keyframes saltoUp { 0% {bottom:10px;} 50% {bottom:160px; transform:translateX(-50%) scale(1.2);} 100% {bottom:10px; transform:translateX(-50%) scale(1);} }
+        @keyframes caida { 0% {bottom:160px;} 100% {bottom:-80px; transform:translateX(-50%) rotate(180deg);} }
+
+        .skill-branch { background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 10px; text-align: left; border: 1px solid #4361ee;}
+        .skill-name { font-weight: bold; color: #a2a8d3; font-size: 15px; margin-bottom: 10px; display:flex; justify-content:space-between;}
+        .skill-nodes { display: flex; align-items: center; justify-content: space-between; }
+        .skill-node { background: #1a1a2e; border: 2px solid #4361ee; color: #7f8c8d; border-radius: 8px; padding: 8px 5px; font-size: 10px; font-weight: bold; text-align: center; width: 28%; transition: 0.3s;}
+        .skill-node.activo { background: #27ae60; color: #fff; border-color: #2ecc71; box-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .skill-node.activo-master { background: #f1c40f; color: #1a1a2e; border-color: #f39c12; box-shadow: 0 0 15px rgba(241, 196, 15, 0.8); }
+        .skill-line { height: 4px; background: #1a1a2e; flex-grow: 1; margin: 0 2px; transition: 0.3s;}
+        .skill-line.activo { background: #27ae60; box-shadow: 0 0 5px #27ae60; }
+        .skill-line.activo-master { background: #f1c40f; box-shadow: 0 0 5px #f1c40f; }
+
+        .lista-top { background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; }
+        .top-item { display: flex; justify-content: space-between; font-size: 18px; border-bottom: 1px solid #4361ee; padding: 5px 0; font-weight: bold;}
+        .top-item:nth-child(1) { color: #f1c40f; } .top-item:nth-child(2) { color: #bdc3c7; } .top-item:nth-child(3) { color: #cd7f32; }
+        
+        .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .shop-item { background: #0f3460; border: 2px solid #4361ee; border-radius: 10px; padding: 15px; }
+        .shop-item button { margin-top: 10px; padding: 8px; font-size: 14px; }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-content { background: #16213e; padding: 30px; border-radius: 20px; max-width: 400px; width: 85%; border: 2px solid #4361ee; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .modal-icon { font-size: 60px; margin-bottom: 10px; }
+        .modal-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+        .modal-msg { font-size: 15px; color: #a2a8d3; margin-bottom: 25px; white-space: pre-line;} 
+        .modal-botones { display: flex; flex-direction: column; gap: 10px; }
+
+        @keyframes temblor { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        @keyframes salto { 0% {transform: translateY(0);} 50% {transform: translateY(-20px);} 100% {transform: translateY(0);} }
+        @keyframes golpe { 0% { filter: invert(0); } 50% { filter: invert(1); transform: scale(0.9); } 100% { filter: invert(0); } }
+        @keyframes brillo { 0% { text-shadow: 0 0 10px #f1c40f; transform: scale(1); } 50% { text-shadow: 0 0 30px #f1c40f; transform: scale(1.2); } 100% { text-shadow: 0 0 10px #f1c40f; transform: scale(1); } }
+        
+        .anim-golpe { animation: golpe 0.3s ease; }
+        .anim-cura { animation: brillo 0.5s ease; }
+        .anim-brillo { animation: brillo 1.5s infinite; }
+        .anim-temblor-modal { animation: temblor 0.5s ease; }
+        
+        .skin-0 { border-color: #e94560; } .skin-1 { border-color: #fff; filter: grayscale(1) invert(1); } .skin-2 { border-color: #00f3ff; filter: hue-rotate(180deg); box-shadow: 0 0 15px #00f3ff; } .skin-3 { border-color: #f1c40f; filter: brightness(1.5) contrast(1.2); box-shadow: 0 0 20px #f1c40f; }
+    </style>
 </head>
 <body>
-    </body>
+
+    <div id="toast-advertencia" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #ff0000; color: white; padding: 15px 25px; border-radius: 10px; font-weight: bold; z-index: 2000;">⚠️</div>
+
+    <div id="modal-arcade" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modal-icon" class="modal-icon">🏆</div>
+            <div id="modal-title" class="modal-title">¡Victoria!</div>
+            <div id="modal-msg" class="modal-msg">Mensaje</div>
+            <div class="modal-botones">
+                <button class="btn btn-verde" id="btn-modal-next">Siguiente Nivel ➡️</button>
+                <button class="btn btn-gris" id="btn-modal-exit">Salir al Cuartel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="bienvenida" class="pantalla">
+        <div class="top-stats"><span class="stat-racha">🔥 Racha: <span id="ui-racha">0</span> días</span><span class="stat-monedas">🪙 <span id="ui-monedas">0</span></span></div>
+        <div class="contenedor-avatar" onclick="interactuarPixelote()">
+            <div id="burbuja-pixelote" class="burbuja-texto">¡Tócame!</div>
+            <img src="img/pixelote-estudiando.jpg" class="logo-pixelote" id="ui-avatar" alt="Pixelote">
+        </div>
+        <h2 style="margin: 0; color: #4361ee; margin-bottom:15px;">ECOEMS 2026</h2>
+        
+        <button class="btn btn-verde" onclick="comenzarSimulacro()">📝 EMPEZAR SIMULACRO</button>
+        <button class="btn btn-morado" onclick="abrirPantalla('zona-arcade')">🕹️ ZONA ARCADE</button>
+        <button class="btn btn-dorado" onclick="abrirTienda()">🛍️ TIENDA DE PIXELOTE</button>
+        <button class="btn btn-azul" onclick="mostrarHistorial()">🌳 ÁRBOL DE HABILIDADES</button>
+        
+        <div class="progreso-trofeos" style="margin-top:25px;">Trofeos Totales: <span id="lbl-trofeos-count">0</span> / 82<div class="barra-bg"><div id="barra-trofeos" class="barra-fill" style="width: 0%;"></div></div></div>
+        <div class="contenedor-trofeos" id="lista-trofeos"></div>
+    </div>
+
+    <div id="zona-tienda" class="pantalla">
+        <h2 style="color: #f1c40f;">🛍️ Tienda de Skins</h2>
+        <p style="color: #a2a8d3;">Personaliza a Pixelote. 🪙 <span id="ui-tienda-monedas"></span></p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;" id="shop-contenedor"></div>
+        <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Volver al Cuartel</button>
+    </div>
+
+    <div id="zona-arcade" class="pantalla">
+        <h2 style="color: #4361ee;">🕹️ ZONA ARCADE</h2>
+        <p style="color: #a2a8d3; margin-bottom:10px; font-size:12px;">Entrenamiento Matemático</p>
+        <div class="arcade-grid" style="margin-bottom:10px;">
+            <button class="arcade-btn" onclick="iniciarArquitecto()"><i>📐</i> <span>Arquitecto</span></button>
+            <button class="arcade-btn" onclick="iniciarMatriz()"><i>📊</i> <span>Dashboard</span></button>
+            <button class="arcade-btn" onclick="iniciarBalanza()"><i>⚖️</i> <span>Balanza</span></button>
+            <button class="arcade-btn" onclick="iniciarSalto()"><i>🍄</i> <span>Salto Cuántico</span></button>
+        </div>
+        <p style="color: #a2a8d3; margin-bottom:10px; font-size:12px;">Entrenamiento Rápido</p>
+        <div class="arcade-grid">
+            <button class="arcade-btn" onclick="iniciarJefe()"><i>⚔️</i> <span>Jefes</span></button>
+            <button class="arcade-btn" onclick="iniciarFrenesi()"><i>⚡</i> <span>Frenesí</span></button>
+            <button class="arcade-btn" onclick="iniciarMeteoritos()"><i>☄️</i> <span>Meteoritos</span></button>
+            <button class="arcade-btn" onclick="iniciarLaberinto()"><i>🕳️</i> <span>Laberinto</span></button>
+            <button class="arcade-btn" onclick="iniciarMemorama()"><i>🃏</i> <span>Memorama</span></button>
+            <button class="arcade-btn" onclick="iniciarAhorcado()"><i>❤️</i> <span>Rescate</span></button>
+            <button class="arcade-btn" onclick="iniciarFlashcards()"><i>📚</i> <span>Tarjetas</span></button>
+            <button class="arcade-btn" onclick="iniciarAguila()"><i>🦅</i> <span>Águila</span></button>
+        </div>
+        <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Volver al Cuartel</button>
+    </div>
+
+    <div id="juego-arquitecto" class="pantalla">
+        <h3 style="color: #4361ee;">📐 Arquitecto de Tapancos</h3>
+        <p style="color: #a2a8d3; font-size: 13px;">Analiza el plano con calma. Selecciona la viga PTR correcta para construir.</p>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+            <span id="arq-vidas" style="font-size:20px;">❤️❤️❤️</span>
+            <span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="arq-score">0</span></span>
+        </div>
+        <div class="arq-bg" id="arq-contenedor">
+            <strong id="arq-pregunta" style="font-size: 15px; color:#fff;">Cargando plano...</strong>
+        </div>
+        <div id="arq-opciones"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Dejar la obra</button>
+    </div>
+
+    <div id="juego-matriz" class="pantalla">
+        <h3 style="color: #0f0;">📊 Matriz de Servidor</h3>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:#0f0;">
+            <span style="font-weight:bold;">Sucesiones Log: <span id="matriz-score">0</span></span>
+        </div>
+        <div style="font-size:12px; color:#0f0; margin-bottom:5px; text-align:left;">CORRUPCIÓN DE DATOS:</div>
+        <div class="barra-bg" style="border-color:#0f0; margin-bottom:15px;"><div id="matriz-barra" class="barra-fill" style="background:#f00; width:0%; transition:0.1s;"></div></div>
+        
+        <div class="matriz-bg" id="matriz-contenedor">
+            <div id="matriz-pregunta" style="font-size: 16px; margin-bottom:15px;">Awaiting Query...</div>
+            <div id="matriz-opciones" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"></div>
+        </div>
+        <button class="btn btn-gris" style="margin-top: 20px; border-color:#0f0; color:#0f0;" onclick="cerrarJuego(matrizInt)">Desconectar</button>
+    </div>
+
+    <div id="juego-balanza" class="pantalla">
+        <h3 style="color: #f1c40f;">⚖️ Balanza de Ecuaciones</h3>
+        <p style="color: #d35400; font-size: 13px; font-weight:bold;">Equilibra la ecuación.</p>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+            <span id="bal-vidas" style="font-size:20px;">❤️❤️❤️</span>
+            <span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="bal-score">0</span></span>
+        </div>
+        <div class="balanza-bg" id="bal-contenedor">
+            <div id="bal-pregunta" style="font-size: 15px; font-weight:bold; text-align:center;">Cargando...</div>
+        </div>
+        <div id="bal-opciones" style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;"></div>
+        <button class="btn btn-gris" style="margin-top: 25px;" onclick="cerrarJuego(null)">Retirarse</button>
+    </div>
+
+    <div id="juego-salto" class="pantalla">
+        <h3 style="color: #4361ee;">🍄 Salto Cuántico</h3>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span style="color:#a2a8d3; font-weight:bold;">Nivel: <span id="salto-nivel">1</span></span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="salto-score">0</span></span></div>
+        <div style="background: #0f3460; padding: 10px; border-radius: 10px; border: 1px solid #4361ee; min-height:40px; font-weight:bold; margin-bottom:10px;" id="salto-pregunta">Cargando...</div>
+        <div class="salto-area" id="salto-area"><img src="img/pixelote-estudiando.jpg" id="salto-pix" class="logo-pixelote" style="width:40px; height:40px; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); border-width:2px; z-index:5;"><div id="salto-plataformas" style="width:100%; height:100%; position:absolute; top:0; left:0;"></div></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Rendirse</button>
+    </div>
+
+    <div id="juego-meteoritos" class="pantalla">
+        <h3 style="color: #e94560;">☄️ Lluvia de Meteoritos</h3>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span id="met-vidas" style="font-size:20px;">❤️❤️❤️</span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="met-score">0</span></span></div>
+        <div style="background: #0f3460; padding: 10px; border-radius: 10px; border: 1px solid #4361ee; min-height:40px; font-weight:bold;" id="met-pregunta">Cargando...</div>
+        <div class="met-area" id="met-area"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(metInt)">Huir a la base</button>
+    </div>
+
+    <div id="juego-laberinto" class="pantalla">
+        <div class="lab-bg" id="lab-fondo">
+            <h3 style="color: #a2a8d3; margin:0 0 10px 0;">🕳️ Laberinto de las Sombras</h3>
+            <div style="display:flex; justify-content:space-between; font-weight:bold; color:#fff; font-size:14px;"><span>Sala <span id="lab-sala">1</span>/10</span><span style="color:#f1c40f;">Luz: <span id="lab-luz-txt">100</span>%</span></div>
+            <div class="barra-bg" style="margin-bottom:20px;"><div id="lab-barra" class="barra-fill" style="background:#f1c40f; width:100%;"></div></div>
+            <div id="lab-preg" style="margin-bottom:20px; font-weight:bold; font-size:15px;">Cargando...</div>
+            <div id="lab-ops"></div>
+        </div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(labInt)">Abandonar expedición</button>
+    </div>
+
+    <div id="juego-flashcards" class="pantalla">
+        <h3 style="color: #4361ee;">📚 Tarjetas de Entrenamiento</h3>
+        <div class="fc-scene" onclick="voltearFlashcard()"><div class="fc-card" id="fc-card"><div class="fc-face fc-front" id="fc-front"></div><div class="fc-face fc-back" id="fc-back"></div></div></div>
+        <button class="btn btn-morado" onclick="siguienteFlashcard()">Siguiente Tarjeta ➡️</button>
+        <button class="btn btn-gris" style="margin-top: 10px;" onclick="abrirPantalla('zona-arcade')">Salir</button>
+    </div>
+
+    <div id="juego-jefe" class="pantalla">
+        <h3 style="color: #e94560;">⚔️ Batalla de Jefe</h3>
+        <div class="hp-container" id="arena-combate"><div id="combo-indicador">¡Combo x2!</div><div class="hp-box"><div style="font-weight:bold; font-size:12px;">PIXELOTE</div><div class="barra-bg"><div id="hp-pixelote" class="barra-hp" style="width: 100%;"></div></div></div><div style="font-size: 24px; font-weight: bold;">VS</div><div class="hp-box"><div style="font-weight:bold; font-size:12px; text-align:right; color:#8e44ad;">COMIPEMS</div><div class="barra-bg"><div id="hp-jefe" class="barra-hp-jefe" style="width: 100%;"></div></div></div></div>
+        <div style="background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #4361ee;" id="jefe-contenedor"><strong id="jefe-pregunta" style="font-size: 15px;">Cargando...</strong></div>
+        <div id="jefe-opciones"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Huir de la batalla</button>
+    </div>
+
+    <div id="juego-memorama" class="pantalla">
+        <h3 style="color: #27ae60;">🃏 Memorama</h3>
+        <div class="memorama-grid" id="memorama-tablero"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
+    </div>
+
+    <div id="juego-frenesi" class="pantalla">
+        <h3 style="color: #f39c12;">⚡ Modo Frenesí</h3>
+        <div style="font-size: 40px; font-weight: bold; color: #e94560;" id="frenesi-reloj">60</div>
+        <p style="font-size: 18px; color: #27ae60;">Aciertos: <span id="frenesi-score" style="font-weight:bold;">0</span></p>
+        <div style="background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #4361ee;" id="frenesi-caja-preg"><strong id="frenesi-pregunta">Cargando...</strong></div>
+        <div id="frenesi-opciones"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(fInt)">Salir</button>
+    </div>
+
+    <div id="juego-ahorcado" class="pantalla">
+        <h3 style="color: #e94560;">❤️ El Rescate</h3>
+        <div style="font-size: 30px; color: #e94560; margin-bottom: 10px;" id="ahorcado-vidas">❤️❤️❤️❤️❤️</div>
+        <div class="ahorcado-pista" id="ahorcado-pista"></div>
+        <div class="palabra-oculta" id="ahorcado-palabra">_ _ _ _</div>
+        <div class="teclado" id="ahorcado-teclado"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
+    </div>
+
+    <div id="juego-aguila" class="pantalla">
+        <h3 style="color: #3498db;">🦅 Vista de Águila</h3>
+        <div class="aguila-texto" id="aguila-contenido">Cargando...</div>
+        <button class="btn btn-gris" style="margin-top: 30px;" onclick="cerrarJuego(null)">Abortar misión</button>
+    </div>
+
+    <div id="zona-historial" class="pantalla">
+        <h2 style="color: #4361ee;">🌳 Árbol de Dominio</h2>
+        <p style="color: #a2a8d3; font-size: 14px; margin-bottom:20px;">Sube de nivel completando Simulacros Oficiales.</p>
+        <div id="arbol-habilidades" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;"></div>
+        <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Regresar</button>
+    </div>
+
+    <div id="zona-examen" class="pantalla" style="max-width: 600px; padding:0; background: transparent; box-shadow: none; border:none;">
+        <div id="video-container"><video id="camara" autoplay muted playsinline></video></div>
+        <div class="tarjeta-pregunta" id="tarjeta-principal" style="padding: 25px;"><div id="contenedor-examen"></div></div>
+        <div id="temporizador">⏱️ 03:00:00</div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 🎵 MOTOR AUDIO EXPANDIDO
+        // ==========================================
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playTone(freq, type, duration, vol=0.1, slideFreq=null) {
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            try {
+                let osc = audioCtx.createOscillator(); let gain = audioCtx.createGain();
+                osc.type = type; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                if(slideFreq) osc.frequency.exponentialRampToValueAtTime(slideFreq, audioCtx.currentTime + duration);
+                gain.gain.setValueAtTime(vol, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+        function playCoin() { playTone(987.77, 'sine', 0.1, 0.1, 1500); setTimeout(()=>playTone(1318.51, 'sine', 0.2, 0.1, 2000), 100); }
+        function playHit() { playTone(150, 'square', 0.2, 0.2, 50); setTimeout(()=>playTone(100, 'sawtooth', 0.2, 0.2, 20), 50); }
+        function playError() { playTone(150, 'sawtooth', 0.4, 0.2, 80); }
+        function playFanfare() { playTone(261.63, 'square', 0.15); setTimeout(()=>playTone(329.63, 'square', 0.15), 150); setTimeout(()=>playTone(392.00, 'square', 0.15), 300); setTimeout(()=>playTone(523.25, 'square', 0.4), 450); }
+        function playWeld() { playTone(800, 'sawtooth', 0.1); setTimeout(()=>playTone(1200, 'sawtooth', 0.1), 50); setTimeout(()=>playTone(1000, 'sawtooth', 0.1), 100); }
+        function playMetal() { playTone(200, 'square', 0.1); }
+        function playData() { playTone(1500, 'square', 0.05); setTimeout(()=>playTone(2000, 'square', 0.05), 50); }
+        document.body.addEventListener('click', () => { if(audioCtx.state === 'suspended') audioCtx.resume(); }, {once:true});
+
+        // ==========================================
+        // 💾 ESTADO GLOBAL Y PARCHES
+        // ==========================================
+        let playerStats = JSON.parse(localStorage.getItem('ecoems_stats')) || { preguntasTotales: 0, simulacros: 0, trofeos: [], monedas: 0, racha: 0, ultimaFecha: "", skinsDesbloqueadas: [0], skinEquipada: 0, radarStats: {} };
+        if (playerStats.skinEquipada === undefined) playerStats.skinEquipada = 0; if (!playerStats.skinsDesbloqueadas) playerStats.skinsDesbloqueadas = [0]; if (playerStats.monedas === undefined) playerStats.monedas = 0; if (!playerStats.radarStats) playerStats.radarStats = {};
+        if (playerStats.arcadeArq === undefined) playerStats.arcadeArq = 0; if (playerStats.arcadeMatriz === undefined) playerStats.arcadeMatriz = 0; if (playerStats.arcadeBal === undefined) playerStats.arcadeBal = 0;
+        
+        let hoy = new Date().toLocaleDateString();
+        if (playerStats.ultimaFecha !== hoy) {
+            let ayer = new Date(); ayer.setDate(ayer.getDate() - 1);
+            if (playerStats.ultimaFecha === ayer.toLocaleDateString()) playerStats.racha += 1; else if (playerStats.ultimaFecha !== "") playerStats.racha = 0;
+            playerStats.ultimaFecha = hoy; if(playerStats.racha === 0) playerStats.racha = 1; guardarStats();
+        }
+
+        const catSkins = [{id:0, nombre:"Original", precio:0, clase:"skin-0"}, {id:1, nombre:"Hollow (Sombra)", precio:50, clase:"skin-1"}, {id:2, nombre:"Hacker Neón", precio:150, clase:"skin-2"}, {id:3, nombre:"Súper Saiyajin", precio:300, clase:"skin-3"}];
+        function guardarStats() { localStorage.setItem('ecoems_stats', JSON.stringify(playerStats)); actualizarUI(); }
+        function addMonedas(cant) { playerStats.monedas += cant; guardarStats(); }
+        function actualizarUI() {
+            document.getElementById('ui-racha').innerText = playerStats.racha; document.getElementById('ui-monedas').innerText = playerStats.monedas; document.getElementById('ui-tienda-monedas').innerText = playerStats.monedas;
+            document.getElementById('ui-avatar').className = "logo-pixelote " + catSkins[playerStats.skinEquipada].clase;
+            let pS = document.getElementById('salto-pix'); if(pS) pS.className = "logo-pixelote " + catSkins[playerStats.skinEquipada].clase;
+        }
+
+        const frasesPix = ["¡No olvides que H es Hidrógeno!", "El agua de mar sí conduce electricidad.", "La fotosíntesis libera oxígeno.", "Lee con calma, ¡no hay prisa!", "¡Vamos por ese 128!", "Un cuadrado de lado x tiene área x²"];
+        function interactuarPixelote() {
+            let av = document.getElementById('ui-avatar'); let b = document.getElementById('burbuja-pixelote');
+            av.classList.add('anim-salto'); setTimeout(()=>av.classList.remove('anim-salto'), 400); playTone(600, 'sine', 0.1);
+            b.innerText = frasesPix[Math.floor(Math.random()*frasesPix.length)];
+        }
+
+        function abrirTienda() {
+            abrirPantalla('zona-tienda'); let html = "";
+            catSkins.forEach(s => {
+                let comprado = playerStats.skinsDesbloqueadas.includes(s.id), equipado = playerStats.skinEquipada === s.id, btnHTML = "";
+                if(equipado) btnHTML = `<button class="btn btn-gris" disabled>Equipado</button>`; else if(comprado) btnHTML = `<button class="btn btn-verde" onclick="equiparSkin(${s.id})">Equipar</button>`; else btnHTML = `<button class="btn btn-dorado" onclick="comprarSkin(${s.id}, ${s.precio})">Comprar 🪙${s.precio}</button>`;
+                html += `<div style="background: #0f3460; border: 2px solid #4361ee; border-radius: 10px; padding: 15px;"><div style="font-weight:bold;">${s.nombre}</div>${btnHTML}</div>`;
+            }); document.getElementById('shop-contenedor').innerHTML = html;
+        }
+        function comprarSkin(id, precio) { if(playerStats.monedas >= precio) { playerStats.monedas -= precio; playerStats.skinsDesbloqueadas.push(id); equiparSkin(id); playFanfare(); } else alertaModal("Sin fondos", "Necesitas más monedas.", "derrota", null, null); }
+        function equiparSkin(id) { playerStats.skinEquipada = id; guardarStats(); abrirTienda(); }
+
+        // ==========================================
+        // 🏆 MODALES Y UTILIDADES
+        // ==========================================
+        function alertaModal(titulo, mensaje, tipo, onNext, onExit) {
+            const modal = document.getElementById('modal-arcade'); const icon = document.getElementById('modal-icon'); const titleEl = document.getElementById('modal-title');
+            document.getElementById('modal-msg').innerHTML = mensaje; titleEl.innerText = titulo; icon.className = 'modal-icon'; 
+            if(tipo === 'victoria') { icon.innerText = '🏆'; titleEl.style.color = '#f1c40f'; icon.classList.add('anim-brillo'); playFanfare(); } 
+            else { icon.innerText = '💀'; titleEl.style.color = '#e94560'; icon.classList.add('anim-temblor-modal'); playError(); }
+            document.getElementById('btn-modal-next').onclick = () => { modal.style.display = 'none'; if(onNext) onNext(); };
+            document.getElementById('btn-modal-exit').onclick = () => { modal.style.display = 'none'; if(onExit) onExit(); else abrirPantalla('zona-arcade'); };
+            modal.style.display = 'flex';
+        }
+
+        function cerrarJuego(intervalToClear) { if(intervalToClear) clearInterval(intervalToClear); abrirPantalla('zona-arcade'); }
+        function abrirPantalla(id) { document.querySelectorAll('.pantalla').forEach(p => p.style.display = 'none'); document.getElementById(id).style.display = 'block'; }
+        function mezclarArreglo(arr) { let c = [...arr]; for(let i=c.length-1; i>0; i--){ const j=Math.floor(Math.random()*(i+1)); [c[i], c[j]]=[c[j], c[i]]; } return c; }
+        
+        let preguntasGlobales = [];
+        async function asegurarPreguntas() { if(preguntasGlobales.length === 0) { try { let r = await fetch('guia_2026.json?v=' + new Date().getTime()); preguntasGlobales = await r.json(); } catch(e) {} } }
+        function checarLogroArcade(idLogro, nombre) {
+            if(!playerStats.trofeos.includes(idLogro)) {
+                playerStats.trofeos.push(idLogro); localStorage.setItem('ecoems_stats', JSON.stringify(playerStats));
+                setTimeout(() => { alertaModal("¡Nuevo Trofeo!", `Desbloqueaste: ${nombre}`, "victoria", null, ()=>abrirPantalla('zona-arcade')); }, 800);
+            }
+        }
+
+        // ==========================================
+        // 📐 NUEVO 1: ARQUITECTO DE ESTRUCTURAS (TAPÁNCO)
+        // ==========================================
+        let arqVidas = 3, arqScore = 0, arqQ = [];
+        async function iniciarArquitecto() {
+            abrirPantalla('juego-arquitecto'); arqVidas = 3; arqScore = 0; document.getElementById('arq-score').innerText = "0"; upArqV();
+            await asegurarPreguntas();
+            // Filtrar matematicas y fisica para cálculos estructurales.
+            let qV = preguntasGlobales.filter(q => q.materia.includes("Matemáticas") || q.materia === "Física" || q.materia === "Habilidad Matemática");
+            if(qV.length===0) qV = preguntasGlobales; // Fallback
+            arqQ = mezclarArreglo(qV); sigArq();
+        }
+        function sigArq() {
+            if(arqQ.length === 0) return finArq(true);
+            let q = arqQ.pop(); window.curArqQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:100px; border-radius:5px; margin-top:10px;">` : "";
+            document.getElementById('arq-pregunta').innerHTML = q.pregunta + imgH;
+            
+            let h = "";
+            q.opciones.forEach((op, i) => {
+                let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op;
+                h += `<button class="viga-btn" onclick="clicArq(${i}, this)">[PTR] ${t}</button>`;
+            });
+            document.getElementById('arq-opciones').innerHTML = h;
+        }
+        function clicArq(i, btn) {
+            if(i === window.curArqQ.respuesta_correcta) {
+                playWeld(); btn.style.background = "#27ae60"; btn.style.borderColor = "#2ecc71"; btn.style.color = "#fff";
+                addMonedas(4); arqScore++; document.getElementById('arq-score').innerText = arqScore;
+                setTimeout(sigArq, 500);
+            } else {
+                playMetal(); btn.style.opacity = "0.3"; btn.disabled = true; arqVidas--; upArqV();
+                if(arqVidas <= 0) setTimeout(()=>finArq(false), 300);
+            }
+        }
+        function upArqV() { document.getElementById('arq-vidas').innerText = "❤️".repeat(arqVidas)+"🖤".repeat(3-arqVidas); }
+        function finArq(win) {
+            playerStats.arcadeArq++; guardarStats();
+            if(arqScore >= 5) checarLogroArcade(77, "Ingeniero Maestro");
+            if(arqVidas === 3 && arqScore >= 5) checarLogroArcade(78, "Soldadura Perfecta");
+            alertaModal(win?"¡Estructura Completa!":"Falla Estructural", "Planos resueltos: "+arqScore, win?"victoria":"derrota", iniciarArquitecto, ()=>abrirPantalla('zona-arcade'));
+        }
+
+        // ==========================================
+        // 📊 NUEVO 2: MATRIZ DE SERVIDOR (DASHBOARD)
+        // ==========================================
+        let matrizScore = 0, matrizCarga = 0, matrizInt, matrizQ = [];
+        async function iniciarMatriz() {
+            abrirPantalla('juego-matriz'); matrizScore = 0; matrizCarga = 0; document.getElementById('matriz-score').innerText = "0";
+            await asegurarPreguntas();
+            let qV = preguntasGlobales.filter(q => q.materia === "Habilidad Matemática");
+            if(qV.length===0) qV = preguntasGlobales;
+            matrizQ = mezclarArreglo(qV); sigMatriz();
+            clearInterval(matrizInt); matrizInt = setInterval(tickMatriz, 200); // Sube corrupcion rapido
+        }
+        function sigMatriz() {
+            if(matrizQ.length === 0) return finMatriz(true);
+            let q = matrizQ.pop(); window.curMatQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; filter: grayscale(1) sepia(1) hue-rotate(80deg) brightness(1.5); margin-top:10px;">` : "";
+            document.getElementById('matriz-pregunta').innerHTML = "> " + q.pregunta + imgH;
+            
+            let h = "";
+            q.opciones.forEach((op, i) => {
+                let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op;
+                h += `<button class="dato-btn" onclick="clicMatriz(${i}, this)">{ ${t} }</button>`;
+            });
+            document.getElementById('matriz-opciones').innerHTML = h;
+        }
+        function tickMatriz() {
+            matrizCarga += 0.8; 
+            document.getElementById('matriz-barra').style.width = Math.min(100, matrizCarga) + '%';
+            if(matrizCarga >= 100) finMatriz(false);
+        }
+        function clicMatriz(i, btn) {
+            if(i === window.curMatQ.respuesta_correcta) {
+                playData(); btn.style.background = "#0f0"; btn.style.color = "#000";
+                matrizCarga = Math.max(0, matrizCarga - 30); // Limpia corrupcion
+                addMonedas(3); matrizScore++; document.getElementById('matriz-score').innerText = matrizScore;
+                setTimeout(sigMatriz, 300);
+            } else {
+                playError(); btn.style.background = "#f00"; btn.style.color = "#fff"; btn.style.borderColor = "#f00"; matrizCarga += 20;
+            }
+        }
+        function finMatriz(win) {
+            clearInterval(matrizInt); playerStats.arcadeMatriz++; guardarStats();
+            if(matrizScore >= 5) checarLogroArcade(79, "Analista de Datos");
+            if(matrizCarga < 50 && matrizScore >= 5) checarLogroArcade(80, "Código Limpio");
+            alertaModal(win?"¡Servidor Seguro!":"Datos Corruptos", "Sucesiones resueltas: "+matrizScore, win?"victoria":"derrota", iniciarMatriz, ()=>abrirPantalla('zona-arcade'));
+        }
+
+        // ==========================================
+        // ⚖️ NUEVO 3: BALANZA DEL ALQUIMISTA
+        // ==========================================
+        let balVidas = 3, balScore = 0, balQ = [];
+        async function iniciarBalanza() {
+            abrirPantalla('juego-balanza'); balVidas = 3; balScore = 0; document.getElementById('bal-score').innerText = "0"; upBalV();
+            await asegurarPreguntas();
+            let qV = preguntasGlobales.filter(q => q.materia === "Matemáticas");
+            if(qV.length===0) qV = preguntasGlobales;
+            balQ = mezclarArreglo(qV); sigBal();
+        }
+        function sigBal() {
+            if(balQ.length === 0) return finBal(true);
+            let q = balQ.pop(); window.curBalQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px; border-radius:5px;">` : "";
+            document.getElementById('bal-pregunta').innerHTML = q.pregunta + imgH;
+            
+            let h = "";
+            q.opciones.forEach((op, i) => {
+                let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op;
+                h += `<button class="peso-btn" onclick="clicBal(${i}, this)">${t}</button>`;
+            });
+            document.getElementById('bal-opciones').innerHTML = h;
+            document.getElementById('bal-contenedor').style.transform = "rotate(0deg)";
+        }
+        function clicBal(i, btn) {
+            let cont = document.getElementById('bal-contenedor');
+            if(i === window.curBalQ.respuesta_correcta) {
+                playCoin(); cont.style.borderColor = "#27ae60"; btn.style.background = "#27ae60"; addMonedas(5); balScore++; document.getElementById('bal-score').innerText = balScore;
+                setTimeout(()=>{ cont.style.borderColor = "#8d6e63"; sigBal(); }, 600);
+            } else {
+                playError(); btn.style.opacity = "0.2"; btn.disabled = true; balVidas--; upBalV();
+                cont.style.transform = "rotate(10deg)"; setTimeout(()=>cont.style.transform = "rotate(-10deg)", 150); setTimeout(()=>cont.style.transform = "rotate(0deg)", 300);
+                if(balVidas <= 0) setTimeout(()=>finBal(false), 400);
+            }
+        }
+        function upBalV() { document.getElementById('bal-vidas').innerText = "❤️".repeat(balVidas)+"🖤".repeat(3-balVidas); }
+        function finBal(win) {
+            playerStats.arcadeBal++; guardarStats();
+            if(balScore >= 5) checarLogroArcade(81, "Alquimista");
+            if(balVidas === 3 && balScore >= 5) checarLogroArcade(82, "Equilibrio Perfecto");
+            alertaModal(win?"¡Ecuación Perfecta!":"Desequilibrio", "Ecuaciones balanceadas: "+balScore, win?"victoria":"derrota", iniciarBalanza, ()=>abrirPantalla('zona-arcade'));
+        }
+
+        // ==========================================
+        // 🍄 SALTO CUÁNTICO
+        // ==========================================
+        let saltoNivel=1, saltoQ=[];
+        async function iniciarSalto() { abrirPantalla('juego-salto'); saltoNivel=1; document.getElementById('salto-score').innerText="0"; document.getElementById('salto-nivel').innerText="1"; let pix = document.getElementById('salto-pix'); pix.style.bottom = "10px"; pix.classList.remove('anim-caida'); pix.classList.remove('anim-salto-up'); await asegurarPreguntas(); saltoQ = mezclarArreglo(preguntasGlobales); sigSalto(); }
+        function sigSalto() { if(saltoQ.length===0) return finSalto(true); let q = saltoQ.pop(); window.curSaltoQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px; border-radius:5px;">` : ""; document.getElementById('salto-pregunta').innerHTML = q.pregunta + imgH; let pos = [{b:180, l:'2%'}, {b:180, l:'53%'}, {b:80, l:'2%'}, {b:80, l:'53%'}]; let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px;">` : op; h += `<button class="plat-btn" style="bottom:${pos[i].b}px; left:${pos[i].l}; height:90px;" onclick="clicSalto(${i}, this)">${t}</button>`; }); document.getElementById('salto-plataformas').innerHTML = h; }
+        function clicSalto(i, btn) { let pix = document.getElementById('salto-pix'); if(i === window.curSaltoQ.respuesta_correcta) { playCoin(); btn.style.background = "#f1c40f"; btn.style.borderColor = "#f39c12"; addMonedas(3); saltoNivel++; document.getElementById('salto-score').innerText = (saltoNivel-1)*3; document.getElementById('salto-nivel').innerText = saltoNivel; pix.classList.remove('anim-salto-up'); void pix.offsetWidth; pix.classList.add('anim-salto-up'); setTimeout(sigSalto, 600); } else { playError(); btn.style.background = "#e74c3c"; btn.style.borderColor = "#c0392b"; btn.style.transform = "rotate(15deg) translateY(20px)"; btn.style.opacity = "0"; pix.classList.remove('anim-caida'); void pix.offsetWidth; pix.classList.add('anim-caida'); setTimeout(()=>finSalto(false), 600); } }
+        function finSalto(win) { playerStats.arcadeSalto = (playerStats.arcadeSalto||0) + 1; guardarStats(); if(saltoNivel > 10) checarLogroArcade(75, "Rana Saltarina"); if(saltoNivel > 20) checarLogroArcade(76, "Astronauta Cuántico"); alertaModal(win?"¡Llegaste a la cima!":"Caída Libre", "Alcanzaste el nivel: "+saltoNivel, win?"victoria":"derrota", iniciarSalto, ()=>abrirPantalla('zona-arcade')); }
+
+        // ==========================================
+        // 🎮 JUEGOS CLÁSICOS (Frenesí, Meteoritos, etc)
+        // ==========================================
+        let metVidas=3, metScore=0, metQ=[], metSpeed=1.5, metTop=[0,0,0,0], metInt, metActivo=false;
+        async function iniciarMeteoritos() { abrirPantalla('juego-meteoritos'); metVidas=3; metScore=0; metSpeed=1.5; metActivo=true; await asegurarPreguntas(); metQ = mezclarArreglo(preguntasGlobales); document.getElementById('met-score').innerText = "0"; document.getElementById('met-vidas').innerText = "❤️".repeat(3); sigMet(); clearInterval(metInt); metInt = setInterval(caidaMet, 50); }
+        function sigMet() { if(metQ.length===0) return finMet(true); let q = metQ.pop(); window.curMetQ = q; let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:50px; margin-top:5px;">`:""; document.getElementById('met-pregunta').innerHTML = (q.pregunta.length>80?q.pregunta.substring(0,80)+"...":q.pregunta) + imgHtml; metTop = [-20, -70, -120, -170]; metTop = mezclarArreglo(metTop); let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op.substring(0,40); h += `<button class="met-btn" id="m-btn-${i}" style="left:${i%2===0?'2%':'52%'}; top:${metTop[i]}px;" onclick="clicMet(${i})">${t}</button>`; }); document.getElementById('met-area').innerHTML = h; }
+        function caidaMet() { if(!metActivo) return; let algunVivo = false; for(let i=0; i<4; i++){ let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') continue; algunVivo = true; metTop[i] += metSpeed; b.style.top = metTop[i] + 'px'; if(metTop[i] > 280) { b.style.display = 'none'; if(i === window.curMetQ.respuesta_correcta) { metVidas--; playError(); document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) { finMet(false); return; } else { sigMet(); return; } } } } if(!algunVivo) sigMet(); }
+        function clicMet(i) { let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') return; if(i === window.curMetQ.respuesta_correcta) { playCoin(); b.style.background = "#27ae60"; addMonedas(2); metScore++; document.getElementById('met-score').innerText = metScore; metSpeed += 0.1; setTimeout(sigMet, 150); } else { playError(); b.style.display = 'none'; metVidas--; document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) finMet(false); } }
+        function finMet(win) { metActivo=false; clearInterval(metInt); playerStats.arcadeMet++; guardarStats(); if(win || metScore>=5) { checarLogroArcade(71, "Defensor Planetario"); if(metVidas===3) checarLogroArcade(72, "Lluvia Perfecta"); alertaModal("¡Buen trabajo!", "Aciertos: "+metScore, "victoria", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Base Destruida", "Un meteorito impactó la base.", "derrota", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); }
+
+        let labTime=100, labSala=1, labInt, labQ=[];
+        async function iniciarLaberinto() { abrirPantalla('juego-laberinto'); labTime=100; labSala=1; await asegurarPreguntas(); labQ = mezclarArreglo(preguntasGlobales); sigLab(); clearInterval(labInt); labInt = setInterval(()=>{ labTime -= 0.6; document.getElementById('lab-barra').style.width = Math.max(0,labTime)+'%'; document.getElementById('lab-luz-txt').innerText = Math.round(labTime); if(labTime<=0) finLab(false); }, 100); }
+        function sigLab() { if(labSala>10) return finLab(true); document.getElementById('lab-sala').innerText = labSala; let q = labQ.pop(); window.curLabQ = q; document.getElementById('lab-preg').innerHTML = q.pregunta + (q.imagen?`<br><img src="${q.imagen}" style="height:80px; margin-top:10px; border-radius:5px;">`:''); let h = ""; q.opciones.forEach((op,i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="height:40px; border-radius:4px;">` : op; h += `<button class="btn btn-azul" style="font-size:14px; padding:10px;" onclick="clicLab(${i})">${t}</button>`; }); document.getElementById('lab-ops').innerHTML = h; }
+        function clicLab(i) { if(i === window.curLabQ.respuesta_correcta) { playCoin(); labTime = Math.min(100, labTime+15); addMonedas(3); labSala++; sigLab(); } else { playError(); labTime -= 25; document.getElementById('lab-fondo').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('lab-fondo').classList.remove('anim-golpe'), 300); } }
+        function finLab(win) { clearInterval(labInt); playerStats.arcadeLab++; guardarStats(); if(win) { checarLogroArcade(73, "Sobreviviente"); if(labTime>=80) checarLogroArcade(74, "Portador de Luz"); addMonedas(30); alertaModal("¡Escapaste!", "Saliste con vida.\nMonedas: +30🪙", "victoria", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Consumido", "La oscuridad te atrapó.", "derrota", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); }
+
+        let fScore = 0, fTime = 60, fInt, fQ = [];
+        async function iniciarFrenesi() { abrirPantalla('juego-frenesi'); fScore = 0; fTime = 60; document.getElementById('frenesi-score').innerText = 0; document.getElementById('frenesi-reloj').innerText = 60; await asegurarPreguntas(); fQ = mezclarArreglo(preguntasGlobales); sigFrenesi(); fInt = setInterval(() => { fTime--; document.getElementById('frenesi-reloj').innerText = fTime; if(fTime <= 0) cerrarFrenesi(true); }, 1000); }
+        function sigFrenesi() { if(fQ.length === 0) return cerrarFrenesi(true); let q = fQ.pop(); let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:5px; border-radius:5px;">`:""; document.getElementById('frenesi-pregunta').innerHTML = (q.pregunta.length>75?q.pregunta.substring(0,75)+"...":q.pregunta) + imgHtml; let html = ""; q.opciones.forEach((op, i) => { let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height: 40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" style="font-size:14px; padding:10px; margin-bottom:5px;" onclick="checkFrenesi(${i}, ${q.respuesta_correcta})">${texto}</button>`; }); document.getElementById('frenesi-opciones').innerHTML = html; }
+        function checkFrenesi(sel, corr) { if(sel === corr) { playCoin(); fScore++; addMonedas(1); document.getElementById('frenesi-score').innerText = fScore; } else { playError(); document.getElementById('frenesi-caja-preg').classList.add('anim-golpe'); setTimeout(()=> document.getElementById('frenesi-caja-preg').classList.remove('anim-golpe'), 300); } sigFrenesi(); }
+        function cerrarFrenesi(t = false) { clearInterval(fInt); if(t) { let minTop = leaderboard.length < 5 ? 0 : leaderboard.sort((a,b)=>b.score-a.score)[4].score; if(fScore > minTop) { let initials = prompt(`¡Nuevo Récord (${fScore} pts)! Ingresa 3 letras para el Salón de la Fama:`, "PIX"); if(initials) { leaderboard.push({nombre: initials.substring(0,3).toUpperCase(), score: fScore}); localStorage.setItem('ecoems_leaderboard', JSON.stringify(leaderboard)); renderLeaderboard(); } } alertaModal("¡Tiempo Agotado!", `Aciertos: ${fScore}\nMonedas: +${fScore}🪙`, "victoria", iniciarFrenesi, ()=>abrirPantalla('zona-arcade')); } else abrirPantalla('zona-arcade'); }
+
+        let hpPixelote = 100, hpJefe = 100, jefeQ = [], jefeCombo = 0;
+        async function iniciarJefe() { abrirPantalla('juego-jefe'); hpPixelote = 100; hpJefe = 100; jefeCombo = 0; document.getElementById('combo-indicador').classList.remove('mostrar-combo'); document.getElementById('hp-pixelote').style.width = '100%'; document.getElementById('hp-jefe').style.width = '100%'; await asegurarPreguntas(); jefeQ = mezclarArreglo(preguntasGlobales).slice(0, 15); sAtaqueJ(); }
+        function sAtaqueJ() { if (hpPixelote <= 0) return alertaModal("¡Derrota!", "Fuiste vencido.", "derrota", iniciarJefe, null); if (hpJefe <= 0) { addMonedas(50); return alertaModal("¡Victoria!", "Destruiste al Jefe. +50🪙", "victoria", iniciarJefe, null); } if (jefeQ.length === 0) return alertaModal("Empate", "Sin energía.", "derrota", iniciarJefe, null); let q = jefeQ.pop(); document.getElementById('jefe-pregunta').innerHTML = (q.pregunta.length > 100 ? q.pregunta.substring(0,100)+"..." : q.pregunta) + (q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; border-radius:5px;">`:""); let html = ""; q.opciones.forEach((op, i) => { let txt = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" onclick="atqJ(${i}, ${q.respuesta_correcta})">${txt}</button>`; }); document.getElementById('jefe-opciones').innerHTML = html; }
+        function atqJ(sel, corr) { let ind = document.getElementById('combo-indicador'); if (sel === corr) { playHit(); addMonedas(2); jefeCombo++; hpJefe -= (15 + (jefeCombo*5)); document.getElementById('jefe-contenedor').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('jefe-contenedor').classList.remove('anim-golpe'), 300); if (jefeCombo > 1) { ind.innerText = `Combo x${jefeCombo}!`; ind.classList.add('mostrar-combo'); if (jefeCombo%3===0 && hpPixelote<100) { hpPixelote=Math.min(100, hpPixelote+20); document.getElementById('arena-combate').classList.add('anim-cura'); setTimeout(()=>document.getElementById('arena-combate').classList.remove('anim-cura'), 500); } } } else { playError(); jefeCombo = 0; hpPixelote -= 25; ind.classList.remove('mostrar-combo'); document.body.style.backgroundColor = "#e74c3c"; setTimeout(()=>document.body.style.backgroundColor = "#1a1a2e", 200); } document.getElementById('hp-pixelote').style.width = Math.max(0, hpPixelote)+'%'; document.getElementById('hp-jefe').style.width = Math.max(0, hpJefe)+'%'; setTimeout(sAtaqueJ, 500); }
+
+        let cartasRev = [], c1=null, c2=null, pRes=0;
+        async function iniciarMemorama() { abrirPantalla('juego-memorama'); await asegurarPreguntas(); let sel = mezclarArreglo(preguntasGlobales).slice(0, 6); let pares = []; sel.forEach((q, i) => { let qImg = q.imagen ? `<img src="${q.imagen}">` : ""; pares.push({id:i, text: (q.pregunta.length>40 ? q.pregunta.substring(0,40)+"..." : q.pregunta) + qImg }); let ans = q.opciones[q.respuesta_correcta]; let ansTxt = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}">` : (ans.length>40 ? ans.substring(0,40)+"..." : ans); pares.push({id:i, text: ansTxt }); }); cartasRev = mezclarArreglo(pares); pRes=0; c1=null; c2=null; let h=""; cartasRev.forEach((c, i) => h+=`<div class="carta" id="carta-${i}" onclick="vCart(${i})">?</div>`); document.getElementById('memorama-tablero').innerHTML = h; }
+        function vCart(i) { let ui=document.getElementById('carta-'+i); if(ui.classList.contains('resuelta')||ui.classList.contains('volteada')||(c1&&c2)) return; playTone(400, 'sine', 0.05); ui.classList.add('volteada'); ui.innerHTML=cartasRev[i].text; if(!c1) c1={idx:i, val:cartasRev[i].id}; else { c2={idx:i, val:cartasRev[i].id}; if(c1.val===c2.val) { playCoin(); addMonedas(5); document.getElementById('carta-'+c1.idx).classList.add('resuelta'); ui.classList.add('resuelta'); pRes++; c1=null; c2=null; if(pRes===6) setTimeout(()=>alertaModal("¡Perfecto!", "+30🪙", "victoria", iniciarMemorama, null), 500); } else { playError(); setTimeout(()=>{ document.getElementById('carta-'+c1.idx).classList.remove('volteada'); document.getElementById('carta-'+c1.idx).innerText="?"; ui.classList.remove('volteada'); ui.innerText="?"; c1=null; c2=null; }, 1000); } } }
+
+        let ahPal="", ahOc=[], ahVid=5;
+        async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => { let ans = q.opciones[q.respuesta_correcta]; if (!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length >= 3 && ans.length <= 16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd = mezclarArreglo(qV)[0]; ahPal = rnd.opciones[rnd.respuesta_correcta].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText = "Pista: " + rnd.pregunta; window.ahExp = rnd.explicacion ? `\n\n💡 Dato: ${rnd.explicacion}` : ""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; }
+        function adivLet(l) { document.getElementById('tec-'+l).disabled=true; if(ahPal.includes(l)){ playTone(600,'sine',0.1); addMonedas(1); for(let i=0;i<ahPal.length;i++) if(ahPal[i]===l) ahOc[i]=l; } else { playError(); ahVid--; } document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(ahVid)+"🖤".repeat(5-ahVid); if(!ahOc.includes('_')) setTimeout(()=>alertaModal("¡Rescate Exitoso!", "+15🪙" + window.ahExp, "victoria", iniciarAhorcado, null),300); if(ahVid===0) setTimeout(()=>alertaModal("Fallaste", "Era: "+ahPal + window.ahExp, "derrota", iniciarAhorcado, null),300); }
+
+        function iniciarAguila() { abrirPantalla('juego-aguila'); let m = mezclarArreglo([{txt:"La [fotosíntesis] absorbe [oxígeno] liberando [dióxido].", trampa:1, ops:["fotosíntesis","oxígeno","dióxido"]}])[0]; let th=m.txt; m.ops.forEach((op,i)=>th=th.replace(`[${op}]`,`<span class="aguila-palabra" onclick="chAg(${i===m.trampa})">${op}</span>`)); document.getElementById('aguila-contenido').innerHTML=th; }
+        function chAg(esTr) { if(esTr){ addMonedas(10); alertaModal("¡Ojo Águila!", "+10🪙", "victoria", iniciarAguila, null); } else { playError(); alertaModal("¡Emboscada!", "Error.", "derrota", iniciarAguila, null); } }
+
+        let flashQ = [];
+        async function iniciarFlashcards() { abrirPantalla('juego-flashcards'); await asegurarPreguntas(); flashQ = mezclarArreglo(preguntasGlobales); document.getElementById('fc-card').classList.remove('flipped'); sigFC(); }
+        function sigFC() { if(flashQ.length === 0) flashQ = mezclarArreglo(preguntasGlobales); let q = flashQ.pop(); let card = document.getElementById('fc-card'); card.classList.remove('flipped'); setTimeout(() => { let ans = q.opciones[q.respuesta_correcta]; let imgFront = q.imagen ? `<br><img src="${q.imagen}" style="max-width:100%; max-height:100px; margin-top:10px; border-radius:5px;">` : ""; let ansHtml = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}" style="max-width:100%; max-height:100px; border-radius:5px;">` : ans; let expHtml = q.explicacion ? `<div style="font-size:13px; font-weight:normal; margin-top:10px; border-top:1px solid rgba(255,255,255,0.3); padding-top:10px;">💡 <strong>Dato:</strong> ${q.explicacion}</div>` : ""; let pregFondo = `<div style="color:#a2a8d3; font-size:12px; margin-bottom:8px; font-style:italic; line-height:1.2; border-bottom:1px dashed #4361ee; padding-bottom:5px;">${q.pregunta.length > 80 ? q.pregunta.substring(0,80) + '...' : q.pregunta}</div>`; document.getElementById('fc-front').innerHTML = `<div style="color:#f1c40f; font-size:12px; margin-bottom:10px; text-transform:uppercase; font-weight:bold;">${q.materia}</div><strong style="font-size:16px; line-height:1.4;">${q.pregunta}</strong>${imgFront}`; document.getElementById('fc-back').innerHTML = `${pregFondo}<div style="margin-bottom:5px; color:#27ae60; font-size:12px; font-weight:bold;">RESPUESTA CORRECTA</div><strong style="font-size:18px;">${ansHtml}</strong>${expHtml}`; }, 200); }
+        function voltearFlashcard() { document.getElementById('fc-card').classList.toggle('flipped'); playTone(400, 'sine', 0.1); }
+
+        // ==========================================
+        // 🌳 ÁRBOL DE HABILIDADES VISUAL Y EXAMEN OFICIAL
+        // ==========================================
+        function mostrarHistorial() {
+            abrirPantalla('zona-historial'); let arbol = document.getElementById('arbol-habilidades');
+            if (Object.keys(playerStats.radarStats).length === 0) { arbol.innerHTML = "<p style='color:#e94560; font-weight:bold;'>Termina un simulacro oficial para plantar tu árbol.</p>"; return; }
+            let html = "";
+            for(const [mat, s] of Object.entries(playerStats.radarStats)) { let p = (s.ok/s.total)*100; let n1 = p >= 33 ? "activo" : ""; let n2 = p >= 66 ? "activo" : ""; let n3 = p >= 90 ? "activo-master" : ""; html += `<div class="skill-branch"><div class="skill-name"><span>${mat}</span> <span style="color:${p>=66?'#2ecc71':'#f1c40f'};">${Math.round(p)}%</span></div><div class="skill-nodes"><div class="skill-node ${n1}">Aprendiz</div><div class="skill-line ${n2}"></div><div class="skill-node ${n2}">Avanzado</div><div class="skill-line ${n3}"></div><div class="skill-node ${n3}">Maestro</div></div></div>`; } arbol.innerHTML = html;
+        }
+
+        let exQ = [], idxAc = 0, exPts = 0, exCanc = false, resMat = {}, userResp = [], advTot = 0, sinMirar = 0, tRest = 10800, exInt, recVoz = null;
+        async function comenzarSimulacro() {
+            abrirPantalla('zona-examen');
+            try {
+                await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models'); const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true }); document.getElementById('camara').srcObject = stream; const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if (SR) { recVoz = new SR(); recVoz.continuous = true; recVoz.lang = 'es-MX'; recVoz.onresult = (e) => { const t = e.results[e.results.length - 1][0].transcript.trim(); if (t.length > 3) regInfra(`Voz detectada`); }; recVoz.onend = () => { if(!exCanc) try{ recVoz.start(); }catch(e){} }; recVoz.start(); } await asegurarPreguntas(); 
+                let agrupadas = {}; preguntasGlobales.forEach(q => { if(!agrupadas[q.materia]) agrupadas[q.materia] = []; agrupadas[q.materia].push(q); });
+                exQ = []; resMat = {}; idxAc = 0; exPts = 0; exCanc = false; userResp = [];
+                for (let m in agrupadas) { resMat[m] = { ok: 0, total: agrupadas[m].length }; exQ = exQ.concat(mezclarArreglo(agrupadas[m])); }
+                showQ(); document.getElementById('temporizador').style.display = "inline-block"; tRest = 10800; exInt = setInterval(() => { if (exCanc) return clearInterval(exInt); tRest--; let h = Math.floor(tRest / 3600), m = Math.floor((tRest % 3600) / 60), s = tRest % 60; document.getElementById('temporizador').innerText = `⏱️ ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; if (tRest <= 0) finExamen("¡Tiempo agotado!"); }, 1000);
+            } catch (err) { alert("🚨 Permisos de Cámara denegados."); location.reload(); }
+        }
+
+        document.getElementById('camara').addEventListener('play', () => { setInterval(async () => { if (exCanc) return; const det = await faceapi.detectAllFaces(document.getElementById('camara'), new faceapi.TinyFaceDetectorOptions()); if (det.length === 0) { sinMirar++; if (sinMirar === 15) { regInfra("Rostro no detectado por 15s"); sinMirar = 0; } } else { sinMirar = 0; } }, 1000); });
+        function regInfra(motivo) { if (exCanc) return; playError(); advTot++; if (advTot >= 3) finExamen(motivo); else { let tst = document.getElementById('toast-advertencia'); tst.innerText = `⚠️ ${advTot}/3: ${motivo}`; tst.style.display = "block"; document.getElementById('camara').classList.add('peligro'); setTimeout(() => { tst.style.display = "none"; document.getElementById('camara').classList.remove('peligro'); }, 3000); } }
+
+        function showQ() {
+            if (idxAc >= exQ.length) return finExamen("¡Simulacro Terminado! 🎉", true);
+            const d = exQ[idxAc], letras = ['A', 'B', 'C', 'D'];
+            let h = `<div class="materia">${d.materia}</div><div class="contador">Pregunta ${idxAc+1}/${exQ.length}</div><button class="btn-acordeon" onclick="abrirPnl('p-p')">👁️ Ver Pregunta</button><div id="p-p" class="panel-acordeon" style="display:block;"><b>${d.pregunta}</b>${d.imagen ? `<br><img src="${d.imagen}" class="img-fluida">` : ''}</div>`;
+            d.opciones.forEach((o, i) => { const esImg = o.match(/\.(jpg|jpeg|png|gif)$/i); h += `<button class="btn-acordeon" onclick="abrirPnl('p-o-${i}')">👁️ Opción ${letras[i]}</button><div id="p-o-${i}" class="panel-acordeon">${esImg ? `<img src="${o}" class="img-fluida">` : o}<button class="btn-seleccionar" onclick="vRes(${i}, ${d.respuesta_correcta})">✅ Seleccionar</button></div>`; });
+            document.getElementById('contenedor-examen').innerHTML = h;
+        }
+        window.abrirPnl = function(id) { ['p-p', 'p-o-0', 'p-o-1', 'p-o-2', 'p-o-3'].forEach(x => { const p = document.getElementById(x); if(p) p.style.display = (x===id && p.style.display !=='block') ? 'block' : 'none'; }); };
+        function vRes(s, c) { if(exCanc) return; userResp[idxAc] = s; playerStats.preguntasTotales++; if(s===c){ exPts++; resMat[exQ[idxAc].materia].ok++; addMonedas(5); } idxAc++; showQ(); window.scrollTo(0,0); }
+
+        function finExamen(msj, exito=false) {
+            exCanc = true; clearInterval(exInt); document.getElementById('camara').style.display = "none"; document.getElementById('temporizador').style.display = "none"; document.getElementById('toast-advertencia').style.display = "none"; let v = document.getElementById('camara'); if (v.srcObject) v.srcObject.getTracks().forEach(t => t.stop()); if (recVoz) recVoz.stop();
+            if (idxAc > 0) { playerStats.radarStats = resMat; localStorage.setItem('ecoems_stats', JSON.stringify(playerStats)); }
+            let hRep = `<div class="reporte-container"><h3 style="margin-top:0;">📈 Reporte por Materias</h3>`; for(const [m, s] of Object.entries(resMat)) { let p = (s.ok/s.total)*100, c = p>=80?"color-excelente":p>=60?"color-regular":"color-malo"; hRep += `<div class="item-reporte"><div class="item-header"><span>${m}</span><span>${s.ok}/${s.total}</span></div><div class="barra-bg"><div class="barra-fill ${c}" style="width: ${p}%;"></div></div></div>`; } hRep += `</div>`;
+            let head = exito ? `<h2 style="color: #27ae60;">${msj}</h2>` : `<h1 style="font-size: 30px; color:#e94560;">🚫 EXAMEN CANCELADO</h1><p>${msj}</p>`;
+            document.getElementById('tarjeta-principal').className = 'tarjeta-pregunta' + (exito ? '' : ' cancelado');
+            document.getElementById('contenedor-examen').innerHTML = `${head}<div style="background: #0f3460; padding: 20px; border-radius: 12px; margin: 20px 0;"><p style="color: #27ae60; font-size: 18px;">✔️ Aciertos: <strong>${exPts}</strong></p><p style="color: #e94560; font-size: 18px;">❌ Errores: <strong>${idxAc - exPts}</strong></p></div><button class="btn btn-azul" onclick="mostrarRetro()">Repasar mis errores</button><button class="btn btn-gris" onclick="location.reload()">Ir al Menú Principal</button>`;
+        }
+
+        function mostrarRetro() {
+            document.getElementById('tarjeta-principal').classList.remove('cancelado'); let html = `<h2>Repaso de Errores</h2>`, hE = false;
+            for(let i=0; i<idxAc; i++) { let d = exQ[i], mS = userResp[i]; if(mS !== d.respuesta_correcta) { hE = true; let oS=d.opciones[mS], oC=d.opciones[d.respuesta_correcta]; let cS = oS.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oS}" class="img-fluida" style="max-height:80px;">`:oS; let cC = oC.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oC}" class="img-fluida" style="max-height:80px;">`:oC; let expHtml = d.explicacion ? `<div style="background: rgba(52, 152, 219, 0.2); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 13px; color: #a2a8d3; text-align: left; border-left: 3px solid #4361ee;"><strong>💡 Explicación:</strong> ${d.explicacion}</div>` : ""; html += `<div class="tarjeta-error" style="background:#0f3460; border:1px solid #e94560; padding:15px; border-radius:10px; margin-bottom:15px;"><div style="color:#a2a8d3; font-size:12px; font-weight:bold; margin-bottom:5px;">${d.materia}</div><p style="font-weight:bold;">${d.pregunta}</p>${d.imagen?`<img src="${d.imagen}" class="img-fluida" style="max-height:100px; margin-bottom:15px;">`:''} <div style="background:rgba(233,69,96,0.2); padding:10px; border-radius:5px; margin-bottom:5px;"><strong style="color:#e94560;">❌ Elegiste:</strong><br>${cS}</div><div style="background:rgba(39,174,96,0.2); padding:10px; border-radius:5px;"><strong style="color:#27ae60;">✅ Correcta:</strong><br>${cC}</div>${expHtml}</div>`; } }
+            if(!hE) html += `<div style="padding:20px; background:rgba(39,174,96,0.2); color:#27ae60; font-weight:bold; border-radius:10px; margin-bottom:20px;">¡No tuviste errores!</div>`;
+            html += `<button class="btn btn-gris" onclick="location.reload()">Volver al Menú Principal</button>`; document.getElementById('contenedor-examen').innerHTML = html; window.scrollTo(0,0);
+        }
+
+        actualizarUI();
+        const defTrofeos = []; for(let i=1; i<=82; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
+        defTrofeos[0] = {id:1, icon:'🌱', name:'Despertar', desc:'1ra pregunta'}; defTrofeos[10] = {id:11, icon:'🔥', name:'Chispa', desc:'3 correctas seguidas'}; defTrofeos[29] = {id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS', desc:'128 aciertos'}; defTrofeos[39] = {id:40, icon:'🥷', name:'Fantasma', desc:'Sin advertencias'};
+        defTrofeos[50] = {id:51, icon:'⚔️', name:'Gladiador', desc:'Gana al Jefe'}; defTrofeos[51] = {id:52, icon:'🛡️', name:'Caballero Hueco', desc:'Jefe 100HP'}; defTrofeos[52] = {id:53, icon:'💥', name:'Ataque Crítico', desc:'Jefe Combo x3'}; defTrofeos[53] = {id:54, icon:'🔥', name:'Furia Desatada', desc:'Jefe Combo x5'}; defTrofeos[54] = {id:55, icon:'🎖️', name:'Veterano Combate', desc:'Juega Jefe 5 veces'};
+        defTrofeos[55] = {id:56, icon:'⚡', name:'Mente Rápida', desc:'Frenesí 15+'}; defTrofeos[56] = {id:57, icon:'🌩️', name:'Relámpago', desc:'Frenesí 25+'}; defTrofeos[57] = {id:58, icon:'☄️', name:'Velocidad Luz', desc:'Frenesí 40+'}; defTrofeos[58] = {id:59, icon:'🎯', name:'Frenesí Perfecto', desc:'10 aciertos sin error'}; defTrofeos[59] = {id:60, icon:'👾', name:'Adicto Arcade', desc:'Frenesí 5 veces'};
+        defTrofeos[60] = {id:61, icon:'📷', name:'Fotográfica', desc:'Gana Memorama'}; defTrofeos[61] = {id:62, icon:'🧠', name:'Mente Maestra', desc:'Memorama sin fallar'}; defTrofeos[62] = {id:63, icon:'🃏', name:'Coleccionista', desc:'Memorama 5 veces'};
+        defTrofeos[63] = {id:64, icon:'❤️', name:'Rescatista', desc:'Gana El Rescate'}; defTrofeos[64] = {id:65, icon:'🩺', name:'Cirujano Letras', desc:'Rescate con 5 vidas'}; defTrofeos[65] = {id:66, icon:'🖤', name:'Filo del Abismo', desc:'Rescate con 1 vida'}; defTrofeos[66] = {id:67, icon:'🦸', name:'Héroe Pixelote', desc:'Gana Rescate 5 veces'};
+        defTrofeos[67] = {id:68, icon:'🦅', name:'Ojo Águila', desc:'Gana Vista Águila'}; defTrofeos[68] = {id:69, icon:'🗡️', name:'Asesino Silencioso', desc:'Águila 1er toque'}; defTrofeos[69] = {id:70, icon:'📜', name:'Credo del Saber', desc:'Gana Águila 5 veces'};
+        defTrofeos[70] = {id:71, icon:'☄️', name:'Defensor Planetario', desc:'Gana Meteoritos'}; defTrofeos[71] = {id:72, icon:'🌠', name:'Lluvia Perfecta', desc:'Meteoritos sin daño'}; defTrofeos[72] = {id:73, icon:'🕳️', name:'Sobreviviente', desc:'Escapa del Laberinto'}; defTrofeos[73] = {id:74, icon:'🕯️', name:'Portador de Luz', desc:'Laberinto sin errores'};
+        defTrofeos[74] = {id:75, icon:'🐸', name:'Rana Saltarina', desc:'Llega al nivel 10 de Salto'}; defTrofeos[75] = {id:76, icon:'🚀', name:'Astronauta Cuántico', desc:'Llega al nivel 20 de Salto'};
+        defTrofeos[76] = {id:77, icon:'📐', name:'Ingeniero Maestro', desc:'Completa 5 planos'}; defTrofeos[77] = {id:78, icon:'🏗️', name:'Soldadura Perfecta', desc:'Planos sin fallos'}; defTrofeos[78] = {id:79, icon:'📊', name:'Analista de Datos', desc:'Repara 5 matrices'}; defTrofeos[79] = {id:80, icon:'💻', name:'Código Limpio', desc:'Matriz sin corrupción'}; defTrofeos[80] = {id:81, icon:'⚖️', name:'Alquimista', desc:'Equilibra 5 balanzas'}; defTrofeos[81] = {id:82, icon:'☯️', name:'Equilibrio Perfecto', desc:'Balanza sin errores'};
+        function renderizarTrofeos() { const ui = document.getElementById('lista-trofeos'); ui.innerHTML = ''; defTrofeos.forEach(t => { const unl = playerStats.trofeos.includes(t.id); ui.innerHTML += `<div class="trofeo-card ${unl?'desbloqueado':''}" title="${t.desc}"><div class="trofeo-icon">${t.icon}</div><div class="trofeo-label">${t.name}</div></div>`; }); document.getElementById('lbl-trofeos-count').innerText = playerStats.trofeos.length; document.getElementById('barra-trofeos').style.width = (playerStats.trofeos.length * (100/82)) + '%'; }
+        renderizarTrofeos();
+    </script>
+</body>
 </html>
