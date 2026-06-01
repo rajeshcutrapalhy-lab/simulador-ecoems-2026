@@ -4,47 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simulador ECOEMS 2026 - Master Edition V10</title>
-    <script>
-        // --- SECCIÓN ACTUALIZADA DE MONITOREO ---
-        let advTot = 0; 
-        let sinMirar = 0;
-        const LIMITE_ADVERTENCIAS = 5; // Ahora son 5 advertencias
-        const TIEMPO_TOLERANCIA_ROSTRO = 10; // 10 segundos de tolerancia
-
-        document.getElementById('camara').addEventListener('play', () => {
-            setInterval(async () => {
-                if (exCanc) return;
-                const det = await faceapi.detectAllFaces(document.getElementById('camara'), new faceapi.TinyFaceDetectorOptions());
-                
-                if (det.length === 0) {
-                    sinMirar++;
-                    if (sinMirar >= TIEMPO_TOLERANCIA_ROSTRO) {
-                        regInfra("Rostro no detectado");
-                        sinMirar = 0;
-                    }
-                } else {
-                    sinMirar = 0;
-                }
-            }, 1000);
-        });
-
-        function regInfra(motivo) {
-            if (exCanc) return;
-            playError();
-            advTot++;
-            if (advTot >= LIMITE_ADVERTENCIAS) {
-                finExamen("Has excedido el límite de advertencias.");
-            } else {
-                let tst = document.getElementById('toast-advertencia');
-                tst.innerText = `⚠️ ${advTot}/${LIMITE_ADVERTENCIAS}: ${motivo}`;
-                tst.style.display = "block";
-                document.getElementById('camara').classList.add('peligro');
-                setTimeout(() => {
-                    tst.style.display = "none";
-                    document.getElementById('camara').classList.remove('peligro');
-                }, 3000);
-            }
-        }
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
