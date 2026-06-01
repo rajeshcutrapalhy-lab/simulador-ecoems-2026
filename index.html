@@ -344,6 +344,51 @@
         <div id="temporizador">⏱️ 03:00:00</div>
     </div>
 
+    <div id="toast-advertencia" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #ff0000; color: white; padding: 15px 25px; border-radius: 10px; font-weight: bold; z-index: 2000;">⚠️</div>
+    
+    <script>
+        // --- SECCIÓN ACTUALIZADA DE MONITOREO (ESTA ES LA QUE DA TOLERANCIA) ---
+        let advTot = 0; 
+        let sinMirar = 0;
+        const LIMITE_ADVERTENCIAS = 5; // Ahora permite 5 fallos antes de cancelar
+        const TIEMPO_TOLERANCIA_ROSTRO = 10; // Ahora espera 10 segundos antes de marcar advertencia
+
+        document.getElementById('camara').addEventListener('play', () => {
+            setInterval(async () => {
+                if (exCanc) return;
+                const det = await faceapi.detectAllFaces(document.getElementById('camara'), new faceapi.TinyFaceDetectorOptions());
+                
+                if (det.length === 0) {
+                    sinMirar++;
+                    // Solo advierte si pasan 10 segundos seguidos sin ver la cara
+                    if (sinMirar >= TIEMPO_TOLERANCIA_ROSTRO) {
+                        regInfra("Rostro no detectado por mucho tiempo");
+                        sinMirar = 0;
+                    }
+                } else {
+                    sinMirar = 0; // Se reinicia el contador si te vuelve a ver
+                }
+            }, 1000);
+        });
+
+        function regInfra(motivo) {
+            if (exCanc) return;
+            playError();
+            advTot++;
+            if (advTot >= LIMITE_ADVERTENCIAS) {
+                finExamen("Has excedido el límite de advertencias.");
+            } else {
+                let tst = document.getElementById('toast-advertencia');
+                tst.innerText = `⚠️ ${advTot}/${LIMITE_ADVERTENCIAS}: ${motivo}`;
+                tst.style.display = "block";
+                document.getElementById('camara').classList.add('peligro');
+                setTimeout(() => {
+                    tst.style.display = "none";
+                    document.getElementById('camara').classList.remove('peligro');
+                }, 3000);
+            }
+        }
+
     <script>
         // ==========================================
         // 🎵 MOTOR AUDIO EXPANDIDO
