@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Master Edition V14</title>
+    <title>Simulador ECOEMS 2026 - Master Edition V15</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -48,8 +48,9 @@
         
         .tarjeta-pregunta { background: #1a1a2e; padding: 25px; border-radius: 15px; border: 1px solid #0f3460; }
         
-        .btn-acordeon { background-color: #0f3460; color: white; border: none; padding: 15px; font-size: 14px; border-radius: 8px; width: 100%; margin-bottom: 5px; text-align: left; font-weight: bold; cursor: pointer; border-left: 5px solid #1a1a2e;}
-        .panel-acordeon { background-color: #16213e; padding: 20px; border-radius: 8px; margin-bottom: 15px; display: none; border: 1px solid #4361ee; text-align: left; font-size: 14px;}
+        /* ACORDEÓN DE EXAMEN - BOTONES */
+        .btn-acordeon { background-color: #0f3460; color: white; border: none; padding: 15px; font-size: 14px; border-radius: 8px; width: 100%; margin-bottom: 5px; text-align: left; font-weight: bold; cursor: pointer; border-left: 5px solid #1a1a2e; transition: 0.2s;}
+        .btn-acordeon:active { transform: scale(0.98); }
         .img-fluida { max-width: 100%; max-height: 150px; border-radius: 8px; margin: 10px 0; display: block; object-fit: contain; }
         
         .arcade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
@@ -63,7 +64,7 @@
         .mostrar-combo { opacity: 1 !important; transform: translateX(-50%) scale(1.2) !important; }
         
         .memorama-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
-        .carta { background: #0f3460; color: transparent; height: 110px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; line-height:1.2;}
+        .carta { background: #0f3460; color: transparent; height: 110px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; line-height:1.2; user-select: none;}
         .carta.volteada { background: #4361ee; color: white; }
         .carta.resuelta { background: #27ae60; color: white; border-color: #27ae60; cursor: default; }
         
@@ -74,12 +75,13 @@
         .palabra-oculta { font-size: 28px; letter-spacing: 8px; margin: 20px 0; font-family: monospace; font-weight: bold; color: #f1c40f;}
         .ahorcado-pista { font-weight: bold; color: #a2a8d3; font-size: 14px; max-height: 100px; overflow-y: auto; padding: 10px; background: #0f3460; border-radius: 10px; border: 1px solid #4361ee; margin-bottom:15px; text-align: justify; line-height: 1.4;}
 
+        /* 🔥 TARJETAS OCULTAS 3D (BLINDADAS PARA CELULAR) 🔥 */
         .fc-scene { width: 100%; height: 320px; perspective: 1000px; margin: 20px 0; cursor: pointer; }
-        .fc-card { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
-        .fc-card.flipped { transform: rotateY(180deg); }
-        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; border: 2px solid #4361ee; overflow-y: auto; }
+        .fc-card { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; position: relative; }
+        .fc-card.flipped { transform: rotateY(180deg); -webkit-transform: rotateY(180deg); }
+        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; border: 2px solid #4361ee; overflow-y: auto; }
         .fc-front { background: #0f3460; color: #fff; }
-        .fc-back { background: #e94560; color: #fff; transform: rotateY(180deg); align-items: flex-start; text-align: left; justify-content: flex-start;}
+        .fc-back { background: #e94560; color: #fff; transform: rotateY(180deg); -webkit-transform: rotateY(180deg); align-items: flex-start; text-align: left; justify-content: flex-start;}
 
         .met-area { position: relative; height: 320px; background: #0b132b; border: 2px solid #4361ee; border-radius: 10px; overflow: hidden; margin-top: 15px; }
         .met-btn { position: absolute; width: 46%; padding: 5px; font-size: 11px; font-weight: bold; background: #e94560; color: #fff; border: 2px solid #fff; border-radius: 8px; cursor: pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height: 40px;}
@@ -158,7 +160,6 @@
         </div>
     </div>
 
-    <!-- PANTALLA PRINCIPAL -->
     <div id="bienvenida" class="pantalla">
         <div class="top-stats"><span class="stat-racha">🔥 Racha: <span id="ui-racha">0</span> días</span><span class="stat-monedas">🪙 <span id="ui-monedas">0</span></span></div>
         <div class="contenedor-avatar" onclick="interactuarPixelote()">
@@ -176,7 +177,6 @@
         <div class="contenedor-trofeos" id="lista-trofeos"></div>
     </div>
 
-    <!-- TIENDA -->
     <div id="zona-tienda" class="pantalla">
         <h2 style="color: #f1c40f;">🛍️ Tienda de Skins</h2>
         <p style="color: #a2a8d3;">Personaliza a Pixelote. 🪙 <span id="ui-tienda-monedas"></span></p>
@@ -184,7 +184,6 @@
         <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Volver al Cuartel</button>
     </div>
 
-    <!-- ZONA ARCADE -->
     <div id="zona-arcade" class="pantalla">
         <h2 style="color: #4361ee;">🕹️ ZONA ARCADE</h2>
         <p style="color: #a2a8d3; margin-bottom:10px; font-size:12px;">Entrenamiento Matemático</p>
@@ -208,7 +207,6 @@
         <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Volver al Cuartel</button>
     </div>
 
-    <!-- JUEGOS MATEMATICOS -->
     <div id="juego-arquitecto" class="pantalla">
         <h3 style="color: #4361ee;">📐 Arquitecto de Tapancos</h3>
         <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span id="arq-vidas" style="font-size:20px;">❤️❤️❤️</span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="arq-score">0</span></span></div>
@@ -234,7 +232,6 @@
         <button class="btn btn-gris" style="margin-top: 25px;" onclick="cerrarJuego(null)">Retirarse</button>
     </div>
 
-    <!-- OTROS JUEGOS -->
     <div id="juego-salto" class="pantalla">
         <h3 style="color: #4361ee;">🍄 Salto Cuántico</h3>
         <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span style="color:#a2a8d3; font-weight:bold;">Nivel: <span id="salto-nivel">1</span></span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="salto-score">0</span></span></div>
@@ -288,16 +285,14 @@
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
     </div>
     
-    <!-- TARJETAS OCULTAS -->
     <div id="juego-flashcards" class="pantalla">
         <h3 style="color: #4361ee;">📚 Tarjetas de Entrenamiento</h3>
-        <p style="color:#a2a8d3; font-size:12px;">Toca la tarjeta para ver la respuesta oculta.</p>
+        <p style="color:#a2a8d3; font-size:12px;">Toca la tarjeta para revelar la respuesta oculta.</p>
         <div class="fc-scene" onclick="voltearFlashcard()"><div class="fc-card" id="fc-card"><div class="fc-face fc-front" id="fc-front"></div><div class="fc-face fc-back" id="fc-back"></div></div></div>
         <button class="btn btn-morado" onclick="siguienteFlashcard()">Siguiente Tarjeta ➡️</button>
         <button class="btn btn-gris" style="margin-top: 10px;" onclick="cerrarJuego(null)">Salir</button>
     </div>
 
-    <!-- MEMORAMA -->
     <div id="juego-memorama" class="pantalla">
         <h3 style="color: #27ae60;">🃏 Memorama</h3>
         <p style="color:#a2a8d3; font-size:12px;">Encuentra el par correcto de cada pregunta.</p>
@@ -305,14 +300,12 @@
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
     </div>
 
-    <!-- ÁGUILA -->
     <div id="juego-aguila" class="pantalla">
         <h3 style="color: #3498db;">🦅 Vista de Águila</h3>
         <div class="aguila-texto" id="aguila-contenido"></div>
         <button class="btn btn-gris" style="margin-top: 30px;" onclick="cerrarJuego(null)">Abortar misión</button>
     </div>
 
-    <!-- ÁRBOL Y EXAMEN -->
     <div id="zona-historial" class="pantalla">
         <h2 style="color: #4361ee;">🌳 Árbol de Dominio</h2>
         <div id="arbol-habilidades" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;"></div>
@@ -350,7 +343,7 @@
         document.body.addEventListener('click', () => { if(audioCtx.state === 'suspended') audioCtx.resume(); }, {once:true});
 
         // ==========================================
-        // 💾 ESTADO Y SEGURIDAD V14
+        // 💾 ESTADO Y SEGURIDAD V15
         // ==========================================
         let exCanc = false; let bloqueado = false; let logBloqueos = []; let advTot = 0; const LIMITE_ADVERTENCIAS = 5; const TOLERANCIA_ROSTRO = 10;
         let playerStats = JSON.parse(localStorage.getItem('ecoems_stats')) || { preguntasTotales: 0, simulacros: 0, trofeos: [], monedas: 0, racha: 0, ultimaFecha: "", skinsDesbloqueadas: [0], skinEquipada: 0, radarStats: {} };
@@ -379,7 +372,6 @@
         // ==========================================
         // 🏆 NAVEGACIÓN Y CARGA DE JSON
         // ==========================================
-        function limpiarTexto(htmlStr) { let tmp = document.createElement("DIV"); tmp.innerHTML = htmlStr; return tmp.textContent || tmp.innerText || ""; }
         function alertaModal(titulo, mensaje, tipo, onNext, onExit) { const modal = document.getElementById('modal-arcade'); const icon = document.getElementById('modal-icon'); const titleEl = document.getElementById('modal-title'); document.getElementById('modal-msg').innerHTML = mensaje; titleEl.innerText = titulo; icon.className = 'modal-icon'; if(tipo === 'victoria') { icon.innerText = '🏆'; titleEl.style.color = '#f1c40f'; icon.classList.add('anim-brillo'); playFanfare(); } else { icon.innerText = '💀'; titleEl.style.color = '#e94560'; icon.classList.add('anim-temblor-modal'); playError(); } document.getElementById('btn-modal-next').onclick = () => { modal.style.display = 'none'; if(onNext) onNext(); }; document.getElementById('btn-modal-exit').onclick = () => { modal.style.display = 'none'; if(onExit) onExit(); else abrirPantalla('zona-arcade'); }; modal.style.display = 'flex'; }
         function cerrarJuego(intervalToClear) { if(intervalToClear) clearInterval(intervalToClear); abrirPantalla('zona-arcade'); }
         function abrirPantalla(id) { document.querySelectorAll('.pantalla').forEach(p => p.style.display = 'none'); document.getElementById(id).style.display = 'block'; }
@@ -404,7 +396,7 @@
             let q=fcQ.pop(); document.getElementById('fc-card').classList.remove('flipped'); 
             document.getElementById('fc-front').innerHTML=`<b>${q.materia}</b><br><br>${q.pregunta}`+(q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px;">`:''); 
             let ansTxt=q.opciones[q.respuesta_correcta]; let esImg=ansTxt.match(/\.(jpg|png|gif|jpeg)$/i); 
-            document.getElementById('fc-back').innerHTML=`<b>Respuesta:</b><br><br>${esImg?`<img src="${ansTxt}" style="max-height:80px;">`:ansTxt}${q.explicacion?`<br><br><span style="color:#f1c40f;">💡 ${q.explicacion}</span>`:''}`; 
+            document.getElementById('fc-back').innerHTML=`<b>Respuesta Oculta:</b><br><br>${esImg?`<img src="${ansTxt}" style="max-height:80px;">`:ansTxt}${q.explicacion?`<br><br><span style="color:#f1c40f;">💡 ${q.explicacion}</span>`:''}`; 
         }
         function voltearFlashcard(){ document.getElementById('fc-card').classList.toggle('flipped'); playTone(300,'sine',0.1); }
 
@@ -467,14 +459,15 @@
         function atqJ(sel, corr) { let ind=document.getElementById('combo-indicador'); if(sel===corr) { playHit(); addMonedas(2); jefeCombo++; hpJefe-=(15+(jefeCombo*5)); document.getElementById('jefe-contenedor').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('jefe-contenedor').classList.remove('anim-golpe'), 300); if(jefeCombo>1) { ind.innerText=`Combo x${jefeCombo}!`; ind.classList.add('mostrar-combo'); if(jefeCombo%3===0 && hpPixelote<100) { hpPixelote=Math.min(100, hpPixelote+20); document.getElementById('arena-combate').classList.add('anim-cura'); setTimeout(()=>document.getElementById('arena-combate').classList.remove('anim-cura'), 500); } } } else { playError(); jefeCombo=0; hpPixelote-=25; ind.classList.remove('mostrar-combo'); document.body.style.backgroundColor="#e74c3c"; setTimeout(()=>document.body.style.backgroundColor="#1a1a2e", 200); } document.getElementById('hp-pixelote').style.width=Math.max(0, hpPixelote)+'%'; document.getElementById('hp-jefe').style.width=Math.max(0, hpJefe)+'%'; setTimeout(sAtaqueJ, 500); }
 
         let ahPal="", ahOc=[], ahVid=5;
-        async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV=preguntasGlobales.filter(q=>{ let ans=q.opciones[q.respuesta_correcta]; if(!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length>=3 && ans.length<=16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd=mezclarArreglo(qV)[0]; let cleanAns = limpiarTexto(rnd.opciones[rnd.respuesta_correcta]); ahPal=cleanAns.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText="Pista: "+rnd.pregunta; window.ahExp=rnd.explicacion?`\n\n💡 Dato: ${rnd.explicacion}`:""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; }
+        function normalizeStr(str) { return str.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); }
+        async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV=preguntasGlobales.filter(q=>{ let ans=q.opciones[q.respuesta_correcta]; if(!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length>=3 && ans.length<=16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd=mezclarArreglo(qV)[0]; let cleanAns = rnd.opciones[rnd.respuesta_correcta]; ahPal=normalizeStr(cleanAns); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText="Pista: "+rnd.pregunta; window.ahExp=rnd.explicacion?`\n\n💡 Dato: ${rnd.explicacion}`:""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; }
         function adivLet(l) { document.getElementById('tec-'+l).disabled=true; if(ahPal.includes(l)){ playTone(600,'sine',0.1); addMonedas(1); for(let i=0;i<ahPal.length;i++) if(ahPal[i]===l) ahOc[i]=l; } else { playError(); ahVid--; } document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(ahVid)+"🖤".repeat(5-ahVid); if(!ahOc.includes('_')) setTimeout(()=>alertaModal("¡Exitoso!", "+15🪙"+window.ahExp, "victoria", iniciarAhorcado, null),300); if(ahVid===0) setTimeout(()=>alertaModal("Fallaste", "Era: "+ahPal+window.ahExp, "derrota", iniciarAhorcado, null),300); }
 
         function mostrarHistorial() { abrirPantalla('zona-historial'); let arbol=document.getElementById('arbol-habilidades'); if(Object.keys(playerStats.radarStats).length===0) { arbol.innerHTML="<p style='color:#e94560; font-weight:bold;'>Termina un simulacro oficial para plantar tu árbol.</p>"; return; } let h=""; for(const [mat, s] of Object.entries(playerStats.radarStats)) { let p=(s.ok/s.total)*100; let n1=p>=33?"activo":""; let n2=p>=66?"activo":""; let n3=p>=90?"activo-master":""; h+=`<div class="skill-branch"><div class="skill-name"><span>${mat}</span> <span style="color:${p>=66?'#2ecc71':'#f1c40f'};">${Math.round(p)}%</span></div><div class="skill-nodes"><div class="skill-node ${n1}">Aprendiz</div><div class="skill-line ${n2}"></div><div class="skill-node ${n2}">Avanzado</div><div class="skill-line ${n3}"></div><div class="skill-node ${n3}">Maestro</div></div></div>`; } arbol.innerHTML=h; }
         function renderizarTrofeos() { let dT=[]; for(let i=1; i<=82; i++) dT.push({id:i, icon:'🏆', name:`Logro ${i}`}); dT[0]={id:1, icon:'🌱', name:'Despertar'}; dT[10]={id:11, icon:'🔥', name:'Chispa'}; dT[29]={id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS'}; let ui=document.getElementById('lista-trofeos'); ui.innerHTML=''; dT.forEach(t=>{ const unl=playerStats.trofeos.includes(t.id); ui.innerHTML+=`<div class="trofeo-card ${unl?'desbloqueado':''}"><div class="trofeo-icon">${t.icon}</div><div class="trofeo-label">${t.name}</div></div>`; }); document.getElementById('lbl-trofeos-count').innerText=playerStats.trofeos.length; document.getElementById('barra-trofeos').style.width=(playerStats.trofeos.length*(100/82))+'%'; }
 
         // ==========================================
-        // 🚨 SISTEMA DE EXAMEN Y REVISIÓN
+        // 🚨 SISTEMA DE EXAMEN Y REVISIÓN BLINDADA
         // ==========================================
         let idxAc=0, exPts=0, resMat={}, userResp=[], tRest=10800, exInt;
 
@@ -491,7 +484,7 @@
             
             await asegurarPreguntas();
             if(preguntasGlobales.length === 0) {
-                return document.getElementById('contenedor-examen').innerHTML = "<h3 style='color:#e74c3c;'>Error al cargar las preguntas.</h3><p>Revisa que tu archivo <b>guia_2026.json</b> no tenga errores de sintaxis.</p><button class='btn btn-gris' onclick='location.reload()'>Regresar</button>";
+                return document.getElementById('contenedor-examen').innerHTML = "<h3 style='color:#e74c3c;'>Error al cargar las preguntas.</h3><p>Revisa que tu archivo <b>guia_2026.json</b> no tenga errores.</p><button class='btn btn-gris' onclick='location.reload()'>Regresar</button>";
             }
 
             let agrupadas={}; preguntasGlobales.forEach(q=>{ if(!agrupadas[q.materia]) agrupadas[q.materia]=[]; agrupadas[q.materia].push(q); });
@@ -547,6 +540,16 @@
             idxAc++; showQ(); window.scrollTo(0,0);
         }
 
+        // Toggler 100% seguro para el acordeón
+        function toggleRevPanel(idBtn) {
+            let panel = document.getElementById(idBtn);
+            if (panel.style.display === 'none') {
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
         function finExamen(msj) {
             exCanc = true; clearInterval(exInt); 
             document.getElementById('camara').style.display="none"; document.getElementById('temporizador').style.display="none";
@@ -555,25 +558,31 @@
             let hRep = `<h2 style="color:#27ae60;">${msj}</h2><div style="background:#0f3460; padding:15px; border-radius:10px; margin-bottom:15px;"><p style="color:#27ae60; font-size:18px;">✔️ Aciertos: ${exPts}</p><p style="color:#e94560; font-size:18px;">❌ Errores: ${idxAc - exPts}</p></div>`;
             
             if(idxAc > 0) {
-                hRep += `<h3 style="color:#4361ee; margin-top:20px;">📝 Revisión de Respuestas:</h3><p style="color:#a2a8d3; font-size:12px;">Toca las preguntas para ver la respuesta oculta.</p><div style="text-align:left;">`;
+                hRep += `<h3 style="color:#4361ee; margin-top:20px;">📝 Revisión de Respuestas:</h3><p style="color:#a2a8d3; font-size:12px;">Toca las preguntas para revelar la respuesta oculta.</p><div style="text-align:left;">`;
                 for(let i=0; i<idxAc; i++){
-                    let q = window.exQ[i]; let uR = userResp[i]; let cR = q.respuesta_correcta;
-                    let isOk = (uR === cR); let color = isOk ? '#27ae60' : '#e74c3c';
-                    let uAnsTxt = (uR !== undefined) ? q.opciones[uR] : "Sin responder";
-                    let cAnsTxt = q.opciones[cR];
-                    
-                    let isUImg = uAnsTxt.match(/\.(jpg|jpeg|png|gif)$/i); let isCImg = cAnsTxt.match(/\.(jpg|jpeg|png|gif)$/i);
-                    
-                    hRep += `<button class="btn-acordeon" style="border-left-color:${color};" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display==='block'?'none':'block'">
-                        ${i+1}. ${q.pregunta.substring(0,35)}...
-                    </button>
-                    <div class="panel-acordeon">
-                        <p style="color:#fff;"><b>Pregunta:</b> ${q.pregunta}</p>
-                        ${q.imagen ? `<img src="${q.imagen}" class="img-fluida">` : ''}
-                        <p style="color:#e74c3c; background:#1a1a2e; padding:10px; border-radius:5px;"><b>Tu respuesta:</b> ${isUImg ? `<br><img src="${uAnsTxt}" class="img-fluida">` : uAnsTxt}</p>
-                        <p style="color:#27ae60; background:#1a1a2e; padding:10px; border-radius:5px;"><b>Respuesta Correcta:</b> ${isCImg ? `<br><img src="${cAnsTxt}" class="img-fluida">` : cAnsTxt}</p>
-                        ${q.explicacion ? `<p style="color:#f1c40f; margin-top:10px;">💡 <i>${q.explicacion}</i></p>` : ''}
-                    </div>`;
+                    try {
+                        let q = window.exQ[i]; let uR = userResp[i]; let cR = q.respuesta_correcta;
+                        let isOk = (uR === cR); let color = isOk ? '#27ae60' : '#e74c3c';
+                        
+                        let uAnsTxt = (uR !== undefined && q.opciones[uR]) ? q.opciones[uR].toString() : "Sin responder";
+                        let cAnsTxt = q.opciones[cR] ? q.opciones[cR].toString() : "N/A";
+                        
+                        let isUImg = uAnsTxt.match(/\.(jpg|jpeg|png|gif)$/i); 
+                        let isCImg = cAnsTxt.match(/\.(jpg|jpeg|png|gif)$/i);
+                        
+                        hRep += `<button class="btn-acordeon" style="border-left-color:${color};" onclick="toggleRevPanel('panel-rev-${i}')">
+                            ${i+1}. ${q.pregunta.substring(0,35)}...
+                        </button>
+                        <div class="panel-acordeon" id="panel-rev-${i}" style="display:none;">
+                            <p style="color:#fff;"><b>Pregunta:</b> ${q.pregunta}</p>
+                            ${q.imagen ? `<img src="${q.imagen}" class="img-fluida">` : ''}
+                            <p style="color:#e74c3c; background:#1a1a2e; padding:10px; border-radius:5px;"><b>Tu respuesta:</b> ${isUImg ? `<br><img src="${uAnsTxt}" class="img-fluida">` : uAnsTxt}</p>
+                            <p style="color:#27ae60; background:#1a1a2e; padding:10px; border-radius:5px;"><b>Respuesta Correcta:</b> ${isCImg ? `<br><img src="${cAnsTxt}" class="img-fluida">` : cAnsTxt}</p>
+                            ${q.explicacion ? `<p style="color:#f1c40f; margin-top:10px;">💡 <i>${q.explicacion}</i></p>` : ''}
+                        </div>`;
+                    } catch (err) {
+                        console.error("Error en pregunta: ", err);
+                    }
                 }
                 hRep += `</div>`;
             }
