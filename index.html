@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Master Edition V15</title>
+    <title>Simulador ECOEMS 2026 - Master Edition V10 (Mejorada)</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -20,6 +20,7 @@
         .logo-pixelote { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid #e94560; background: white; transition: all 0.3s;}
         .burbuja-texto { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: #fff; color: #1a1a2e; padding: 8px 15px; border-radius: 15px; font-weight: bold; font-size: 12px; white-space: nowrap; z-index: 10; box-shadow: 0 4px 8px rgba(0,0,0,0.3); pointer-events: none;}
         .burbuja-texto::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-width: 8px 8px 0; border-style: solid; border-color: #fff transparent transparent transparent; }
+        .anim-salto { animation: salto 0.4s ease; }
         
         .btn { border: none; padding: 15px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; margin-bottom: 10px; transition: transform 0.2s; color: white; text-transform: uppercase; letter-spacing: 1px;}
         .btn:active { transform: scale(0.95); }
@@ -47,11 +48,10 @@
         #temporizador { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 14px; font-weight: bold; color: #fff; background: rgba(233, 69, 96, 0.9); padding: 8px 20px; border-radius: 20px; z-index: 1000; }
         
         .tarjeta-pregunta { background: #1a1a2e; padding: 25px; border-radius: 15px; border: 1px solid #0f3460; }
-        
-        /* ACORDEÓN DE EXAMEN - BOTONES */
-        .btn-acordeon { background-color: #0f3460; color: white; border: none; padding: 15px; font-size: 14px; border-radius: 8px; width: 100%; margin-bottom: 5px; text-align: left; font-weight: bold; cursor: pointer; border-left: 5px solid #1a1a2e; transition: 0.2s;}
-        .btn-acordeon:active { transform: scale(0.98); }
-        .img-fluida { max-width: 100%; max-height: 150px; border-radius: 8px; margin: 10px 0; display: block; object-fit: contain; }
+        .btn-acordeon { background-color: #0f3460; color: white; border: none; padding: 15px; font-size: 16px; border-radius: 8px; width: 100%; margin-bottom: 10px; text-align: left; font-weight: bold; }
+        .panel-acordeon { background-color: #16213e; padding: 20px; border-radius: 8px; margin-bottom: 15px; display: none; border-left: 4px solid #e94560; }
+        .btn-seleccionar { background-color: #e94560; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 8px; width: 100%; font-weight: bold; margin-top: 10px; }
+        .img-fluida { max-width: 100%; max-height: 200px; border-radius: 8px; margin: 10px auto; display: block; object-fit: contain; }
         
         .arcade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .arcade-btn { background: #0f3460; border: 2px solid #4361ee; color: white; padding: 15px 10px; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;}
@@ -64,9 +64,10 @@
         .mostrar-combo { opacity: 1 !important; transform: translateX(-50%) scale(1.2) !important; }
         
         .memorama-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
-        .carta { background: #0f3460; color: transparent; height: 110px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; line-height:1.2; user-select: none;}
+        .carta { background: #0f3460; color: transparent; height: 110px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; cursor: pointer; border: 1px solid #4361ee; padding: 5px; overflow: hidden; line-height:1.2;}
         .carta.volteada { background: #4361ee; color: white; }
         .carta.resuelta { background: #27ae60; color: white; border-color: #27ae60; cursor: default; }
+        .carta img { max-height: 50px; max-width: 100%; border-radius: 3px; margin-top: 3px;}
         
         .teclado { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
         .tecla { padding: 10px 15px; background: #1a1a2e; border: 1px solid #4361ee; color: white; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.1s;}
@@ -75,31 +76,38 @@
         .palabra-oculta { font-size: 28px; letter-spacing: 8px; margin: 20px 0; font-family: monospace; font-weight: bold; color: #f1c40f;}
         .ahorcado-pista { font-weight: bold; color: #a2a8d3; font-size: 14px; max-height: 100px; overflow-y: auto; padding: 10px; background: #0f3460; border-radius: 10px; border: 1px solid #4361ee; margin-bottom:15px; text-align: justify; line-height: 1.4;}
 
-        /* 🔥 TARJETAS OCULTAS 3D (BLINDADAS PARA CELULAR) 🔥 */
         .fc-scene { width: 100%; height: 320px; perspective: 1000px; margin: 20px 0; cursor: pointer; }
-        .fc-card { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; position: relative; }
-        .fc-card.flipped { transform: rotateY(180deg); -webkit-transform: rotateY(180deg); }
-        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; border: 2px solid #4361ee; overflow-y: auto; }
+        .fc-card { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+        .fc-card.flipped { transform: rotateY(180deg); }
+        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; border: 2px solid #4361ee; overflow-y: auto; }
         .fc-front { background: #0f3460; color: #fff; }
-        .fc-back { background: #e94560; color: #fff; transform: rotateY(180deg); -webkit-transform: rotateY(180deg); align-items: flex-start; text-align: left; justify-content: flex-start;}
+        .fc-back { background: #e94560; color: #fff; transform: rotateY(180deg); align-items: flex-start; text-align: left; justify-content: flex-start;}
 
         .met-area { position: relative; height: 320px; background: #0b132b; border: 2px solid #4361ee; border-radius: 10px; overflow: hidden; margin-top: 15px; }
         .met-btn { position: absolute; width: 46%; padding: 5px; font-size: 11px; font-weight: bold; background: #e94560; color: #fff; border: 2px solid #fff; border-radius: 8px; cursor: pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height: 40px;}
+        .met-btn img { max-height: 40px; max-width: 100%; border-radius: 4px; }
 
         .lab-bg { background: radial-gradient(circle at center, #1a1a2e 0%, #000000 85%); border: 1px solid #4361ee; border-radius: 15px; padding: 20px; min-height: 350px; display: flex; flex-direction: column; justify-content: center;}
         
         .salto-area { position: relative; height: 320px; background: linear-gradient(to top, #1a1a2e, #0f3460); border: 2px solid #4361ee; border-radius: 10px; overflow: hidden; margin-top:10px;}
         .plat-btn { position: absolute; width: 45%; padding: 5px; font-size: 11px; font-weight: bold; background: #27ae60; color: #fff; border: 3px solid #2ecc71; border-radius: 10px; cursor: pointer; border-bottom-width: 6px; display:flex; align-items:center; justify-content:center; flex-direction:column; overflow:hidden;}
         .plat-btn:active { border-bottom-width: 3px; transform: translateY(3px); }
+        .plat-btn img { max-height: 45px; max-width: 100%; border-radius: 4px; }
         
         .arq-bg { background-image: linear-gradient(#4361ee 1px, transparent 1px), linear-gradient(90deg, #4361ee 1px, transparent 1px); background-size: 20px 20px; background-color: #0f3460; border-radius: 10px; padding: 15px; margin-bottom:15px;}
         .viga-btn { background: linear-gradient(to bottom, #bdc3c7, #7f8c8d); color:#1a1a2e; border: 2px solid #2c3e50; border-radius: 4px; padding: 10px; font-weight: bold; margin-bottom: 5px; cursor:pointer; width:100%; text-align:center;}
+        .viga-btn img { max-height: 40px; border-radius: 3px; }
+        .viga-btn:active { transform: scale(0.98); }
 
         .matriz-bg { background-color: #000; color: #0f0; font-family: monospace; border: 2px solid #0f0; border-radius: 10px; padding: 15px; margin-bottom:15px;}
         .dato-btn { background: transparent; border: 1px solid #0f0; color: #0f0; font-family: monospace; font-size: 14px; padding: 10px; border-radius: 5px; cursor:pointer; margin-bottom: 5px; width:100%;}
+        .dato-btn img { max-height: 40px; filter: grayscale(1) sepia(1) hue-rotate(80deg) brightness(1.5); }
+        .dato-btn:active { background: rgba(0,255,0,0.2); }
         
         .balanza-bg { background: #3e2723; color: #f1c40f; border: 2px solid #8d6e63; border-radius: 10px; padding: 15px; margin-bottom:15px; position:relative;}
         .peso-btn { background: radial-gradient(circle, #f1c40f, #f39c12); color:#1a1a2e; border: 2px solid #d35400; border-radius:50%; width: 60px; height: 60px; display:flex; align-items:center; justify-content:center; font-weight:bold; cursor:pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.5);}
+        .peso-btn:active { transform: translateY(4px); box-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .peso-btn img { max-height: 35px; border-radius:50%; }
 
         .anim-salto-up { animation: saltoUp 0.6s ease forwards; }
         .anim-caida { animation: caida 0.6s ease forwards; }
@@ -116,6 +124,14 @@
         .skill-line.activo { background: #27ae60; box-shadow: 0 0 5px #27ae60; }
         .skill-line.activo-master { background: #f1c40f; box-shadow: 0 0 5px #f1c40f; }
 
+        .lista-top { background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; }
+        .top-item { display: flex; justify-content: space-between; font-size: 18px; border-bottom: 1px solid #4361ee; padding: 5px 0; font-weight: bold;}
+        .top-item:nth-child(1) { color: #f1c40f; } .top-item:nth-child(2) { color: #bdc3c7; } .top-item:nth-child(3) { color: #cd7f32; }
+        
+        .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .shop-item { background: #0f3460; border: 2px solid #4361ee; border-radius: 10px; padding: 15px; }
+        .shop-item button { margin-top: 10px; padding: 8px; font-size: 14px; }
+
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .modal-content { background: #16213e; padding: 30px; border-radius: 20px; max-width: 400px; width: 85%; border: 2px solid #4361ee; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .modal-icon { font-size: 60px; margin-bottom: 10px; }
@@ -124,24 +140,19 @@
         .modal-botones { display: flex; flex-direction: column; gap: 10px; }
 
         @keyframes temblor { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        @keyframes salto { 0% {transform: translateY(0);} 50% {transform: translateY(-20px);} 100% {transform: translateY(0);} }
         @keyframes golpe { 0% { filter: invert(0); } 50% { filter: invert(1); transform: scale(0.9); } 100% { filter: invert(0); } }
         @keyframes brillo { 0% { text-shadow: 0 0 10px #f1c40f; transform: scale(1); } 50% { text-shadow: 0 0 30px #f1c40f; transform: scale(1.2); } 100% { text-shadow: 0 0 10px #f1c40f; transform: scale(1); } }
+        
         .anim-golpe { animation: golpe 0.3s ease; }
         .anim-cura { animation: brillo 0.5s ease; }
         .anim-brillo { animation: brillo 1.5s infinite; }
         .anim-temblor-modal { animation: temblor 0.5s ease; }
         
         .skin-0 { border-color: #e94560; } .skin-1 { border-color: #fff; filter: grayscale(1) invert(1); } .skin-2 { border-color: #00f3ff; filter: hue-rotate(180deg); box-shadow: 0 0 15px #00f3ff; } .skin-3 { border-color: #f1c40f; filter: brightness(1.5) contrast(1.2); box-shadow: 0 0 20px #f1c40f; }
-
-        .bloqueado-ui { pointer-events: none !important; filter: grayscale(1) opacity(0.5) !important; user-select: none !important; }
         
-        /* 🌊 Animación de Pixelote Respirando */
-        @keyframes floteGamer {
-            0% { transform: translateY(0px); box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4); }
-            50% { transform: translateY(-8px); box-shadow: 0 15px 25px rgba(233, 69, 96, 0.6); }
-            100% { transform: translateY(0px); box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4); }
-        }
-        .pixelote-vivo { animation: floteGamer 3s ease-in-out infinite; }
+        /* NUEVO: BLOQUEO VISUAL DEL EXAMEN */
+        .bloqueado-ui { pointer-events: none !important; opacity: 0.5; filter: grayscale(1); }
     </style>
 </head>
 <body>
@@ -164,7 +175,7 @@
         <div class="top-stats"><span class="stat-racha">🔥 Racha: <span id="ui-racha">0</span> días</span><span class="stat-monedas">🪙 <span id="ui-monedas">0</span></span></div>
         <div class="contenedor-avatar" onclick="interactuarPixelote()">
             <div id="burbuja-pixelote" class="burbuja-texto">¡Tócame!</div>
-            <img src="img/pixelote-estudiando.jpg" class="logo-pixelote pixelote-vivo" id="ui-avatar" alt="Pixelote">
+            <img src="img/pixelote-estudiando.jpg" class="logo-pixelote" id="ui-avatar" alt="Pixelote">
         </div>
         <h2 style="margin: 0; color: #4361ee; margin-bottom:15px;">ECOEMS 2026</h2>
         
@@ -209,25 +220,43 @@
 
     <div id="juego-arquitecto" class="pantalla">
         <h3 style="color: #4361ee;">📐 Arquitecto de Tapancos</h3>
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span id="arq-vidas" style="font-size:20px;">❤️❤️❤️</span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="arq-score">0</span></span></div>
-        <div class="arq-bg" id="arq-contenedor"><strong id="arq-pregunta" style="font-size: 15px; color:#fff;">Cargando plano...</strong></div>
+        <p style="color: #a2a8d3; font-size: 13px;">Analiza el plano con calma. Selecciona la viga PTR correcta para construir.</p>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+            <span id="arq-vidas" style="font-size:20px;">❤️❤️❤️</span>
+            <span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="arq-score">0</span></span>
+        </div>
+        <div class="arq-bg" id="arq-contenedor">
+            <strong id="arq-pregunta" style="font-size: 15px; color:#fff;">Cargando plano...</strong>
+        </div>
         <div id="arq-opciones"></div>
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Dejar la obra</button>
     </div>
 
     <div id="juego-matriz" class="pantalla">
         <h3 style="color: #0f0;">📊 Matriz de Servidor</h3>
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:#0f0;"><span style="font-weight:bold;">Sucesiones Log: <span id="matriz-score">0</span></span></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:#0f0;">
+            <span style="font-weight:bold;">Sucesiones Log: <span id="matriz-score">0</span></span>
+        </div>
         <div style="font-size:12px; color:#0f0; margin-bottom:5px; text-align:left;">CORRUPCIÓN DE DATOS:</div>
         <div class="barra-bg" style="border-color:#0f0; margin-bottom:15px;"><div id="matriz-barra" class="barra-fill" style="background:#f00; width:0%; transition:0.1s;"></div></div>
-        <div class="matriz-bg" id="matriz-contenedor"><div id="matriz-pregunta" style="font-size: 16px; margin-bottom:15px;">Awaiting Query...</div><div id="matriz-opciones" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"></div></div>
-        <button class="btn btn-gris" style="margin-top: 20px; border-color:#0f0; color:#0f0;" onclick="cerrarJuego(window.matrizInt)">Desconectar</button>
+        
+        <div class="matriz-bg" id="matriz-contenedor">
+            <div id="matriz-pregunta" style="font-size: 16px; margin-bottom:15px;">Awaiting Query...</div>
+            <div id="matriz-opciones" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"></div>
+        </div>
+        <button class="btn btn-gris" style="margin-top: 20px; border-color:#0f0; color:#0f0;" onclick="cerrarJuego(matrizInt)">Desconectar</button>
     </div>
 
     <div id="juego-balanza" class="pantalla">
         <h3 style="color: #f1c40f;">⚖️ Balanza de Ecuaciones</h3>
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span id="bal-vidas" style="font-size:20px;">❤️❤️❤️</span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="bal-score">0</span></span></div>
-        <div class="balanza-bg" id="bal-contenedor"><div id="bal-pregunta" style="font-size: 15px; font-weight:bold; text-align:center;">Cargando...</div></div>
+        <p style="color: #d35400; font-size: 13px; font-weight:bold;">Equilibra la ecuación.</p>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+            <span id="bal-vidas" style="font-size:20px;">❤️❤️❤️</span>
+            <span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="bal-score">0</span></span>
+        </div>
+        <div class="balanza-bg" id="bal-contenedor">
+            <div id="bal-pregunta" style="font-size: 15px; font-weight:bold; text-align:center;">Cargando...</div>
+        </div>
         <div id="bal-opciones" style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;"></div>
         <button class="btn btn-gris" style="margin-top: 25px;" onclick="cerrarJuego(null)">Retirarse</button>
     </div>
@@ -236,7 +265,7 @@
         <h3 style="color: #4361ee;">🍄 Salto Cuántico</h3>
         <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span style="color:#a2a8d3; font-weight:bold;">Nivel: <span id="salto-nivel">1</span></span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="salto-score">0</span></span></div>
         <div style="background: #0f3460; padding: 10px; border-radius: 10px; border: 1px solid #4361ee; min-height:40px; font-weight:bold; margin-bottom:10px;" id="salto-pregunta">Cargando...</div>
-        <div class="salto-area" id="salto-area"><img src="img/pixelote-estudiando.jpg" id="salto-pix" class="logo-pixelote pixelote-vivo" style="width:40px; height:40px; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); border-width:2px; z-index:5;"><div id="salto-plataformas" style="width:100%; height:100%; position:absolute; top:0; left:0;"></div></div>
+        <div class="salto-area" id="salto-area"><img src="img/pixelote-estudiando.jpg" id="salto-pix" class="logo-pixelote" style="width:40px; height:40px; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); border-width:2px; z-index:5;"><div id="salto-plataformas" style="width:100%; height:100%; position:absolute; top:0; left:0;"></div></div>
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Rendirse</button>
     </div>
 
@@ -245,7 +274,7 @@
         <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span id="met-vidas" style="font-size:20px;">❤️❤️❤️</span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="met-score">0</span></span></div>
         <div style="background: #0f3460; padding: 10px; border-radius: 10px; border: 1px solid #4361ee; min-height:40px; font-weight:bold;" id="met-pregunta">Cargando...</div>
         <div class="met-area" id="met-area"></div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(window.metInt)">Huir a la base</button>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(metInt)">Huir a la base</button>
     </div>
 
     <div id="juego-laberinto" class="pantalla">
@@ -256,7 +285,14 @@
             <div id="lab-preg" style="margin-bottom:20px; font-weight:bold; font-size:15px;">Cargando...</div>
             <div id="lab-ops"></div>
         </div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(window.labInt)">Abandonar expedición</button>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(labInt)">Abandonar expedición</button>
+    </div>
+
+    <div id="juego-flashcards" class="pantalla">
+        <h3 style="color: #4361ee;">📚 Tarjetas de Entrenamiento</h3>
+        <div class="fc-scene" onclick="voltearFlashcard()"><div class="fc-card" id="fc-card"><div class="fc-face fc-front" id="fc-front"></div><div class="fc-face fc-back" id="fc-back"></div></div></div>
+        <button class="btn btn-morado" onclick="siguienteFlashcard()">Siguiente Tarjeta ➡️</button>
+        <button class="btn btn-gris" style="margin-top: 10px;" onclick="abrirPantalla('zona-arcade')">Salir</button>
     </div>
 
     <div id="juego-jefe" class="pantalla">
@@ -267,13 +303,19 @@
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Huir de la batalla</button>
     </div>
 
+    <div id="juego-memorama" class="pantalla">
+        <h3 style="color: #27ae60;">🃏 Memorama</h3>
+        <div class="memorama-grid" id="memorama-tablero"></div>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
+    </div>
+
     <div id="juego-frenesi" class="pantalla">
         <h3 style="color: #f39c12;">⚡ Modo Frenesí</h3>
         <div style="font-size: 40px; font-weight: bold; color: #e94560;" id="frenesi-reloj">60</div>
         <p style="font-size: 18px; color: #27ae60;">Aciertos: <span id="frenesi-score" style="font-weight:bold;">0</span></p>
         <div style="background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #4361ee;" id="frenesi-caja-preg"><strong id="frenesi-pregunta">Cargando...</strong></div>
         <div id="frenesi-opciones"></div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(window.fInt)">Salir</button>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(fInt)">Salir</button>
     </div>
 
     <div id="juego-ahorcado" class="pantalla">
@@ -284,30 +326,17 @@
         <div class="teclado" id="ahorcado-teclado"></div>
         <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
     </div>
-    
-    <div id="juego-flashcards" class="pantalla">
-        <h3 style="color: #4361ee;">📚 Tarjetas de Entrenamiento</h3>
-        <p style="color:#a2a8d3; font-size:12px;">Toca la tarjeta para revelar la respuesta oculta.</p>
-        <div class="fc-scene" onclick="voltearFlashcard()"><div class="fc-card" id="fc-card"><div class="fc-face fc-front" id="fc-front"></div><div class="fc-face fc-back" id="fc-back"></div></div></div>
-        <button class="btn btn-morado" onclick="siguienteFlashcard()">Siguiente Tarjeta ➡️</button>
-        <button class="btn btn-gris" style="margin-top: 10px;" onclick="cerrarJuego(null)">Salir</button>
-    </div>
-
-    <div id="juego-memorama" class="pantalla">
-        <h3 style="color: #27ae60;">🃏 Memorama</h3>
-        <p style="color:#a2a8d3; font-size:12px;">Encuentra el par correcto de cada pregunta.</p>
-        <div class="memorama-grid" id="memorama-tablero"></div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(null)">Salir</button>
-    </div>
 
     <div id="juego-aguila" class="pantalla">
         <h3 style="color: #3498db;">🦅 Vista de Águila</h3>
-        <div class="aguila-texto" id="aguila-contenido"></div>
+        <p style="color:#a2a8d3; font-size:12px;">Encuentra y selecciona la respuesta correcta antes de equivocarte.</p>
+        <div id="aguila-contenido">Cargando...</div>
         <button class="btn btn-gris" style="margin-top: 30px;" onclick="cerrarJuego(null)">Abortar misión</button>
     </div>
 
     <div id="zona-historial" class="pantalla">
         <h2 style="color: #4361ee;">🌳 Árbol de Dominio</h2>
+        <p style="color: #a2a8d3; font-size: 14px; margin-bottom:20px;">Sube de nivel completando Simulacros Oficiales.</p>
         <div id="arbol-habilidades" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;"></div>
         <button class="btn btn-gris" onclick="abrirPantalla('bienvenida')">Regresar</button>
     </div>
@@ -317,10 +346,10 @@
         <div class="tarjeta-pregunta" id="tarjeta-principal" style="padding: 25px;"><div id="contenedor-examen"></div></div>
         <div id="temporizador">⏱️ 03:00:00</div>
     </div>
-
+    
     <script>
         // ==========================================
-        // 🎵 MOTOR AUDIO
+        // 🎵 MOTOR AUDIO EXPANDIDO
         // ==========================================
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playTone(freq, type, duration, vol=0.1, slideFreq=null) {
@@ -343,11 +372,11 @@
         document.body.addEventListener('click', () => { if(audioCtx.state === 'suspended') audioCtx.resume(); }, {once:true});
 
         // ==========================================
-        // 💾 ESTADO Y SEGURIDAD V15
+        // 💾 ESTADO GLOBAL Y PARCHES
         // ==========================================
-        let exCanc = false; let bloqueado = false; let logBloqueos = []; let advTot = 0; const LIMITE_ADVERTENCIAS = 5; const TOLERANCIA_ROSTRO = 10;
         let playerStats = JSON.parse(localStorage.getItem('ecoems_stats')) || { preguntasTotales: 0, simulacros: 0, trofeos: [], monedas: 0, racha: 0, ultimaFecha: "", skinsDesbloqueadas: [0], skinEquipada: 0, radarStats: {} };
         if (playerStats.skinEquipada === undefined) playerStats.skinEquipada = 0; if (!playerStats.skinsDesbloqueadas) playerStats.skinsDesbloqueadas = [0]; if (playerStats.monedas === undefined) playerStats.monedas = 0; if (!playerStats.radarStats) playerStats.radarStats = {};
+        if (playerStats.arcadeArq === undefined) playerStats.arcadeArq = 0; if (playerStats.arcadeMatriz === undefined) playerStats.arcadeMatriz = 0; if (playerStats.arcadeBal === undefined) playerStats.arcadeBal = 0;
         
         let hoy = new Date().toLocaleDateString();
         if (playerStats.ultimaFecha !== hoy) {
@@ -356,245 +385,461 @@
             playerStats.ultimaFecha = hoy; if(playerStats.racha === 0) playerStats.racha = 1; guardarStats();
         }
 
-        const catSkins = [{id:0, nombre:"Original", precio:0, clase:"skin-0"}, {id:1, nombre:"Sombra", precio:50, clase:"skin-1"}, {id:2, nombre:"Neón", precio:150, clase:"skin-2"}, {id:3, nombre:"Saiyajin", precio:300, clase:"skin-3"}];
+        const catSkins = [{id:0, nombre:"Original", precio:0, clase:"skin-0"}, {id:1, nombre:"Hollow (Sombra)", precio:50, clase:"skin-1"}, {id:2, nombre:"Hacker Neón", precio:150, clase:"skin-2"}, {id:3, nombre:"Súper Saiyajin", precio:300, clase:"skin-3"}];
         function guardarStats() { localStorage.setItem('ecoems_stats', JSON.stringify(playerStats)); actualizarUI(); }
         function addMonedas(cant) { playerStats.monedas += cant; guardarStats(); }
         function actualizarUI() {
             document.getElementById('ui-racha').innerText = playerStats.racha; document.getElementById('ui-monedas').innerText = playerStats.monedas; document.getElementById('ui-tienda-monedas').innerText = playerStats.monedas;
-            document.getElementById('ui-avatar').className = "logo-pixelote pixelote-vivo " + catSkins[playerStats.skinEquipada].clase;
-            let pS = document.getElementById('salto-pix'); if(pS) pS.className = "logo-pixelote pixelote-vivo " + catSkins[playerStats.skinEquipada].clase;
+            document.getElementById('ui-avatar').className = "logo-pixelote " + catSkins[playerStats.skinEquipada].clase;
+            let pS = document.getElementById('salto-pix'); if(pS) pS.className = "logo-pixelote " + catSkins[playerStats.skinEquipada].clase;
         }
-        function interactuarPixelote() { let av = document.getElementById('ui-avatar'); av.classList.add('anim-salto'); setTimeout(()=>av.classList.remove('anim-salto'), 400); playTone(600, 'sine', 0.1); }
-        function abrirTienda() { abrirPantalla('zona-tienda'); let html = ""; catSkins.forEach(s => { let comprado = playerStats.skinsDesbloqueadas.includes(s.id), equipado = playerStats.skinEquipada === s.id, btnHTML = equipado ? `<button class="btn btn-gris" disabled>Equipado</button>` : comprado ? `<button class="btn btn-verde" onclick="equiparSkin(${s.id})">Equipar</button>` : `<button class="btn btn-dorado" onclick="comprarSkin(${s.id}, ${s.precio})">Comprar 🪙${s.precio}</button>`; html += `<div style="background: #0f3460; border: 2px solid #4361ee; border-radius: 10px; padding: 15px;"><div>${s.nombre}</div>${btnHTML}</div>`; }); document.getElementById('shop-contenedor').innerHTML = html; }
+
+        const frasesPix = ["¡No olvides que H es Hidrógeno!", "El agua de mar sí conduce electricidad.", "La fotosíntesis libera oxígeno.", "Lee con calma, ¡no hay prisa!", "¡Vamos por ese 128!", "Un cuadrado de lado x tiene área x²"];
+        function interactuarPixelote() {
+            let av = document.getElementById('ui-avatar'); let b = document.getElementById('burbuja-pixelote');
+            av.classList.add('anim-salto'); setTimeout(()=>av.classList.remove('anim-salto'), 400); playTone(600, 'sine', 0.1);
+            b.innerText = frasesPix[Math.floor(Math.random()*frasesPix.length)];
+        }
+
+        function abrirTienda() {
+            abrirPantalla('zona-tienda'); let html = "";
+            catSkins.forEach(s => {
+                let comprado = playerStats.skinsDesbloqueadas.includes(s.id), equipado = playerStats.skinEquipada === s.id, btnHTML = "";
+                if(equipado) btnHTML = `<button class="btn btn-gris" disabled>Equipado</button>`; else if(comprado) btnHTML = `<button class="btn btn-verde" onclick="equiparSkin(${s.id})">Equipar</button>`; else btnHTML = `<button class="btn btn-dorado" onclick="comprarSkin(${s.id}, ${s.precio})">Comprar 🪙${s.precio}</button>`;
+                html += `<div style="background: #0f3460; border: 2px solid #4361ee; border-radius: 10px; padding: 15px;"><div style="font-weight:bold;">${s.nombre}</div>${btnHTML}</div>`;
+            }); document.getElementById('shop-contenedor').innerHTML = html;
+        }
         function comprarSkin(id, precio) { if(playerStats.monedas >= precio) { playerStats.monedas -= precio; playerStats.skinsDesbloqueadas.push(id); equiparSkin(id); playFanfare(); } else alertaModal("Sin fondos", "Necesitas más monedas.", "derrota", null, null); }
         function equiparSkin(id) { playerStats.skinEquipada = id; guardarStats(); abrirTienda(); }
 
         // ==========================================
-        // 🏆 NAVEGACIÓN Y CARGA DE JSON
+        // 🏆 MODALES Y UTILIDADES
         // ==========================================
-        function alertaModal(titulo, mensaje, tipo, onNext, onExit) { const modal = document.getElementById('modal-arcade'); const icon = document.getElementById('modal-icon'); const titleEl = document.getElementById('modal-title'); document.getElementById('modal-msg').innerHTML = mensaje; titleEl.innerText = titulo; icon.className = 'modal-icon'; if(tipo === 'victoria') { icon.innerText = '🏆'; titleEl.style.color = '#f1c40f'; icon.classList.add('anim-brillo'); playFanfare(); } else { icon.innerText = '💀'; titleEl.style.color = '#e94560'; icon.classList.add('anim-temblor-modal'); playError(); } document.getElementById('btn-modal-next').onclick = () => { modal.style.display = 'none'; if(onNext) onNext(); }; document.getElementById('btn-modal-exit').onclick = () => { modal.style.display = 'none'; if(onExit) onExit(); else abrirPantalla('zona-arcade'); }; modal.style.display = 'flex'; }
+        function alertaModal(titulo, mensaje, tipo, onNext, onExit) {
+            const modal = document.getElementById('modal-arcade'); const icon = document.getElementById('modal-icon'); const titleEl = document.getElementById('modal-title');
+            document.getElementById('modal-msg').innerHTML = mensaje; titleEl.innerText = titulo; icon.className = 'modal-icon'; 
+            if(tipo === 'victoria') { icon.innerText = '🏆'; titleEl.style.color = '#f1c40f'; icon.classList.add('anim-brillo'); playFanfare(); } 
+            else { icon.innerText = '💀'; titleEl.style.color = '#e94560'; icon.classList.add('anim-temblor-modal'); playError(); }
+            document.getElementById('btn-modal-next').onclick = () => { modal.style.display = 'none'; if(onNext) onNext(); };
+            document.getElementById('btn-modal-exit').onclick = () => { modal.style.display = 'none'; if(onExit) onExit(); else abrirPantalla('zona-arcade'); };
+            modal.style.display = 'flex';
+        }
+
         function cerrarJuego(intervalToClear) { if(intervalToClear) clearInterval(intervalToClear); abrirPantalla('zona-arcade'); }
         function abrirPantalla(id) { document.querySelectorAll('.pantalla').forEach(p => p.style.display = 'none'); document.getElementById(id).style.display = 'block'; }
         function mezclarArreglo(arr) { let c = [...arr]; for(let i=c.length-1; i>0; i--){ const j=Math.floor(Math.random()*(i+1)); [c[i], c[j]]=[c[j], c[i]]; } return c; }
         
         let preguntasGlobales = [];
-        async function asegurarPreguntas() { 
-            if(preguntasGlobales.length === 0) { 
-                try { let r = await fetch('guia_2026.json?v=' + new Date().getTime()); preguntasGlobales = await r.json(); } 
-                catch(e) { console.log("Error de JSON", e); } 
-            } 
+        async function asegurarPreguntas() { if(preguntasGlobales.length === 0) { try { let r = await fetch('guia_2026.json?v=' + new Date().getTime()); preguntasGlobales = await r.json(); } catch(e) {} } }
+        function checarLogroArcade(idLogro, nombre) {
+            if(!playerStats.trofeos.includes(idLogro)) {
+                playerStats.trofeos.push(idLogro); localStorage.setItem('ecoems_stats', JSON.stringify(playerStats));
+                setTimeout(() => { alertaModal("¡Nuevo Trofeo!", `Desbloqueaste: ${nombre}`, "victoria", null, ()=>abrirPantalla('zona-arcade')); }, 800);
+            }
         }
-        function checarLogroArcade(idLogro, nombre) { if(!playerStats.trofeos.includes(idLogro)) { playerStats.trofeos.push(idLogro); localStorage.setItem('ecoems_stats', JSON.stringify(playerStats)); setTimeout(() => { alertaModal("¡Nuevo Trofeo!", `Desbloqueaste: ${nombre}`, "victoria", null, ()=>abrirPantalla('zona-arcade')); }, 800); } }
 
         // ==========================================
-        // 🃏 MODOS: FLASHCARDS, MEMORAMA Y ÁGUILA
+        // 🚨 SISTEMA DE EXAMEN (128 PREGUNTAS + BLOQUEO V10 MEJORADA)
         // ==========================================
-        let fcQ=[];
-        async function iniciarFlashcards(){ abrirPantalla('juego-flashcards'); await asegurarPreguntas(); fcQ=mezclarArreglo(preguntasGlobales); siguienteFlashcard(); }
-        function siguienteFlashcard(){ 
-            if(fcQ.length===0) return alertaModal("Fin","Repasaste todas","victoria",iniciarFlashcards,()=>abrirPantalla('zona-arcade')); 
-            let q=fcQ.pop(); document.getElementById('fc-card').classList.remove('flipped'); 
-            document.getElementById('fc-front').innerHTML=`<b>${q.materia}</b><br><br>${q.pregunta}`+(q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px;">`:''); 
-            let ansTxt=q.opciones[q.respuesta_correcta]; let esImg=ansTxt.match(/\.(jpg|png|gif|jpeg)$/i); 
-            document.getElementById('fc-back').innerHTML=`<b>Respuesta Oculta:</b><br><br>${esImg?`<img src="${ansTxt}" style="max-height:80px;">`:ansTxt}${q.explicacion?`<br><br><span style="color:#f1c40f;">💡 ${q.explicacion}</span>`:''}`; 
-        }
-        function voltearFlashcard(){ document.getElementById('fc-card').classList.toggle('flipped'); playTone(300,'sine',0.1); }
-
-        let memoCartas=[], memoSel=[], memoAc=0;
-        async function iniciarMemorama() { abrirPantalla('juego-memorama'); memoAc=0; memoSel=[]; await asegurarPreguntas(); let qV=mezclarArreglo(preguntasGlobales.filter(q=>!q.imagen&&!q.opciones[q.respuesta_correcta].match(/\.(jpg|jpeg|png|gif)$/i))).slice(0,6); memoCartas=[]; qV.forEach((q,i)=>{ memoCartas.push({id:i,txt:q.pregunta.substring(0,40)+"...",t:'p'}); memoCartas.push({id:i,txt:q.opciones[q.respuesta_correcta].substring(0,40),t:'r'}); }); memoCartas=mezclarArreglo(memoCartas); let h=""; memoCartas.forEach((c,i)=>{ h+=`<div class="carta" id="memo-${i}" onclick="clicMemo(${i})">?</div>`; }); document.getElementById('memorama-tablero').innerHTML=h; }
-        function clicMemo(i){ let el=document.getElementById('memo-'+i); if(memoSel.length>=2||el.classList.contains('volteada')||el.classList.contains('resuelta'))return; playCoin(); el.classList.add('volteada'); el.innerText=memoCartas[i].txt; memoSel.push({idx:i,data:memoCartas[i]}); if(memoSel.length===2) setTimeout(verificarMemo,1000); }
-        function verificarMemo(){ let c1=memoSel[0], c2=memoSel[1], e1=document.getElementById('memo-'+c1.idx), e2=document.getElementById('memo-'+c2.idx); if(c1.data.id===c2.data.id && c1.data.t!==c2.data.t){ playFanfare(); e1.classList.remove('volteada'); e1.classList.add('resuelta'); e2.classList.remove('volteada'); e2.classList.add('resuelta'); addMonedas(5); memoAc++; if(memoAc>=6) setTimeout(()=>alertaModal("¡Memoria!", "+30🪙", "victoria", iniciarMemorama, ()=>abrirPantalla('zona-arcade')),500); }else{ playError(); e1.classList.remove('volteada'); e1.innerText="?"; e2.classList.remove('volteada'); e2.innerText="?"; } memoSel=[]; }
-        
-        async function iniciarAguila() { abrirPantalla('juego-aguila'); document.getElementById('aguila-contenido').innerHTML="<h4 style='color:#f1c40f;'>El modo Vista de Águila está calibrando los satélites... ¡Estará listo en el próximo parche!</h4>"; }
-
-        // ==========================================
-        // 🕹️ OTROS JUEGOS ARCADE
-        // ==========================================
-        let arqVidas=3, arqScore=0, arqQ=[];
-        async function iniciarArquitecto() { abrirPantalla('juego-arquitecto'); arqVidas=3; arqScore=0; document.getElementById('arq-score').innerText="0"; document.getElementById('arq-vidas').innerText="❤️❤️❤️"; await asegurarPreguntas(); arqQ = mezclarArreglo(preguntasGlobales.filter(q => q.materia.includes("Matemáticas") || q.materia==="Física" || q.materia==="Habilidad Matemática")); if(arqQ.length===0) arqQ = preguntasGlobales; sigArq(); }
-        function sigArq() { if(arqQ.length===0) return finArq(true); let q=arqQ.pop(); window.curArqQ=q; let imgH=q.imagen?`<br><img src="${q.imagen}" style="max-height:100px; border-radius:5px; margin-top:10px;">`:""; document.getElementById('arq-pregunta').innerHTML=q.pregunta+imgH; let h=""; q.opciones.forEach((op, i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}">`:op; h+=`<button class="viga-btn" onclick="clicArq(${i}, this)">[PTR] ${t}</button>`; }); document.getElementById('arq-opciones').innerHTML=h; }
-        function clicArq(i, btn) { if(i===window.curArqQ.respuesta_correcta) { playWeld(); btn.style.background="#27ae60"; addMonedas(4); arqScore++; document.getElementById('arq-score').innerText=arqScore; setTimeout(sigArq, 500); } else { playMetal(); btn.style.opacity="0.3"; btn.disabled=true; arqVidas--; document.getElementById('arq-vidas').innerText="❤️".repeat(arqVidas)+"🖤".repeat(3-arqVidas); if(arqVidas<=0) setTimeout(()=>finArq(false), 300); } }
-        function finArq(win) { playerStats.arcadeArq=(playerStats.arcadeArq||0)+1; guardarStats(); if(arqScore>=5) checarLogroArcade(77, "Ingeniero Maestro"); alertaModal(win?"¡Obra Completa!":"Falla Estructural", "Planos: "+arqScore, win?"victoria":"derrota", iniciarArquitecto, ()=>abrirPantalla('zona-arcade')); }
-
-        let matrizScore=0, matrizCarga=0, matrizInt, matrizQ=[];
-        async function iniciarMatriz() { abrirPantalla('juego-matriz'); matrizScore=0; matrizCarga=0; document.getElementById('matriz-score').innerText="0"; await asegurarPreguntas(); matrizQ=mezclarArreglo(preguntasGlobales.filter(q=>q.materia==="Habilidad Matemática")); if(matrizQ.length===0) matrizQ=preguntasGlobales; sigMatriz(); clearInterval(matrizInt); matrizInt=setInterval(()=>{ matrizCarga+=0.8; document.getElementById('matriz-barra').style.width=Math.min(100,matrizCarga)+'%'; if(matrizCarga>=100) finMatriz(false); }, 200); }
-        function sigMatriz() { if(matrizQ.length===0) return finMatriz(true); let q=matrizQ.pop(); window.curMatQ=q; let imgH=q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px;">`:""; document.getElementById('matriz-pregunta').innerHTML="> "+q.pregunta+imgH; let h=""; q.opciones.forEach((op, i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}">`:op; h+=`<button class="dato-btn" onclick="clicMatriz(${i}, this)">{ ${t} }</button>`; }); document.getElementById('matriz-opciones').innerHTML=h; }
-        function clicMatriz(i, btn) { if(i===window.curMatQ.respuesta_correcta) { playData(); btn.style.background="#0f0"; btn.style.color="#000"; matrizCarga=Math.max(0,matrizCarga-30); addMonedas(3); matrizScore++; document.getElementById('matriz-score').innerText=matrizScore; setTimeout(sigMatriz, 300); } else { playError(); btn.style.background="#f00"; btn.style.color="#fff"; matrizCarga+=20; } }
-        function finMatriz(win) { clearInterval(matrizInt); playerStats.arcadeMatriz=(playerStats.arcadeMatriz||0)+1; guardarStats(); if(matrizScore>=5) checarLogroArcade(79, "Analista de Datos"); alertaModal(win?"¡Servidor Seguro!":"Datos Corruptos", "Log: "+matrizScore, win?"victoria":"derrota", iniciarMatriz, ()=>abrirPantalla('zona-arcade')); }
-
-        let balVidas=3, balScore=0, balQ=[];
-        async function iniciarBalanza() { abrirPantalla('juego-balanza'); balVidas=3; balScore=0; document.getElementById('bal-score').innerText="0"; document.getElementById('bal-vidas').innerText="❤️❤️❤️"; await asegurarPreguntas(); balQ=mezclarArreglo(preguntasGlobales.filter(q=>q.materia==="Matemáticas")); if(balQ.length===0) balQ=preguntasGlobales; sigBal(); }
-        function sigBal() { if(balQ.length===0) return finBal(true); let q=balQ.pop(); window.curBalQ=q; let imgH=q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px;">`:""; document.getElementById('bal-pregunta').innerHTML=q.pregunta+imgH; let h=""; q.opciones.forEach((op, i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}">`:op; h+=`<button class="peso-btn" onclick="clicBal(${i}, this)">${t}</button>`; }); document.getElementById('bal-opciones').innerHTML=h; document.getElementById('bal-contenedor').style.transform="rotate(0deg)"; }
-        function clicBal(i, btn) { let cont=document.getElementById('bal-contenedor'); if(i===window.curBalQ.respuesta_correcta) { playCoin(); cont.style.borderColor="#27ae60"; btn.style.background="#27ae60"; addMonedas(5); balScore++; document.getElementById('bal-score').innerText=balScore; setTimeout(()=>{ cont.style.borderColor="#8d6e63"; sigBal(); }, 600); } else { playError(); btn.style.opacity="0.2"; btn.disabled=true; balVidas--; document.getElementById('bal-vidas').innerText="❤️".repeat(balVidas)+"🖤".repeat(3-balVidas); cont.style.transform="rotate(10deg)"; setTimeout(()=>cont.style.transform="rotate(-10deg)", 150); setTimeout(()=>cont.style.transform="rotate(0deg)", 300); if(balVidas<=0) setTimeout(()=>finBal(false), 400); } }
-        function finBal(win) { playerStats.arcadeBal=(playerStats.arcadeBal||0)+1; guardarStats(); if(balScore>=5) checarLogroArcade(81, "Alquimista"); alertaModal(win?"¡Perfecto!":"Desequilibrio", "Balanceadas: "+balScore, win?"victoria":"derrota", iniciarBalanza, ()=>abrirPantalla('zona-arcade')); }
-
-        let saltoNivel=1, saltoQ=[];
-        async function iniciarSalto() { abrirPantalla('juego-salto'); saltoNivel=1; document.getElementById('salto-score').innerText="0"; document.getElementById('salto-nivel').innerText="1"; let pix=document.getElementById('salto-pix'); pix.style.bottom="10px"; pix.classList.remove('anim-caida'); pix.classList.remove('anim-salto-up'); await asegurarPreguntas(); saltoQ=mezclarArreglo(preguntasGlobales); sigSalto(); }
-        function sigSalto() { if(saltoQ.length===0) return finSalto(true); let q=saltoQ.pop(); window.curSaltoQ=q; let imgH=q.imagen?`<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px;">`:""; document.getElementById('salto-pregunta').innerHTML=q.pregunta+imgH; let pos=[{b:180, l:'2%'}, {b:180, l:'53%'}, {b:80, l:'2%'}, {b:80, l:'53%'}]; let h=""; q.opciones.forEach((op, i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}" style="max-height:40px;">`:op; h+=`<button class="plat-btn" style="bottom:${pos[i].b}px; left:${pos[i].l}; height:90px;" onclick="clicSalto(${i}, this)">${t}</button>`; }); document.getElementById('salto-plataformas').innerHTML=h; }
-        function clicSalto(i, btn) { let pix=document.getElementById('salto-pix'); if(i===window.curSaltoQ.respuesta_correcta) { playCoin(); btn.style.background="#f1c40f"; btn.style.borderColor="#f39c12"; addMonedas(3); saltoNivel++; document.getElementById('salto-score').innerText=(saltoNivel-1)*3; document.getElementById('salto-nivel').innerText=saltoNivel; pix.classList.remove('anim-salto-up'); void pix.offsetWidth; pix.classList.add('anim-salto-up'); setTimeout(sigSalto, 600); } else { playError(); btn.style.background="#e74c3c"; btn.style.transform="rotate(15deg) translateY(20px)"; btn.style.opacity="0"; pix.classList.remove('anim-caida'); void pix.offsetWidth; pix.classList.add('anim-caida'); setTimeout(()=>finSalto(false), 600); } }
-        function finSalto(win) { playerStats.arcadeSalto=(playerStats.arcadeSalto||0)+1; guardarStats(); if(saltoNivel>10) checarLogroArcade(75, "Rana Saltarina"); alertaModal(win?"¡Cima!":"Caída", "Nivel: "+saltoNivel, win?"victoria":"derrota", iniciarSalto, ()=>abrirPantalla('zona-arcade')); }
-
-        let metVidas=3, metScore=0, metQ=[], metSpeed=1.5, metTop=[0,0,0,0], metInt, metActivo=false;
-        async function iniciarMeteoritos() { abrirPantalla('juego-meteoritos'); metVidas=3; metScore=0; metSpeed=1.5; metActivo=true; await asegurarPreguntas(); metQ=mezclarArreglo(preguntasGlobales); document.getElementById('met-score').innerText="0"; document.getElementById('met-vidas').innerText="❤️❤️❤️"; sigMet(); clearInterval(window.metInt); window.metInt=setInterval(caidaMet, 50); }
-        function sigMet() { if(metQ.length===0) return finMet(true); let q=metQ.pop(); window.curMetQ=q; let imgH=q.imagen?`<br><img src="${q.imagen}" style="max-height:50px;">`:""; document.getElementById('met-pregunta').innerHTML=(q.pregunta.length>80?q.pregunta.substring(0,80)+"...":q.pregunta)+imgH; metTop=[-20, -70, -120, -170]; metTop=mezclarArreglo(metTop); let h=""; q.opciones.forEach((op, i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}">`:op.substring(0,40); h+=`<button class="met-btn" id="m-btn-${i}" style="left:${i%2===0?'2%':'52%'}; top:${metTop[i]}px;" onclick="clicMet(${i})">${t}</button>`; }); document.getElementById('met-area').innerHTML=h; }
-        function caidaMet() { if(!metActivo) return; let vivo=false; for(let i=0; i<4; i++){ let b=document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') continue; vivo=true; metTop[i]+=metSpeed; b.style.top=metTop[i]+'px'; if(metTop[i]>280) { b.style.display='none'; if(i===window.curMetQ.respuesta_correcta) { metVidas--; playError(); document.getElementById('met-vidas').innerText="❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) { finMet(false); return; } else { sigMet(); return; } } } } if(!vivo) sigMet(); }
-        function clicMet(i) { let b=document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') return; if(i===window.curMetQ.respuesta_correcta) { playCoin(); b.style.background="#27ae60"; addMonedas(2); metScore++; document.getElementById('met-score').innerText=metScore; metSpeed+=0.1; setTimeout(sigMet, 150); } else { playError(); b.style.display='none'; metVidas--; document.getElementById('met-vidas').innerText="❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) finMet(false); } }
-        function finMet(win) { metActivo=false; clearInterval(window.metInt); playerStats.arcadeMet=(playerStats.arcadeMet||0)+1; guardarStats(); if(win||metScore>=5) checarLogroArcade(71, "Defensor"); alertaModal(win?"¡Bien!":"Destruido", "Aciertos: "+metScore, win?"victoria":"derrota", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); }
-
-        let labTime=100, labSala=1, labInt, labQ=[];
-        async function iniciarLaberinto() { abrirPantalla('juego-laberinto'); labTime=100; labSala=1; await asegurarPreguntas(); labQ=mezclarArreglo(preguntasGlobales); sigLab(); clearInterval(window.labInt); window.labInt=setInterval(()=>{ labTime-=0.6; document.getElementById('lab-barra').style.width=Math.max(0,labTime)+'%'; document.getElementById('lab-luz-txt').innerText=Math.round(labTime); if(labTime<=0) finLab(false); }, 100); }
-        function sigLab() { if(labSala>10) return finLab(true); document.getElementById('lab-sala').innerText=labSala; let q=labQ.pop(); window.curLabQ=q; document.getElementById('lab-preg').innerHTML=q.pregunta+(q.imagen?`<br><img src="${q.imagen}" style="height:80px; margin-top:10px;">`:''); let h=""; q.opciones.forEach((op,i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}" style="height:40px;">`:op; h+=`<button class="btn btn-azul" style="padding:10px;" onclick="clicLab(${i})">${t}</button>`; }); document.getElementById('lab-ops').innerHTML=h; }
-        function clicLab(i) { if(i===window.curLabQ.respuesta_correcta) { playCoin(); labTime=Math.min(100, labTime+15); addMonedas(3); labSala++; sigLab(); } else { playError(); labTime-=25; document.getElementById('lab-fondo').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('lab-fondo').classList.remove('anim-golpe'), 300); } }
-        function finLab(win) { clearInterval(window.labInt); playerStats.arcadeLab=(playerStats.arcadeLab||0)+1; guardarStats(); if(win) checarLogroArcade(73, "Sobreviviente"); alertaModal(win?"¡Escapaste!":"Consumido", win?"Monedas +30":"Oscuridad", win?"victoria":"derrota", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); }
-
-        let fScore=0, fTime=60, fInt, fQ=[];
-        async function iniciarFrenesi() { abrirPantalla('juego-frenesi'); fScore=0; fTime=60; document.getElementById('frenesi-score').innerText=0; document.getElementById('frenesi-reloj').innerText=60; await asegurarPreguntas(); fQ=mezclarArreglo(preguntasGlobales); sigFrenesi(); window.fInt=setInterval(()=>{ fTime--; document.getElementById('frenesi-reloj').innerText=fTime; if(fTime<=0) cerrarFrenesi(true); }, 1000); }
-        function sigFrenesi() { if(fQ.length===0) return cerrarFrenesi(true); let q=fQ.pop(); let imgH=q.imagen?`<br><img src="${q.imagen}" style="max-height:80px;">`:""; document.getElementById('frenesi-pregunta').innerHTML=(q.pregunta.length>75?q.pregunta.substring(0,75)+"...":q.pregunta)+imgH; let h=""; q.opciones.forEach((op, i)=>{ let t=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}" style="max-height:40px;">`:op.substring(0,40); h+=`<button class="btn btn-azul" style="padding:10px; margin-bottom:5px;" onclick="checkFrenesi(${i}, ${q.respuesta_correcta})">${t}</button>`; }); document.getElementById('frenesi-opciones').innerHTML=h; }
-        function checkFrenesi(sel, corr) { if(sel===corr) { playCoin(); fScore++; addMonedas(1); document.getElementById('frenesi-score').innerText=fScore; } else { playError(); document.getElementById('frenesi-caja-preg').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('frenesi-caja-preg').classList.remove('anim-golpe'), 300); } sigFrenesi(); }
-        function cerrarFrenesi(t) { clearInterval(window.fInt); if(t) alertaModal("¡Tiempo!", `Aciertos: ${fScore}`, "victoria", iniciarFrenesi, ()=>abrirPantalla('zona-arcade')); else abrirPantalla('zona-arcade'); }
-
-        let hpPixelote=100, hpJefe=100, jefeQ=[], jefeCombo=0;
-        async function iniciarJefe() { abrirPantalla('juego-jefe'); hpPixelote=100; hpJefe=100; jefeCombo=0; document.getElementById('combo-indicador').classList.remove('mostrar-combo'); document.getElementById('hp-pixelote').style.width='100%'; document.getElementById('hp-jefe').style.width='100%'; await asegurarPreguntas(); jefeQ=mezclarArreglo(preguntasGlobales).slice(0, 15); sAtaqueJ(); }
-        function sAtaqueJ() { if(hpPixelote<=0) return alertaModal("¡Derrota!", "Fuiste vencido.", "derrota", iniciarJefe, null); if(hpJefe<=0) { addMonedas(50); return alertaModal("¡Victoria!", "+50🪙", "victoria", iniciarJefe, null); } if(jefeQ.length===0) return alertaModal("Empate", "Sin energía.", "derrota", iniciarJefe, null); let q=jefeQ.pop(); document.getElementById('jefe-pregunta').innerHTML=(q.pregunta.length>100?q.pregunta.substring(0,100)+"...":q.pregunta)+(q.imagen?`<br><img src="${q.imagen}" style="max-height:80px;">`:""); let h=""; q.opciones.forEach((op, i)=>{ let txt=op.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${op}" style="max-height:40px;">`:op.substring(0,40); h+=`<button class="btn btn-azul" onclick="atqJ(${i}, ${q.respuesta_correcta})">${txt}</button>`; }); document.getElementById('jefe-opciones').innerHTML=h; }
-        function atqJ(sel, corr) { let ind=document.getElementById('combo-indicador'); if(sel===corr) { playHit(); addMonedas(2); jefeCombo++; hpJefe-=(15+(jefeCombo*5)); document.getElementById('jefe-contenedor').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('jefe-contenedor').classList.remove('anim-golpe'), 300); if(jefeCombo>1) { ind.innerText=`Combo x${jefeCombo}!`; ind.classList.add('mostrar-combo'); if(jefeCombo%3===0 && hpPixelote<100) { hpPixelote=Math.min(100, hpPixelote+20); document.getElementById('arena-combate').classList.add('anim-cura'); setTimeout(()=>document.getElementById('arena-combate').classList.remove('anim-cura'), 500); } } } else { playError(); jefeCombo=0; hpPixelote-=25; ind.classList.remove('mostrar-combo'); document.body.style.backgroundColor="#e74c3c"; setTimeout(()=>document.body.style.backgroundColor="#1a1a2e", 200); } document.getElementById('hp-pixelote').style.width=Math.max(0, hpPixelote)+'%'; document.getElementById('hp-jefe').style.width=Math.max(0, hpJefe)+'%'; setTimeout(sAtaqueJ, 500); }
-
-        let ahPal="", ahOc=[], ahVid=5;
-        function normalizeStr(str) { return str.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); }
-        async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV=preguntasGlobales.filter(q=>{ let ans=q.opciones[q.respuesta_correcta]; if(!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length>=3 && ans.length<=16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd=mezclarArreglo(qV)[0]; let cleanAns = rnd.opciones[rnd.respuesta_correcta]; ahPal=normalizeStr(cleanAns); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText="Pista: "+rnd.pregunta; window.ahExp=rnd.explicacion?`\n\n💡 Dato: ${rnd.explicacion}`:""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; }
-        function adivLet(l) { document.getElementById('tec-'+l).disabled=true; if(ahPal.includes(l)){ playTone(600,'sine',0.1); addMonedas(1); for(let i=0;i<ahPal.length;i++) if(ahPal[i]===l) ahOc[i]=l; } else { playError(); ahVid--; } document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(ahVid)+"🖤".repeat(5-ahVid); if(!ahOc.includes('_')) setTimeout(()=>alertaModal("¡Exitoso!", "+15🪙"+window.ahExp, "victoria", iniciarAhorcado, null),300); if(ahVid===0) setTimeout(()=>alertaModal("Fallaste", "Era: "+ahPal+window.ahExp, "derrota", iniciarAhorcado, null),300); }
-
-        function mostrarHistorial() { abrirPantalla('zona-historial'); let arbol=document.getElementById('arbol-habilidades'); if(Object.keys(playerStats.radarStats).length===0) { arbol.innerHTML="<p style='color:#e94560; font-weight:bold;'>Termina un simulacro oficial para plantar tu árbol.</p>"; return; } let h=""; for(const [mat, s] of Object.entries(playerStats.radarStats)) { let p=(s.ok/s.total)*100; let n1=p>=33?"activo":""; let n2=p>=66?"activo":""; let n3=p>=90?"activo-master":""; h+=`<div class="skill-branch"><div class="skill-name"><span>${mat}</span> <span style="color:${p>=66?'#2ecc71':'#f1c40f'};">${Math.round(p)}%</span></div><div class="skill-nodes"><div class="skill-node ${n1}">Aprendiz</div><div class="skill-line ${n2}"></div><div class="skill-node ${n2}">Avanzado</div><div class="skill-line ${n3}"></div><div class="skill-node ${n3}">Maestro</div></div></div>`; } arbol.innerHTML=h; }
-        function renderizarTrofeos() { let dT=[]; for(let i=1; i<=82; i++) dT.push({id:i, icon:'🏆', name:`Logro ${i}`}); dT[0]={id:1, icon:'🌱', name:'Despertar'}; dT[10]={id:11, icon:'🔥', name:'Chispa'}; dT[29]={id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS'}; let ui=document.getElementById('lista-trofeos'); ui.innerHTML=''; dT.forEach(t=>{ const unl=playerStats.trofeos.includes(t.id); ui.innerHTML+=`<div class="trofeo-card ${unl?'desbloqueado':''}"><div class="trofeo-icon">${t.icon}</div><div class="trofeo-label">${t.name}</div></div>`; }); document.getElementById('lbl-trofeos-count').innerText=playerStats.trofeos.length; document.getElementById('barra-trofeos').style.width=(playerStats.trofeos.length*(100/82))+'%'; }
-
-        // ==========================================
-        // 🚨 SISTEMA DE EXAMEN Y REVISIÓN BLINDADA
-        // ==========================================
-        let idxAc=0, exPts=0, resMat={}, userResp=[], tRest=10800, exInt;
+        let exQ = [], idxAc = 0, exPts = 0, exCanc = false, bloqueado = false, resMat = {}, userResp = [], logBloqueos = [], advTot = 0, sinMirar = 0, tRest = 10800, exInt, recVoz = null;
+        const LIMITE_ADVERTENCIAS = 5;
+        const TOLERANCIA_ROSTRO = 10;
 
         async function comenzarSimulacro() {
             abrirPantalla('zona-examen');
-            exCanc = false; bloqueado = false; logBloqueos = []; advTot = 0;
+            exCanc = false; bloqueado = false; logBloqueos = []; advTot = 0; sinMirar = 0;
             document.getElementById('contenedor-examen').classList.remove('bloqueado-ui');
             
             try {
-                await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-                document.getElementById('camara').srcObject = stream;
-            } catch(e) { console.log("Cámara no iniciada"); }
+                await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models'); 
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true }); 
+                document.getElementById('camara').srcObject = stream; 
+                
+                const SR = window.SpeechRecognition || window.webkitSpeechRecognition; 
+                if (SR) { 
+                    recVoz = new SR(); recVoz.continuous = true; recVoz.lang = 'es-MX'; 
+                    recVoz.onresult = (e) => { const t = e.results[e.results.length - 1][0].transcript.trim(); if (t.length > 3) regInfra(`Voz detectada en el entorno`); }; 
+                    recVoz.onend = () => { if(!exCanc) try{ recVoz.start(); }catch(e){} }; 
+                    recVoz.start(); 
+                } 
+            } catch (err) { console.log("Cámara/Microfono desactivados o sin permiso."); }
             
-            await asegurarPreguntas();
-            if(preguntasGlobales.length === 0) {
-                return document.getElementById('contenedor-examen').innerHTML = "<h3 style='color:#e74c3c;'>Error al cargar las preguntas.</h3><p>Revisa que tu archivo <b>guia_2026.json</b> no tenga errores.</p><button class='btn btn-gris' onclick='location.reload()'>Regresar</button>";
-            }
+            await asegurarPreguntas(); 
+            
+            // AGRUPAMIENTO DE 128 PREGUNTAS (ESTÁNDAR COMIPEMS)
+            let agrupadas = {}; 
+            preguntasGlobales.forEach(q => { 
+                let mat = q.materia;
+                if(mat === "Historia Universal" || mat === "Historia de México") mat = "Historia";
+                if(!agrupadas[mat]) agrupadas[mat] = []; 
+                agrupadas[mat].push(q); 
+            });
 
-            let agrupadas={}; preguntasGlobales.forEach(q=>{ if(!agrupadas[q.materia]) agrupadas[q.materia]=[]; agrupadas[q.materia].push(q); });
-            window.exQ=[]; resMat={}; idxAc=0; exPts=0; userResp=[];
-            for(let m in agrupadas) { resMat[m]={ok:0, total:agrupadas[m].length}; window.exQ=window.exQ.concat(mezclarArreglo(agrupadas[m])); }
+            let distribucionCOMIPEMS = {
+                "Habilidad Verbal": 16, "Habilidad Matemática": 16,
+                "Matemáticas": 12, "Español": 12, "Física": 12, "Química": 12, "Biología": 12,
+                "Historia": 12, "Geografía": 12, "Formación Cívica y Ética": 12
+            };
+
+            exQ = []; resMat = {}; idxAc = 0; exPts = 0; userResp = [];
+            for (let m in distribucionCOMIPEMS) { 
+                let limite = distribucionCOMIPEMS[m];
+                let disp = agrupadas[m] ? mezclarArreglo(agrupadas[m]) : [];
+                let selec = disp.slice(0, limite);
+                resMat[m] = { ok: 0, total: selec.length }; 
+                exQ = exQ.concat(selec); 
+            }
+            exQ = mezclarArreglo(exQ); // Mezclar todo el examen
             
-            showQ();
-            document.getElementById('temporizador').style.display="inline-block";
-            tRest=10800;
-            exInt = setInterval(()=>{ if(exCanc || bloqueado) return; tRest--; let h=Math.floor(tRest/3600), m=Math.floor((tRest%3600)/60), s=tRest%60; document.getElementById('temporizador').innerText=`⏱️ ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; if(tRest<=0) finExamen("¡Tiempo agotado!"); }, 1000);
+            showQ(); 
+            document.getElementById('temporizador').style.display = "inline-block"; 
+            tRest = 10800; 
+            exInt = setInterval(() => { 
+                if (exCanc || bloqueado) return; 
+                tRest--; 
+                let h = Math.floor(tRest / 3600), m = Math.floor((tRest % 3600) / 60), s = tRest % 60; 
+                document.getElementById('temporizador').innerText = `⏱️ ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; 
+                if (tRest <= 0) finExamen("¡Tiempo agotado!", true); 
+            }, 1000);
         }
 
-        document.getElementById('camara').addEventListener('play', () => {
-            let sinMirar = 0;
-            setInterval(async () => {
-                if (exCanc || bloqueado) return;
-                const det = await faceapi.detectAllFaces(document.getElementById('camara'), new faceapi.TinyFaceDetectorOptions());
-                if (det.length === 0) {
-                    sinMirar++;
-                    if (sinMirar >= TOLERANCIA_ROSTRO) { regInfra("Rostro no detectado en cámara"); sinMirar = 0; }
-                } else { sinMirar = 0; }
-            }, 1000);
+        document.getElementById('camara').addEventListener('play', () => { 
+            setInterval(async () => { 
+                if (exCanc || bloqueado) return; 
+                const det = await faceapi.detectAllFaces(document.getElementById('camara'), new faceapi.TinyFaceDetectorOptions()); 
+                if (det.length === 0) { 
+                    sinMirar++; 
+                    if (sinMirar >= TOLERANCIA_ROSTRO) { regInfra("Rostro no detectado por 10s"); sinMirar = 0; } 
+                } else { sinMirar = 0; } 
+            }, 1000); 
         });
 
-        function regInfra(motivo) {
-            if (exCanc || bloqueado) return;
-            playError(); bloqueado = true; advTot++;
-            logBloqueos.push({ motivo: motivo, hora: new Date().toLocaleTimeString() });
-            let toast = document.getElementById('toast-advertencia');
-            toast.innerText = `⚠️ BLOQUEADO 2 MINUTOS: ${motivo}`;
-            toast.style.display = "block";
-            document.getElementById('contenedor-examen').classList.add('bloqueado-ui');
-            setTimeout(() => {
-                bloqueado = false; toast.style.display = "none";
-                document.getElementById('contenedor-examen').classList.remove('bloqueado-ui');
-                if (advTot >= LIMITE_ADVERTENCIAS) finExamen("Límite de bloqueos alcanzado.");
+        // NUEVA FUNCIÓN DE BLOQUEO (Cooldown de 2 minutos)
+        function regInfra(motivo) { 
+            if (exCanc || bloqueado) return; 
+            playError(); 
+            bloqueado = true;
+            advTot++; 
+            logBloqueos.push({motivo: motivo, hora: new Date().toLocaleTimeString()});
+            
+            let tst = document.getElementById('toast-advertencia'); 
+            tst.innerText = `⚠️ BLOQUEADO 2 MINUTOS: ${motivo}`; 
+            tst.style.display = "block"; 
+            document.getElementById('contenedor-examen').classList.add('bloqueado-ui'); 
+            
+            setTimeout(() => { 
+                bloqueado = false; 
+                tst.style.display = "none"; 
+                document.getElementById('contenedor-examen').classList.remove('bloqueado-ui'); 
+                if(advTot >= LIMITE_ADVERTENCIAS) {
+                    finExamen("Límite de bloqueos alcanzado (Examen Cancelado)", false);
+                }
             }, 120000); 
         }
 
         function showQ() {
-            if(idxAc >= window.exQ.length) return finExamen("¡Simulacro Terminado!");
-            const d = window.exQ[idxAc], letras = ['A','B','C','D'];
-            let h = `<div style="color:#a2a8d3; font-weight:bold; margin-bottom:5px;">${d.materia}</div><div style="font-size:12px; margin-bottom:15px;">Pregunta ${idxAc+1}/${window.exQ.length}</div>`;
-            h += `<div style="background:#0f3460; padding:15px; border-radius:10px; border:1px solid #4361ee; margin-bottom:15px;"><b>${d.pregunta}</b>${d.imagen?`<br><img src="${d.imagen}" style="max-width:100%; border-radius:5px; margin-top:10px;">`:''}</div>`;
+            if (idxAc >= exQ.length) return finExamen("¡Simulacro Terminado! 🎉", true);
+            const d = exQ[idxAc], letras = ['A', 'B', 'C', 'D'];
+            let h = `<div style="color:#a2a8d3; font-weight:bold; margin-bottom:5px;">${d.materia}</div><div style="font-size:12px; margin-bottom:15px;">Pregunta ${idxAc+1}/${exQ.length}</div>`;
+            h += `<div style="background:#0f3460; padding:15px; border-radius:10px; border:1px solid #4361ee; margin-bottom:15px;"><b>${d.pregunta}</b>${d.imagen?`<br><img src="${d.imagen}" class="img-fluida">`:''}</div>`;
             d.opciones.forEach((o, i) => { const esImg=o.match(/\.(jpg|jpeg|png|gif)$/i); h+=`<button class="btn-opcion" onclick="vRes(${i}, ${d.respuesta_correcta})">${letras[i]}) ${esImg?`<img src="${o}" style="max-height:40px;">`:o}</button>`; });
             document.getElementById('contenedor-examen').innerHTML = h;
         }
 
-        function vRes(s, c) {
+        function vRes(s, c) { 
             if(exCanc || bloqueado) return; 
-            userResp[idxAc] = s; playerStats.preguntasTotales++;
-            if(s===c){ exPts++; resMat[window.exQ[idxAc].materia].ok++; addMonedas(5); }
-            idxAc++; showQ(); window.scrollTo(0,0);
+            userResp[idxAc] = s; playerStats.preguntasTotales++; 
+            if(s===c){ exPts++; resMat[exQ[idxAc].materia].ok++; addMonedas(5); } 
+            idxAc++; showQ(); window.scrollTo(0,0); 
+        }
+
+        function finExamen(msj, exito=false) {
+            exCanc = true; clearInterval(exInt); 
+            document.getElementById('camara').style.display = "none"; document.getElementById('temporizador').style.display = "none"; document.getElementById('toast-advertencia').style.display = "none"; 
+            let v = document.getElementById('camara'); if (v.srcObject) v.srcObject.getTracks().forEach(t => t.stop()); if (recVoz) recVoz.stop();
+            if (idxAc > 0) { playerStats.radarStats = resMat; guardarStats(); }
+            
+            let hRep = `<div style="background: #0f3460; padding: 20px; border-radius: 12px; margin: 20px 0;"><h3 style="margin-top:0;">📈 Reporte por Materias</h3>`; 
+            for(const [m, s] of Object.entries(resMat)) { 
+                let p = s.total > 0 ? (s.ok/s.total)*100 : 0, c = p>=80?"#2ecc71":p>=60?"#f1c40f":"#e74c3c"; 
+                hRep += `<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:13px;"><span>${m}</span><span>${s.ok}/${s.total}</span></div><div class="barra-bg"><div class="barra-fill" style="background:${c}; width: ${p}%;"></div></div>`; 
+            } 
+            hRep += `</div>`;
+            
+            // AGREGANDO EL REGISTRO DE INCIDENTES
+            if(logBloqueos.length === 0) {
+                hRep += `<div style="padding:15px; background:rgba(39,174,96,0.2); color:#27ae60; font-weight:bold; border-radius:10px; margin-bottom:15px;">✅ Examen limpio (Sin penalizaciones)</div>`;
+            } else {
+                hRep += `<div style="text-align:left; background:#e74c3c; padding:15px; border-radius:10px; color:white; margin-bottom:15px;"><strong>📉 Registro de Incidentes:</strong><ul style="margin:5px 0; padding-left:20px; font-size:13px;">`;
+                logBloqueos.forEach(b => hRep += `<li>${b.hora} - ${b.motivo}</li>`);
+                hRep += `</ul></div>`;
+            }
+
+            let head = exito ? `<h2 style="color: #27ae60;">${msj}</h2>` : `<h1 style="font-size: 26px; color:#e94560;">🚫 EXAMEN CANCELADO</h1><p>${msj}</p>`;
+            document.getElementById('tarjeta-principal').className = 'tarjeta-pregunta';
+            document.getElementById('contenedor-examen').innerHTML = `${head}${hRep}<div style="background: #16213e; border:1px solid #4361ee; padding: 20px; border-radius: 12px; margin: 20px 0;"><p style="color: #27ae60; font-size: 18px; margin:0;">✔️ Aciertos Totales: <strong>${exPts}</strong></p><p style="color: #e94560; font-size: 18px; margin-top:5px;">❌ Errores: <strong>${idxAc - exPts}</strong></p></div><button class="btn btn-azul" onclick="mostrarRetro()">👁️ Ver mis errores</button><button class="btn btn-gris" onclick="location.reload()">Ir al Menú Principal</button>`;
         }
 
         // Toggler 100% seguro para el acordeón
-        function toggleRevPanel(idBtn) {
+        window.toggleRevPanel = function(idBtn) {
             let panel = document.getElementById(idBtn);
-            if (panel.style.display === 'none') {
-                panel.style.display = 'block';
+            if (panel.style.display === 'none') panel.style.display = 'block';
+            else panel.style.display = 'none';
+        }
+
+        function mostrarRetro() {
+            let html = `<h2 style="color:#4361ee;">Repaso de Errores</h2>`, hE = false;
+            for(let i=0; i<idxAc; i++) { 
+                let d = exQ[i], mS = userResp[i]; 
+                if(mS !== d.respuesta_correcta) { 
+                    hE = true; 
+                    let oS= (mS !== undefined && d.opciones[mS]) ? d.opciones[mS] : "Sin responder"; 
+                    let oC= d.opciones[d.respuesta_correcta] ? d.opciones[d.respuesta_correcta] : "N/A"; 
+                    let cS = oS.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oS}" class="img-fluida" style="max-height:80px;">`:oS; 
+                    let cC = oC.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oC}" class="img-fluida" style="max-height:80px;">`:oC; 
+                    let expHtml = d.explicacion ? `<div style="background: rgba(52, 152, 219, 0.2); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 13px; color: #a2a8d3; text-align: left; border-left: 3px solid #4361ee;"><strong>💡 Explicación:</strong> ${d.explicacion}</div>` : ""; 
+                    
+                    html += `<button class="btn-acordeon" style="border-left-color:#e74c3c;" onclick="toggleRevPanel('panel-rev-${i}')">${i+1}. ${d.pregunta.substring(0,35)}...</button>
+                             <div class="panel-acordeon" id="panel-rev-${i}" style="display:none; text-align:left; font-size:14px; background:#0f3460;">
+                             <p style="font-weight:bold;">${d.pregunta}</p>${d.imagen?`<img src="${d.imagen}" class="img-fluida" style="max-height:100px; margin-bottom:15px;">`:''} 
+                             <div style="background:rgba(233,69,96,0.2); padding:10px; border-radius:5px; margin-bottom:5px;"><strong style="color:#e94560;">❌ Elegiste:</strong><br>${cS}</div>
+                             <div style="background:rgba(39,174,96,0.2); padding:10px; border-radius:5px;"><strong style="color:#27ae60;">✅ Correcta:</strong><br>${cC}</div>${expHtml}</div>`; 
+                } 
+            }
+            if(!hE) html += `<div style="padding:20px; background:rgba(39,174,96,0.2); color:#27ae60; font-weight:bold; border-radius:10px; margin-bottom:20px;">¡No tuviste errores!</div>`;
+            html += `<button class="btn btn-gris" style="margin-top:20px;" onclick="location.reload()">Volver al Menú Principal</button>`; 
+            document.getElementById('contenedor-examen').innerHTML = html; window.scrollTo(0,0);
+        }
+
+        // ==========================================
+        // 🦅 NUEVO 4: VISTA DE ÁGUILA REPARADA
+        // ==========================================
+        let aguilaQ = [], aguilaScore = 0;
+        async function iniciarAguila() {
+            abrirPantalla('juego-aguila');
+            aguilaScore = 0;
+            await asegurarPreguntas();
+            aguilaQ = mezclarArreglo(preguntasGlobales);
+            sigAguila();
+        }
+        function sigAguila() {
+            if(aguilaQ.length === 0) return finAguila(true);
+            let q = aguilaQ.pop();
+            window.curAgQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px; border-radius:5px;">` : "";
+            
+            let html = `<h4 style="color:#3498db; margin-bottom:10px;">¡Encuentra la correcta rápido!</h4>
+                        <div style="background:#0f3460; padding:10px; border-radius:10px; border:1px solid #4361ee; font-size:14px; margin-bottom:15px;">${q.pregunta}${imgH}</div>
+                        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">`;
+            
+            // Revolvemos las opciones para que sea un desafío visual
+            let ops = mezclarArreglo(q.opciones.map((o,i)=>({text:o, originalIndex:i})));
+            
+            ops.forEach(o => {
+                let txt = o.text.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${o.text}" style="height:35px; border-radius:4px;">` : o.text.substring(0,40);
+                html += `<button class="btn btn-azul" style="padding:10px; font-size:13px; flex: 1 1 40%;" onclick="checkAguila(${o.originalIndex})">${txt}</button>`;
+            });
+            html += `</div>`;
+            document.getElementById('aguila-contenido').innerHTML = html;
+        }
+        function checkAguila(i) {
+            if(i === window.curAgQ.respuesta_correcta) {
+                playCoin(); addMonedas(2); aguilaScore++;
+                setTimeout(sigAguila, 200);
             } else {
-                panel.style.display = 'none';
+                playError();
+                finAguila(false);
             }
         }
-
-        function finExamen(msj) {
-            exCanc = true; clearInterval(exInt); 
-            document.getElementById('camara').style.display="none"; document.getElementById('temporizador').style.display="none";
-            if(idxAc > 0) { playerStats.radarStats = resMat; guardarStats(); }
-            
-            let hRep = `<h2 style="color:#27ae60;">${msj}</h2><div style="background:#0f3460; padding:15px; border-radius:10px; margin-bottom:15px;"><p style="color:#27ae60; font-size:18px;">✔️ Aciertos: ${exPts}</p><p style="color:#e94560; font-size:18px;">❌ Errores: ${idxAc - exPts}</p></div>`;
-            
-            if(idxAc > 0) {
-                hRep += `<h3 style="color:#4361ee; margin-top:20px;">📝 Revisión de Respuestas:</h3><p style="color:#a2a8d3; font-size:12px;">Toca las preguntas para revelar la respuesta oculta.</p><div style="text-align:left;">`;
-                for(let i=0; i<idxAc; i++){
-                    try {
-                        let q = window.exQ[i]; let uR = userResp[i]; let cR = q.respuesta_correcta;
-                        let isOk = (uR === cR); let color = isOk ? '#27ae60' : '#e74c3c';
-                        
-                        let uAnsTxt = (uR !== undefined && q.opciones[uR]) ? q.opciones[uR].toString() : "Sin responder";
-                        let cAnsTxt = q.opciones[cR] ? q.opciones[cR].toString() : "N/A";
-                        
-                        let isUImg = uAnsTxt.match(/\.(jpg|jpeg|png|gif)$/i); 
-                        let isCImg = cAnsTxt.match(/\.(jpg|jpeg|png|gif)$/i);
-                        
-                        hRep += `<button class="btn-acordeon" style="border-left-color:${color};" onclick="toggleRevPanel('panel-rev-${i}')">
-                            ${i+1}. ${q.pregunta.substring(0,35)}...
-                        </button>
-                        <div class="panel-acordeon" id="panel-rev-${i}" style="display:none;">
-                            <p style="color:#fff;"><b>Pregunta:</b> ${q.pregunta}</p>
-                            ${q.imagen ? `<img src="${q.imagen}" class="img-fluida">` : ''}
-                            <p style="color:#e74c3c; background:#1a1a2e; padding:10px; border-radius:5px;"><b>Tu respuesta:</b> ${isUImg ? `<br><img src="${uAnsTxt}" class="img-fluida">` : uAnsTxt}</p>
-                            <p style="color:#27ae60; background:#1a1a2e; padding:10px; border-radius:5px;"><b>Respuesta Correcta:</b> ${isCImg ? `<br><img src="${cAnsTxt}" class="img-fluida">` : cAnsTxt}</p>
-                            ${q.explicacion ? `<p style="color:#f1c40f; margin-top:10px;">💡 <i>${q.explicacion}</i></p>` : ''}
-                        </div>`;
-                    } catch (err) {
-                        console.error("Error en pregunta: ", err);
-                    }
-                }
-                hRep += `</div>`;
-            }
-
-            if(logBloqueos.length === 0) { hRep += "<p style='color:#f1c40f; margin-top:15px;'>✅ Examen limpio (Sin bloqueos).</p>"; }
-            else { hRep += "<div style='text-align:left; font-size:12px; background:#e74c3c; padding:10px; border-radius:5px; color:white; margin-top:15px;'><strong>📉 Bloqueos por cámara:</strong><ul style='margin:5px 0; padding-left:20px;'>"; logBloqueos.forEach(b => hRep+=`<li>${b.hora} - ${b.motivo}</li>`); hRep += "</ul></div>"; }
-            
-            hRep += `<button class="btn btn-azul" style="margin-top:20px;" onclick="location.reload()">Regresar al Cuartel</button>`;
-            document.getElementById('contenedor-examen').innerHTML = hRep;
+        function finAguila(win) {
+            if(aguilaScore >= 5) checarLogroArcade(67, "Ojo de Águila");
+            alertaModal(win?"¡Vista Perfecta!":"¡Emboscada!", "Encontraste: " + aguilaScore, win?"victoria":"derrota", iniciarAguila, ()=>abrirPantalla('zona-arcade'));
         }
+
+        // ==========================================
+        // 📐 ARQUITECTO
+        // ==========================================
+        let arqVidas = 3, arqScore = 0, arqQ = [];
+        async function iniciarArquitecto() {
+            abrirPantalla('juego-arquitecto'); arqVidas = 3; arqScore = 0; document.getElementById('arq-score').innerText = "0"; upArqV();
+            await asegurarPreguntas();
+            let qV = preguntasGlobales.filter(q => q.materia.includes("Matemáticas") || q.materia === "Física" || q.materia === "Habilidad Matemática");
+            if(qV.length===0) qV = preguntasGlobales;
+            arqQ = mezclarArreglo(qV); sigArq();
+        }
+        function sigArq() {
+            if(arqQ.length === 0) return finArq(true);
+            let q = arqQ.pop(); window.curArqQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:100px; border-radius:5px; margin-top:10px;">` : "";
+            document.getElementById('arq-pregunta').innerHTML = q.pregunta + imgH;
+            
+            let h = "";
+            q.opciones.forEach((op, i) => {
+                let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op;
+                h += `<button class="viga-btn" onclick="clicArq(${i}, this)">[PTR] ${t}</button>`;
+            });
+            document.getElementById('arq-opciones').innerHTML = h;
+        }
+        function clicArq(i, btn) {
+            if(i === window.curArqQ.respuesta_correcta) {
+                playWeld(); btn.style.background = "#27ae60"; btn.style.borderColor = "#2ecc71"; btn.style.color = "#fff";
+                addMonedas(4); arqScore++; document.getElementById('arq-score').innerText = arqScore;
+                setTimeout(sigArq, 500);
+            } else {
+                playMetal(); btn.style.opacity = "0.3"; btn.disabled = true; arqVidas--; upArqV();
+                if(arqVidas <= 0) setTimeout(()=>finArq(false), 300);
+            }
+        }
+        function upArqV() { document.getElementById('arq-vidas').innerText = "❤️".repeat(arqVidas)+"🖤".repeat(3-arqVidas); }
+        function finArq(win) {
+            playerStats.arcadeArq++; guardarStats();
+            if(arqScore >= 5) checarLogroArcade(77, "Ingeniero Maestro");
+            alertaModal(win?"¡Estructura Completa!":"Falla Estructural", "Planos resueltos: "+arqScore, win?"victoria":"derrota", iniciarArquitecto, ()=>abrirPantalla('zona-arcade'));
+        }
+
+        // ==========================================
+        // 📊 MATRIZ
+        // ==========================================
+        let matrizScore = 0, matrizCarga = 0, matrizInt, matrizQ = [];
+        async function iniciarMatriz() {
+            abrirPantalla('juego-matriz'); matrizScore = 0; matrizCarga = 0; document.getElementById('matriz-score').innerText = "0";
+            await asegurarPreguntas();
+            let qV = preguntasGlobales.filter(q => q.materia === "Habilidad Matemática");
+            if(qV.length===0) qV = preguntasGlobales;
+            matrizQ = mezclarArreglo(qV); sigMatriz();
+            clearInterval(matrizInt); matrizInt = setInterval(tickMatriz, 200); 
+        }
+        function sigMatriz() {
+            if(matrizQ.length === 0) return finMatriz(true);
+            let q = matrizQ.pop(); window.curMatQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; filter: grayscale(1) sepia(1) hue-rotate(80deg) brightness(1.5); margin-top:10px;">` : "";
+            document.getElementById('matriz-pregunta').innerHTML = "> " + q.pregunta + imgH;
+            
+            let h = "";
+            q.opciones.forEach((op, i) => {
+                let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op;
+                h += `<button class="dato-btn" onclick="clicMatriz(${i}, this)">{ ${t} }</button>`;
+            });
+            document.getElementById('matriz-opciones').innerHTML = h;
+        }
+        function tickMatriz() {
+            matrizCarga += 0.8; 
+            document.getElementById('matriz-barra').style.width = Math.min(100, matrizCarga) + '%';
+            if(matrizCarga >= 100) finMatriz(false);
+        }
+        function clicMatriz(i, btn) {
+            if(i === window.curMatQ.respuesta_correcta) {
+                playData(); btn.style.background = "#0f0"; btn.style.color = "#000";
+                matrizCarga = Math.max(0, matrizCarga - 30); 
+                addMonedas(3); matrizScore++; document.getElementById('matriz-score').innerText = matrizScore;
+                setTimeout(sigMatriz, 300);
+            } else {
+                playError(); btn.style.background = "#f00"; btn.style.color = "#fff"; btn.style.borderColor = "#f00"; matrizCarga += 20;
+            }
+        }
+        function finMatriz(win) {
+            clearInterval(matrizInt); playerStats.arcadeMatriz++; guardarStats();
+            if(matrizScore >= 5) checarLogroArcade(79, "Analista de Datos");
+            alertaModal(win?"¡Servidor Seguro!":"Datos Corruptos", "Sucesiones resueltas: "+matrizScore, win?"victoria":"derrota", iniciarMatriz, ()=>abrirPantalla('zona-arcade'));
+        }
+
+        // ==========================================
+        // ⚖️ BALANZA
+        // ==========================================
+        let balVidas = 3, balScore = 0, balQ = [];
+        async function iniciarBalanza() {
+            abrirPantalla('juego-balanza'); balVidas = 3; balScore = 0; document.getElementById('bal-score').innerText = "0"; upBalV();
+            await asegurarPreguntas();
+            let qV = preguntasGlobales.filter(q => q.materia === "Matemáticas");
+            if(qV.length===0) qV = preguntasGlobales;
+            balQ = mezclarArreglo(qV); sigBal();
+        }
+        function sigBal() {
+            if(balQ.length === 0) return finBal(true);
+            let q = balQ.pop(); window.curBalQ = q;
+            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px; border-radius:5px;">` : "";
+            document.getElementById('bal-pregunta').innerHTML = q.pregunta + imgH;
+            
+            let h = "";
+            q.opciones.forEach((op, i) => {
+                let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op;
+                h += `<button class="peso-btn" onclick="clicBal(${i}, this)">${t}</button>`;
+            });
+            document.getElementById('bal-opciones').innerHTML = h;
+            document.getElementById('bal-contenedor').style.transform = "rotate(0deg)";
+        }
+        function clicBal(i, btn) {
+            let cont = document.getElementById('bal-contenedor');
+            if(i === window.curBalQ.respuesta_correcta) {
+                playCoin(); cont.style.borderColor = "#27ae60"; btn.style.background = "#27ae60"; addMonedas(5); balScore++; document.getElementById('bal-score').innerText = balScore;
+                setTimeout(()=>{ cont.style.borderColor = "#8d6e63"; sigBal(); }, 600);
+            } else {
+                playError(); btn.style.opacity = "0.2"; btn.disabled = true; balVidas--; upBalV();
+                cont.style.transform = "rotate(10deg)"; setTimeout(()=>cont.style.transform = "rotate(-10deg)", 150); setTimeout(()=>cont.style.transform = "rotate(0deg)", 300);
+                if(balVidas <= 0) setTimeout(()=>finBal(false), 400);
+            }
+        }
+        function upBalV() { document.getElementById('bal-vidas').innerText = "❤️".repeat(balVidas)+"🖤".repeat(3-balVidas); }
+        function finBal(win) {
+            playerStats.arcadeBal++; guardarStats();
+            if(balScore >= 5) checarLogroArcade(81, "Alquimista");
+            alertaModal(win?"¡Ecuación Perfecta!":"Desequilibrio", "Ecuaciones balanceadas: "+balScore, win?"victoria":"derrota", iniciarBalanza, ()=>abrirPantalla('zona-arcade'));
+        }
+
+        // ==========================================
+        // 🍄 SALTO CUÁNTICO
+        // ==========================================
+        let saltoNivel=1, saltoQ=[];
+        async function iniciarSalto() { abrirPantalla('juego-salto'); saltoNivel=1; document.getElementById('salto-score').innerText="0"; document.getElementById('salto-nivel').innerText="1"; let pix = document.getElementById('salto-pix'); pix.style.bottom = "10px"; pix.classList.remove('anim-caida'); pix.classList.remove('anim-salto-up'); await asegurarPreguntas(); saltoQ = mezclarArreglo(preguntasGlobales); sigSalto(); }
+        function sigSalto() { if(saltoQ.length===0) return finSalto(true); let q = saltoQ.pop(); window.curSaltoQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px; border-radius:5px;">` : ""; document.getElementById('salto-pregunta').innerHTML = q.pregunta + imgH; let pos = [{b:180, l:'2%'}, {b:180, l:'53%'}, {b:80, l:'2%'}, {b:80, l:'53%'}]; let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px;">` : op; h += `<button class="plat-btn" style="bottom:${pos[i].b}px; left:${pos[i].l}; height:90px;" onclick="clicSalto(${i}, this)">${t}</button>`; }); document.getElementById('salto-plataformas').innerHTML = h; }
+        function clicSalto(i, btn) { let pix = document.getElementById('salto-pix'); if(i === window.curSaltoQ.respuesta_correcta) { playCoin(); btn.style.background = "#f1c40f"; btn.style.borderColor = "#f39c12"; addMonedas(3); saltoNivel++; document.getElementById('salto-score').innerText = (saltoNivel-1)*3; document.getElementById('salto-nivel').innerText = saltoNivel; pix.classList.remove('anim-salto-up'); void pix.offsetWidth; pix.classList.add('anim-salto-up'); setTimeout(sigSalto, 600); } else { playError(); btn.style.background = "#e74c3c"; btn.style.borderColor = "#c0392b"; btn.style.transform = "rotate(15deg) translateY(20px)"; btn.style.opacity = "0"; pix.classList.remove('anim-caida'); void pix.offsetWidth; pix.classList.add('anim-caida'); setTimeout(()=>finSalto(false), 600); } }
+        function finSalto(win) { playerStats.arcadeSalto = (playerStats.arcadeSalto||0) + 1; guardarStats(); if(saltoNivel > 10) checarLogroArcade(75, "Rana Saltarina"); alertaModal(win?"¡Llegaste a la cima!":"Caída Libre", "Alcanzaste el nivel: "+saltoNivel, win?"victoria":"derrota", iniciarSalto, ()=>abrirPantalla('zona-arcade')); }
+
+        // ==========================================
+        // 🎮 METEORITOS, LABERINTO, FRENESÍ, JEFE, ETC.
+        // ==========================================
+        let metVidas=3, metScore=0, metQ=[], metSpeed=1.5, metTop=[0,0,0,0], metInt, metActivo=false;
+        async function iniciarMeteoritos() { abrirPantalla('juego-meteoritos'); metVidas=3; metScore=0; metSpeed=1.5; metActivo=true; await asegurarPreguntas(); metQ = mezclarArreglo(preguntasGlobales); document.getElementById('met-score').innerText = "0"; document.getElementById('met-vidas').innerText = "❤️".repeat(3); sigMet(); clearInterval(metInt); metInt = setInterval(caidaMet, 50); }
+        function sigMet() { if(metQ.length===0) return finMet(true); let q = metQ.pop(); window.curMetQ = q; let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:50px; margin-top:5px;">`:""; document.getElementById('met-pregunta').innerHTML = (q.pregunta.length>80?q.pregunta.substring(0,80)+"...":q.pregunta) + imgHtml; metTop = [-20, -70, -120, -170]; metTop = mezclarArreglo(metTop); let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op.substring(0,40); h += `<button class="met-btn" id="m-btn-${i}" style="left:${i%2===0?'2%':'52%'}; top:${metTop[i]}px;" onclick="clicMet(${i})">${t}</button>`; }); document.getElementById('met-area').innerHTML = h; }
+        function caidaMet() { if(!metActivo) return; let algunVivo = false; for(let i=0; i<4; i++){ let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') continue; algunVivo = true; metTop[i] += metSpeed; b.style.top = metTop[i] + 'px'; if(metTop[i] > 280) { b.style.display = 'none'; if(i === window.curMetQ.respuesta_correcta) { metVidas--; playError(); document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) { finMet(false); return; } else { sigMet(); return; } } } } if(!algunVivo) sigMet(); }
+        function clicMet(i) { let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') return; if(i === window.curMetQ.respuesta_correcta) { playCoin(); b.style.background = "#27ae60"; addMonedas(2); metScore++; document.getElementById('met-score').innerText = metScore; metSpeed += 0.1; setTimeout(sigMet, 150); } else { playError(); b.style.display = 'none'; metVidas--; document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) finMet(false); } }
+        function finMet(win) { metActivo=false; clearInterval(metInt); playerStats.arcadeMet++; guardarStats(); if(win || metScore>=5) { checarLogroArcade(71, "Defensor Planetario"); alertaModal("¡Buen trabajo!", "Aciertos: "+metScore, "victoria", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Base Destruida", "Un meteorito impactó la base.", "derrota", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); }
+
+        let labTime=100, labSala=1, labInt, labQ=[];
+        async function iniciarLaberinto() { abrirPantalla('juego-laberinto'); labTime=100; labSala=1; await asegurarPreguntas(); labQ = mezclarArreglo(preguntasGlobales); sigLab(); clearInterval(labInt); labInt = setInterval(()=>{ labTime -= 0.6; document.getElementById('lab-barra').style.width = Math.max(0,labTime)+'%'; document.getElementById('lab-luz-txt').innerText = Math.round(labTime); if(labTime<=0) finLab(false); }, 100); }
+        function sigLab() { if(labSala>10) return finLab(true); document.getElementById('lab-sala').innerText = labSala; let q = labQ.pop(); window.curLabQ = q; document.getElementById('lab-preg').innerHTML = q.pregunta + (q.imagen?`<br><img src="${q.imagen}" style="height:80px; margin-top:10px; border-radius:5px;">`:''); let h = ""; q.opciones.forEach((op,i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="height:40px; border-radius:4px;">` : op; h += `<button class="btn btn-azul" style="font-size:14px; padding:10px;" onclick="clicLab(${i})">${t}</button>`; }); document.getElementById('lab-ops').innerHTML = h; }
+        function clicLab(i) { if(i === window.curLabQ.respuesta_correcta) { playCoin(); labTime = Math.min(100, labTime+15); addMonedas(3); labSala++; sigLab(); } else { playError(); labTime -= 25; document.getElementById('lab-fondo').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('lab-fondo').classList.remove('anim-golpe'), 300); } }
+        function finLab(win) { clearInterval(labInt); playerStats.arcadeLab++; guardarStats(); if(win) { checarLogroArcade(73, "Sobreviviente"); alertaModal("¡Escapaste!", "Saliste con vida.\nMonedas: +30🪙", "victoria", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Consumido", "La oscuridad te atrapó.", "derrota", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); }
+
+        let fScore = 0, fTime = 60, fInt, fQ = [];
+        async function iniciarFrenesi() { abrirPantalla('juego-frenesi'); fScore = 0; fTime = 60; document.getElementById('frenesi-score').innerText = 0; document.getElementById('frenesi-reloj').innerText = 60; await asegurarPreguntas(); fQ = mezclarArreglo(preguntasGlobales); sigFrenesi(); fInt = setInterval(() => { fTime--; document.getElementById('frenesi-reloj').innerText = fTime; if(fTime <= 0) cerrarFrenesi(true); }, 1000); }
+        function sigFrenesi() { if(fQ.length === 0) return cerrarFrenesi(true); let q = fQ.pop(); let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:5px; border-radius:5px;">`:""; document.getElementById('frenesi-pregunta').innerHTML = (q.pregunta.length>75?q.pregunta.substring(0,75)+"...":q.pregunta) + imgHtml; let html = ""; q.opciones.forEach((op, i) => { let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height: 40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" style="font-size:14px; padding:10px; margin-bottom:5px;" onclick="checkFrenesi(${i}, ${q.respuesta_correcta})">${texto}</button>`; }); document.getElementById('frenesi-opciones').innerHTML = html; }
+        function checkFrenesi(sel, corr) { if(sel === corr) { playCoin(); fScore++; addMonedas(1); document.getElementById('frenesi-score').innerText = fScore; } else { playError(); document.getElementById('frenesi-caja-preg').classList.add('anim-golpe'); setTimeout(()=> document.getElementById('frenesi-caja-preg').classList.remove('anim-golpe'), 300); } sigFrenesi(); }
+        function cerrarFrenesi(t = false) { clearInterval(fInt); if(t) { alertaModal("¡Tiempo Agotado!", `Aciertos: ${fScore}\nMonedas: +${fScore}🪙`, "victoria", iniciarFrenesi, ()=>abrirPantalla('zona-arcade')); } else abrirPantalla('zona-arcade'); }
+
+        let hpPixelote = 100, hpJefe = 100, jefeQ = [], jefeCombo = 0;
+        async function iniciarJefe() { abrirPantalla('juego-jefe'); hpPixelote = 100; hpJefe = 100; jefeCombo = 0; document.getElementById('combo-indicador').classList.remove('mostrar-combo'); document.getElementById('hp-pixelote').style.width = '100%'; document.getElementById('hp-jefe').style.width = '100%'; await asegurarPreguntas(); jefeQ = mezclarArreglo(preguntasGlobales).slice(0, 15); sAtaqueJ(); }
+        function sAtaqueJ() { if (hpPixelote <= 0) return alertaModal("¡Derrota!", "Fuiste vencido.", "derrota", iniciarJefe, null); if (hpJefe <= 0) { addMonedas(50); return alertaModal("¡Victoria!", "Destruiste al Jefe. +50🪙", "victoria", iniciarJefe, null); } if (jefeQ.length === 0) return alertaModal("Empate", "Sin energía.", "derrota", iniciarJefe, null); let q = jefeQ.pop(); document.getElementById('jefe-pregunta').innerHTML = (q.pregunta.length > 100 ? q.pregunta.substring(0,100)+"..." : q.pregunta) + (q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; border-radius:5px;">`:""); let html = ""; q.opciones.forEach((op, i) => { let txt = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" onclick="atqJ(${i}, ${q.respuesta_correcta})">${txt}</button>`; }); document.getElementById('jefe-opciones').innerHTML = html; }
+        function atqJ(sel, corr) { let ind = document.getElementById('combo-indicador'); if (sel === corr) { playHit(); addMonedas(2); jefeCombo++; hpJefe -= (15 + (jefeCombo*5)); document.getElementById('jefe-contenedor').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('jefe-contenedor').classList.remove('anim-golpe'), 300); if (jefeCombo > 1) { ind.innerText = `Combo x${jefeCombo}!`; ind.classList.add('mostrar-combo'); if (jefeCombo%3===0 && hpPixelote<100) { hpPixelote=Math.min(100, hpPixelote+20); document.getElementById('arena-combate').classList.add('anim-cura'); setTimeout(()=>document.getElementById('arena-combate').classList.remove('anim-cura'), 500); } } } else { playError(); jefeCombo = 0; hpPixelote -= 25; ind.classList.remove('mostrar-combo'); document.body.style.backgroundColor = "#e74c3c"; setTimeout(()=>document.body.style.backgroundColor = "#1a1a2e", 200); } document.getElementById('hp-pixelote').style.width = Math.max(0, hpPixelote)+'%'; document.getElementById('hp-jefe').style.width = Math.max(0, hpJefe)+'%'; setTimeout(sAtaqueJ, 500); }
+
+        let cartasRev = [], c1=null, c2=null, pRes=0;
+        async function iniciarMemorama() { abrirPantalla('juego-memorama'); await asegurarPreguntas(); let sel = mezclarArreglo(preguntasGlobales).slice(0, 6); let pares = []; sel.forEach((q, i) => { let qImg = q.imagen ? `<img src="${q.imagen}">` : ""; pares.push({id:i, text: (q.pregunta.length>40 ? q.pregunta.substring(0,40)+"..." : q.pregunta) + qImg }); let ans = q.opciones[q.respuesta_correcta]; let ansTxt = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}">` : (ans.length>40 ? ans.substring(0,40)+"..." : ans); pares.push({id:i, text: ansTxt }); }); cartasRev = mezclarArreglo(pares); pRes=0; c1=null; c2=null; let h=""; cartasRev.forEach((c, i) => h+=`<div class="carta" id="carta-${i}" onclick="vCart(${i})">?</div>`); document.getElementById('memorama-tablero').innerHTML = h; }
+        function vCart(i) { let ui=document.getElementById('carta-'+i); if(ui.classList.contains('resuelta')||ui.classList.contains('volteada')||(c1&&c2)) return; playTone(400, 'sine', 0.05); ui.classList.add('volteada'); ui.innerHTML=cartasRev[i].text; if(!c1) c1={idx:i, val:cartasRev[i].id}; else { c2={idx:i, val:cartasRev[i].id}; if(c1.val===c2.val) { playCoin(); addMonedas(5); document.getElementById('carta-'+c1.idx).classList.add('resuelta'); ui.classList.add('resuelta'); pRes++; c1=null; c2=null; if(pRes===6) setTimeout(()=>alertaModal("¡Perfecto!", "+30🪙", "victoria", iniciarMemorama, null), 500); } else { playError(); setTimeout(()=>{ document.getElementById('carta-'+c1.idx).classList.remove('volteada'); document.getElementById('carta-'+c1.idx).innerText="?"; ui.classList.remove('volteada'); ui.innerText="?"; c1=null; c2=null; }, 1000); } } }
+
+        let ahPal="", ahOc=[], ahVid=5;
+        async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => { let ans = q.opciones[q.respuesta_correcta]; if (!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length >= 3 && ans.length <= 16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd = mezclarArreglo(qV)[0]; ahPal = rnd.opciones[rnd.respuesta_correcta].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText = "Pista: " + rnd.pregunta; window.ahExp = rnd.explicacion ? `\n\n💡 Dato: ${rnd.explicacion}` : ""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; }
+        function adivLet(l) { document.getElementById('tec-'+l).disabled=true; if(ahPal.includes(l)){ playTone(600,'sine',0.1); addMonedas(1); for(let i=0;i<ahPal.length;i++) if(ahPal[i]===l) ahOc[i]=l; } else { playError(); ahVid--; } document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(ahVid)+"🖤".repeat(5-ahVid); if(!ahOc.includes('_')) setTimeout(()=>alertaModal("¡Rescate Exitoso!", "+15🪙" + window.ahExp, "victoria", iniciarAhorcado, null),300); if(ahVid===0) setTimeout(()=>alertaModal("Fallaste", "Era: "+ahPal + window.ahExp, "derrota", iniciarAhorcado, null),300); }
+
+        let flashQ = [];
+        async function iniciarFlashcards() { abrirPantalla('juego-flashcards'); await asegurarPreguntas(); flashQ = mezclarArreglo(preguntasGlobales); document.getElementById('fc-card').classList.remove('flipped'); sigFC(); }
+        function sigFC() { if(flashQ.length === 0) flashQ = mezclarArreglo(preguntasGlobales); let q = flashQ.pop(); let card = document.getElementById('fc-card'); card.classList.remove('flipped'); setTimeout(() => { let ans = q.opciones[q.respuesta_correcta]; let imgFront = q.imagen ? `<br><img src="${q.imagen}" style="max-width:100%; max-height:100px; margin-top:10px; border-radius:5px;">` : ""; let ansHtml = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}" style="max-width:100%; max-height:100px; border-radius:5px;">` : ans; let expHtml = q.explicacion ? `<div style="font-size:13px; font-weight:normal; margin-top:10px; border-top:1px solid rgba(255,255,255,0.3); padding-top:10px;">💡 <strong>Dato:</strong> ${q.explicacion}</div>` : ""; let pregFondo = `<div style="color:#a2a8d3; font-size:12px; margin-bottom:8px; font-style:italic; line-height:1.2; border-bottom:1px dashed #4361ee; padding-bottom:5px;">${q.pregunta.length > 80 ? q.pregunta.substring(0,80) + '...' : q.pregunta}</div>`; document.getElementById('fc-front').innerHTML = `<div style="color:#f1c40f; font-size:12px; margin-bottom:10px; text-transform:uppercase; font-weight:bold;">${q.materia}</div><strong style="font-size:16px; line-height:1.4;">${q.pregunta}</strong>${imgFront}`; document.getElementById('fc-back').innerHTML = `${pregFondo}<div style="margin-bottom:5px; color:#27ae60; font-size:12px; font-weight:bold;">RESPUESTA CORRECTA</div><strong style="font-size:18px;">${ansHtml}</strong>${expHtml}`; }, 200); }
+        function voltearFlashcard() { document.getElementById('fc-card').classList.toggle('flipped'); playTone(400, 'sine', 0.1); }
 
         actualizarUI();
+        const defTrofeos = []; for(let i=1; i<=82; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
+        defTrofeos[0] = {id:1, icon:'🌱', name:'Despertar', desc:'1ra pregunta'}; defTrofeos[10] = {id:11, icon:'🔥', name:'Chispa', desc:'3 correctas seguidas'}; defTrofeos[29] = {id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS', desc:'128 aciertos'}; defTrofeos[39] = {id:40, icon:'🥷', name:'Fantasma', desc:'Sin advertencias'};
+        defTrofeos[67] = {id:68, icon:'🦅', name:'Ojo Águila', desc:'Gana Vista Águila'}; 
+        function renderizarTrofeos() { const ui = document.getElementById('lista-trofeos'); ui.innerHTML = ''; defTrofeos.forEach(t => { const unl = playerStats.trofeos.includes(t.id); ui.innerHTML += `<div class="trofeo-card ${unl?'desbloqueado':''}" title="${t.desc}"><div class="trofeo-icon">${t.icon}</div><div class="trofeo-label">${t.name}</div></div>`; }); document.getElementById('lbl-trofeos-count').innerText = playerStats.trofeos.length; document.getElementById('barra-trofeos').style.width = (playerStats.trofeos.length * (100/82)) + '%'; }
         renderizarTrofeos();
     </script>
 </body>
