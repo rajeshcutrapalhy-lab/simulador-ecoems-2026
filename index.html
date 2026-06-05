@@ -583,7 +583,7 @@
         // Toggler 100% seguro para el acordeón
         window.toggleRevPanel = function(idBtn) {
             let panel = document.getElementById(idBtn);
-            if (panel.style.display === 'none') panel.style.display = 'block';
+            if (panel.style.display === 'none' || panel.style.display === '') panel.style.display = 'block';
             else panel.style.display = 'none';
         }
 
@@ -599,7 +599,7 @@
                     let cC = oC.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oC}" class="img-fluida" style="max-height:80px;">`:oC; 
                     let expHtml = d.explicacion ? `<div style="background: rgba(52, 152, 219, 0.2); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 13px; color: #a2a8d3; text-align: left; border-left: 3px solid #4361ee;"><strong>💡 Explicación:</strong> ${d.explicacion}</div>` : ""; 
                     
-                    html += `<button class="btn-acordeon" style="border-left-color:#e74c3c;" onclick="toggleRevPanel('panel-rev-${i}')">${i+1}. ${d.pregunta.substring(0,35)}...</button>
+                    html += `<button class="btn-acordeon" style="border-left-color:#e74c3c;" onclick="toggleRevPanel('panel-rev-${i}')">❌ Pregunta ${i+1} (${d.materia}) - Toca para ver</button>
                              <div class="panel-acordeon" id="panel-rev-${i}" style="display:none; text-align:left; font-size:14px; background:#0f3460;">
                              <p style="font-weight:bold;">${d.pregunta}</p>${d.imagen?`<img src="${d.imagen}" class="img-fluida" style="max-height:100px; margin-bottom:15px;">`:''} 
                              <div style="background:rgba(233,69,96,0.2); padding:10px; border-radius:5px; margin-bottom:5px;"><strong style="color:#e94560;">❌ Elegiste:</strong><br>${cS}</div>
@@ -610,7 +610,6 @@
             html += `<button class="btn btn-gris" style="margin-top:20px;" onclick="location.reload()">Volver al Menú Principal</button>`; 
             document.getElementById('contenedor-examen').innerHTML = html; window.scrollTo(0,0);
         }
-
         // ==========================================
         // 🦅 NUEVO 4: VISTA DE ÁGUILA REPARADA
         // ==========================================
