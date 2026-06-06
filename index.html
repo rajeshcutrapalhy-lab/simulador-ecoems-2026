@@ -145,7 +145,90 @@
         .anim-brillo { animation: brillo 1.5s infinite; }
         .anim-temblor-modal { animation: temblor 0.5s ease; }
         
-        .skin-0 { border-color: #e94560; } .skin-1 { border-color: #fff; filter: grayscale(1) invert(1); } .skin-2 { border-color: #00f3ff; filter: hue-rotate(180deg); box-shadow: 0 0 15px #00f3ff; } .skin-3 { border-color: #f1c40f; filter: brightness(1.5) contrast(1.2); box-shadow: 0 0 20px #f1c40f; }
+        .skin-0 { border-color: #e94560; } .skin-1 { border-color: #fff; filter: grayscale(1) invert(1); } .skin-2 { border-color: #00f3ff; filter: hue-rotate(180deg); box-shadow: 0 0 15px #00f3ff; } .skin-3 { border-color: #f1c40f; filter: brightness(1.5) contrast(1.2); box-shadow: 0 0 20px #f1c40f; } 
+       
+        /* --- MOTOR RPG 2D --- */
+#rpg-world {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 320px;
+    background: #2ecc71; /* Piso verde tipo pasto o alfombra */
+    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    border: 4px solid #0f3460;
+    border-radius: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.rpg-obj {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 2px black;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.obj-desk { background: #34495e; top: 20px; left: 20px; }
+.obj-arcade { background: #8e44ad; top: 20px; right: 20px; }
+.obj-shop { background: #f39c12; bottom: 20px; left: 20px; }
+.obj-tree { background: #16a085; bottom: 20px; right: 20px; }
+
+.obj-label { font-size: 9px; margin-top: 5px; text-transform: uppercase; background: rgba(0,0,0,0.6); padding: 2px 4px; border-radius: 4px;}
+
+#rpg-player {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    transition: transform 0.15s ease-out; /* Movimiento fluido */
+    z-index: 10;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.dpad-btn {
+    background: #0f3460;
+    color: white;
+    border: 2px solid #4361ee;
+    border-radius: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dpad-btn:active { background: #4361ee; transform: scale(0.9); }
+
+#btn-accion {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-weight: bold;
+    font-size: 20px;
+    background: #2c3e50;
+    color: white;
+    border: 4px solid #7f8c8d;
+    transition: 0.2s;
+}
+#btn-accion.activo {
+    background: #e94560;
+    border-color: #ff7675;
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.8);
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
@@ -164,21 +247,36 @@
         </div>
     </div>
 
-    <div id="bienvenida" class="pantalla">
+   <div id="bienvenida" class="pantalla">
         <div class="top-stats"><span class="stat-racha">🔥 Racha: <span id="ui-racha">0</span> días</span><span class="stat-monedas">🪙 <span id="ui-monedas">0</span></span></div>
-        <div class="contenedor-avatar" onclick="interactuarPixelote()">
-            <div id="burbuja-pixelote" class="burbuja-texto">¡Tócame!</div>
-            <img src="img/pixelote-estudiando.jpg" class="logo-pixelote" id="ui-avatar" alt="Pixelote">
-        </div>
-        <h2 style="margin: 0; color: #4361ee; margin-bottom:15px;">ECOEMS 2026</h2>
         
-        <button class="btn btn-verde" onclick="comenzarSimulacro()">📝 EMPEZAR SIMULACRO</button>
-        <button class="btn btn-morado" onclick="abrirPantalla('zona-arcade')">🕹️ ZONA ARCADE</button>
-        <button class="btn btn-dorado" onclick="abrirTienda()">🛍️ TIENDA DE PIXELOTE</button>
-        <button class="btn btn-azul" onclick="mostrarHistorial()">🌳 ÁRBOL DE HABILIDADES</button>
+        <h2 style="margin: 0; color: #4361ee; margin-bottom:15px; font-size: 18px;">EL CUARTEL DE PIXELOTE</h2>
+        <p style="color:#a2a8d3; font-size: 12px; margin-bottom: 15px;">Usa las flechas o el D-Pad para explorar. Acércate a un objeto.</p>
+        
+        <!-- EL MUNDO 2D -->
+        <div id="rpg-world">
+            <div class="rpg-obj obj-desk">💻<div class="obj-label">Examen</div></div>
+            <div class="rpg-obj obj-arcade">🕹️<div class="obj-label">Arcade</div></div>
+            <div class="rpg-obj obj-shop">🛍️<div class="obj-label">Tienda</div></div>
+            <div class="rpg-obj obj-tree">🌳<div class="obj-label">Dominios</div></div>
+            
+            <img src="img/pixelote-estudiando.jpg" id="rpg-player" alt="Player">
+        </div>
+
+        <!-- CONTROLES ESTILO GAMEBOY -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; max-width: 320px; margin-left: auto; margin-right: auto;">
+            <div style="display: grid; grid-template-columns: 45px 45px 45px; gap: 5px;">
+                <div></div><button class="dpad-btn" onclick="moverRPG(0, -1)">⬆️</button><div></div>
+                <button class="dpad-btn" onclick="moverRPG(-1, 0)">⬅️</button>
+                <button class="dpad-btn" onclick="moverRPG(0, 1)">⬇️</button>
+                <button class="dpad-btn" onclick="moverRPG(1, 0)">➡️</button>
+            </div>
+            <div>
+                <button id="btn-accion" onclick="interactuarRPG()">A</button>
+            </div>
+        </div>
         
         <div class="progreso-trofeos" style="margin-top:25px;">Trofeos Totales: <span id="lbl-trofeos-count">0</span> / 82<div class="barra-bg"><div id="barra-trofeos" class="barra-fill" style="width: 0%;"></div></div></div>
-        <div class="contenedor-trofeos" id="lista-trofeos"></div>
     </div>
 
     <div id="zona-tienda" class="pantalla">
@@ -689,6 +787,85 @@
             if(!hE) html += `<div style="padding:20px; background:rgba(39,174,96,0.2); color:#27ae60; font-weight:bold; border-radius:10px; margin-bottom:20px;">¡No tuviste errores!</div>`;
             html += `<button class="btn btn-gris" onclick="location.reload()">Volver al Menú Principal</button>`; document.getElementById('contenedor-examen').innerHTML = html; window.scrollTo(0,0);
         }
+
+        // ==========================================
+        // 🗺️ MOTOR RPG 2D (EL CUARTEL)
+        // ==========================================
+        let rpgPx = 140, rpgPy = 140; // Posición inicial al centro (320/2 - 40/2)
+        const rpgSpeed = 20; // Velocidad de movimiento por paso
+        let zonaActiva = null;
+
+        // Definimos dónde está cada cosa en el mapa de 320x320
+        const zonasMundo = [
+            { id: 'sim', x: 20, y: 20, w: 60, h: 60, accion: comenzarSimulacro, msg: 'A - Simulacro' },
+            { id: 'arc', x: 240, y: 20, w: 60, h: 60, accion: () => abrirPantalla('zona-arcade'), msg: 'A - Arcade' },
+            { id: 'tie', x: 20, y: 240, w: 60, h: 60, accion: abrirTienda, msg: 'A - Tienda' },
+            { id: 'his', x: 240, y: 240, w: 60, h: 60, accion: mostrarHistorial, msg: 'A - Dominio' }
+        ];
+
+        function inicializarRPG() {
+            document.getElementById('rpg-player').style.transform = `translate(${rpgPx}px, ${rpgPy}px)`;
+        }
+
+        function moverRPG(dx, dy) {
+            // Calculamos nueva posición
+            let newX = rpgPx + (dx * rpgSpeed);
+            let newY = rpgPy + (dy * rpgSpeed);
+            
+            // Límites de la habitación (320px mapa - 40px jugador = 280 max)
+            if (newX >= 0 && newX <= 280) rpgPx = newX;
+            if (newY >= 0 && newY <= 280) rpgPy = newY;
+            
+            // Aplicamos movimiento visual
+            document.getElementById('rpg-player').style.transform = `translate(${rpgPx}px, ${rpgPy}px)`;
+            
+            checarColisionMundo();
+        }
+
+        function checarColisionMundo() {
+            let colisionDetectada = false;
+            let btnA = document.getElementById('btn-accion');
+
+            for (let z of zonasMundo) {
+                // Lógica de colisión de cajas 2D (AABB) con margen de tolerancia
+                if (rpgPx < z.x + z.w && rpgPx + 40 > z.x && rpgPy < z.y + z.h && rpgPy + 40 > z.y) {
+                    zonaActiva = z;
+                    colisionDetectada = true;
+                    btnA.innerText = "¡A!";
+                    btnA.classList.add('activo');
+                    break;
+                }
+            }
+
+            if (!colisionDetectada) {
+                zonaActiva = null;
+                btnA.innerText = "A";
+                btnA.classList.remove('activo');
+            }
+        }
+
+        function interactuarRPG() {
+            if (zonaActiva) {
+                playCoin(); // Sonido de confirmación
+                zonaActiva.accion();
+            } else {
+                playMetal(); // Sonido de error/vacío
+            }
+        }
+
+        // Permitir jugar con el teclado en la PC
+        document.addEventListener('keydown', (e) => {
+            // Solo mover si estamos en el menú principal
+            if (document.getElementById('bienvenida').style.display !== 'none') {
+                if (e.key === 'ArrowUp' || e.key === 'w') moverRPG(0, -1);
+                if (e.key === 'ArrowDown' || e.key === 's') moverRPG(0, 1);
+                if (e.key === 'ArrowLeft' || e.key === 'a') moverRPG(-1, 0);
+                if (e.key === 'ArrowRight' || e.key === 'd') moverRPG(1, 0);
+                if (e.key === 'Enter' || e.key === ' ') interactuarRPG();
+            }
+        });
+
+        inicializarRPG(); // Arrancar en posición central
 
         actualizarUI();
         const defTrofeos = []; for(let i=1; i<=82; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
