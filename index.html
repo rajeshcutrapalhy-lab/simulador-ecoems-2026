@@ -197,13 +197,12 @@
     height: 40px;
     border-radius: 50%;
     border: 3px solid #fff;
-    transition: transform 0.15s ease-out;
     z-index: 10;
     box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-    /* Forzar que el origen del avatar sea arriba a la izquierda para cálculos precisos */
-    top: 0; 
-    left: 0;
+    top: 140px; 
+    left: 140px;
 }
+        
     </style>
 </head>
 <body>
@@ -764,78 +763,108 @@
         }
 
         // ==========================================
-        // 🗺️ MOTOR RPG 2D (EL CUARTEL)
+        // 🗺️ MOTOR RPG 2D (EL CUARTEL - V1.2 COMPLETAMENTE CALIBRADO)
         // ==========================================
-        let rpgPx = 140, rpgPy = 140; // Posición inicial al centro (320/2 - 40/2)
-        const rpgSpeed = 20; // Velocidad de movimiento por paso
+        let rpgPx = 140, rpgPy = 140; // Centro exacto del mapa
+        const rpgSpeed = 20; // Tamaño del paso (múltiplo perfecto para la rejilla)
         let zonaActiva = null;
 
-        // Definimos dónde está cada cosa en el mapa de 320x320
+        // MATRIZ DE COLISIÓN EXACTA (Coincide al 100% con el top y left del CSS)
         const zonasMundo = [
-            { id: 'sim', x: 20, y: 20, w: 60, h: 60, accion: comenzarSimulacro, msg: 'A - Simulacro' },
-            { id: 'arc', x: 240, y: 20, w: 60, h: 60, accion: () => abrirPantalla('zona-arcade'), msg: 'A - Arcade' },
-            { id: 'tie', x: 20, y: 240, w: 60, h: 60, accion: abrirTienda, msg: 'A - Tienda' },
-            { id: 'his', x: 240, y: 240, w: 60, h: 60, accion: mostrarHistorial, msg: 'A - Dominio' }
+            { id: 'sim', x: 20,  y: 20,  w: 60, h: 60, accion: comenzarSimulacro },
+            { id: 'arc', x: 240, y: 20,  w: 60, h: 60, accion: () => abrirPantalla('zona-arcade') },
+            { id: 'tie', x: 20,  y: 240, w: 60, h: 60, accion: abrirTienda },
+            { id: 'his', x: 240, y: 240, w: 60, h: 60, accion: mostrarHistorial }
         ];
 
         function inicializarRPG() {
-            document.getElementById('rpg-player').style.transform = `translate(${rpgPx}px, ${rpgPy}px)`;
+            rpgPx = 140;
+            rpgPy = 140;
+            let playerEl = document.getElementById('rpg-player');
+            if (playerEl) {
+                playerEl.style.left = rpgPx + "px";
+                playerEl.style.top = rpgPy + "px";
+            }
+            checarColisionMundo(); // Verificación inicial
         }
 
         function moverRPG(dx, dy) {
-            // Calculamos nueva posición
+            // Calcular nueva posición teórica
             let newX = rpgPx + (dx * rpgSpeed);
             let newY = rpgPy + (dy * rpgSpeed);
             
-            // Límites de la habitación (320px mapa - 40px jugador = 280 max)
+            // Límites del mapa (320px de ancho - 40px del tamaño del jugador = 280px máx)
             if (newX >= 0 && newX <= 280) rpgPx = newX;
             if (newY >= 0 && newY <= 280) rpgPy = newY;
             
-            // Aplicamos movimiento visual
-            document.getElementById('rpg-player').style.transform = `translate(${rpgPx}px, ${rpgPy}px)`;
+            // Actualizar la posición usando 'left' y 'top' directamente para evitar conflictos
+            let playerEl = document.getElementById('rpg-player');
+            if (playerEl) {
+                playerEl.style.left = rpgPx + "px";
+                playerEl.style.top = rpgPy + "px";
+            }
             
             checarColisionMundo();
         }
 
-          function checarColisionMundo() {
-    let colisionDetectada = false;
-    let btnA = document.getElementById('btn-accion');
+        function checarColisionMundo() {
+            let colisionDetectada = false;
+            let btnA = document.getElementById('btn-accion');
+            if (!btnA) return;
 
-    for (let z of zonasMundo) {
-        // Expandimos la tolerancia de la colisión restando/sumando 10 píxeles
-        if (rpgPx < (z.x + z.w + 10) && (rpgPx + 40) > (z.x - 10) && 
-            rpgPy < (z.y + z.h + 10) && (rpgPy + 40) > (z.y - 10)) {
-            
-            zonaActiva = z;
-            colisionDetectada = true;
-            btnA.innerText = "¡A!";
-            btnA.classList.add('activo');
-            break;
+            // Caja de colisión del jugador (40x40 píxeles)
+            let pW = 40;
+            let pH = 40;
+
+            for (let z of zonasMundo) {
+                // Algoritmo AABB clásico con un área de proximidad de 15 píxeles extra para que sea cómodo entrar
+                let margen = 15;
+                if (rpgPx < (z.x + z.w + margen) && (rpgPx + pW) > (z.x - margen) && 
+                    rpgPy < (z.y + z.h + margen) && (rpgPy + pH) > (z.y - margen)) {
+                    
+                    zonaActiva = z;
+                    colisionDetectada = true;
+                    btnA.innerText = "¡A!";
+                    btnA.classList.add('activo');
+                    break;
+                }
+            }
+
+            if (!colisionDetectada) {
+                zonaActiva = null;
+                btnA.innerText = "A";
+                btnA.classList.remove('activo');
+            }
         }
-    }
 
-    if (!colisionDetectada) {
-        zonaActiva = null;
-        btnA.innerText = "A";
-        btnA.classList.remove('activo');
-    }
-          }     
+        function interactuarRPG() {
+            if (zonaActiva) {
+                playCoin(); // Sonido de éxito
+                zonaActiva.accion();
+            } else {
+                playMetal(); // Sonido de vacío
+            }
+        }
 
-        
-        // Permitir jugar con el teclado en la PC
+        // Eventos del Teclado calibrados
         document.addEventListener('keydown', (e) => {
-            // Solo mover si estamos en el menú principal
-            if (document.getElementById('bienvenida').style.display !== 'none') {
-                if (e.key === 'ArrowUp' || e.key === 'w') moverRPG(0, -1);
-                if (e.key === 'ArrowDown' || e.key === 's') moverRPG(0, 1);
-                if (e.key === 'ArrowLeft' || e.key === 'a') moverRPG(-1, 0);
-                if (e.key === 'ArrowRight' || e.key === 'd') moverRPG(1, 0);
-                if (e.key === 'Enter' || e.key === ' ') interactuarRPG();
+            // Solo se mueve si la pantalla de bienvenida está visible
+            let bienvenidaEl = document.getElementById('bienvenida');
+            if (bienvenidaEl && bienvenidaEl.style.display !== 'none') {
+                if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') moverRPG(0, -1);
+                if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') moverRPG(0, 1);
+                if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') moverRPG(-1, 0);
+                if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') moverRPG(1, 0);
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Evita el scroll con la barra espaciadora
+                    interactuarRPG();
+                }
             }
         });
 
-        inicializarRPG(); // Arrancar en posición central
-
+        // Asegurar que el script corra la inicialización al cargar
+        setTimeout(inicializarRPG, 100);
+        
         actualizarUI();
         const defTrofeos = []; for(let i=1; i<=82; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
         defTrofeos[0] = {id:1, icon:'🌱', name:'Despertar', desc:'1ra pregunta'}; defTrofeos[10] = {id:11, icon:'🔥', name:'Chispa', desc:'3 correctas seguidas'}; defTrofeos[29] = {id:30, icon:'👁️‍🗨️', name:'Dios ECOEMS', desc:'128 aciertos'}; defTrofeos[39] = {id:40, icon:'🥷', name:'Fantasma', desc:'Sin advertencias'};
