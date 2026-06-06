@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador ECOEMS 2026 - Master Edition V10 (Exacta 128)</title>
+    <title>Simulador ECOEMS 2026 - Master Edition V10</title>
     
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -123,10 +123,6 @@
         .skill-line { height: 4px; background: #1a1a2e; flex-grow: 1; margin: 0 2px; transition: 0.3s;}
         .skill-line.activo { background: #27ae60; box-shadow: 0 0 5px #27ae60; }
         .skill-line.activo-master { background: #f1c40f; box-shadow: 0 0 5px #f1c40f; }
-
-        .lista-top { background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; }
-        .top-item { display: flex; justify-content: space-between; font-size: 18px; border-bottom: 1px solid #4361ee; padding: 5px 0; font-weight: bold;}
-        .top-item:nth-child(1) { color: #f1c40f; } .top-item:nth-child(2) { color: #bdc3c7; } .top-item:nth-child(3) { color: #cd7f32; }
         
         .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
         .shop-item { background: #0f3460; border: 2px solid #4361ee; border-radius: 10px; padding: 15px; }
@@ -150,9 +146,6 @@
         .anim-temblor-modal { animation: temblor 0.5s ease; }
         
         .skin-0 { border-color: #e94560; } .skin-1 { border-color: #fff; filter: grayscale(1) invert(1); } .skin-2 { border-color: #00f3ff; filter: hue-rotate(180deg); box-shadow: 0 0 15px #00f3ff; } .skin-3 { border-color: #f1c40f; filter: brightness(1.5) contrast(1.2); box-shadow: 0 0 20px #f1c40f; }
-
-        /* NUEVO: ESTILO PARA EL BLOQUEO */
-        .bloqueado-ui { pointer-events: none !important; opacity: 0.5; filter: grayscale(1); }
     </style>
 </head>
 <body>
@@ -244,7 +237,7 @@
             <div id="matriz-pregunta" style="font-size: 16px; margin-bottom:15px;">Awaiting Query...</div>
             <div id="matriz-opciones" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"></div>
         </div>
-        <button class="btn btn-gris" style="margin-top: 20px; border-color:#0f0; color:#0f0;" onclick="cerrarJuego(window.matrizInt)">Desconectar</button>
+        <button class="btn btn-gris" style="margin-top: 20px; border-color:#0f0; color:#0f0;" onclick="cerrarJuego(matrizInt)">Desconectar</button>
     </div>
 
     <div id="juego-balanza" class="pantalla">
@@ -274,7 +267,7 @@
         <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span id="met-vidas" style="font-size:20px;">❤️❤️❤️</span><span style="color:#f1c40f; font-weight:bold; font-size:20px;">🪙 <span id="met-score">0</span></span></div>
         <div style="background: #0f3460; padding: 10px; border-radius: 10px; border: 1px solid #4361ee; min-height:40px; font-weight:bold;" id="met-pregunta">Cargando...</div>
         <div class="met-area" id="met-area"></div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(window.metInt)">Huir a la base</button>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(metInt)">Huir a la base</button>
     </div>
 
     <div id="juego-laberinto" class="pantalla">
@@ -285,7 +278,7 @@
             <div id="lab-preg" style="margin-bottom:20px; font-weight:bold; font-size:15px;">Cargando...</div>
             <div id="lab-ops"></div>
         </div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(window.labInt)">Abandonar expedición</button>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(labInt)">Abandonar expedición</button>
     </div>
 
     <div id="juego-flashcards" class="pantalla">
@@ -315,7 +308,7 @@
         <p style="font-size: 18px; color: #27ae60;">Aciertos: <span id="frenesi-score" style="font-weight:bold;">0</span></p>
         <div style="background: #0f3460; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #4361ee;" id="frenesi-caja-preg"><strong id="frenesi-pregunta">Cargando...</strong></div>
         <div id="frenesi-opciones"></div>
-        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(window.fInt)">Salir</button>
+        <button class="btn btn-gris" style="margin-top: 20px;" onclick="cerrarJuego(fInt)">Salir</button>
     </div>
 
     <div id="juego-ahorcado" class="pantalla">
@@ -329,7 +322,6 @@
 
     <div id="juego-aguila" class="pantalla">
         <h3 style="color: #3498db;">🦅 Vista de Águila</h3>
-        <p style="color:#a2a8d3; font-size:12px; margin-bottom:15px;">Encuentra y selecciona la respuesta correcta antes de equivocarte.</p>
         <div class="aguila-texto" id="aguila-contenido">Cargando...</div>
         <button class="btn btn-gris" style="margin-top: 30px;" onclick="cerrarJuego(null)">Abortar misión</button>
     </div>
@@ -346,7 +338,7 @@
         <div class="tarjeta-pregunta" id="tarjeta-principal" style="padding: 25px;"><div id="contenedor-examen"></div></div>
         <div id="temporizador">⏱️ 03:00:00</div>
     </div>
-    
+
     <script>
         // ==========================================
         // 🎵 MOTOR AUDIO EXPANDIDO
@@ -438,202 +430,265 @@
             }
         }
 
+        // --- LOS JUEGOS ARCADE SE MANTIENEN IGUAL (ARQUITECTO, MATRIZ, BALANZA, SALTO, ETC) ---
+        let arqVidas = 3, arqScore = 0, arqQ = [];
+        async function iniciarArquitecto() { abrirPantalla('juego-arquitecto'); arqVidas = 3; arqScore = 0; document.getElementById('arq-score').innerText = "0"; upArqV(); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => q.materia.includes("Matemáticas") || q.materia === "Física" || q.materia === "Habilidad Matemática"); if(qV.length===0) qV = preguntasGlobales; arqQ = mezclarArreglo(qV); sigArq(); }
+        function sigArq() { if(arqQ.length === 0) return finArq(true); let q = arqQ.pop(); window.curArqQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:100px; border-radius:5px; margin-top:10px;">` : ""; document.getElementById('arq-pregunta').innerHTML = q.pregunta + imgH; let h = ""; q.opciones.forEach((op, i) => { let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op; h += `<button class="viga-btn" onclick="clicArq(${i}, this)">[PTR] ${t}</button>`; }); document.getElementById('arq-opciones').innerHTML = h; }
+        function clicArq(i, btn) { if(i === window.curArqQ.respuesta_correcta) { playWeld(); btn.style.background = "#27ae60"; btn.style.borderColor = "#2ecc71"; btn.style.color = "#fff"; addMonedas(4); arqScore++; document.getElementById('arq-score').innerText = arqScore; setTimeout(sigArq, 500); } else { playMetal(); btn.style.opacity = "0.3"; btn.disabled = true; arqVidas--; upArqV(); if(arqVidas <= 0) setTimeout(()=>finArq(false), 300); } }
+        function upArqV() { document.getElementById('arq-vidas').innerText = "❤️".repeat(arqVidas)+"🖤".repeat(3-arqVidas); }
+        function finArq(win) { playerStats.arcadeArq++; guardarStats(); if(arqScore >= 5) checarLogroArcade(77, "Ingeniero Maestro"); if(arqVidas === 3 && arqScore >= 5) checarLogroArcade(78, "Soldadura Perfecta"); alertaModal(win?"¡Estructura Completa!":"Falla Estructural", "Planos resueltos: "+arqScore, win?"victoria":"derrota", iniciarArquitecto, ()=>abrirPantalla('zona-arcade')); }
+
+        let matrizScore = 0, matrizCarga = 0, matrizInt, matrizQ = [];
+        async function iniciarMatriz() { abrirPantalla('juego-matriz'); matrizScore = 0; matrizCarga = 0; document.getElementById('matriz-score').innerText = "0"; await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => q.materia === "Habilidad Matemática"); if(qV.length===0) qV = preguntasGlobales; matrizQ = mezclarArreglo(qV); sigMatriz(); clearInterval(matrizInt); matrizInt = setInterval(tickMatriz, 200); }
+        function sigMatriz() { if(matrizQ.length === 0) return finMatriz(true); let q = matrizQ.pop(); window.curMatQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; filter: grayscale(1) sepia(1) hue-rotate(80deg) brightness(1.5); margin-top:10px;">` : ""; document.getElementById('matriz-pregunta').innerHTML = "> " + q.pregunta + imgH; let h = ""; q.opciones.forEach((op, i) => { let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op; h += `<button class="dato-btn" onclick="clicMatriz(${i}, this)">{ ${t} }</button>`; }); document.getElementById('matriz-opciones').innerHTML = h; }
+        function tickMatriz() { matrizCarga += 0.8; document.getElementById('matriz-barra').style.width = Math.min(100, matrizCarga) + '%'; if(matrizCarga >= 100) finMatriz(false); }
+        function clicMatriz(i, btn) { if(i === window.curMatQ.respuesta_correcta) { playData(); btn.style.background = "#0f0"; btn.style.color = "#000"; matrizCarga = Math.max(0, matrizCarga - 30); addMonedas(3); matrizScore++; document.getElementById('matriz-score').innerText = matrizScore; setTimeout(sigMatriz, 300); } else { playError(); btn.style.background = "#f00"; btn.style.color = "#fff"; btn.style.borderColor = "#f00"; matrizCarga += 20; } }
+        function finMatriz(win) { clearInterval(matrizInt); playerStats.arcadeMatriz++; guardarStats(); if(matrizScore >= 5) checarLogroArcade(79, "Analista de Datos"); if(matrizCarga < 50 && matrizScore >= 5) checarLogroArcade(80, "Código Limpio"); alertaModal(win?"¡Servidor Seguro!":"Datos Corruptos", "Sucesiones resueltas: "+matrizScore, win?"victoria":"derrota", iniciarMatriz, ()=>abrirPantalla('zona-arcade')); }
+
+        let balVidas = 3, balScore = 0, balQ = [];
+        async function iniciarBalanza() { abrirPantalla('juego-balanza'); balVidas = 3; balScore = 0; document.getElementById('bal-score').innerText = "0"; upBalV(); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => q.materia === "Matemáticas"); if(qV.length===0) qV = preguntasGlobales; balQ = mezclarArreglo(qV); sigBal(); }
+        function sigBal() { if(balQ.length === 0) return finBal(true); let q = balQ.pop(); window.curBalQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px; border-radius:5px;">` : ""; document.getElementById('bal-pregunta').innerHTML = q.pregunta + imgH; let h = ""; q.opciones.forEach((op, i) => { let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op; h += `<button class="peso-btn" onclick="clicBal(${i}, this)">${t}</button>`; }); document.getElementById('bal-opciones').innerHTML = h; document.getElementById('bal-contenedor').style.transform = "rotate(0deg)"; }
+        function clicBal(i, btn) { let cont = document.getElementById('bal-contenedor'); if(i === window.curBalQ.respuesta_correcta) { playCoin(); cont.style.borderColor = "#27ae60"; btn.style.background = "#27ae60"; addMonedas(5); balScore++; document.getElementById('bal-score').innerText = balScore; setTimeout(()=>{ cont.style.borderColor = "#8d6e63"; sigBal(); }, 600); } else { playError(); btn.style.opacity = "0.2"; btn.disabled = true; balVidas--; upBalV(); cont.style.transform = "rotate(10deg)"; setTimeout(()=>cont.style.transform = "rotate(-10deg)", 150); setTimeout(()=>cont.style.transform = "rotate(0deg)", 300); if(balVidas <= 0) setTimeout(()=>finBal(false), 400); } }
+        function upBalV() { document.getElementById('bal-vidas').innerText = "❤️".repeat(balVidas)+"🖤".repeat(3-balVidas); }
+        function finBal(win) { playerStats.arcadeBal++; guardarStats(); if(balScore >= 5) checarLogroArcade(81, "Alquimista"); if(balVidas === 3 && balScore >= 5) checarLogroArcade(82, "Equilibrio Perfecto"); alertaModal(win?"¡Ecuación Perfecta!":"Desequilibrio", "Ecuaciones balanceadas: "+balScore, win?"victoria":"derrota", iniciarBalanza, ()=>abrirPantalla('zona-arcade')); }
+
+        let saltoNivel=1, saltoQ=[];
+        async function iniciarSalto() { abrirPantalla('juego-salto'); saltoNivel=1; document.getElementById('salto-score').innerText="0"; document.getElementById('salto-nivel').innerText="1"; let pix = document.getElementById('salto-pix'); pix.style.bottom = "10px"; pix.classList.remove('anim-caida'); pix.classList.remove('anim-salto-up'); await asegurarPreguntas(); saltoQ = mezclarArreglo(preguntasGlobales); sigSalto(); }
+        function sigSalto() { if(saltoQ.length===0) return finSalto(true); let q = saltoQ.pop(); window.curSaltoQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px; border-radius:5px;">` : ""; document.getElementById('salto-pregunta').innerHTML = q.pregunta + imgH; let pos = [{b:180, l:'2%'}, {b:180, l:'53%'}, {b:80, l:'2%'}, {b:80, l:'53%'}]; let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px;">` : op; h += `<button class="plat-btn" style="bottom:${pos[i].b}px; left:${pos[i].l}; height:90px;" onclick="clicSalto(${i}, this)">${t}</button>`; }); document.getElementById('salto-plataformas').innerHTML = h; }
+        function clicSalto(i, btn) { let pix = document.getElementById('salto-pix'); if(i === window.curSaltoQ.respuesta_correcta) { playCoin(); btn.style.background = "#f1c40f"; btn.style.borderColor = "#f39c12"; addMonedas(3); saltoNivel++; document.getElementById('salto-score').innerText = (saltoNivel-1)*3; document.getElementById('salto-nivel').innerText = saltoNivel; pix.classList.remove('anim-salto-up'); void pix.offsetWidth; pix.classList.add('anim-salto-up'); setTimeout(sigSalto, 600); } else { playError(); btn.style.background = "#e74c3c"; btn.style.borderColor = "#c0392b"; btn.style.transform = "rotate(15deg) translateY(20px)"; btn.style.opacity = "0"; pix.classList.remove('anim-caida'); void pix.offsetWidth; pix.classList.add('anim-caida'); setTimeout(()=>finSalto(false), 600); } }
+        function finSalto(win) { playerStats.arcadeSalto = (playerStats.arcadeSalto||0) + 1; guardarStats(); if(saltoNivel > 10) checarLogroArcade(75, "Rana Saltarina"); if(saltoNivel > 20) checarLogroArcade(76, "Astronauta Cuántico"); alertaModal(win?"¡Llegaste a la cima!":"Caída Libre", "Alcanzaste el nivel: "+saltoNivel, win?"victoria":"derrota", iniciarSalto, ()=>abrirPantalla('zona-arcade')); }
+
+        let metVidas=3, metScore=0, metQ=[], metSpeed=1.5, metTop=[0,0,0,0], metInt, metActivo=false;
+        async function iniciarMeteoritos() { abrirPantalla('juego-meteoritos'); metVidas=3; metScore=0; metSpeed=1.5; metActivo=true; await asegurarPreguntas(); metQ = mezclarArreglo(preguntasGlobales); document.getElementById('met-score').innerText = "0"; document.getElementById('met-vidas').innerText = "❤️".repeat(3); sigMet(); clearInterval(metInt); metInt = setInterval(caidaMet, 50); }
+        function sigMet() { if(metQ.length===0) return finMet(true); let q = metQ.pop(); window.curMetQ = q; let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:50px; margin-top:5px;">`:""; document.getElementById('met-pregunta').innerHTML = (q.pregunta.length>80?q.pregunta.substring(0,80)+"...":q.pregunta) + imgHtml; metTop = [-20, -70, -120, -170]; metTop = mezclarArreglo(metTop); let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op.substring(0,40); h += `<button class="met-btn" id="m-btn-${i}" style="left:${i%2===0?'2%':'52%'}; top:${metTop[i]}px;" onclick="clicMet(${i})">${t}</button>`; }); document.getElementById('met-area').innerHTML = h; }
+        function caidaMet() { if(!metActivo) return; let algunVivo = false; for(let i=0; i<4; i++){ let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') continue; algunVivo = true; metTop[i] += metSpeed; b.style.top = metTop[i] + 'px'; if(metTop[i] > 280) { b.style.display = 'none'; if(i === window.curMetQ.respuesta_correcta) { metVidas--; playError(); document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) { finMet(false); return; } else { sigMet(); return; } } } } if(!algunVivo) sigMet(); }
+        function clicMet(i) { let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') return; if(i === window.curMetQ.respuesta_correcta) { playCoin(); b.style.background = "#27ae60"; addMonedas(2); metScore++; document.getElementById('met-score').innerText = metScore; metSpeed += 0.1; setTimeout(sigMet, 150); } else { playError(); b.style.display = 'none'; metVidas--; document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) finMet(false); } }
+        function finMet(win) { metActivo=false; clearInterval(metInt); playerStats.arcadeMet++; guardarStats(); if(win || metScore>=5) { checarLogroArcade(71, "Defensor Planetario"); if(metVidas===3) checarLogroArcade(72, "Lluvia Perfecta"); alertaModal("¡Buen trabajo!", "Aciertos: "+metScore, "victoria", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Base Destruida", "Un meteorito impactó la base.", "derrota", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); }
+
+        let labTime=100, labSala=1, labInt, labQ=[];
+        async function iniciarLaberinto() { abrirPantalla('juego-laberinto'); labTime=100; labSala=1; await asegurarPreguntas(); labQ = mezclarArreglo(preguntasGlobales); sigLab(); clearInterval(labInt); labInt = setInterval(()=>{ labTime -= 0.6; document.getElementById('lab-barra').style.width = Math.max(0,labTime)+'%'; document.getElementById('lab-luz-txt').innerText = Math.round(labTime); if(labTime<=0) finLab(false); }, 100); }
+        function sigLab() { if(labSala>10) return finLab(true); document.getElementById('lab-sala').innerText = labSala; let q = labQ.pop(); window.curLabQ = q; document.getElementById('lab-preg').innerHTML = q.pregunta + (q.imagen?`<br><img src="${q.imagen}" style="height:80px; margin-top:10px; border-radius:5px;">`:''); let h = ""; q.opciones.forEach((op,i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="height:40px; border-radius:4px;">` : op; h += `<button class="btn btn-azul" style="font-size:14px; padding:10px;" onclick="clicLab(${i})">${t}</button>`; }); document.getElementById('lab-ops').innerHTML = h; }
+        function clicLab(i) { if(i === window.curLabQ.respuesta_correcta) { playCoin(); labTime = Math.min(100, labTime+15); addMonedas(3); labSala++; sigLab(); } else { playError(); labTime -= 25; document.getElementById('lab-fondo').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('lab-fondo').classList.remove('anim-golpe'), 300); } }
+        function finLab(win) { clearInterval(labInt); playerStats.arcadeLab++; guardarStats(); if(win) { checarLogroArcade(73, "Sobreviviente"); if(labTime>=80) checarLogroArcade(74, "Portador de Luz"); addMonedas(30); alertaModal("¡Escapaste!", "Saliste con vida.\nMonedas: +30🪙", "victoria", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Consumido", "La oscuridad te atrapó.", "derrota", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); }
+
+        let fScore = 0, fTime = 60, fInt, fQ = [];
+        async function iniciarFrenesi() { abrirPantalla('juego-frenesi'); fScore = 0; fTime = 60; document.getElementById('frenesi-score').innerText = 0; document.getElementById('frenesi-reloj').innerText = 60; await asegurarPreguntas(); fQ = mezclarArreglo(preguntasGlobales); sigFrenesi(); fInt = setInterval(() => { fTime--; document.getElementById('frenesi-reloj').innerText = fTime; if(fTime <= 0) cerrarFrenesi(true); }, 1000); }
+        function sigFrenesi() { if(fQ.length === 0) return cerrarFrenesi(true); let q = fQ.pop(); let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:5px; border-radius:5px;">`:""; document.getElementById('frenesi-pregunta').innerHTML = (q.pregunta.length>75?q.pregunta.substring(0,75)+"...":q.pregunta) + imgHtml; let html = ""; q.opciones.forEach((op, i) => { let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height: 40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" style="font-size:14px; padding:10px; margin-bottom:5px;" onclick="checkFrenesi(${i}, ${q.respuesta_correcta})">${texto}</button>`; }); document.getElementById('frenesi-opciones').innerHTML = html; }
+        function checkFrenesi(sel, corr) { if(sel === corr) { playCoin(); fScore++; addMonedas(1); document.getElementById('frenesi-score').innerText = fScore; } else { playError(); document.getElementById('frenesi-caja-preg').classList.add('anim-golpe'); setTimeout(()=> document.getElementById('frenesi-caja-preg').classList.remove('anim-golpe'), 300); } sigFrenesi(); }
+        function cerrarFrenesi(t = false) { clearInterval(fInt); if(t) { let minTop = leaderboard.length < 5 ? 0 : leaderboard.sort((a,b)=>b.score-a.score)[4].score; if(fScore > minTop) { let initials = prompt(`¡Nuevo Récord (${fScore} pts)! Ingresa 3 letras para el Salón de la Fama:`, "PIX"); if(initials) { leaderboard.push({nombre: initials.substring(0,3).toUpperCase(), score: fScore}); localStorage.setItem('ecoems_leaderboard', JSON.stringify(leaderboard)); renderLeaderboard(); } } alertaModal("¡Tiempo Agotado!", `Aciertos: ${fScore}\nMonedas: +${fScore}🪙`, "victoria", iniciarFrenesi, ()=>abrirPantalla('zona-arcade')); } else abrirPantalla('zona-arcade'); }
+
+        let hpPixelote = 100, hpJefe = 100, jefeQ = [], jefeCombo = 0;
+        async function iniciarJefe() { abrirPantalla('juego-jefe'); hpPixelote = 100; hpJefe = 100; jefeCombo = 0; document.getElementById('combo-indicador').classList.remove('mostrar-combo'); document.getElementById('hp-pixelote').style.width = '100%'; document.getElementById('hp-jefe').style.width = '100%'; await asegurarPreguntas(); jefeQ = mezclarArreglo(preguntasGlobales).slice(0, 15); sAtaqueJ(); }
+        function sAtaqueJ() { if (hpPixelote <= 0) return alertaModal("¡Derrota!", "Fuiste vencido.", "derrota", iniciarJefe, null); if (hpJefe <= 0) { addMonedas(50); return alertaModal("¡Victoria!", "Destruiste al Jefe. +50🪙", "victoria", iniciarJefe, null); } if (jefeQ.length === 0) return alertaModal("Empate", "Sin energía.", "derrota", iniciarJefe, null); let q = jefeQ.pop(); document.getElementById('jefe-pregunta').innerHTML = (q.pregunta.length > 100 ? q.pregunta.substring(0,100)+"..." : q.pregunta) + (q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; border-radius:5px;">`:""); let html = ""; q.opciones.forEach((op, i) => { let txt = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" onclick="atqJ(${i}, ${q.respuesta_correcta})">${txt}</button>`; }); document.getElementById('jefe-opciones').innerHTML = html; }
+        function atqJ(sel, corr) { let ind = document.getElementById('combo-indicador'); if (sel === corr) { playHit(); addMonedas(2); jefeCombo++; hpJefe -= (15 + (jefeCombo*5)); document.getElementById('jefe-contenedor').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('jefe-contenedor').classList.remove('anim-golpe'), 300); if (jefeCombo > 1) { ind.innerText = `Combo x${jefeCombo}!`; ind.classList.add('mostrar-combo'); if (jefeCombo%3===0 && hpPixelote<100) { hpPixelote=Math.min(100, hpPixelote+20); document.getElementById('arena-combate').classList.add('anim-cura'); setTimeout(()=>document.getElementById('arena-combate').classList.remove('anim-cura'), 500); } } } else { playError(); jefeCombo = 0; hpPixelote -= 25; ind.classList.remove('mostrar-combo'); document.body.style.backgroundColor = "#e74c3c"; setTimeout(()=>document.body.style.backgroundColor = "#1a1a2e", 200); } document.getElementById('hp-pixelote').style.width = Math.max(0, hpPixelote)+'%'; document.getElementById('hp-jefe').style.width = Math.max(0, hpJefe)+'%'; setTimeout(sAtaqueJ, 500); }
+
+        let cartasRev = [], c1=null, c2=null, pRes=0;
+        async function iniciarMemorama() { abrirPantalla('juego-memorama'); await asegurarPreguntas(); let sel = mezclarArreglo(preguntasGlobales).slice(0, 6); let pares = []; sel.forEach((q, i) => { let qImg = q.imagen ? `<img src="${q.imagen}">` : ""; pares.push({id:i, text: (q.pregunta.length>40 ? q.pregunta.substring(0,40)+"..." : q.pregunta) + qImg }); let ans = q.opciones[q.respuesta_correcta]; let ansTxt = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}">` : (ans.length>40 ? ans.substring(0,40)+"..." : ans); pares.push({id:i, text: ansTxt }); }); cartasRev = mezclarArreglo(pares); pRes=0; c1=null; c2=null; let h=""; cartasRev.forEach((c, i) => h+=`<div class="carta" id="carta-${i}" onclick="vCart(${i})">?</div>`); document.getElementById('memorama-tablero').innerHTML = h; }
+        function vCart(i) { let ui=document.getElementById('carta-'+i); if(ui.classList.contains('resuelta')||ui.classList.contains('volteada')||(c1&&c2)) return; playTone(400, 'sine', 0.05); ui.classList.add('volteada'); ui.innerHTML=cartasRev[i].text; if(!c1) c1={idx:i, val:cartasRev[i].id}; else { c2={idx:i, val:cartasRev[i].id}; if(c1.val===c2.val) { playCoin(); addMonedas(5); document.getElementById('carta-'+c1.idx).classList.add('resuelta'); ui.classList.add('resuelta'); pRes++; c1=null; c2=null; if(pRes===6) setTimeout(()=>alertaModal("¡Perfecto!", "+30🪙", "victoria", iniciarMemorama, null), 500); } else { playError(); setTimeout(()=>{ document.getElementById('carta-'+c1.idx).classList.remove('volteada'); document.getElementById('carta-'+c1.idx).innerText="?"; ui.classList.remove('volteada'); ui.innerText="?"; c1=null; c2=null; }, 1000); } } }
+
+        let ahPal="", ahOc=[], ahVid=5;
+        async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => { let ans = q.opciones[q.respuesta_correcta]; if (!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length >= 3 && ans.length <= 16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd = mezclarArreglo(qV)[0]; ahPal = rnd.opciones[rnd.respuesta_correcta].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText = "Pista: " + rnd.pregunta; window.ahExp = rnd.explicacion ? `\n\n💡 Dato: ${rnd.explicacion}` : ""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; }
+        function adivLet(l) { document.getElementById('tec-'+l).disabled=true; if(ahPal.includes(l)){ playTone(600,'sine',0.1); addMonedas(1); for(let i=0;i<ahPal.length;i++) if(ahPal[i]===l) ahOc[i]=l; } else { playError(); ahVid--; } document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(ahVid)+"🖤".repeat(5-ahVid); if(!ahOc.includes('_')) setTimeout(()=>alertaModal("¡Rescate Exitoso!", "+15🪙" + window.ahExp, "victoria", iniciarAhorcado, null),300); if(ahVid===0) setTimeout(()=>alertaModal("Fallaste", "Era: "+ahPal + window.ahExp, "derrota", iniciarAhorcado, null),300); }
+
+        function iniciarAguila() { abrirPantalla('juego-aguila'); let m = mezclarArreglo([{txt:"La [fotosíntesis] absorbe [oxígeno] liberando [dióxido].", trampa:1, ops:["fotosíntesis","oxígeno","dióxido"]}])[0]; let th=m.txt; m.ops.forEach((op,i)=>th=th.replace(`[${op}]`,`<span class="aguila-palabra" onclick="chAg(${i===m.trampa})">${op}</span>`)); document.getElementById('aguila-contenido').innerHTML=th; }
+        function chAg(esTr) { if(esTr){ addMonedas(10); alertaModal("¡Ojo Águila!", "+10🪙", "victoria", iniciarAguila, null); } else { playError(); alertaModal("¡Emboscada!", "Error.", "derrota", iniciarAguila, null); } }
+
+        let flashQ = [];
+        async function iniciarFlashcards() { abrirPantalla('juego-flashcards'); await asegurarPreguntas(); flashQ = mezclarArreglo(preguntasGlobales); document.getElementById('fc-card').classList.remove('flipped'); sigFC(); }
+        function sigFC() { if(flashQ.length === 0) flashQ = mezclarArreglo(preguntasGlobales); let q = flashQ.pop(); let card = document.getElementById('fc-card'); card.classList.remove('flipped'); setTimeout(() => { let ans = q.opciones[q.respuesta_correcta]; let imgFront = q.imagen ? `<br><img src="${q.imagen}" style="max-width:100%; max-height:100px; margin-top:10px; border-radius:5px;">` : ""; let ansHtml = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}" style="max-width:100%; max-height:100px; border-radius:5px;">` : ans; let expHtml = q.explicacion ? `<div style="font-size:13px; font-weight:normal; margin-top:10px; border-top:1px solid rgba(255,255,255,0.3); padding-top:10px;">💡 <strong>Dato:</strong> ${q.explicacion}</div>` : ""; let pregFondo = `<div style="color:#a2a8d3; font-size:12px; margin-bottom:8px; font-style:italic; line-height:1.2; border-bottom:1px dashed #4361ee; padding-bottom:5px;">${q.pregunta.length > 80 ? q.pregunta.substring(0,80) + '...' : q.pregunta}</div>`; document.getElementById('fc-front').innerHTML = `<div style="color:#f1c40f; font-size:12px; margin-bottom:10px; text-transform:uppercase; font-weight:bold;">${q.materia}</div><strong style="font-size:16px; line-height:1.4;">${q.pregunta}</strong>${imgFront}`; document.getElementById('fc-back').innerHTML = `${pregFondo}<div style="margin-bottom:5px; color:#27ae60; font-size:12px; font-weight:bold;">RESPUESTA CORRECTA</div><strong style="font-size:18px;">${ansHtml}</strong>${expHtml}`; }, 200); }
+        function voltearFlashcard() { document.getElementById('fc-card').classList.toggle('flipped'); playTone(400, 'sine', 0.1); }
+
         // ==========================================
-        // 🚨 SISTEMA DE EXAMEN (128 PREGUNTAS EXACTAS + BLOQUEO)
+        // 🌳 ÁRBOL DE HABILIDADES VISUAL Y EXAMEN OFICIAL
         // ==========================================
-        let exQ = [], idxAc = 0, exPts = 0, exCanc = false, bloqueado = false, resMat = {}, userResp = [], logBloqueos = [];
-        let advTot = 0, sinMirar = 0, tRest = 10800, exInt, recVoz = null;
+        function mostrarHistorial() {
+            abrirPantalla('zona-historial'); let arbol = document.getElementById('arbol-habilidades');
+            if (Object.keys(playerStats.radarStats).length === 0) { arbol.innerHTML = "<p style='color:#e94560; font-weight:bold;'>Termina un simulacro oficial para plantar tu árbol.</p>"; return; }
+            let html = "";
+            for(const [mat, s] of Object.entries(playerStats.radarStats)) { let p = (s.ok/s.total)*100; let n1 = p >= 33 ? "activo" : ""; let n2 = p >= 66 ? "activo" : ""; let n3 = p >= 90 ? "activo-master" : ""; html += `<div class="skill-branch"><div class="skill-name"><span>${mat}</span> <span style="color:${p>=66?'#2ecc71':'#f1c40f'};">${Math.round(p)}%</span></div><div class="skill-nodes"><div class="skill-node ${n1}">Aprendiz</div><div class="skill-line ${n2}"></div><div class="skill-node ${n2}">Avanzado</div><div class="skill-line ${n3}"></div><div class="skill-node ${n3}">Maestro</div></div></div>`; } arbol.innerHTML = html;
+        }
+
+        // ---------- MODIFICACIÓN A SIMULACRO ----------
+        let exQ = [], idxAc = 0, exPts = 0, exCanc = false, resMat = {}, userResp = [], tRest = 10800, exInt, recVoz = null;
+        let bloqueosLog = []; let isBlocked = false; let tempBlockInt = null;
 
         async function comenzarSimulacro() {
             abrirPantalla('zona-examen');
-            exCanc = false; bloqueado = false; logBloqueos = []; advTot = 0; sinMirar = 0;
-            document.getElementById('contenedor-examen').classList.remove('bloqueado-ui');
-            
             try {
                 await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models'); 
                 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true }); 
                 document.getElementById('camara').srcObject = stream; 
-                
                 const SR = window.SpeechRecognition || window.webkitSpeechRecognition; 
                 if (SR) { 
                     recVoz = new SR(); recVoz.continuous = true; recVoz.lang = 'es-MX'; 
-                    recVoz.onresult = (e) => { const t = e.results[e.results.length - 1][0].transcript.trim(); if (t.length > 3) regInfra(`Voz detectada en el entorno`); }; 
+                    recVoz.onresult = (e) => { const t = e.results[e.results.length - 1][0].transcript.trim(); if (t.length > 3) regInfra(`Voz detectada en el micrófono`); }; 
                     recVoz.onend = () => { if(!exCanc) try{ recVoz.start(); }catch(e){} }; 
                     recVoz.start(); 
                 } 
-            } catch (err) { console.log("Cámara/Microfono desactivados o sin permiso."); }
-            
-            await asegurarPreguntas(); 
-            
-            // AGRUPAMIENTO EXACTO
-            let agrupadas = {}; 
-            preguntasGlobales.forEach(q => { 
-                let mat = q.materia;
-                if(mat.includes("Física")) mat = "Física";
-                else if(mat.includes("Química")) mat = "Química";
-                else if(mat.includes("Biología")) mat = "Biología";
-                else if(mat.toLowerCase().includes("cívica")) mat = "Formación Cívica y Ética";
+                await asegurarPreguntas(); 
                 
-                if(!agrupadas[mat]) agrupadas[mat] = []; 
-                agrupadas[mat].push(q); 
-            });
+                let agrupadas = {}; 
+                preguntasGlobales.forEach(q => { if(!agrupadas[q.materia]) agrupadas[q.materia] = []; agrupadas[q.materia].push(q); });
+                
+                // Reiniciar variables para nuevo examen
+                exQ = []; resMat = {}; idxAc = 0; exPts = 0; exCanc = false; userResp = []; 
+                bloqueosLog = []; isBlocked = false;
+                
+                // 1. DISTRIBUCIÓN EXACTA DE 128 PREGUNTAS
+                const distribucion = {
+                    "Habilidad Verbal": 16, "Habilidad Matemática": 16, "Español": 12, "Matemáticas": 12, 
+                    "Biología": 12, "Física": 12, "Química": 12, "Historia": 12, "Geografía": 12, "Formación Cívica y Ética": 12
+                };
 
-            // DISTRIBUCIÓN EXACTA DE 128 PREGUNTAS
-            let dist = {
-                "Matemáticas": 12, "Español": 12, "Física": 12, "Química": 12, "Biología": 12, 
-                "Historia Universal": 10, "Historia de México": 10, "Geografía": 8, 
-                "Formación Cívica y Ética": 8, "Habilidad Verbal": 16, "Habilidad Matemática": 16
-            };
-
-            exQ = []; resMat = {}; idxAc = 0; exPts = 0; userResp = [];
-            for (let m in dist) { 
-                let limite = dist[m];
-                let disp = agrupadas[m] ? mezclarArreglo(agrupadas[m]) : [];
-                let selec = disp.slice(0, limite);
-                if(selec.length > 0) {
-                    resMat[m] = { ok: 0, total: selec.length }; 
-                    exQ = exQ.concat(selec); 
+                for(let mat in distribucion) {
+                    let req = distribucion[mat];
+                    resMat[mat] = { ok: 0, total: req };
+                    let disp = agrupadas[mat] || [];
+                    exQ = exQ.concat(mezclarArreglo(disp).slice(0, req));
                 }
-            }
-            exQ = mezclarArreglo(exQ); 
-            
-            showQ(); 
-            document.getElementById('temporizador').style.display = "inline-block"; tRest = 10800; 
-            exInt = setInterval(() => { 
-                if (exCanc || bloqueado) return; 
-                tRest--; let h = Math.floor(tRest / 3600), m = Math.floor((tRest % 3600) / 60), s = tRest % 60; 
-                document.getElementById('temporizador').innerText = `⏱️ ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; 
-                if (tRest <= 0) finExamen("¡Tiempo agotado!", true); 
-            }, 1000);
+
+                showQ(); 
+                document.getElementById('temporizador').style.display = "inline-block"; 
+                tRest = 10800; // 3 Horas
+                exInt = setInterval(() => { 
+                    if (exCanc) return clearInterval(exInt); 
+                    tRest--; 
+                    let h = Math.floor(tRest / 3600), m = Math.floor((tRest % 3600) / 60), s = tRest % 60; 
+                    document.getElementById('temporizador').innerText = `⏱️ ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; 
+                    if (tRest <= 0) finExamen("¡Tiempo agotado!"); 
+                }, 1000);
+            } catch (err) { alert("🚨 Permisos de Cámara denegados."); location.reload(); }
         }
 
+        let sinMirar = 0;
         document.getElementById('camara').addEventListener('play', () => { 
             setInterval(async () => { 
-                if (exCanc || bloqueado) return; 
+                if (exCanc || isBlocked) return; 
                 const det = await faceapi.detectAllFaces(document.getElementById('camara'), new faceapi.TinyFaceDetectorOptions()); 
-                if (det.length === 0) { sinMirar++; if (sinMirar >= 10) { regInfra("Rostro no detectado por 10s"); sinMirar = 0; } } 
-                else { sinMirar = 0; } 
+                if (det.length === 0) { 
+                    sinMirar++; 
+                    if (sinMirar === 15) { regInfra("Rostro no detectado frente a la pantalla (15s)"); sinMirar = 0; } 
+                } else { sinMirar = 0; } 
             }, 1000); 
         });
 
-        // NUEVO: BLOQUEO DE 1 MINUTO SIN CANCELAR EL EXAMEN
+        // 2. NUEVO SISTEMA DE BLOQUEO DE 1 MINUTO
         function regInfra(motivo) { 
-            if (exCanc || bloqueado) return; 
+            if (exCanc || isBlocked) return; 
             playError(); 
-            bloqueado = true;
-            advTot++; 
-            logBloqueos.push({motivo: motivo, hora: new Date().toLocaleTimeString()});
+            isBlocked = true;
+            bloqueosLog.push(motivo); 
             
-            let tst = document.getElementById('toast-advertencia'); 
-            tst.innerText = `⚠️ BLOQUEADO 1 MINUTO: ${motivo}`; 
-            tst.style.display = "block"; 
-            document.getElementById('contenedor-examen').classList.add('bloqueado-ui'); 
+            // Ocultar preguntas
+            document.getElementById('contenedor-examen').style.display = 'none';
             
-            setTimeout(() => { 
-                bloqueado = false; 
-                tst.style.display = "none"; 
-                document.getElementById('contenedor-examen').classList.remove('bloqueado-ui'); 
-            }, 60000); // 60,000 milisegundos = 1 Minuto exacto
+            let bScreen = document.getElementById('pantalla-bloqueo');
+            if(!bScreen) {
+                bScreen = document.createElement('div');
+                bScreen.id = 'pantalla-bloqueo';
+                bScreen.style.padding = "30px";
+                bScreen.style.background = "rgba(233, 69, 96, 0.15)";
+                bScreen.style.border = "2px solid #e94560";
+                bScreen.style.borderRadius = "15px";
+                bScreen.style.textAlign = "center";
+                bScreen.style.marginTop = "20px";
+                document.getElementById('tarjeta-principal').appendChild(bScreen);
+            }
+            bScreen.style.display = 'block';
+            
+            let segsRestantes = 60;
+            bScreen.innerHTML = `
+                <h2 style="color:#e94560; font-size: 26px;">🚨 SIMULACRO BLOQUEADO 🚨</h2>
+                <p style="font-size:16px;">El sistema ha detectado una anomalía.</p>
+                <div style="background:#0f3460; padding:15px; border-radius:10px; margin: 15px 0;">
+                    <b>Motivo:</b> <span style="color:#f1c40f;">${motivo}</span>
+                </div>
+                <p style="color:#a2a8d3;">El examen se reanudará automáticamente en:</p>
+                <div style="font-size:40px; font-weight:bold; color:#f1c40f;" id="b-timer">${segsRestantes}</div>
+                <p style="font-size:12px; color:#e94560; margin-top:10px;">NOTA: El reloj principal del simulacro sigue avanzando.</p>
+            `;
+
+            tempBlockInt = setInterval(() => {
+                segsRestantes--;
+                let tmr = document.getElementById('b-timer');
+                if(tmr) tmr.innerText = segsRestantes;
+                if(segsRestantes <= 0) {
+                    clearInterval(tempBlockInt);
+                    bScreen.style.display = 'none';
+                    document.getElementById('contenedor-examen').style.display = 'block';
+                    isBlocked = false;
+                }
+            }, 1000);
         }
 
         function showQ() {
             if (idxAc >= exQ.length) return finExamen("¡Simulacro Terminado! 🎉", true);
             const d = exQ[idxAc], letras = ['A', 'B', 'C', 'D'];
-            let h = `<div class="materia" style="color:#a2a8d3; font-weight:bold; margin-bottom:5px;">${d.materia}</div><div class="contador" style="font-size:12px; margin-bottom:15px;">Pregunta ${idxAc+1}/${exQ.length}</div><button class="btn-acordeon" onclick="abrirPnl('p-p')">👁️ Ver Pregunta</button><div id="p-p" class="panel-acordeon" style="display:block;"><b>${d.pregunta}</b>${d.imagen ? `<br><img src="${d.imagen}" class="img-fluida">` : ''}</div>`;
+            let h = `<div class="materia">${d.materia}</div><div class="contador">Pregunta ${idxAc+1}/${exQ.length}</div><button class="btn-acordeon" onclick="abrirPnl('p-p')">👁️ Ver Pregunta</button><div id="p-p" class="panel-acordeon" style="display:block;"><b>${d.pregunta}</b>${d.imagen ? `<br><img src="${d.imagen}" class="img-fluida">` : ''}</div>`;
             d.opciones.forEach((o, i) => { const esImg = o.match(/\.(jpg|jpeg|png|gif)$/i); h += `<button class="btn-acordeon" onclick="abrirPnl('p-o-${i}')">👁️ Opción ${letras[i]}</button><div id="p-o-${i}" class="panel-acordeon">${esImg ? `<img src="${o}" class="img-fluida">` : o}<button class="btn-seleccionar" onclick="vRes(${i}, ${d.respuesta_correcta})">✅ Seleccionar</button></div>`; });
             document.getElementById('contenedor-examen').innerHTML = h;
         }
-
         window.abrirPnl = function(id) { ['p-p', 'p-o-0', 'p-o-1', 'p-o-2', 'p-o-3'].forEach(x => { const p = document.getElementById(x); if(p) p.style.display = (x===id && p.style.display !=='block') ? 'block' : 'none'; }); };
         
-        function vRes(s, c) { if(exCanc || bloqueado) return; userResp[idxAc] = s; playerStats.preguntasTotales++; if(s===c){ exPts++; resMat[exQ[idxAc].materia].ok++; addMonedas(5); } idxAc++; showQ(); window.scrollTo(0,0); }
+        function vRes(s, c) { 
+            if(exCanc || isBlocked) return; 
+            userResp[idxAc] = s; playerStats.preguntasTotales++; 
+            if(s===c){ exPts++; resMat[exQ[idxAc].materia].ok++; addMonedas(5); } 
+            idxAc++; showQ(); window.scrollTo(0,0); 
+        }
 
-        function finExamen(msj, exito=false) {
-            exCanc = true; clearInterval(exInt); document.getElementById('camara').style.display = "none"; document.getElementById('temporizador').style.display = "none"; document.getElementById('toast-advertencia').style.display = "none"; let v = document.getElementById('camara'); if (v.srcObject) v.srcObject.getTracks().forEach(t => t.stop()); if (recVoz) recVoz.stop();
+        function finExamen(msj, exito=true) {
+            exCanc = true; clearInterval(exInt); if(tempBlockInt) clearInterval(tempBlockInt);
+            document.getElementById('camara').style.display = "none"; 
+            document.getElementById('temporizador').style.display = "none"; 
+            let v = document.getElementById('camara'); if (v.srcObject) v.srcObject.getTracks().forEach(t => t.stop()); if (recVoz) recVoz.stop();
+            
+            let bScreen = document.getElementById('pantalla-bloqueo');
+            if(bScreen) bScreen.style.display = 'none';
+
             if (idxAc > 0) { playerStats.radarStats = resMat; localStorage.setItem('ecoems_stats', JSON.stringify(playerStats)); }
             
-            let hRep = `<div class="reporte-container" style="background:#0f3460; padding:15px; border-radius:10px; margin-bottom:15px;"><h3 style="margin-top:0;">📈 Reporte por Materias</h3>`; 
+            let hRep = `<div class="reporte-container"><h3 style="margin-top:0;">📈 Reporte por Materias</h3>`; 
             for(const [m, s] of Object.entries(resMat)) { 
-                let p = s.total > 0 ? (s.ok/s.total)*100 : 0, c = p>=80?"#2ecc71":p>=60?"#f1c40f":"#e74c3c"; 
-                hRep += `<div class="item-reporte" style="display:flex; justify-content:space-between; margin-top:5px; font-size:13px;"><span>${m}</span><span>${s.ok}/${s.total}</span></div><div class="barra-bg"><div class="barra-fill" style="background:${c}; width: ${p}%;"></div></div>`; 
+                let p = (s.ok/s.total)*100, c = p>=80?"color-excelente":p>=60?"color-regular":"color-malo"; 
+                hRep += `<div class="item-reporte"><div class="item-header"><span>${m}</span><span>${s.ok}/${s.total}</span></div><div class="barra-bg"><div class="barra-fill ${c}" style="width: ${p}%;"></div></div></div>`; 
             } 
             hRep += `</div>`;
 
-            // NUEVO: IMPRIMIR EL REGISTRO DE BLOQUEOS AL FINAL
-            if(logBloqueos.length === 0) {
-                hRep += `<div style="padding:15px; background:rgba(39,174,96,0.2); color:#27ae60; font-weight:bold; border-radius:10px; margin-bottom:15px;">✅ Examen limpio (Sin bloqueos)</div>`;
-            } else {
-                hRep += `<div style="text-align:left; background:#e74c3c; padding:15px; border-radius:10px; color:white; margin-bottom:15px;"><strong>📉 Registro de Incidentes:</strong><ul style="margin:5px 0; padding-left:20px; font-size:13px;">`;
-                logBloqueos.forEach(b => hRep += `<li>${b.hora} - ${b.motivo}</li>`);
+            // 3. REPORTE DE BLOQUEOS AL FINAL DEL EXAMEN
+            if(bloqueosLog.length > 0) {
+                hRep += `
+                <div style="background: rgba(233,69,96,0.15); border: 1px solid #e94560; padding: 15px; border-radius: 12px; margin-top: 20px; text-align: left;">
+                    <h3 style="color:#e94560; margin-top:0; font-size: 16px;">⚠️ Registro de Bloqueos (${bloqueosLog.length})</h3>
+                    <p style="font-size:12px; color:#a2a8d3;">Durante este simulacro fuiste bloqueado temporalmente por las siguientes incidencias:</p>
+                    <ul style="color:#fff; font-size:13px; padding-left: 20px;">`;
+                bloqueosLog.forEach((motivo, i) => {
+                    hRep += `<li><b style="color:#e94560;">Bloqueo ${i+1}:</b> ${motivo} (1 minuto perdido)</li>`;
+                });
                 hRep += `</ul></div>`;
             }
 
-            let head = exito ? `<h2 style="color: #27ae60;">${msj}</h2>` : `<h1 style="font-size: 30px; color:#e94560;">🚫 EXAMEN CANCELADO</h1><p>${msj}</p>`;
-            document.getElementById('tarjeta-principal').className = 'tarjeta-pregunta' + (exito ? '' : ' cancelado');
-            document.getElementById('contenedor-examen').innerHTML = `${head}${hRep}<div style="background: #16213e; border:1px solid #4361ee; padding: 20px; border-radius: 12px; margin: 20px 0;"><p style="color: #27ae60; font-size: 18px;">✔️ Aciertos: <strong>${exPts}</strong></p><p style="color: #e94560; font-size: 18px;">❌ Errores: <strong>${idxAc - exPts}</strong></p></div><button class="btn btn-azul" onclick="mostrarRetro()">Repasar mis errores</button><button class="btn btn-gris" onclick="location.reload()">Ir al Menú Principal</button>`;
+            let head = `<h2 style="color: #27ae60;">${msj}</h2>`;
+            document.getElementById('tarjeta-principal').className = 'tarjeta-pregunta';
+            document.getElementById('contenedor-examen').style.display = 'block';
+            document.getElementById('contenedor-examen').innerHTML = `
+                ${head}
+                <div style="background: #0f3460; padding: 20px; border-radius: 12px; margin: 20px 0;">
+                    <p style="color: #27ae60; font-size: 18px;">✔️ Aciertos: <strong>${exPts}</strong> / 128</p>
+                    <p style="color: #e94560; font-size: 18px;">❌ Errores / Sin responder: <strong>${128 - exPts}</strong></p>
+                </div>
+                ${hRep}
+                <button class="btn btn-azul" style="margin-top: 20px;" onclick="mostrarRetro()">Repasar mis respuestas</button>
+                <button class="btn btn-gris" onclick="location.reload()">Ir al Menú Principal</button>
+            `;
         }
 
         function mostrarRetro() {
             document.getElementById('tarjeta-principal').classList.remove('cancelado'); let html = `<h2>Repaso de Errores</h2>`, hE = false;
-            for(let i=0; i<idxAc; i++) { let d = exQ[i], mS = userResp[i]; if(mS !== d.respuesta_correcta) { hE = true; let oS=d.opciones[mS], oC=d.opciones[d.respuesta_correcta]; let cS = oS.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oS}" class="img-fluida" style="max-height:80px;">`:oS; let cC = oC.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oC}" class="img-fluida" style="max-height:80px;">`:oC; let expHtml = d.explicacion ? `<div style="background: rgba(52, 152, 219, 0.2); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 13px; color: #a2a8d3; text-align: left; border-left: 3px solid #4361ee;"><strong>💡 Explicación:</strong> ${d.explicacion}</div>` : ""; html += `<div class="tarjeta-error" style="background:#0f3460; border:1px solid #e94560; padding:15px; border-radius:10px; margin-bottom:15px;"><div style="color:#a2a8d3; font-size:12px; font-weight:bold; margin-bottom:5px;">${d.materia}</div><p style="font-weight:bold;">${d.pregunta}</p>${d.imagen?`<img src="${d.imagen}" class="img-fluida" style="max-height:100px; margin-bottom:15px;">`:''} <div style="background:rgba(233,69,96,0.2); padding:10px; border-radius:5px; margin-bottom:5px;"><strong style="color:#e94560;">❌ Elegiste:</strong><br>${cS}</div><div style="background:rgba(39,174,96,0.2); padding:10px; border-radius:5px;"><strong style="color:#27ae60;">✅ Correcta:</strong><br>${cC}</div>${expHtml}</div>`; } }
+            for(let i=0; i<idxAc; i++) { let d = exQ[i], mS = userResp[i]; if(mS !== d.respuesta_correcta) { hE = true; let oS=d.opciones[mS] || "No respondida", oC=d.opciones[d.respuesta_correcta]; let cS = oS.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oS}" class="img-fluida" style="max-height:80px;">`:oS; let cC = oC.match(/\.(jpg|jpeg|png|gif)$/i)?`<img src="${oC}" class="img-fluida" style="max-height:80px;">`:oC; let expHtml = d.explicacion ? `<div style="background: rgba(52, 152, 219, 0.2); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 13px; color: #a2a8d3; text-align: left; border-left: 3px solid #4361ee;"><strong>💡 Explicación:</strong> ${d.explicacion}</div>` : ""; html += `<div class="tarjeta-error" style="background:#0f3460; border:1px solid #e94560; padding:15px; border-radius:10px; margin-bottom:15px;"><div style="color:#a2a8d3; font-size:12px; font-weight:bold; margin-bottom:5px;">${d.materia}</div><p style="font-weight:bold;">${d.pregunta}</p>${d.imagen?`<img src="${d.imagen}" class="img-fluida" style="max-height:100px; margin-bottom:15px;">`:''} <div style="background:rgba(233,69,96,0.2); padding:10px; border-radius:5px; margin-bottom:5px;"><strong style="color:#e94560;">❌ Elegiste:</strong><br>${cS}</div><div style="background:rgba(39,174,96,0.2); padding:10px; border-radius:5px;"><strong style="color:#27ae60;">✅ Correcta:</strong><br>${cC}</div>${expHtml}</div>`; } }
             if(!hE) html += `<div style="padding:20px; background:rgba(39,174,96,0.2); color:#27ae60; font-weight:bold; border-radius:10px; margin-bottom:20px;">¡No tuviste errores!</div>`;
             html += `<button class="btn btn-gris" onclick="location.reload()">Volver al Menú Principal</button>`; document.getElementById('contenedor-examen').innerHTML = html; window.scrollTo(0,0);
         }
-
-        // ==========================================
-        // 🦅 VISTA DE ÁGUILA REPARADA
-        // ==========================================
-        let aguilaQ = [], aguilaScore = 0;
-        async function iniciarAguila() {
-            abrirPantalla('juego-aguila');
-            aguilaScore = 0;
-            await asegurarPreguntas();
-            aguilaQ = mezclarArreglo(preguntasGlobales);
-            sigAguila();
-        }
-        function sigAguila() {
-            if(aguilaQ.length === 0) return finAguila(true);
-            let q = aguilaQ.pop(); window.curAgQ = q;
-            let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px; border-radius:5px;">` : "";
-            
-            let html = `<h4 style="color:#3498db; margin-bottom:10px;">¡Encuentra la correcta rápido!</h4>
-                        <div style="background:#0f3460; padding:10px; border-radius:10px; border:1px solid #4361ee; font-size:14px; margin-bottom:15px;">${q.pregunta}${imgH}</div>
-                        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">`;
-            
-            let ops = mezclarArreglo(q.opciones.map((o,i)=>({text:o, originalIndex:i})));
-            ops.forEach(o => {
-                let txt = o.text.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${o.text}" style="height:35px; border-radius:4px;">` : o.text.substring(0,40);
-                html += `<button class="btn btn-azul" style="padding:10px; font-size:13px; flex: 1 1 40%;" onclick="checkAguila(${o.originalIndex})">${txt}</button>`;
-            });
-            html += `</div>`;
-            document.getElementById('aguila-contenido').innerHTML = html;
-        }
-        function checkAguila(i) {
-            if(i === window.curAgQ.respuesta_correcta) {
-                playCoin(); addMonedas(2); aguilaScore++; setTimeout(sigAguila, 200);
-            } else { playError(); finAguila(false); }
-        }
-        function finAguila(win) {
-            if(aguilaScore >= 5) checarLogroArcade(67, "Ojo de Águila");
-            alertaModal(win?"¡Vista Perfecta!":"¡Emboscada!", "Encontraste: " + aguilaScore, win?"victoria":"derrota", iniciarAguila, ()=>abrirPantalla('zona-arcade'));
-        }
-
-        // ==========================================
-        // 🕹️ OTROS MINIJUEGOS (Arquitecto, Matriz, etc)
-        // ==========================================
-        let arqVidas = 3, arqScore = 0, arqQ = []; async function iniciarArquitecto() { abrirPantalla('juego-arquitecto'); arqVidas = 3; arqScore = 0; document.getElementById('arq-score').innerText = "0"; upArqV(); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => q.materia.includes("Matemáticas") || q.materia === "Física" || q.materia === "Habilidad Matemática"); if(qV.length===0) qV = preguntasGlobales; arqQ = mezclarArreglo(qV); sigArq(); } function sigArq() { if(arqQ.length === 0) return finArq(true); let q = arqQ.pop(); window.curArqQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:100px; border-radius:5px; margin-top:10px;">` : ""; document.getElementById('arq-pregunta').innerHTML = q.pregunta + imgH; let h = ""; q.opciones.forEach((op, i) => { let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op; h += `<button class="viga-btn" onclick="clicArq(${i}, this)">[PTR] ${t}</button>`; }); document.getElementById('arq-opciones').innerHTML = h; } function clicArq(i, btn) { if(i === window.curArqQ.respuesta_correcta) { playWeld(); btn.style.background = "#27ae60"; btn.style.borderColor = "#2ecc71"; btn.style.color = "#fff"; addMonedas(4); arqScore++; document.getElementById('arq-score').innerText = arqScore; setTimeout(sigArq, 500); } else { playMetal(); btn.style.opacity = "0.3"; btn.disabled = true; arqVidas--; upArqV(); if(arqVidas <= 0) setTimeout(()=>finArq(false), 300); } } function upArqV() { document.getElementById('arq-vidas').innerText = "❤️".repeat(arqVidas)+"🖤".repeat(3-arqVidas); } function finArq(win) { playerStats.arcadeArq++; guardarStats(); if(arqScore >= 5) checarLogroArcade(77, "Ingeniero Maestro"); if(arqVidas === 3 && arqScore >= 5) checarLogroArcade(78, "Soldadura Perfecta"); alertaModal(win?"¡Estructura Completa!":"Falla Estructural", "Planos resueltos: "+arqScore, win?"victoria":"derrota", iniciarArquitecto, ()=>abrirPantalla('zona-arcade')); }
-        let matrizScore = 0, matrizCarga = 0, matrizInt, matrizQ = []; async function iniciarMatriz() { abrirPantalla('juego-matriz'); matrizScore = 0; matrizCarga = 0; document.getElementById('matriz-score').innerText = "0"; await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => q.materia === "Habilidad Matemática"); if(qV.length===0) qV = preguntasGlobales; matrizQ = mezclarArreglo(qV); sigMatriz(); clearInterval(matrizInt); matrizInt = setInterval(tickMatriz, 200); } function sigMatriz() { if(matrizQ.length === 0) return finMatriz(true); let q = matrizQ.pop(); window.curMatQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; filter: grayscale(1) sepia(1) hue-rotate(80deg) brightness(1.5); margin-top:10px;">` : ""; document.getElementById('matriz-pregunta').innerHTML = "> " + q.pregunta + imgH; let h = ""; q.opciones.forEach((op, i) => { let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op; h += `<button class="dato-btn" onclick="clicMatriz(${i}, this)">{ ${t} }</button>`; }); document.getElementById('matriz-opciones').innerHTML = h; } function tickMatriz() { matrizCarga += 0.8; document.getElementById('matriz-barra').style.width = Math.min(100, matrizCarga) + '%'; if(matrizCarga >= 100) finMatriz(false); } function clicMatriz(i, btn) { if(i === window.curMatQ.respuesta_correcta) { playData(); btn.style.background = "#0f0"; btn.style.color = "#000"; matrizCarga = Math.max(0, matrizCarga - 30); addMonedas(3); matrizScore++; document.getElementById('matriz-score').innerText = matrizScore; setTimeout(sigMatriz, 300); } else { playError(); btn.style.background = "#f00"; btn.style.color = "#fff"; btn.style.borderColor = "#f00"; matrizCarga += 20; } } function finMatriz(win) { clearInterval(matrizInt); playerStats.arcadeMatriz++; guardarStats(); if(matrizScore >= 5) checarLogroArcade(79, "Analista de Datos"); if(matrizCarga < 50 && matrizScore >= 5) checarLogroArcade(80, "Código Limpio"); alertaModal(win?"¡Servidor Seguro!":"Datos Corruptos", "Sucesiones resueltas: "+matrizScore, win?"victoria":"derrota", iniciarMatriz, ()=>abrirPantalla('zona-arcade')); }
-        let balVidas = 3, balScore = 0, balQ = []; async function iniciarBalanza() { abrirPantalla('juego-balanza'); balVidas = 3; balScore = 0; document.getElementById('bal-score').innerText = "0"; upBalV(); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => q.materia === "Matemáticas"); if(qV.length===0) qV = preguntasGlobales; balQ = mezclarArreglo(qV); sigBal(); } function sigBal() { if(balQ.length === 0) return finBal(true); let q = balQ.pop(); window.curBalQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:10px; border-radius:5px;">` : ""; document.getElementById('bal-pregunta').innerHTML = q.pregunta + imgH; let h = ""; q.opciones.forEach((op, i) => { let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op; h += `<button class="peso-btn" onclick="clicBal(${i}, this)">${t}</button>`; }); document.getElementById('bal-opciones').innerHTML = h; document.getElementById('bal-contenedor').style.transform = "rotate(0deg)"; } function clicBal(i, btn) { let cont = document.getElementById('bal-contenedor'); if(i === window.curBalQ.respuesta_correcta) { playCoin(); cont.style.borderColor = "#27ae60"; btn.style.background = "#27ae60"; addMonedas(5); balScore++; document.getElementById('bal-score').innerText = balScore; setTimeout(()=>{ cont.style.borderColor = "#8d6e63"; sigBal(); }, 600); } else { playError(); btn.style.opacity = "0.2"; btn.disabled = true; balVidas--; upBalV(); cont.style.transform = "rotate(10deg)"; setTimeout(()=>cont.style.transform = "rotate(-10deg)", 150); setTimeout(()=>cont.style.transform = "rotate(0deg)", 300); if(balVidas <= 0) setTimeout(()=>finBal(false), 400); } } function upBalV() { document.getElementById('bal-vidas').innerText = "❤️".repeat(balVidas)+"🖤".repeat(3-balVidas); } function finBal(win) { playerStats.arcadeBal++; guardarStats(); if(balScore >= 5) checarLogroArcade(81, "Alquimista"); if(balVidas === 3 && balScore >= 5) checarLogroArcade(82, "Equilibrio Perfecto"); alertaModal(win?"¡Ecuación Perfecta!":"Desequilibrio", "Ecuaciones balanceadas: "+balScore, win?"victoria":"derrota", iniciarBalanza, ()=>abrirPantalla('zona-arcade')); }
-        let saltoNivel=1, saltoQ=[]; async function iniciarSalto() { abrirPantalla('juego-salto'); saltoNivel=1; document.getElementById('salto-score').innerText="0"; document.getElementById('salto-nivel').innerText="1"; let pix = document.getElementById('salto-pix'); pix.style.bottom = "10px"; pix.classList.remove('anim-caida'); pix.classList.remove('anim-salto-up'); await asegurarPreguntas(); saltoQ = mezclarArreglo(preguntasGlobales); sigSalto(); } function sigSalto() { if(saltoQ.length===0) return finSalto(true); let q = saltoQ.pop(); window.curSaltoQ = q; let imgH = q.imagen ? `<br><img src="${q.imagen}" style="max-height:60px; margin-top:5px; border-radius:5px;">` : ""; document.getElementById('salto-pregunta').innerHTML = q.pregunta + imgH; let pos = [{b:180, l:'2%'}, {b:180, l:'53%'}, {b:80, l:'2%'}, {b:80, l:'53%'}]; let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px;">` : op; h += `<button class="plat-btn" style="bottom:${pos[i].b}px; left:${pos[i].l}; height:90px;" onclick="clicSalto(${i}, this)">${t}</button>`; }); document.getElementById('salto-plataformas').innerHTML = h; } function clicSalto(i, btn) { let pix = document.getElementById('salto-pix'); if(i === window.curSaltoQ.respuesta_correcta) { playCoin(); btn.style.background = "#f1c40f"; btn.style.borderColor = "#f39c12"; addMonedas(3); saltoNivel++; document.getElementById('salto-score').innerText = (saltoNivel-1)*3; document.getElementById('salto-nivel').innerText = saltoNivel; pix.classList.remove('anim-salto-up'); void pix.offsetWidth; pix.classList.add('anim-salto-up'); setTimeout(sigSalto, 600); } else { playError(); btn.style.background = "#e74c3c"; btn.style.borderColor = "#c0392b"; btn.style.transform = "rotate(15deg) translateY(20px)"; btn.style.opacity = "0"; pix.classList.remove('anim-caida'); void pix.offsetWidth; pix.classList.add('anim-caida'); setTimeout(()=>finSalto(false), 600); } } function finSalto(win) { playerStats.arcadeSalto = (playerStats.arcadeSalto||0) + 1; guardarStats(); if(saltoNivel > 10) checarLogroArcade(75, "Rana Saltarina"); if(saltoNivel > 20) checarLogroArcade(76, "Astronauta Cuántico"); alertaModal(win?"¡Llegaste a la cima!":"Caída Libre", "Alcanzaste el nivel: "+saltoNivel, win?"victoria":"derrota", iniciarSalto, ()=>abrirPantalla('zona-arcade')); }
-        let metVidas=3, metScore=0, metQ=[], metSpeed=1.5, metTop=[0,0,0,0], metInt, metActivo=false; async function iniciarMeteoritos() { abrirPantalla('juego-meteoritos'); metVidas=3; metScore=0; metSpeed=1.5; metActivo=true; await asegurarPreguntas(); metQ = mezclarArreglo(preguntasGlobales); document.getElementById('met-score').innerText = "0"; document.getElementById('met-vidas').innerText = "❤️".repeat(3); sigMet(); clearInterval(metInt); metInt = setInterval(caidaMet, 50); } function sigMet() { if(metQ.length===0) return finMet(true); let q = metQ.pop(); window.curMetQ = q; let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:50px; margin-top:5px;">`:""; document.getElementById('met-pregunta').innerHTML = (q.pregunta.length>80?q.pregunta.substring(0,80)+"...":q.pregunta) + imgHtml; metTop = [-20, -70, -120, -170]; metTop = mezclarArreglo(metTop); let h = ""; q.opciones.forEach((op, i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}">` : op.substring(0,40); h += `<button class="met-btn" id="m-btn-${i}" style="left:${i%2===0?'2%':'52%'}; top:${metTop[i]}px;" onclick="clicMet(${i})">${t}</button>`; }); document.getElementById('met-area').innerHTML = h; } function caidaMet() { if(!metActivo) return; let algunVivo = false; for(let i=0; i<4; i++){ let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') continue; algunVivo = true; metTop[i] += metSpeed; b.style.top = metTop[i] + 'px'; if(metTop[i] > 280) { b.style.display = 'none'; if(i === window.curMetQ.respuesta_correcta) { metVidas--; playError(); document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) { finMet(false); return; } else { sigMet(); return; } } } } if(!algunVivo) sigMet(); } function clicMet(i) { let b = document.getElementById('m-btn-'+i); if(!b || b.style.display==='none') return; if(i === window.curMetQ.respuesta_correcta) { playCoin(); b.style.background = "#27ae60"; addMonedas(2); metScore++; document.getElementById('met-score').innerText = metScore; metSpeed += 0.1; setTimeout(sigMet, 150); } else { playError(); b.style.display = 'none'; metVidas--; document.getElementById('met-vidas').innerText = "❤️".repeat(metVidas)+"🖤".repeat(3-metVidas); if(metVidas<=0) finMet(false); } } function finMet(win) { metActivo=false; clearInterval(metInt); playerStats.arcadeMet++; guardarStats(); if(win || metScore>=5) { checarLogroArcade(71, "Defensor Planetario"); if(metVidas===3) checarLogroArcade(72, "Lluvia Perfecta"); alertaModal("¡Buen trabajo!", "Aciertos: "+metScore, "victoria", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Base Destruida", "Un meteorito impactó la base.", "derrota", iniciarMeteoritos, ()=>abrirPantalla('zona-arcade')); }
-        let labTime=100, labSala=1, labInt, labQ=[]; async function iniciarLaberinto() { abrirPantalla('juego-laberinto'); labTime=100; labSala=1; await asegurarPreguntas(); labQ = mezclarArreglo(preguntasGlobales); sigLab(); clearInterval(labInt); labInt = setInterval(()=>{ labTime -= 0.6; document.getElementById('lab-barra').style.width = Math.max(0,labTime)+'%'; document.getElementById('lab-luz-txt').innerText = Math.round(labTime); if(labTime<=0) finLab(false); }, 100); } function sigLab() { if(labSala>10) return finLab(true); document.getElementById('lab-sala').innerText = labSala; let q = labQ.pop(); window.curLabQ = q; document.getElementById('lab-preg').innerHTML = q.pregunta + (q.imagen?`<br><img src="${q.imagen}" style="height:80px; margin-top:10px; border-radius:5px;">`:''); let h = ""; q.opciones.forEach((op,i)=>{ let t = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="height:40px; border-radius:4px;">` : op; h += `<button class="btn btn-azul" style="font-size:14px; padding:10px;" onclick="clicLab(${i})">${t}</button>`; }); document.getElementById('lab-ops').innerHTML = h; } function clicLab(i) { if(i === window.curLabQ.respuesta_correcta) { playCoin(); labTime = Math.min(100, labTime+15); addMonedas(3); labSala++; sigLab(); } else { playError(); labTime -= 25; document.getElementById('lab-fondo').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('lab-fondo').classList.remove('anim-golpe'), 300); } } function finLab(win) { clearInterval(labInt); playerStats.arcadeLab++; guardarStats(); if(win) { checarLogroArcade(73, "Sobreviviente"); if(labTime>=80) checarLogroArcade(74, "Portador de Luz"); addMonedas(30); alertaModal("¡Escapaste!", "Saliste con vida.\nMonedas: +30🪙", "victoria", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); } else alertaModal("Consumido", "La oscuridad te atrapó.", "derrota", iniciarLaberinto, ()=>abrirPantalla('zona-arcade')); }
-        let fScore = 0, fTime = 60, fInt, fQ = []; async function iniciarFrenesi() { abrirPantalla('juego-frenesi'); fScore = 0; fTime = 60; document.getElementById('frenesi-score').innerText = 0; document.getElementById('frenesi-reloj').innerText = 60; await asegurarPreguntas(); fQ = mezclarArreglo(preguntasGlobales); sigFrenesi(); fInt = setInterval(() => { fTime--; document.getElementById('frenesi-reloj').innerText = fTime; if(fTime <= 0) cerrarFrenesi(true); }, 1000); } function sigFrenesi() { if(fQ.length === 0) return cerrarFrenesi(true); let q = fQ.pop(); let imgHtml = q.imagen ? `<br><img src="${q.imagen}" style="max-height:80px; margin-top:5px; border-radius:5px;">`:""; document.getElementById('frenesi-pregunta').innerHTML = (q.pregunta.length>75?q.pregunta.substring(0,75)+"...":q.pregunta) + imgHtml; let html = ""; q.opciones.forEach((op, i) => { let texto = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height: 40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" style="font-size:14px; padding:10px; margin-bottom:5px;" onclick="checkFrenesi(${i}, ${q.respuesta_correcta})">${texto}</button>`; }); document.getElementById('frenesi-opciones').innerHTML = html; } function checkFrenesi(sel, corr) { if(sel === corr) { playCoin(); fScore++; addMonedas(1); document.getElementById('frenesi-score').innerText = fScore; } else { playError(); document.getElementById('frenesi-caja-preg').classList.add('anim-golpe'); setTimeout(()=> document.getElementById('frenesi-caja-preg').classList.remove('anim-golpe'), 300); } sigFrenesi(); } function cerrarFrenesi(t = false) { clearInterval(fInt); if(t) { let minTop = leaderboard.length < 5 ? 0 : leaderboard.sort((a,b)=>b.score-a.score)[4].score; if(fScore > minTop) { let initials = prompt(`¡Nuevo Récord (${fScore} pts)! Ingresa 3 letras para el Salón de la Fama:`, "PIX"); if(initials) { leaderboard.push({nombre: initials.substring(0,3).toUpperCase(), score: fScore}); localStorage.setItem('ecoems_leaderboard', JSON.stringify(leaderboard)); renderLeaderboard(); } } alertaModal("¡Tiempo Agotado!", `Aciertos: ${fScore}\nMonedas: +${fScore}🪙`, "victoria", iniciarFrenesi, ()=>abrirPantalla('zona-arcade')); } else abrirPantalla('zona-arcade'); }
-        let hpPixelote = 100, hpJefe = 100, jefeQ = [], jefeCombo = 0; async function iniciarJefe() { abrirPantalla('juego-jefe'); hpPixelote = 100; hpJefe = 100; jefeCombo = 0; document.getElementById('combo-indicador').classList.remove('mostrar-combo'); document.getElementById('hp-pixelote').style.width = '100%'; document.getElementById('hp-jefe').style.width = '100%'; await asegurarPreguntas(); jefeQ = mezclarArreglo(preguntasGlobales).slice(0, 15); sAtaqueJ(); } function sAtaqueJ() { if (hpPixelote <= 0) return alertaModal("¡Derrota!", "Fuiste vencido.", "derrota", iniciarJefe, null); if (hpJefe <= 0) { addMonedas(50); return alertaModal("¡Victoria!", "Destruiste al Jefe. +50🪙", "victoria", iniciarJefe, null); } if (jefeQ.length === 0) return alertaModal("Empate", "Sin energía.", "derrota", iniciarJefe, null); let q = jefeQ.pop(); document.getElementById('jefe-pregunta').innerHTML = (q.pregunta.length > 100 ? q.pregunta.substring(0,100)+"..." : q.pregunta) + (q.imagen?`<br><img src="${q.imagen}" style="max-height:80px; border-radius:5px;">`:""); let html = ""; q.opciones.forEach((op, i) => { let txt = op.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${op}" style="max-height:40px; border-radius:4px;">` : op.substring(0,40); html += `<button class="btn btn-azul" onclick="atqJ(${i}, ${q.respuesta_correcta})">${txt}</button>`; }); document.getElementById('jefe-opciones').innerHTML = html; } function atqJ(sel, corr) { let ind = document.getElementById('combo-indicador'); if (sel === corr) { playHit(); addMonedas(2); jefeCombo++; hpJefe -= (15 + (jefeCombo*5)); document.getElementById('jefe-contenedor').classList.add('anim-golpe'); setTimeout(()=>document.getElementById('jefe-contenedor').classList.remove('anim-golpe'), 300); if (jefeCombo > 1) { ind.innerText = `Combo x${jefeCombo}!`; ind.classList.add('mostrar-combo'); if (jefeCombo%3===0 && hpPixelote<100) { hpPixelote=Math.min(100, hpPixelote+20); document.getElementById('arena-combate').classList.add('anim-cura'); setTimeout(()=>document.getElementById('arena-combate').classList.remove('anim-cura'), 500); } } } else { playError(); jefeCombo = 0; hpPixelote -= 25; ind.classList.remove('mostrar-combo'); document.body.style.backgroundColor = "#e74c3c"; setTimeout(()=>document.body.style.backgroundColor = "#1a1a2e", 200); } document.getElementById('hp-pixelote').style.width = Math.max(0, hpPixelote)+'%'; document.getElementById('hp-jefe').style.width = Math.max(0, hpJefe)+'%'; setTimeout(sAtaqueJ, 500); }
-        let cartasRev = [], c1=null, c2=null, pRes=0; async function iniciarMemorama() { abrirPantalla('juego-memorama'); await asegurarPreguntas(); let sel = mezclarArreglo(preguntasGlobales).slice(0, 6); let pares = []; sel.forEach((q, i) => { let qImg = q.imagen ? `<img src="${q.imagen}">` : ""; pares.push({id:i, text: (q.pregunta.length>40 ? q.pregunta.substring(0,40)+"..." : q.pregunta) + qImg }); let ans = q.opciones[q.respuesta_correcta]; let ansTxt = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}">` : (ans.length>40 ? ans.substring(0,40)+"..." : ans); pares.push({id:i, text: ansTxt }); }); cartasRev = mezclarArreglo(pares); pRes=0; c1=null; c2=null; let h=""; cartasRev.forEach((c, i) => h+=`<div class="carta" id="carta-${i}" onclick="vCart(${i})">?</div>`); document.getElementById('memorama-tablero').innerHTML = h; } function vCart(i) { let ui=document.getElementById('carta-'+i); if(ui.classList.contains('resuelta')||ui.classList.contains('volteada')||(c1&&c2)) return; playTone(400, 'sine', 0.05); ui.classList.add('volteada'); ui.innerHTML=cartasRev[i].text; if(!c1) c1={idx:i, val:cartasRev[i].id}; else { c2={idx:i, val:cartasRev[i].id}; if(c1.val===c2.val) { playCoin(); addMonedas(5); document.getElementById('carta-'+c1.idx).classList.add('resuelta'); ui.classList.add('resuelta'); pRes++; c1=null; c2=null; if(pRes===6) setTimeout(()=>alertaModal("¡Perfecto!", "+30🪙", "victoria", iniciarMemorama, null), 500); } else { playError(); setTimeout(()=>{ document.getElementById('carta-'+c1.idx).classList.remove('volteada'); document.getElementById('carta-'+c1.idx).innerText="?"; ui.classList.remove('volteada'); ui.innerText="?"; c1=null; c2=null; }, 1000); } } }
-        let ahPal="", ahOc=[], ahVid=5; async function iniciarAhorcado() { abrirPantalla('juego-ahorcado'); await asegurarPreguntas(); let qV = preguntasGlobales.filter(q => { let ans = q.opciones[q.respuesta_correcta]; if (!ans) return false; return !q.imagen && !ans.match(/\.(jpg|jpeg|png|gif)$/i) && !/\d/.test(ans) && !ans.includes(' ') && ans.length >= 3 && ans.length <= 16; }); if(qV.length===0) qV=[{pregunta:"Elemento con símbolo H", opciones:["HIDROGENO"], respuesta_correcta:0}]; let rnd = mezclarArreglo(qV)[0]; ahPal = rnd.opciones[rnd.respuesta_correcta].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-ZÑ]/g, ""); ahVid=5; ahOc=Array(ahPal.length).fill('_'); document.getElementById('ahorcado-pista').innerText = "Pista: " + rnd.pregunta; window.ahExp = rnd.explicacion ? `\n\n💡 Dato: ${rnd.explicacion}` : ""; document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(5); let tH=""; "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split('').forEach(l=>tH+=`<button class="tecla" id="tec-${l}" onclick="adivLet('${l}')">${l}</button>`); document.getElementById('ahorcado-teclado').innerHTML=tH; } function adivLet(l) { document.getElementById('tec-'+l).disabled=true; if(ahPal.includes(l)){ playTone(600,'sine',0.1); addMonedas(1); for(let i=0;i<ahPal.length;i++) if(ahPal[i]===l) ahOc[i]=l; } else { playError(); ahVid--; } document.getElementById('ahorcado-palabra').innerText=ahOc.join(' '); document.getElementById('ahorcado-vidas').innerText="❤️".repeat(ahVid)+"🖤".repeat(5-ahVid); if(!ahOc.includes('_')) setTimeout(()=>alertaModal("¡Rescate Exitoso!", "+15🪙" + window.ahExp, "victoria", iniciarAhorcado, null),300); if(ahVid===0) setTimeout(()=>alertaModal("Fallaste", "Era: "+ahPal + window.ahExp, "derrota", iniciarAhorcado, null),300); }
-        let flashQ = []; async function iniciarFlashcards() { abrirPantalla('juego-flashcards'); await asegurarPreguntas(); flashQ = mezclarArreglo(preguntasGlobales); document.getElementById('fc-card').classList.remove('flipped'); sigFC(); } function sigFC() { if(flashQ.length === 0) flashQ = mezclarArreglo(preguntasGlobales); let q = flashQ.pop(); let card = document.getElementById('fc-card'); card.classList.remove('flipped'); setTimeout(() => { let ans = q.opciones[q.respuesta_correcta]; let imgFront = q.imagen ? `<br><img src="${q.imagen}" style="max-width:100%; max-height:100px; margin-top:10px; border-radius:5px;">` : ""; let ansHtml = ans.match(/\.(jpg|jpeg|png|gif)$/i) ? `<img src="${ans}" style="max-width:100%; max-height:100px; border-radius:5px;">` : ans; let expHtml = q.explicacion ? `<div style="font-size:13px; font-weight:normal; margin-top:10px; border-top:1px solid rgba(255,255,255,0.3); padding-top:10px;">💡 <strong>Dato:</strong> ${q.explicacion}</div>` : ""; let pregFondo = `<div style="color:#a2a8d3; font-size:12px; margin-bottom:8px; font-style:italic; line-height:1.2; border-bottom:1px dashed #4361ee; padding-bottom:5px;">${q.pregunta.length > 80 ? q.pregunta.substring(0,80) + '...' : q.pregunta}</div>`; document.getElementById('fc-front').innerHTML = `<div style="color:#f1c40f; font-size:12px; margin-bottom:10px; text-transform:uppercase; font-weight:bold;">${q.materia}</div><strong style="font-size:16px; line-height:1.4;">${q.pregunta}</strong>${imgFront}`; document.getElementById('fc-back').innerHTML = `${pregFondo}<div style="margin-bottom:5px; color:#27ae60; font-size:12px; font-weight:bold;">RESPUESTA CORRECTA</div><strong style="font-size:18px;">${ansHtml}</strong>${expHtml}`; }, 200); } function voltearFlashcard() { document.getElementById('fc-card').classList.toggle('flipped'); playTone(400, 'sine', 0.1); }
-
-        function mostrarHistorial() { abrirPantalla('zona-historial'); let arbol = document.getElementById('arbol-habilidades'); if (Object.keys(playerStats.radarStats).length === 0) { arbol.innerHTML = "<p style='color:#e94560; font-weight:bold;'>Termina un simulacro oficial para plantar tu árbol.</p>"; return; } let html = ""; for(const [mat, s] of Object.entries(playerStats.radarStats)) { let p = (s.ok/s.total)*100; let n1 = p >= 33 ? "activo" : ""; let n2 = p >= 66 ? "activo" : ""; let n3 = p >= 90 ? "activo-master" : ""; html += `<div class="skill-branch"><div class="skill-name"><span>${mat}</span> <span style="color:${p>=66?'#2ecc71':'#f1c40f'};">${Math.round(p)}%</span></div><div class="skill-nodes"><div class="skill-node ${n1}">Aprendiz</div><div class="skill-line ${n2}"></div><div class="skill-node ${n2}">Avanzado</div><div class="skill-line ${n3}"></div><div class="skill-node ${n3}">Maestro</div></div></div>`; } arbol.innerHTML = html; }
 
         actualizarUI();
         const defTrofeos = []; for(let i=1; i<=82; i++) defTrofeos.push({id: i, icon: '🏆', name: `Logro ${i}`, desc: 'Desafío completado'});
