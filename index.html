@@ -147,13 +147,12 @@
         
         .skin-0 { border-color: #e94560; } .skin-1 { border-color: #fff; filter: grayscale(1) invert(1); } .skin-2 { border-color: #00f3ff; filter: hue-rotate(180deg); box-shadow: 0 0 15px #00f3ff; } .skin-3 { border-color: #f1c40f; filter: brightness(1.5) contrast(1.2); box-shadow: 0 0 20px #f1c40f; } 
        
-        /* --- MOTOR RPG 2D --- */
+       /* --- MOTOR RPG 2D CORREGIDO --- */
 #rpg-world {
     position: relative;
-    width: 100%;
-    max-width: 320px;
+    width: 320px; /* Forzamos el tamaño exacto, quitamos max-width y 100% */
     height: 320px;
-    background: #2ecc71; /* Piso verde tipo pasto o alfombra */
+    background: #2ecc71;
     background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 4px solid #0f3460;
@@ -180,10 +179,15 @@
     border: 2px solid rgba(255,255,255,0.3);
 }
 
+/* 
+  COORDENADAS ABSOLUTAS (Iguales a las de JavaScript):
+  Desk: x=20, y=20 | Arcade: x=240, y=20 
+  Shop: x=20, y=240 | Tree: x=240, y=240
+*/
 .obj-desk { background: #34495e; top: 20px; left: 20px; }
-.obj-arcade { background: #8e44ad; top: 20px; right: 20px; }
-.obj-shop { background: #f39c12; bottom: 20px; left: 20px; }
-.obj-tree { background: #16a085; bottom: 20px; right: 20px; }
+.obj-arcade { background: #8e44ad; top: 20px; left: 240px; }
+.obj-shop { background: #f39c12; top: 240px; left: 20px; }
+.obj-tree { background: #16a085; top: 240px; left: 240px; }
 
 .obj-label { font-size: 9px; margin-top: 5px; text-transform: uppercase; background: rgba(0,0,0,0.6); padding: 2px 4px; border-radius: 4px;}
 
@@ -193,41 +197,12 @@
     height: 40px;
     border-radius: 50%;
     border: 3px solid #fff;
-    transition: transform 0.15s ease-out; /* Movimiento fluido */
+    transition: transform 0.15s ease-out;
     z-index: 10;
     box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-}
-
-.dpad-btn {
-    background: #0f3460;
-    color: white;
-    border: 2px solid #4361ee;
-    border-radius: 10px;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.dpad-btn:active { background: #4361ee; transform: scale(0.9); }
-
-#btn-accion {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    font-weight: bold;
-    font-size: 20px;
-    background: #2c3e50;
-    color: white;
-    border: 4px solid #7f8c8d;
-    transition: 0.2s;
-}
-#btn-accion.activo {
-    background: #e94560;
-    border-color: #ff7675;
-    box-shadow: 0 0 15px rgba(233, 69, 96, 0.8);
-    transform: scale(1.05);
+    /* Forzar que el origen del avatar sea arriba a la izquierda para cálculos precisos */
+    top: 0; 
+    left: 0;
 }
     </style>
 </head>
@@ -822,37 +797,31 @@
             checarColisionMundo();
         }
 
-        function checarColisionMundo() {
-            let colisionDetectada = false;
-            let btnA = document.getElementById('btn-accion');
+          function checarColisionMundo() {
+    let colisionDetectada = false;
+    let btnA = document.getElementById('btn-accion');
 
-            for (let z of zonasMundo) {
-                // Lógica de colisión de cajas 2D (AABB) con margen de tolerancia
-                if (rpgPx < z.x + z.w && rpgPx + 40 > z.x && rpgPy < z.y + z.h && rpgPy + 40 > z.y) {
-                    zonaActiva = z;
-                    colisionDetectada = true;
-                    btnA.innerText = "¡A!";
-                    btnA.classList.add('activo');
-                    break;
-                }
-            }
-
-            if (!colisionDetectada) {
-                zonaActiva = null;
-                btnA.innerText = "A";
-                btnA.classList.remove('activo');
-            }
+    for (let z of zonasMundo) {
+        // Expandimos la tolerancia de la colisión restando/sumando 10 píxeles
+        if (rpgPx < (z.x + z.w + 10) && (rpgPx + 40) > (z.x - 10) && 
+            rpgPy < (z.y + z.h + 10) && (rpgPy + 40) > (z.y - 10)) {
+            
+            zonaActiva = z;
+            colisionDetectada = true;
+            btnA.innerText = "¡A!";
+            btnA.classList.add('activo');
+            break;
         }
+    }
 
-        function interactuarRPG() {
-            if (zonaActiva) {
-                playCoin(); // Sonido de confirmación
-                zonaActiva.accion();
-            } else {
-                playMetal(); // Sonido de error/vacío
-            }
-        }
+    if (!colisionDetectada) {
+        zonaActiva = null;
+        btnA.innerText = "A";
+        btnA.classList.remove('activo');
+    }
+          }     
 
+        
         // Permitir jugar con el teclado en la PC
         document.addEventListener('keydown', (e) => {
             // Solo mover si estamos en el menú principal
